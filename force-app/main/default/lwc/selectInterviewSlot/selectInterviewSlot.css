@@ -1,0 +1,17 @@
+.slds-box {
+  background: #f8f9fa;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.slds-m-bottom_small {
+  margin-bottom: 0.75rem;
+}
+
+.slds-m-bottom_medium {
+  margin-bottom: 1.5rem;
+}
+
+.slds-m-top_medium {
+  margin-top: 1.5rem;
+}

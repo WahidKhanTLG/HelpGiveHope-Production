@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<pre>Hi {{{Account.Contact_Name__c}}},
+
+This is a friendly reminder that your home interview for the Help Give Hope Christmas Program is scheduled for tomorrow.
+
+Details are below:
+
+Date: {{{Account.Interview_Date__c}}}
+Location: Your home at {{{Account.BillingAddress}}}
+A member of our team will visit you during the scheduled time. Please ensure that an adult is present at the home.
+
+We look forward to meeting you and learning more about how we can support your family this Christmas season.
+
+Warmly,
+
+The Help Give Hope Team</pre>
+</body>
+</html>

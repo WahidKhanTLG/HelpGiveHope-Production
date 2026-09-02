@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Verification_Link__c</fullName>
+    <externalId>false</externalId>
+    <formula>&apos;https://helpgivehope.my.salesforce-sites.com/public?id=&apos; &amp; Id</formula>
+    <label>Email Verification Link</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

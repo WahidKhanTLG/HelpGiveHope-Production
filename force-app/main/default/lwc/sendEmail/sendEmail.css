@@ -1,0 +1,512 @@
+/* Enhanced UI/UX Styles */
+/* Remove glow border and shadow from section */
+.email-section-glow {
+    border-radius: 0rem;
+    box-shadow: none;
+    background: #fff;
+    
+}
+/* Remove glow border from input container */
+.email-input-glow {
+    box-shadow: none;
+    border-radius: 0.5rem;
+    background: #f8fafd;
+    padding: 0.5rem 1rem;
+}
+.to-input-highlight {
+    font-weight: 600;
+    background: #e6f4f8;
+    border: none;
+    color: #1b263c;
+}
+.send-btn-row lightning-button {
+    min-width: 180px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 2rem;
+    box-shadow: 0 2px 8px 0 rgba(2, 112, 142, 0.10);
+    margin: 0 0.5rem;
+}
+.animated-btn {
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+.animated-btn:hover, .animated-btn:focus {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 4px 16px 0 rgba(2, 112, 142, 0.18);
+    background: #e6f4f8;
+}
+
+/* Primary color buttons */
+lightning-button[variant="brand"] .slds-button_brand {
+    background-color: #02708e;
+    border-color: #02708e;
+}
+lightning-button[variant="brand"] .slds-button_brand:hover,
+lightning-button[variant="brand"] .slds-button_brand:focus {
+    background-color: #025a75;
+    border-color: #025a75;
+}
+
+/* Focus states */
+.slds-input:focus, 
+.slds-input:active, 
+.slds-combobox__input:focus, 
+.slds-combobox__input:active {
+    border-color: #02708e;
+    box-shadow: 0 0 0 1px #02708e;
+}
+
+/* CSS for styling */
+.email-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Loader and section improvements */
+.custom-loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    padding: 2rem 0;
+}
+.custom-loader-logo {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.custom-loader-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: loader-spin 1.2s linear infinite;
+}
+
+.loader-text {
+    margin-top: 0.5rem; /* Adjust spacing as needed */
+    font-size: 1rem; /* Adjust font size as needed */
+    color: #555; /* Adjust color as needed */
+}
+
+.animated-loader-logo {
+    animation: pulse 1.5s infinite ease-in-out, loader-spin 1.2s linear infinite; /* Added pulse animation and kept spin */
+}
+
+@keyframes loader-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.form-section {
+    margin-bottom: 1.2rem;
+    padding: 1.2rem 1.2rem 1.1rem 1.2rem;
+    border-bottom: 1px solid #e3e9f7;
+    background: #f8fbfd;
+    border-radius: 1.2rem;
+    box-shadow: 0 2px 8px 0 rgba(2, 112, 142, 0.04);
+}
+.form-section:last-child {
+    border-bottom: none;
+}
+.section-title {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #02708e;
+    margin-bottom: 0.7rem;
+    margin-top: 0.1rem;
+    letter-spacing: 0.01em;
+    text-shadow: 0 1px 2px rgba(2,112,142,0.09);
+}
+.slds-grid {
+    flex-wrap: wrap;
+    min-width: 0;
+    gap: 1rem;
+}
+.slds-col {
+    min-width: 0;
+    box-sizing: border-box;
+}
+.slds-is-editing {
+    margin-bottom: 0.7rem;
+}
+.slds-m-top_large {
+    margin-top: 1.2rem !important;
+}
+.slds-align_absolute-center {
+    justify-content: center;
+    align-items: center;
+}
+.send-btn-row {
+    gap: 1.7rem;
+    margin-top: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: 0; /* Added from merge */
+    width: 100%; /* Added from merge */
+    box-sizing: border-box; /* Added from merge */
+}
+
+/* Card Design for Modal & Improved Alignment */
+:host {
+    display: block;
+    max-width: 100vw;
+    /* max-height: 100vh; */ /* Let height be controlled by slds-modal__container or content */
+    /* height: 100vh; */ /* Ensure host takes full viewport height */
+    overflow: hidden !important; /* Prevent host from scrolling */
+    background: var(--lwc-colorBackgroundAlt, #f3f6fb);
+}
+.slds-modal__container {
+    max-width: 1400px;
+    min-width: 340px;
+    width: 99vw;
+    height: 100%; /* Fill the host */
+    border-radius: 1.5rem; /* Match card-panel radius */
+    box-shadow: 0 8px 32px 0 rgba(1, 118, 211, 0.13), 0 2px 8px 0 rgba(1, 118, 211, 0.10);
+    background: var(--lwc-colorBackground, #fff);
+    padding: 0;
+    overflow: hidden !important; /* This container should not scroll */
+    display: flex; 
+    flex-direction: column; 
+}
+.send-email-form { /* This is the primary definition for scrolling layout */
+    background: transparent;
+    box-shadow: none;
+    max-width: 100%;
+    margin: 0;
+    padding: 0; 
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    display: flex;         
+    flex-direction: column; 
+    flex-grow: 1;          
+    min-height: 0;         
+    overflow: hidden;      
+}
+.card-panel {
+    background: var(--lwc-colorBackground, #fff);
+    border-radius: 1.5rem; /* Ensure this matches .slds-modal__container */
+    border: 2.5px solid #02708e;
+    box-shadow: 0 6px 32px 0 rgba(1, 118, 211, 0.13);
+    padding: 2.5rem 3.5rem 3rem 3.5rem; /* Consolidated padding */
+    margin: 0;
+    width: 100%;
+    min-width: 0;
+    overflow-y: auto; /* This is the primary scroll container for content */
+    flex-grow: 1; 
+}
+@media (max-width: 700px) {
+  .form-section {
+    padding: 1rem 0.3rem 1rem 0.3rem;
+    border-radius: 1rem;
+  }
+  .card-panel {
+    padding: 1rem 0.3rem 1rem 0.3rem;
+    border-radius: 1rem;
+  }
+  .send-btn-row lightning-button {
+    width: 100%;
+    margin: 0.5rem 0 !important;
+    min-width: unset;
+    padding: 1rem 0.5rem;
+  }
+}
+
+/* Prevent scrollbars and ensure full responsiveness */
+/* :host rule here is redundant if the one above is correctly configured, commenting out or ensuring consistency */
+/* 
+:host {
+    display: block;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: auto !important; 
+    background: var(--lwc-colorBackgroundAlt, #f3f6fb);
+}
+*/
+
+body, html {
+    overflow: hidden !important; /* Keep this to prevent main page scroll */
+    background: var(--lwc-colorBackgroundAlt, #f3f6fb);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .email-input-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .slds-form-element_horizontal {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .slds-col {
+    width: 100% !important;
+    max-width: 100%;
+  }
+  .slds-align_absolute-center {
+    justify-content: center;
+    width: 100%;
+  }
+  .send-btn-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .send-btn-row lightning-button {
+    width: 100%;
+    margin: 0 !important;
+  }
+  .form-section {
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .section-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+  }
+}
+
+.cc-btn, .bcc-btn {
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.cc-btn:focus, .bcc-btn:focus, .cc-btn:hover, .bcc-btn:hover {
+    background: #e6f4f8;
+    box-shadow: 0 0 0 2px #02708e;
+}
+
+/* Error highlighting */
+.input-error {
+  border: 1.5px solid #ea001e !important;
+  background: #fff0f3 !important;
+}
+
+input[readonly] {
+    background-color: #f4f6f9;
+    color: #888;
+}
+
+lightning-button[disabled], lightning-input[disabled], lightning-combobox[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Remove scrollbars */
+::-webkit-scrollbar { display: none; }
+* { scrollbar-width: none; -ms-overflow-style: none; }
+
+/* Primary color accents */
+lightning-button:not([variant="brand"]) .slds-button_neutral {
+    color: #02708e;
+    border-color: #02708e;
+}
+lightning-button:not([variant="brand"]) .slds-button_neutral:hover {
+    background-color: #e6f4f8;
+}
+lightning-helptext {
+    --slds-c-tooltip-color-background: #02708e;
+}
+
+/* Align CC/BCC icons with To field, fix border, and widen modal */
+.email-input-container.email-input-glow {
+    display: flex;
+    align-items: center;
+    
+    background: #f4fafd;
+    border-radius: 1.1rem;
+    border: 1.5px solid #e3e9f7;
+    
+    position: relative;
+    box-shadow: 0 1px 6px 0 rgba(2,112,142,0.08);
+    min-height: 56px;
+    padding: 0.4rem 1rem;
+}
+.slds-form-element_horizontal {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    
+    margin-bottom: 0;
+}
+.slds-form-element__label {
+    margin-right: 0;
+    min-width: 3.5rem; /* Increased from 2.5rem to allow 'BCC' to fit on one line */
+    margin-bottom: 0;
+    align-self: center;
+    padding-top: 0;
+    color: #014361;
+    font-weight: 800;
+    font-size: 1.08rem;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    text-shadow: 0 1px 2px rgba(2,112,142,0.08);
+}
+
+/* Wrapper for label and helptext to control spacing */
+.label-helptext-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem; /* Tighter gap between helptext and label */
+}
+
+/* Adjust space between 'To' label and helptext */
+.label-helptext-wrapper lightning-helptext {
+    margin-left: 0;
+    margin-right: 0.05rem; /* Small gap before label */
+}
+
+.slds-form-element__label + lightning-helptext {
+    margin-left: 0.1rem; /* Keep or remove if wrapper approach is preferred */
+}
+
+.slds-form-element__control {
+    flex: 1 1 0%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 0;
+}
+.slds-input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    border: none;
+    background: transparent;
+    padding: 0.6rem 5.2rem 0.6rem 0.2rem;
+    font-weight: 600;
+    color: #1b263c;
+    box-shadow: none;
+    font-size: 1rem;
+    height: 2.2rem;
+    outline: none;
+}
+.cc-btn, .bcc-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: var(--lwc-colorBrandLight, #eaf4ff);
+    border-radius: 50%;
+    border: 1.5px solid var(--lwc-colorBrand, #0176d3);
+    box-shadow: 0 1px 4px 0 rgba(1, 118, 211, 0.10);
+    width: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+.cc-btn {
+    
+    margin-left: 0;
+    right: 2.8rem;
+}
+.bcc-btn {
+        margin-left: 0;
+        right: 0.2rem;
+}
+
+@media (max-width: 700px) {
+  .slds-modal__container {
+    max-width: 100vw;
+    min-width: 0;
+    width: 100vw;
+    border-radius: 1rem;
+  }
+  .email-input-container.email-input-glow {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.5rem 0.3rem;
+  }
+  .slds-form-element_horizontal {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.2rem;
+  }
+  .slds-form-element__label {
+    margin-bottom: 0.2rem;
+    margin-right: 0;
+    padding-top: 0;
+  }
+  
+  .cc-btn {
+    right: 3.5rem;
+  }
+  .bcc-btn {
+    right: 1.2rem;
+  }
+}
+
+/* Template & Status row always on one line */
+.template-status-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2.5rem;
+    align-items: flex-end;
+}
+.template-status-row .slds-col {
+    flex: 1 1 0%;
+    min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .slds-modal__container {
+    max-width: 100vw;
+    min-width: 0;
+    width: 100vw;
+    border-radius: 1rem;
+  }
+  .card-panel {
+    padding: 1rem 0.3rem 1rem 0.3rem;
+    border-radius: 1rem;
+    max-width: 100vw;
+  }
+  .template-status-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* Component Header Styles */
+.component-header {
+    display: flex; /* Added for logo and title alignment */
+    align-items: center; /* Vertically align items */
+    justify-content: center; /* Horizontally center items */
+    text-align: center;
+    padding: 1rem 0 1.5rem 0; /* Added padding bottom */
+    border-bottom: 1px solid #e3e9f7; /* Optional: adds a separator line */
+    margin-bottom: 2rem; /* Added margin bottom */
+}
+
+.header-logo { /* New style for the logo */
+    max-height: 50px; /* Adjust as needed */
+    margin-right: 1rem; /* Space between logo and title */
+}
+
+.header-title {
+    font-size: 2rem; /* Increased font size */
+    font-weight: 700; /* Bold font weight */
+    color: #02708e; /* Primary brand color */
+    letter-spacing: 0.03em;
+    text-shadow: 0 1px 3px rgba(2,112,142,0.12);
+}
+/* End Component Header Styles */

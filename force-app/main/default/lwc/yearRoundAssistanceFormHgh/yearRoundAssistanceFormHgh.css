@@ -1,0 +1,319 @@
+/* ============================================================
+   HGH Brand Colors (CSS custom properties — penetrate shadow DOM)
+   Primary teal: #00A79D  |  Green: #7AB648  |  Dark: #1A2E35
+   ============================================================ */
+:host {
+  --hgh-teal: #00a79d;
+  --hgh-teal-dark: #007a74;
+  --hgh-teal-light: #e0f5f4;
+  --hgh-green: #7ab648;
+  --hgh-green-dark: #5a8e32;
+  --hgh-dark: #1a2e35;
+  --hgh-text: #2d3748;
+  --hgh-muted: #64748b;
+  --hgh-border: #cbd5e1;
+  --hgh-bg: #f0fafa;
+  --hgh-card-bg: #ffffff;
+  --hgh-error: #e53e3e;
+  --hgh-radius: 12px;
+  --hgh-shadow: 0 2px 12px rgba(0, 167, 157, 0.1);
+  --hgh-shadow-lg: 0 8px 32px rgba(0, 167, 157, 0.14);
+  --hgh-transition: 0.22s ease;
+
+  /* Pass brand into SLDS lightning-button tokens */
+  --slds-c-button-brand-color-background: #00a79d;
+  --slds-c-button-brand-color-border: #00a79d;
+  --slds-c-button-brand-color-background-hover: #007a74;
+  --slds-c-button-brand-color-border-hover: #007a74;
+
+  /* Pass brand into lightning-card tokens */
+  --slds-c-card-color-background: #ffffff;
+  --slds-c-card-color-border: transparent;
+  --slds-c-card-radius-border: 12px;
+  --slds-c-card-sizing-border: 0px;
+
+  display: block;
+  background-color: #dff0ef;
+  background-image:
+    radial-gradient(circle, rgba(0, 167, 157, 0.18) 1.5px, transparent 1.5px),
+    radial-gradient(circle, rgba(122, 182, 72, 0.1) 1px, transparent 1px);
+  background-size:
+    28px 28px,
+    56px 56px;
+  background-position:
+    0 0,
+    14px 14px;
+  min-height: 100vh;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ── PAGE HEADER ──────────────────────────────────────────── */
+.hgh-page-header {
+  background: linear-gradient(
+    135deg,
+    var(--hgh-teal) 0%,
+    var(--hgh-teal-dark) 60%,
+    #004d4a 100%
+  );
+  padding: 2rem 1.5rem 1.25rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  margin: 1rem 0 0;
+}
+
+.hgh-page-header::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+}
+
+.hgh-page-header::after {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  left: -40px;
+  width: 160px;
+  height: 160px;
+  background: rgba(122, 182, 72, 0.12);
+  border-radius: 50%;
+}
+
+.hgh-header-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hgh-logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
+}
+
+.hgh-header-text {
+  text-align: center;
+  width: 100%;
+}
+
+.hgh-form-title {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.hgh-tagline {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+  text-align: center;
+}
+
+/* ── PROGRESS BAR ─────────────────────────────────────────── */
+.hgh-progress-track {
+  position: relative;
+  z-index: 1;
+  margin: 1.25rem auto 0;
+  max-width: 480px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.hgh-progress-fill {
+  height: 100%;
+  background: var(--hgh-green);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.hgh-step-labels {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  max-width: 480px;
+  margin: 0.5rem auto 0;
+}
+
+.hgh-step {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color var(--hgh-transition);
+}
+
+.hgh-step--active {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 700;
+}
+
+/* ── FORM BODY ────────────────────────────────────────────── */
+.hgh-form-body {
+  background: var(--hgh-bg);
+  padding: 1.5rem 0 3rem;
+}
+
+/* section card spacing */
+div.slds-grid.slds-grid_align-center:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+/* ── ADD MEMBER ROW ───────────────────────────────────────── */
+.hgh-add-member-row {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 0 0.25rem;
+}
+
+.hgh-warning-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--hgh-error);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ── PROCEED / ACTION BUTTON ROW ──────────────────────────── */
+.hgh-proceed-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 0 0.5rem;
+  border-top: 1px solid var(--hgh-border);
+  margin-top: 0.5rem;
+}
+
+/* ── SUCCESS STATE ────────────────────────────────────────── */
+.hgh-success-card {
+  background: var(--hgh-card-bg);
+  border-radius: var(--hgh-radius);
+  box-shadow: var(--hgh-shadow-lg);
+  padding: 3rem 2rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.hgh-success-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--hgh-teal), var(--hgh-green));
+  color: white;
+  font-size: 2.25rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+}
+
+.hgh-success-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--hgh-dark);
+  margin: 0 0 0.75rem;
+}
+
+.hgh-success-message {
+  font-size: 1rem;
+  color: var(--hgh-muted);
+  max-width: 420px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+
+.hgh-success-link {
+  background: none;
+  border: none;
+  color: var(--hgh-teal);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.hgh-success-link:hover {
+  color: var(--hgh-teal-dark);
+}
+
+/* ── FORM UNAVAILABLE ─────────────────────────────────────── */
+.form-unavailable-container {
+  border-radius: var(--hgh-radius);
+  box-shadow: var(--hgh-shadow);
+  border: none;
+  overflow: hidden;
+  transition: box-shadow var(--hgh-transition);
+  margin: 2rem auto;
+  max-width: 560px;
+}
+
+.form-unavailable-container:hover {
+  box-shadow: var(--hgh-shadow-lg);
+}
+
+.form-unavailable-container .slds-card__header {
+  padding: 1rem;
+  border-radius: var(--hgh-radius) var(--hgh-radius) 0 0;
+}
+
+.message-container {
+  padding: 1.5rem 1rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.message-container .slds-text-font_bold {
+  font-size: 1.1rem;
+  color: #3e3e3c;
+}
+
+.slds-box.slds-theme_info {
+  background-color: #f8fbfe;
+  border-color: #0070d2;
+  border-left-width: 4px;
+  color: #16325c;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .hgh-header-inner {
+    gap: 0.5rem;
+  }
+  .hgh-header-text {
+    text-align: center;
+  }
+  .hgh-form-title {
+    font-size: 1.2rem;
+  }
+  .hgh-logo {
+    height: 48px;
+  }
+  .hgh-step-labels {
+    font-size: 0.65rem;
+  }
+  .hgh-proceed-row {
+    justify-content: center;
+  }
+}

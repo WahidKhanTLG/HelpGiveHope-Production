@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>Het aantal aaneengesloten keren afwezig voor deze contactpersoon, terugberekend vanaf vandaag. Wordt 0 indien aanwezig bij de meest recente servicelevering.</help>
+    <label><!-- Consecutive Absences --></label>
+    <name>pmdm__ConsecutiveAbsences__c</name>
+</CustomFieldTranslation>

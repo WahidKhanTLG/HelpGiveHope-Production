@@ -1,0 +1,252 @@
+<apex:page standardController="Account" extensions="HouseholdShoppingController" renderAs="pdf" showHeader="false" applyBodyTag="false" contentType="application/pdf">
+    <html>
+    <head>
+        <style type="text/css">
+            @page {
+                size: 8.5in 11in;
+                margin: 0.5in;
+            }
+            
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 11pt;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .header-box {
+                border: 2px solid #000;
+                padding: 15px;
+                margin-bottom: 20px;
+                display: table;
+                width: 100%;
+            }
+            
+            .header-left {
+                display: table-cell;
+                width: 60%;
+                vertical-align: top;
+            }
+            
+            .header-right {
+                display: table-cell;
+                width: 40%;
+                vertical-align: top;
+                text-align: right;
+            }
+            
+            .name-large {
+                font-size: 24pt;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+            
+            .section-title {
+                font-style: italic;
+                font-size: 12pt;
+                margin-top: 15px;
+                margin-bottom: 5px;
+            }
+            
+            .year {
+                font-weight: bold;
+                margin-bottom: 10px;
+                margin-left: 20px;
+            	padding-left:50px
+                
+            }
+            
+            .item {
+                margin-left: 20px;
+                margin-bottom: 5px;
+            }
+            
+            .checkmark {
+                margin-right: 5px;
+            }
+            
+            .highlight {
+                background-color: yellow;
+                padding: 2px 5px;
+            }
+            
+            .shopper-signature {
+                margin-top: 20px;
+                padding-top: 10px;
+            }
+            
+            .signature-label {
+                font-weight: bold;
+                display: inline-block;
+            }
+            
+            .signature-line {
+                display: inline-block;
+                border-bottom: 1px solid #000;
+                width: 300px;
+                margin-left: 10px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <!-- Header Box -->
+        <div style="border: 1px solid #CECECE; margin-bottom: 0px">
+        <table style="border: 2px solid black; width: 100%; border-collapse: collapse; margin-bottom: 0px;">
+            <tr>
+                <td style="padding: 10px; width: 30%; border: none;">
+                    <div style="font-size: 20pt; font-weight: bold;">{!Account.Name}</div>
+                </td>
+                <td style="padding: 10px; width: 15%; border: none; vertical-align: top; padding-right: 0px; margin-right: 0px">
+                    <div>Address:</div>
+                    <div>City, State Zip:</div>
+                </td>
+                <td style="padding: 10px; width: 25%; border: none; vertical-align: top;">
+                    <div>{!Account.BillingStreet}</div>
+                    <div>{!Account.BillingCity}</div>
+                    <div>{!Account.BillingPostalCode}</div>
+
+                </td>
+                <td style="padding: 10px; border: none; vertical-align: top; text-align: right;">
+                    <div>Phone 1:</div>
+                    <div>Phone 2:</div>
+                </td>
+                <td style="padding: 10px; border: none; vertical-align: top; text-align: right;">
+                    <div><span style="margin-left: 10px">{!Account.Phone}</span></div>
+                    <div><span style="margin-left: 10px">{!Account.npo02__HouseholdPhone__c}</span></div>
+                </td>
+            </tr>
+        </table>
+        </div>
+        
+        <!--Tag-->
+        <div style="position: fixed; right:0px; top:160px; font-size:25px; left:460px">
+            <span>
+                Shopper - Print Name
+            </span> <br/>
+            <span style="margin-top:5px">
+            ____________________________
+            </span>
+        </div>
+        
+        <!--WalMart Shop List - Household-->
+        <div class="section-title" style="margin-left:20px; margin-top:4px; font-style: italic;">WalMart Shop List - Household</div>
+        <div class="year"><span style="font-weight: bold; margin-left: 40px; margin-top:4px">{!YEAR(TODAY())}</span></div>
+        
+        <!---->
+        <apex:repeat value="{!serviceList}" var="service">
+            <div class="item"> 
+                    <apex:outputPanel rendered="{!NOT(ISBLANK(service.Category__c))}">
+                    <span style="display:inline-block; width:12px; height:11px; border:1px solid #000; margin-top: 5px;margin-left:60px"></span>
+                    {!IF(ISBLANK(service.Category__c), '', service.Category__c)} {!IF(
+                    ISBLANK(service.Subcategory__c),
+                    '',
+                    IF(
+                    AND(service.Category__c = 'Furniture', service.Subcategory__c = 'Other'),
+                    IF(ISBLANK(service.Furniture_User_Entry__c), '', '(' & service.Furniture_User_Entry__c & ')'),
+                    IF(
+                    AND(service.Category__c = 'Small Appliance', service.Subcategory__c = 'Other'),
+                    IF(ISBLANK(service.Appliances_User_Entry__c), '', '(' & service.Appliances_User_Entry__c & ')'),
+                    '(' & service.Subcategory__c & ')'
+                    )
+                    )
+                    )} {!IF(ISBLANK(service.Gender__c), '', '(' & service.Gender__c & ')') 
+                     } {!IF(ISBLANK(service.Quantity__c),
+                     '',
+                    IF(service.Quantity__c > 1,
+                    'Qty: '& TEXT(service.Quantity__c),
+                     '') 
+                     )}
+                    </apex:outputPanel>
+            </div>
+        </apex:repeat>
+        
+        
+        <!--Start-->
+        <!-- Highlighted Name -->
+<apex:repeat value="{!oppList}" var="opp">
+	<apex:repeat value="{!oppContactMap[opp.Id]}" var="contactId">
+		<apex:variable var="wrap" value="{!oppContactMap[opp.Id][contactId]}" />
+		
+        <div class="highlight" style="margin-top: 15px; display: inline-block; font-weight: 500;margin-left:8px;font-size: 19px">
+            {!wrap.contactName}&nbsp;{!IF(wrap.contactGender = 'Male', '(M)',IF(wrap.contactGender = 'Female', '(F)',IF(wrap.contactGender = 'Nonbinary', '(NB)',IF(wrap.contactGender = 'Not Listed', '(X)', ''))))}&nbsp;{!IF(FLOOR(wrap.contactAge) = 0, '', FLOOR(wrap.contactAge))}
+
+             </div>
+		
+		<!--Cloth Items -->
+		
+		<apex:outputPanel rendered="{!NOT(ISNULL(wrap.clothList)) && wrap.clothList.size > 0}">
+			<div class="section-title" style="margin-left:20px; margin-top:1px; font-style: italic;">WalMart Shop List - Clothes</div>
+			<div class="year"><span style="font-weight: bold; margin-left: 40px; margin-bottom: 5px">{!YEAR(TODAY())}</span></div>
+		
+				<apex:repeat value="{!wrap.clothList}" var="item">
+                                <apex:outputPanel rendered="{!item.PricebookEntry.Product2.Name = 'Child Clothes'}">
+            
+                                        <apex:outputPanel rendered="{!NOT(ISNULL(item.Shirt_Size__c))}">
+                                            <div class="item">  
+                                                <span style="display:inline-block; width:12px; height:11px; border:1px solid #000; margin-top: 5px;margin-left:60px"></span>
+                                                Shirt Size - {!item.Shirt_Size__c} 
+                                            </div>
+                                        </apex:outputPanel>
+                                
+                                        <apex:outputPanel rendered="{!NOT(ISNULL(item.Bike_Size__c))}">
+                                            <div class="item">  
+                                                <span style="display:inline-block; width:12px; height:11px; border:1px solid #000; margin-top: 5px;margin-left:60px"></span>
+                                                Bike Size - {!item.Bike_Size__c} 
+                                            </div>
+                                        </apex:outputPanel>
+                                
+                                        <apex:outputPanel rendered="{!NOT(ISNULL(item.Coat_Hoodie_Size__c))}">
+                                            <div class="item">  
+                                                <span style="display:inline-block; width:12px; height:11px; border:1px solid #000; margin-top: 5px;margin-left:60px"></span>
+                                                Coat Hoodie Size - {!item.Coat_Hoodie_Size__c} 
+                                            </div>
+                                        </apex:outputPanel>
+                                
+                                        <apex:outputPanel rendered="{!NOT(ISNULL(item.Pant_Size__c))}">
+                                            <div class="item">  
+                                                <span style="display:inline-block; width:12px; height:11px; border:1px solid #000; margin-top: 5px;margin-left:60px"></span>
+                                                Pant Size - {!item.Pant_Size__c} 
+                                            </div>
+                                        </apex:outputPanel>
+                    			</apex:outputPanel>
+                                
+                                <apex:outputPanel rendered="{!item.PricebookEntry.Product2.Name = 'Clothing Item'}">
+            
+                                        <apex:outputPanel rendered="{!NOT(ISNULL(item.Description))}">
+                                            <div class="item">  
+                                                <span style="display:inline-block; width:12px; height:11px; border:1px solid #000; margin-top: 5px;margin-left:60px"></span>
+                                                {!item.Description} 
+                                            </div>
+                                        </apex:outputPanel>
+                                </apex:outputPanel>
+				</apex:repeat>
+		</apex:outputPanel>
+		
+		
+		<!--Gift Items -->
+        
+		
+		<apex:outputPanel rendered="{!NOT(ISNULL(wrap.giftList)) && wrap.giftList.size > 0}">
+		<div class="section-title" style="margin-left:20px; font-style: italic;margin-top:3px">WalMart Shop List - Toys</div>
+        <div class="year"><span style="font-weight: bold; margin-left: 40px; margin-bottom: 5px">{!YEAR(TODAY())}</span></div>
+        
+			<apex:repeat value="{!wrap.giftList}" var="item">
+				<apex:outputPanel rendered="{!NOT(ISNULL(item.Description))}">
+                     <div class="item">  
+                        <span style="display:inline-block; width:12px; height:11px; border:1px solid #000; margin-top: 5px;margin-left:60px"></span>
+                         <!--{!item.Name__c} - Shirt Size - {!item.Shirt_Size__c}, Bike Size - {!item.Bike_Size__c}, Coat Hoodie Size - {!item.Coat_Hoodie_Size__c},  Pant Size - {!item.Pant_Size__c}-->
+                        {!item.Description}
+                    </div>
+				</apex:outputPanel>
+			</apex:repeat>
+		</apex:outputPanel>
+			
+	</apex:repeat>
+</apex:repeat>
+
+
+        
+    </body>
+    </html>
+</apex:page>

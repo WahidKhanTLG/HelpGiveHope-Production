@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Help Give Hope Rental Assistance</label>
+    <protected>false</protected>
+    <values>
+        <field>body__c</field>
+        <value xsi:type="xsd:string">&lt;p&gt;We are reviewing your application and have a few questions:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Do you currently own a vehicle?&lt;/li&gt;&lt;li&gt;Where are you currently employed?&lt;/li&gt;&lt;li&gt;Where did you work before?&lt;/li&gt;&lt;li&gt;How long were you employed there?&lt;/li&gt;&lt;li&gt;How are you currently getting to work?&lt;/li&gt;&lt;li&gt;Are you current on rent?&lt;/li&gt;&lt;li&gt;Are you current on utilities?&lt;/li&gt;&lt;li&gt;Do you have any savings?&lt;/li&gt;&lt;/ol&gt;</value>
+    </values>
+    <values>
+        <field>subject__c</field>
+        <value xsi:type="xsd:string">Help Give Hope Used Car Application - Questions</value>
+    </values>
+</CustomMetadata>

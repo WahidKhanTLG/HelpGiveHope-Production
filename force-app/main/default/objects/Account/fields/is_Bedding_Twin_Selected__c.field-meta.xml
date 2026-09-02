@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>is_Bedding_Twin_Selected__c</fullName>
+    <formula>INCLUDES(Bedding__c, &quot;Twin&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>is Bedding Twin Selected</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>New template test limit</label>
+    <protected>false</protected>
+    <values>
+        <field>body__c</field>
+        <value xsi:type="xsd:string">&lt;p&gt;At this time &lt;strong&gt;Help Give Hope&lt;/strong&gt; does not have an available vehicle for the used car program. We will keep your application on file.&amp;nbsp;&lt;strong&gt;﻿&lt;/strong&gt;Please do not call or email to check on the status of the application, as we will contact you if your application is further reviewed. &lt;/p&gt;</value>
+    </values>
+    <values>
+        <field>subject__c</field>
+        <value xsi:type="xsd:string">Used Car - Application on File</value>
+    </values>
+</CustomMetadata>

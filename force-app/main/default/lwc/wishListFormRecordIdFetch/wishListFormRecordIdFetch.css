@@ -1,0 +1,86 @@
+.lightning-studio{
+	color : blue;
+
+}
+div.slds-grid.slds-grid_align-center:not(:last-child) {
+    margin-bottom: 2.5rem
+    /* margin-bottom: var(--slds-c-card-header-spacing-block-start, var(--sds-c-card-header-spacing-block-start, var(--slds-c-card-header-spacing-block, var(--sds-c-card-header-spacing-block, .75rem)))); */
+}
+
+/* Premium styling for the form unavailable message */
+.form-unavailable-container {
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.form-unavailable-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.form-unavailable-container .slds-card__header {
+    padding: 1rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.message-container {
+    padding: 1.5rem 1rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.message-container .slds-text-font_bold {
+    font-size: 1.2rem;
+    color: rgb(62, 62, 60);
+}
+
+.slds-box.slds-theme_info {
+    background-color: #f8fbfe;
+    border-color: #0070d2;
+    border-left-width: 4px;
+    color: #16325c;
+}
+/* wishListFormRecordIdFetch.css */
+
+/* 1) Fix the missing semicolon */
+div.slds-grid.slds-grid_align-center:not(:last-child) {
+    margin-bottom: 2.5rem;
+}
+
+/* 2) Target the actual class in your template */
+.form-unavailable {
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.form-unavailable:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* 3) Move styles that tried to hit lightning-card internals onto your own wrapper(s) */
+.message-container {
+    padding: 1.5rem 1rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+.message-container .slds-text-font_bold {
+    font-size: 1.2rem;
+    color: rgb(62, 62, 60);
+}
+
+/* 4) This selector is fine if those classes exist on the same element in your template */
+.slds-box.slds-theme_info {
+    background-color: #f8fbfe;
+    border-color: #0070d2;
+    border-left-width: 4px;
+    color: #16325c;
+}
+
+/* Optional: example of host-level styling (applies to top element only) */
+:host {
+    display: block;
+}

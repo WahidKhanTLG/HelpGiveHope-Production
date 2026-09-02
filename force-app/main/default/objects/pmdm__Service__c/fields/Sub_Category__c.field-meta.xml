@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Category__c</fullName>
+    <label>Subcategory</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Category__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Twin</fullName>
+                <default>false</default>
+                <label>Twin</label>
+            </value>
+            <value>
+                <fullName>Full</fullName>
+                <default>false</default>
+                <label>Full</label>
+            </value>
+            <value>
+                <fullName>Queen</fullName>
+                <default>false</default>
+                <label>Queen</label>
+            </value>
+            <value>
+                <fullName>King</fullName>
+                <default>false</default>
+                <label>King</label>
+            </value>
+            <value>
+                <fullName>Bunkbed</fullName>
+                <default>false</default>
+                <label>Bunkbed</label>
+            </value>
+            <value>
+                <fullName>Crib</fullName>
+                <default>false</default>
+                <label>Crib</label>
+            </value>
+            <value>
+                <fullName>Pots/Pans</fullName>
+                <default>false</default>
+                <label>Pots/Pans</label>
+            </value>
+            <value>
+                <fullName>Dishes</fullName>
+                <default>false</default>
+                <label>Dishes</label>
+            </value>
+            <value>
+                <fullName>Glassware</fullName>
+                <default>false</default>
+                <label>Glassware</label>
+            </value>
+            <value>
+                <fullName>Microwave</fullName>
+                <default>false</default>
+                <label>Microwave</label>
+            </value>
+            <value>
+                <fullName>Toaster</fullName>
+                <default>false</default>
+                <label>Toaster</label>
+            </value>
+            <value>
+                <fullName>Vacuum</fullName>
+                <default>false</default>
+                <label>Vacuum</label>
+            </value>
+            <value>
+                <fullName>Flatware</fullName>
+                <default>false</default>
+                <label>Flatware</label>
+            </value>
+            <value>
+                <fullName>Couch</fullName>
+                <default>false</default>
+                <label>Couch</label>
+            </value>
+            <value>
+                <fullName>Kitchen table</fullName>
+                <default>false</default>
+                <label>Kitchen table</label>
+            </value>
+            <value>
+                <fullName>Kitchen chairs</fullName>
+                <default>false</default>
+                <label>Kitchen chairs</label>
+            </value>
+            <value>
+                <fullName>Washer</fullName>
+                <default>false</default>
+                <label>Washer</label>
+            </value>
+            <value>
+                <fullName>Dryer</fullName>
+                <default>false</default>
+                <label>Dryer</label>
+            </value>
+            <value>
+                <fullName>Refridgerator</fullName>
+                <default>false</default>
+                <label>Refridgerator</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Beds</controllingFieldValue>
+            <controllingFieldValue>Bedding</controllingFieldValue>
+            <controllingFieldValue>Mattress Only</controllingFieldValue>
+            <controllingFieldValue>Bed Frame Only</controllingFieldValue>
+            <valueName>Twin</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Beds</controllingFieldValue>
+            <controllingFieldValue>Bedding</controllingFieldValue>
+            <controllingFieldValue>Mattress Only</controllingFieldValue>
+            <controllingFieldValue>Bed Frame Only</controllingFieldValue>
+            <valueName>Full</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Beds</controllingFieldValue>
+            <controllingFieldValue>Bedding</controllingFieldValue>
+            <controllingFieldValue>Mattress Only</controllingFieldValue>
+            <controllingFieldValue>Bed Frame Only</controllingFieldValue>
+            <valueName>Queen</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Beds</controllingFieldValue>
+            <controllingFieldValue>Bedding</controllingFieldValue>
+            <controllingFieldValue>Mattress Only</controllingFieldValue>
+            <controllingFieldValue>Bed Frame Only</controllingFieldValue>
+            <valueName>King</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Furniture</controllingFieldValue>
+            <valueName>Couch</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Furniture</controllingFieldValue>
+            <valueName>Kitchen table</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Furniture</controllingFieldValue>
+            <valueName>Kitchen chairs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Furniture</controllingFieldValue>
+            <valueName>Washer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Furniture</controllingFieldValue>
+            <valueName>Dryer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Furniture</controllingFieldValue>
+            <valueName>Refridgerator</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Furniture</controllingFieldValue>
+            <controllingFieldValue>Small Appliance</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Small Appliance</controllingFieldValue>
+            <valueName>Pots/Pans</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Small Appliance</controllingFieldValue>
+            <valueName>Dishes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Small Appliance</controllingFieldValue>
+            <valueName>Glassware</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Small Appliance</controllingFieldValue>
+            <valueName>Microwave</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Small Appliance</controllingFieldValue>
+            <valueName>Toaster</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Small Appliance</controllingFieldValue>
+            <valueName>Vacuum</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Small Appliance</controllingFieldValue>
+            <valueName>Flatware</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,71 @@
+{
+  "type" : "sfdc_cms__view",
+  "title" : "Home",
+  "contentBody" : {
+    "component" : {
+      "children" : [ {
+        "children" : [ {
+          "attributes" : {
+            "backgroundImageConfig" : "{\"url\":\"/sfsites/c/cms/delivery/media/MC44DCHDLHLJDXLPSI5VEWLVKSVQ?lastModifiedDate=Tue Oct 08 21:11:47 GMT 2024&height=144&width=192\",\"contentKey\":\"MC44DCHDLHLJDXLPSI5VEWLVKSVQ\",\"altText\":\"\",\"contentType\":\"sfdc_cms__image\",\"bgPosition\":\"center center\",\"bgSizeOrRepeat\":\"repeat\"}",
+            "backgroundImageOverlay" : "rgba(255, 255, 255, 0.9)",
+            "componentSpacerSize" : "",
+            "dxpStyle" : { },
+            "layoutDirectionDesktop" : "row",
+            "layoutDirectionMobile" : "column",
+            "layoutDirectionTablet" : "column",
+            "maxContentWidth" : "",
+            "sectionColumnGutterWidth" : "",
+            "sectionConfig" : "{\"UUID\":\"3904b9f1-8a28-421a-b092-e6071f507ecf\",\"columns\":[{\"UUID\":\"9eab3caa-3ae8-4787-b78c-7c0b3795917c\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":null}]}",
+            "sectionMinHeight" : "",
+            "sectionVerticalAlign" : "flex-start"
+          },
+          "children" : [ {
+            "children" : [ {
+              "attributes" : {
+                "assistanceType" : "Christmas Assitance"
+              },
+              "definition" : "c:yearRoundAssistanceFormHgh",
+              "id" : "49ea5eee-88cd-4234-b4c4-14367c132b0f",
+              "type" : "component"
+            } ],
+            "id" : "9eab3caa-3ae8-4787-b78c-7c0b3795917c",
+            "name" : "col1",
+            "title" : "Column 1",
+            "type" : "region"
+          } ],
+          "definition" : "community_layout:section",
+          "id" : "3904b9f1-8a28-421a-b092-e6071f507ecf",
+          "type" : "component"
+        } ],
+        "id" : "b60359fe-83f0-4fc1-8e4c-446944073143",
+        "name" : "content",
+        "title" : "Content",
+        "type" : "region"
+      }, {
+        "children" : [ {
+          "attributes" : {
+            "customHeadTags" : "",
+            "description" : "",
+            "dxpStyle" : { },
+            "pageTitle" : "Home",
+            "recordId" : "{!recordId}"
+          },
+          "definition" : "community_builder:seoAssistant",
+          "id" : "2c70ea47-e78f-4ca0-8e90-3ab1fbde6b6c",
+          "type" : "component"
+        } ],
+        "id" : "214854d5-9b51-4d1d-8986-02282c51af97",
+        "name" : "sfdcHiddenRegion",
+        "title" : "sfdcHiddenRegion",
+        "type" : "region"
+      } ],
+      "definition" : "community_layout:sldsFlexibleLayout",
+      "id" : "caca696d-ed88-44ba-b945-c2e7a711ff13",
+      "type" : "component"
+    },
+    "dataProviders" : [ ],
+    "themeLayoutType" : "Inner",
+    "viewType" : "home"
+  },
+  "urlName" : "home"
+}

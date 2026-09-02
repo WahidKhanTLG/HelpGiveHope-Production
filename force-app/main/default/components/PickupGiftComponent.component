@@ -1,0 +1,23 @@
+<apex:component controller="HouseholdShoppingEmailController" access="global">
+    <apex:attribute name="acctId" 
+        type="Id" 
+        assignTo="{!accountId}" 
+        required="true" 
+        description="Account Id"
+        access="global"/>
+
+    <apex:repeat value="{!bikes}" var="bike">
+        <div class="item">  
+            <span style="display:inline-block; width:12px; height:11px; border:1px solid #000; margin-top: 5px; margin-left: 60px;"></span>
+            Bike Size - {!bike.bikeSize} for {!bike.contactName}
+        </div>
+    </apex:repeat>
+    
+    <!-- Show message if no bikes found -->
+    <apex:outputText rendered="{!bikes.size == 0}">
+        <div class="item">  
+            <span style="display:inline-block; width:12px; height:11px; border:1px solid #000; margin-top: 5px; margin-left: 60px;"></span>
+            No bike items found.
+        </div>
+    </apex:outputText>
+</apex:component>

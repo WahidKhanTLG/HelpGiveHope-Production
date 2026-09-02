@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Christmas_Yes</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Application_Status__c</columns>
+    <columns>ACCOUNT.RECORDTYPE</columns>
+    <columns>Assisted_in_Past_12_Months__c</columns>
+    <columns>Assistance_Requested__c</columns>
+    <columns>Likelihood_of_assisting_again__c</columns>
+    <columns>Primary_Contact_Email__c</columns>
+    <columns>ACCOUNT.CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Christmas_Application_Status__c</field>
+        <operation>equals</operation>
+        <value>Home Interview Completed</value>
+    </filters>
+    <label>Christmas Yes</label>
+</ListView>

@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Account.npe01__One2OneContact__c}}},<br />
+<br />
+Thank you for applying to the Help Give Hope Christmas Program.<br />
+&nbsp;</p>
+
+<p>As part of the Christmas Program Help Give Hope performs an in-home needs assessment.</p>
+
+<p>We’ve scheduled a home interview to meet with your family and learn more about your needs for this holiday season. Details are below:<br />
+<br />
+Date:&nbsp;{{{Account.Interview_Date__c}}}&nbsp;{{{Account.Morning_Afternoon__c}}}<br />
+Location: Your home at&nbsp;{{{Account.BillingAddress}}}<br />
+<br />
+A member of our team will visit you at the scheduled time. Please ensure that an adult is present during the interview.</p>
+
+<p>If this date does not work, please respond to this email immediately so we can schedule your visit.<br />
+<br />
+We’re looking forward to meeting you and supporting your family this Christmas.<br />
+<br />
+Warmly,<br />
+<br />
+The Help Give Hope Team</p>
+</body>
+</html>

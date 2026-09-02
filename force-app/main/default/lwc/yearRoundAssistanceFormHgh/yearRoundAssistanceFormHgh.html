@@ -1,0 +1,365 @@
+<template>
+  <!-- Loading spinner while checking form status -->
+  <template lwc:if={isCheckingFormStatus}>
+    <div class="slds-grid slds-grid_align-center">
+      <div
+        class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+      >
+        <div class="slds-p-around_medium">
+          <lightning-spinner
+            alternative-text="Checking form status"
+            size="medium"
+          ></lightning-spinner>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <!-- Content after loading -->
+  <template lwc:else>
+    <!-- ACTIVE FORM CONTENT -->
+    <template lwc:if={formStatus.isActive}>
+      <!-- Branded Page Header -->
+      <template lwc:if={showHeader}>
+        <div class="slds-grid slds-grid_align-center">
+          <div
+            class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+          >
+            <div class="hgh-page-header">
+              <div
+                class="hgh-header-inner"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <img
+                  class="hgh-logo"
+                  src={logoUrl}
+                  alt="Help Give Hope"
+                  loading="eager"
+                />
+                <div
+                  class="hgh-header-text"
+                  style="text-align: center; width: 100%"
+                >
+                  <h1 class="hgh-form-title" style="text-align: center">
+                    {formTitle}
+                  </h1>
+                  <p class="hgh-tagline" style="text-align: center">
+                    Helping families in need with compassion &amp; care
+                  </p>
+                </div>
+              </div>
+              <div class="hgh-progress-track">
+                <div class="hgh-progress-fill" style={progressStyle}></div>
+              </div>
+              <template lwc:if={isTwoStepFlow}>
+                <div class="hgh-step-labels">
+                  <span class={step1Class}>1. Personal Info</span>
+                  <span class={step3Class}>2. Complete</span>
+                </div>
+              </template>
+              <template lwc:else>
+                <div class="hgh-step-labels">
+                  <span class={step1Class}>1. Personal Info</span>
+                  <span class={step2Class}>2. Assistance Details</span>
+                  <span class={step3Class}>3. Complete</span>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <div class="hgh-form-body">
+        <template lwc:if={showPage1}>
+          <div class="slds-grid slds-grid_align-center">
+            <div
+              class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+            >
+              <c-year-round-assistance-form-applicant-section-hgh
+                data-type="applicant"
+                assistance-type={assistanceType}
+                onincomechange={updateSummary}
+              ></c-year-round-assistance-form-applicant-section-hgh>
+            </div>
+          </div>
+
+          <div class="slds-grid slds-grid_align-center">
+            <div
+              class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+            >
+              <c-year-round-assistance-form-child-section-hgh
+                title="Child 1"
+                data-type="child"
+              ></c-year-round-assistance-form-child-section-hgh>
+            </div>
+          </div>
+
+          <template for:each={children} for:item="child">
+            <div key={child.key} class="slds-grid slds-grid_align-center">
+              <div
+                class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+              >
+                <c-year-round-assistance-form-child-section-hgh
+                  title={child.title}
+                  data-type="child"
+                >
+                  <lightning-button-icon
+                    slot="actions"
+                    icon-name="utility:close"
+                    size="medium"
+                    variant="bare"
+                    alternative-text="Remove"
+                    class="slds-m-left_xx-small"
+                    data-key={child.key}
+                    onclick={removeChildHandler}
+                  ></lightning-button-icon>
+                </c-year-round-assistance-form-child-section-hgh>
+              </div>
+            </div>
+          </template>
+          <div class="slds-grid slds-grid_align-center">
+            <div
+              class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+            >
+              <div class="hgh-add-member-row">
+                <lightning-button
+                  variant="brand"
+                  label="+ Add Child"
+                  title="Add Child"
+                  onclick={addChildHandler}
+                  class="hgh-add-btn"
+                ></lightning-button>
+              </div>
+            </div>
+          </div>
+
+          <template for:each={adults} for:item="adult">
+            <div key={adult.key} class="slds-grid slds-grid_align-center">
+              <div
+                class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+              >
+                <c-year-round-assistance-form-applicant-section-hgh
+                  title={adult.title}
+                  is-applicant="false"
+                  data-type="adult"
+                  onincomechange={updateSummary}
+                >
+                  <lightning-button-icon
+                    slot="actions"
+                    icon-name="utility:close"
+                    size="medium"
+                    variant="bare"
+                    alternative-text="Remove"
+                    class="slds-m-left_xx-small"
+                    data-key={adult.key}
+                    onclick={removeAdultHandler}
+                  ></lightning-button-icon>
+                </c-year-round-assistance-form-applicant-section-hgh>
+              </div>
+            </div>
+          </template>
+          <div class="slds-grid slds-grid_align-center">
+            <div
+              class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+            >
+              <div class="hgh-add-member-row">
+                <lightning-button
+                  variant="brand"
+                  label="+ Add Adult"
+                  title="Add Adult"
+                  onclick={addAdultHandler}
+                  class="hgh-add-btn"
+                ></lightning-button>
+                <p class="hgh-warning-text">
+                  ⚠️ Failure to list all occupants in the household will forfeit
+                  your application.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="slds-grid slds-grid_align-center">
+            <div
+              class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+            >
+              <c-year-round-assistance-form-household-expense-section-hgh
+                onexpensechange={updateSummary}
+              ></c-year-round-assistance-form-household-expense-section-hgh>
+            </div>
+          </div>
+
+          <div class="slds-grid slds-grid_align-center">
+            <div
+              class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+            >
+              <c-year-round-assistance-form-household-income-section-hgh
+                applicant={applicantPayload}
+                adults={adultsPayload}
+                children={childrenPayload}
+              ></c-year-round-assistance-form-household-income-section-hgh>
+            </div>
+          </div>
+
+          <div class="slds-grid slds-grid_align-center">
+            <div
+              class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+            >
+              <c-year-round-assistance-form-situation-section-hgh
+                assistance-type={assistanceType}
+              ></c-year-round-assistance-form-situation-section-hgh>
+            </div>
+          </div>
+
+          <div class="slds-grid slds-grid_align-center">
+            <div
+              class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+            >
+            <template lwc:if={duplicateEntryError}>
+              <div class="slds-grid slds-grid_align-center">
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12">
+                  <div class="slds-notify slds-notify_alert slds-alert_error slds-m-bottom_medium" role="alert">
+                    <span class="slds-assistive-text">Error</span>
+                    <lightning-icon
+                      icon-name="utility:error"
+                      size="x-small"
+                      variant="inverse"
+                      class="slds-m-right_x-small"
+                    ></lightning-icon>
+                    <span>{duplicateEntryError}</span>
+                  </div>
+                </div>
+              </div>
+            </template>
+              <div class="hgh-proceed-row">
+                <lightning-button
+                  variant="brand"
+                  label={page1ButtonLabel}
+                  title="Proceed"
+                  onclick={proceedFromPage1}
+                  class="hgh-proceed-btn"
+                ></lightning-button>
+              </div>
+            </div>
+          </div>
+        </template>
+        <template lwc:if={showPage2}>
+          <div class="slds-grid slds-grid_align-center">
+            <div class="slds-col slds-size_6-of-12">
+              <c-year-round-assistance-form-assistance-section-hgh
+                assistance-type={assistanceType}
+              ></c-year-round-assistance-form-assistance-section-hgh>
+            </div>
+          </div>
+
+          <div class="slds-grid slds-grid_align-center">
+            <div
+              class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+            >
+              <div class="hgh-proceed-row">
+                <lightning-button
+                  variant="brand"
+                  label="Submit Application →"
+                  title="Submit"
+                  onclick={proceedFromPage2}
+                  class="hgh-proceed-btn"
+                ></lightning-button>
+              </div>
+            </div>
+          </div>
+        </template>
+        <template lwc:if={showPage3}>
+          <div class="slds-grid slds-grid_align-center">
+            <div
+              class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+            >
+              <div class="hgh-success-card">
+                <div class="hgh-success-icon">✓</div>
+                <h2 class="hgh-success-title">Application Submitted!</h2>
+                <p class="hgh-success-message">
+                  Thank you for applying. Your application has been received, and you will receive an email that verifies your email address. Please check your email for this important message.
+                </p>
+                <button class="hgh-success-link" onclick={refreshPage}>
+                  Submit another response
+                </button>
+              </div>
+            </div>
+          </div>
+        </template>
+        <template lwc:if={showLoader}>
+          <div class="slds-is-fixed slds-backdrop slds-backdrop_open">
+            <lightning-spinner variant="brand" size="large"></lightning-spinner>
+          </div>
+        </template>
+      </div>
+      <!-- end hgh-form-body -->
+    </template>
+
+    <!-- INACTIVE FORM MESSAGE -->
+    <template lwc:else>
+      <div class="slds-grid slds-grid_align-center">
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+        >
+          <div
+            class="form-unavailable-container slds-card slds-theme_shade slds-text-align_center slds-m-around_medium"
+          >
+            <div
+              class="slds-card__header slds-theme_alert-texture slds-theme_error"
+            >
+              <div class="slds-media slds-media_center">
+                <div class="slds-media__figure">
+                  <lightning-icon
+                    icon-name="utility:ban"
+                    size="medium"
+                    variant="inverse"
+                    alternative-text="Form Unavailable"
+                  ></lightning-icon>
+                </div>
+                <div class="slds-media__body">
+                  <h2
+                    class="slds-card__header-title slds-text-heading_medium slds-text-color_inverse"
+                  >
+                    Form Not Available
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <div class="slds-card__body slds-p-around_medium">
+              <div class="message-container">
+                <p
+                  class="slds-text-body_regular slds-text-color_default slds-text-font_bold slds-m-bottom_medium"
+                >
+                  {formStatus.message}
+                </p>
+                <div
+                  class="slds-box slds-box_small slds-theme_info slds-m-top_medium"
+                >
+                  <div class="slds-media">
+                    <div class="slds-media__figure">
+                      <lightning-icon
+                        icon-name="utility:info"
+                        size="small"
+                        variant="inverse"
+                        alternative-text="Information"
+                      ></lightning-icon>
+                    </div>
+                    <div class="slds-media__body">
+                      <p class="slds-text-color_default">
+                        If you have any questions, please contact Help Give Hope
+                        for assistance.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+  </template>
+</template>

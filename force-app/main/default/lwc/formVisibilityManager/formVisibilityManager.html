@@ -1,0 +1,535 @@
+<template>
+  <lightning-card>
+    <div class="form-manager-header slds-p-around_medium" slot="title">
+      <div class="slds-media slds-media_center">
+        <div class="slds-media__figure">
+          <lightning-icon
+            icon-name="standard:form"
+            size="medium"
+            alternative-text="Form"
+          ></lightning-icon>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="form-manager-title">Form Visibility Manager</h2>
+        </div>
+      </div>
+    </div>
+
+    <div slot="actions">
+      <lightning-button
+        label="New Form"
+        title="Create New Form"
+        icon-name="utility:add"
+        variant="brand"
+        class="new-form-button"
+        onclick={handleOpenNewFormModal}
+      >
+      </lightning-button>
+    </div>
+
+    <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+      <div class="canonical-names-panel slds-m-top_medium">
+        <div class="canonical-names-header">
+          <lightning-icon
+            icon-name="utility:info"
+            size="x-small"
+            alternative-text="Info"
+            class="slds-m-right_x-small"
+          ></lightning-icon>
+          <span>Recommended names for the three public assistance forms</span>
+        </div>
+        <ul class="canonical-names-list">
+          <template for:each={canonicalForms} for:item="form">
+            <li key={form.key} class="canonical-names-item">
+              <span class="canonical-names-label">{form.label}:</span>
+              <code>{form.name}</code>
+            </li>
+          </template>
+        </ul>
+      </div>
+
+      <template if:true={isLoading}>
+        <div class="slds-is-relative slds-p-vertical_medium">
+          <lightning-spinner
+            alternative-text="Loading"
+            size="medium"
+          ></lightning-spinner>
+        </div>
+      </template>
+
+      <template if:true={error}>
+        <div
+          class="slds-box slds-theme_error slds-text-align_center slds-m-top_medium"
+        >
+          <p>
+            <lightning-icon
+              icon-name="utility:warning"
+              size="small"
+              alternative-text="Warning"
+              class="slds-m-right_x-small"
+            ></lightning-icon>
+            Error loading form data. Please refresh the page or contact your
+            administrator.
+          </p>
+        </div>
+      </template>
+
+      <template if:false={isLoading}>
+        <template if:true={formCatalogs.length}>
+          <!-- Desktop View -->
+          <div class="form-card slds-m-top_medium slds-hide_small">
+            <div
+              class="slds-scrollable"
+              style="height: 100%; max-height: 500px"
+            >
+              <table
+                class="slds-table slds-table_bordered slds-table_cell-buffer form-table"
+              >
+                <thead>
+                  <tr class="slds-line-height_reset">
+                    <th scope="col">Form Name</th>
+                    <th scope="col" style="width: 150px">Status</th>
+                    <th scope="col">Inactive Settings</th>
+                    <th scope="col" style="width: 120px">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <template for:each={formCatalogs} for:item="form">
+                    <tr key={form.Id} class={form.rowClass}>
+                      <td data-id={form.Id}>
+                        <div class="slds-media slds-media_center">
+                          <div class="slds-media__figure">
+                            <lightning-icon
+                              icon-name="standard:document"
+                              size="small"
+                            ></lightning-icon>
+                          </div>
+                          <div class="slds-media__body">
+                            <strong>{form.Name}</strong>
+                            <div class={form.canonicalHintClass}>
+                              {form.canonicalHintText}
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td>
+                        <div class="slds-form-element">
+                          <div class="slds-form-element__control">
+                            <div class="custom-toggle">
+                              <lightning-input
+                                type="toggle"
+                                label="Active"
+                                checked={form.isActiveBool}
+                                data-id={form.Id}
+                                onchange={handleToggleActive}
+                                variant="label-hidden"
+                                message-toggle-active="Active"
+                                message-toggle-inactive="Inactive"
+                              >
+                              </lightning-input>
+                            </div>
+                            <div class="slds-m-top_xx-small">
+                              <span class={form.statusBadgeClass}
+                                >{form.statusLabel}</span
+                              >
+                              <template if:true={form.hasChanges}>
+                                <span class="unsaved-indicator">*</span>
+                              </template>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td>
+                        <template if:true={form.showMessage}>
+                          <!-- Dates above message -->
+                          <div
+                            class="slds-grid slds-gutters_x-small slds-m-bottom_small"
+                          >
+                            <div class="slds-col">
+                              <lightning-input
+                                type="date"
+                                label="Start Date"
+                                value={form.Start_Date__c}
+                                data-id={form.Id}
+                                onchange={handleStartDateChange}
+                              >
+                              </lightning-input>
+                            </div>
+                            <div class="slds-col">
+                              <lightning-input
+                                type="date"
+                                label="End Date"
+                                value={form.End_Date__c}
+                                data-id={form.Id}
+                                onchange={handleEndDateChange}
+                              >
+                              </lightning-input>
+                            </div>
+                          </div>
+
+                          <lightning-textarea
+                            name="message"
+                            label="Inactive Message"
+                            value={form.Message__c}
+                            data-id={form.Id}
+                            onchange={handleMessageChange}
+                            placeholder="Enter message to display when form is inactive"
+                            class="message-area"
+                          >
+                          </lightning-textarea>
+                        </template>
+                        <template if:false={form.showMessage}>
+                          <span class="slds-text-color_weak"
+                            >No message needed for active forms</span
+                          >
+                        </template>
+                      </td>
+
+                      <td>
+                        <div class="form-actions">
+                          <template if:true={form.hasChanges}>
+                            <lightning-button
+                              variant="brand"
+                              label="Save"
+                              title="Save Changes"
+                              icon-name="utility:save"
+                              data-id={form.Id}
+                              onclick={handleSaveForm}
+                            >
+                            </lightning-button>
+                          </template>
+                          <template if:false={form.hasChanges}>
+                            <lightning-button
+                              variant="neutral"
+                              label="Save"
+                              title="No Changes to Save"
+                              icon-name="utility:save"
+                              data-id={form.Id}
+                              onclick={handleSaveForm}
+                              disabled
+                            >
+                            </lightning-button>
+                          </template>
+                        </div>
+                      </td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Mobile View -->
+          <div class="slds-show_small">
+            <template for:each={formCatalogs} for:item="form">
+              <div
+                key={form.Id}
+                class="mobile-form-card slds-m-bottom_small slds-box slds-theme_shade"
+              >
+                <div class="slds-grid slds-wrap slds-gutters_small">
+                  <!-- Form Name -->
+                  <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                    <div class="slds-media slds-media_center">
+                      <div class="slds-media__figure">
+                        <lightning-icon
+                          icon-name="standard:document"
+                          size="small"
+                        ></lightning-icon>
+                      </div>
+                      <div class="slds-media__body">
+                        <h3 class="slds-text-heading_small">{form.Name}</h3>
+                        <div class={form.canonicalHintClass}>
+                          {form.canonicalHintText}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Status Toggle -->
+                  <div class="slds-col slds-size_1-of-2">
+                    <div class="slds-form-element__label slds-text-body_small">
+                      Status
+                    </div>
+                    <div class="custom-toggle">
+                      <lightning-input
+                        type="toggle"
+                        checked={form.isActiveBool}
+                        data-id={form.Id}
+                        onchange={handleToggleActive}
+                        variant="label-hidden"
+                        message-toggle-active="Active"
+                        message-toggle-inactive="Inactive"
+                      >
+                      </lightning-input>
+                    </div>
+                    <div class="slds-m-top_xx-small">
+                      <span class={form.statusBadgeClass}
+                        >{form.statusLabel}</span
+                      >
+                      <template if:true={form.hasChanges}>
+                        <span class="unsaved-indicator">*</span>
+                      </template>
+                    </div>
+                  </div>
+
+                  <!-- Save Button -->
+                  <div class="slds-col slds-size_1-of-2 slds-text-align_right">
+                    <template if:true={form.hasChanges}>
+                      <lightning-button
+                        variant="brand"
+                        label="Save"
+                        title="Save Changes"
+                        icon-name="utility:save"
+                        data-id={form.Id}
+                        onclick={handleSaveForm}
+                      >
+                      </lightning-button>
+                    </template>
+                    <template if:false={form.hasChanges}>
+                      <lightning-button
+                        variant="neutral"
+                        label="Save"
+                        title="No Changes to Save"
+                        icon-name="utility:save"
+                        data-id={form.Id}
+                        onclick={handleSaveForm}
+                        disabled
+                      >
+                      </lightning-button>
+                    </template>
+                  </div>
+
+                  <!-- Dates + Message (only for inactive) -->
+                  <template if:true={form.showMessage}>
+                    <div class="slds-col slds-size_1-of-1 slds-m-top_small">
+                      <div class="slds-grid slds-wrap slds-gutters_x-small">
+                        <div class="slds-col slds-size_1-of-2">
+                          <lightning-input
+                            type="date"
+                            label="Start Date"
+                            value={form.Start_Date__c}
+                            data-id={form.Id}
+                            onchange={handleStartDateChange}
+                          >
+                          </lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                          <lightning-input
+                            type="date"
+                            label="End Date"
+                            value={form.End_Date__c}
+                            data-id={form.Id}
+                            onchange={handleEndDateChange}
+                          >
+                          </lightning-input>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-1 slds-m-top_small">
+                      <div
+                        class="slds-form-element__label slds-text-body_small"
+                      >
+                        Inactive Message
+                      </div>
+                      <lightning-textarea
+                        name="message"
+                        value={form.Message__c}
+                        data-id={form.Id}
+                        onchange={handleMessageChange}
+                        placeholder="Enter message to display when form is inactive"
+                        class="message-area-mobile"
+                      >
+                      </lightning-textarea>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </template>
+          </div>
+        </template>
+
+        <template if:false={formCatalogs.length}>
+          <div class="empty-state slds-m-top_medium">
+            <div class="empty-state-icon">
+              <lightning-icon
+                icon-name="standard:document"
+                size="large"
+                alternative-text="No Forms"
+              ></lightning-icon>
+            </div>
+            <h3 class="empty-state-text">No form configurations found</h3>
+            <p class="slds-text-body_regular slds-m-bottom_medium">
+              Create a new form to manage its visibility settings
+            </p>
+            <lightning-button
+              variant="brand"
+              label="Create New Form"
+              title="Create New Form"
+              icon-name="utility:add"
+              onclick={handleOpenNewFormModal}
+            >
+            </lightning-button>
+          </div>
+        </template>
+      </template>
+    </div>
+  </lightning-card>
+
+  <!-- New Form Modal -->
+  <template if:true={showNewFormModal}>
+    <dialog
+      open
+      aria-labelledby="modal-heading-01"
+      aria-describedby="modal-content-id-1"
+      class="slds-modal slds-fade-in-open"
+    >
+      <div class="slds-modal__container">
+        <header class="slds-modal__header modal-header">
+          <button
+            class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+            title="Close"
+            onclick={handleCloseNewFormModal}
+          >
+            <lightning-icon
+              icon-name="utility:close"
+              alternative-text="Close"
+              variant="inverse"
+              size="small"
+            ></lightning-icon>
+            <span class="slds-assistive-text">Close</span>
+          </button>
+          <h2
+            id="modal-heading-01"
+            class="slds-modal__title slds-hyphenate modal-title"
+          >
+            <lightning-icon
+              icon-name="standard:form"
+              size="small"
+              alternative-text="Form"
+              class="slds-m-right_small"
+            ></lightning-icon>
+            Create New Form
+          </h2>
+        </header>
+
+        <div
+          class="slds-modal__content slds-p-around_medium"
+          id="modal-content-id-1"
+        >
+          <lightning-input
+            label="Form Name"
+            type="text"
+            required
+            value={newFormName}
+            onchange={handleNewFormNameChange}
+            class="slds-m-bottom_medium"
+          >
+          </lightning-input>
+
+          <div class="canonical-quickfill slds-m-bottom_medium">
+            <p class="canonical-quickfill-title">Quick-fill canonical public form names:</p>
+            <div class="canonical-quickfill-buttons">
+              <template for:each={canonicalForms} for:item="form">
+                <button
+                  key={form.key}
+                  type="button"
+                  class="slds-button slds-button_neutral canonical-quickfill-button"
+                  data-name={form.name}
+                  onclick={handleUseCanonicalName}
+                >
+                  {form.label}
+                </button>
+              </template>
+            </div>
+          </div>
+
+          <div class="slds-form-element slds-m-bottom_medium">
+            <label class="slds-form-element__label" for="form-active"
+              >Form Status</label
+            >
+            <div class="slds-form-element__control">
+              <div class="custom-toggle">
+                <lightning-input
+                  type="toggle"
+                  id="form-active"
+                  checked={newFormIsActive}
+                  onchange={handleNewFormStatusChange}
+                  message-toggle-active="Active"
+                  message-toggle-inactive="Inactive"
+                >
+                </lightning-input>
+              </div>
+              <div class="slds-text-body_small slds-m-top_xx-small">
+                <template if:true={newFormIsActive}
+                  >Form will be active and accepting submissions</template
+                >
+                <template if:false={newFormIsActive}
+                  >Form will be inactive - users will see the message
+                  below</template
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Dates for new form -->
+          <div class="slds-grid slds-gutters_x-small slds-m-bottom_medium">
+            <div class="slds-col">
+              <lightning-input
+                type="date"
+                label="Start Date"
+                value={newFormStartDate}
+                onchange={handleNewFormStartDateChange}
+              >
+              </lightning-input>
+            </div>
+            <div class="slds-col">
+              <lightning-input
+                type="date"
+                label="End Date"
+                value={newFormEndDate}
+                onchange={handleNewFormEndDateChange}
+              >
+              </lightning-input>
+            </div>
+          </div>
+
+          <lightning-textarea
+            label="Inactive Message"
+            placeholder="Enter message to display when form is inactive"
+            value={newFormMessage}
+            onchange={handleNewFormMessageChange}
+            class="message-area"
+          >
+          </lightning-textarea>
+        </div>
+
+        <footer class="slds-modal__footer">
+          <button
+            class="slds-button slds-button_neutral"
+            onclick={handleCloseNewFormModal}
+          >
+            Cancel
+          </button>
+          <button
+            class="slds-button slds-button_brand"
+            onclick={handleCreateForm}
+          >
+            <lightning-icon
+              icon-name="utility:save"
+              size="xx-small"
+              alternative-text="Create"
+              class="slds-m-right_x-small"
+            ></lightning-icon>
+            Create Form
+          </button>
+        </footer>
+      </div>
+    </dialog>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+
+  <div class="toast-container"></div>
+</template>

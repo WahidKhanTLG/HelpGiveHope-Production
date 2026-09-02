@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Household_Address__c</fullName>
+    <externalId>false</externalId>
+    <formula>BLANKVALUE(Account.BillingStreet, &quot;&quot;) &amp;
+IF(
+    NOT(ISBLANK(Account.BillingStreet)) &amp;&amp;
+    (
+        NOT(ISBLANK(Account.BillingCity)) ||
+        NOT(ISBLANK(Account.BillingState)) ||
+        NOT(ISBLANK(Account.BillingPostalCode)) ||
+        NOT(ISBLANK(Account.BillingCountry))
+    ),
+    &quot;, &quot;,
+    &quot;&quot;
+) &amp;
+BLANKVALUE(Account.BillingCity, &quot;&quot;) &amp;
+IF(
+    NOT(ISBLANK(Account.BillingCity)) &amp;&amp;
+    (
+        NOT(ISBLANK(Account.BillingState)) ||
+        NOT(ISBLANK(Account.BillingPostalCode)) ||
+        NOT(ISBLANK(Account.BillingCountry))
+    ),
+    &quot;, &quot;,
+    &quot;&quot;
+) &amp;
+BLANKVALUE(Account.BillingState, &quot;&quot;) &amp;
+IF(
+    NOT(ISBLANK(Account.BillingState)) &amp;&amp;
+    (
+        NOT(ISBLANK(Account.BillingPostalCode)) ||
+        NOT(ISBLANK(Account.BillingCountry))
+    ),
+    &quot; &quot;,
+    &quot;&quot;
+) &amp;
+BLANKVALUE(Account.BillingPostalCode, &quot;&quot;) &amp;
+IF(
+    NOT(ISBLANK(Account.BillingPostalCode)) &amp;&amp;
+    NOT(ISBLANK(Account.BillingCountry)),
+    &quot;, &quot;,
+    &quot;&quot;
+) &amp;
+BLANKVALUE(Account.BillingCountry, &quot;&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Household Address</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

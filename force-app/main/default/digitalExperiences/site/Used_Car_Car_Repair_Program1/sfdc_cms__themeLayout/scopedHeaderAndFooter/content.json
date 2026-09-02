@@ -1,0 +1,83 @@
+{
+  "type" : "sfdc_cms__themeLayout",
+  "title" : "Scoped Header and Footer",
+  "contentBody" : {
+    "component" : {
+      "attributes" : { },
+      "children" : [ {
+        "children" : [ {
+          "attributes" : {
+            "backgroundImageConfig" : "{\"url\":\"/sfsites/c/cms/delivery/media/MC44DCHDLHLJDXLPSI5VEWLVKSVQ?lastModifiedDate=Tue Oct 08 21:11:47 GMT 2024&height=144&width=192\",\"contentKey\":\"MC44DCHDLHLJDXLPSI5VEWLVKSVQ\",\"altText\":\"\",\"contentType\":\"sfdc_cms__image\",\"bgPosition\":\"center center\",\"bgSizeOrRepeat\":\"repeat\"}",
+            "backgroundImageOverlay" : "rgba(255, 255, 255, 0.9)",
+            "componentSpacerSize" : "",
+            "dxpStyle" : { },
+            "layoutDirectionDesktop" : "row",
+            "layoutDirectionMobile" : "column",
+            "layoutDirectionTablet" : "column",
+            "maxContentWidth" : "",
+            "sectionColumnGutterWidth" : "",
+            "sectionConfig" : "{\"UUID\":\"2c8d71d2-1d55-490e-8bad-a35d87ab3ca2\",\"columns\":[{\"UUID\":\"ff2149a4-700f-47a9-a09f-90f4ddc85333\",\"columnName\":\"Column 1\",\"columnKey\":\"headerSection\",\"columnWidth\":\"12\",\"seedComponents\":null}]}",
+            "sectionMinHeight" : "",
+            "sectionVerticalAlign" : "flex-start"
+          },
+          "children" : [ {
+            "children" : [ {
+              "attributes" : {
+                "assistanceType" : "User/Repair Car Assitance",
+                "dxpStyle" : { }
+              },
+              "definition" : "c:yearRoundAssistanceFormHgh",
+              "id" : "720e4be5-bd2f-4359-93a5-932be3c7265c",
+              "type" : "component"
+            } ],
+            "id" : "ff2149a4-700f-47a9-a09f-90f4ddc85333",
+            "name" : "headerSection",
+            "title" : "Theme Header",
+            "type" : "region"
+          } ],
+          "definition" : "community_layout:section",
+          "id" : "2c8d71d2-1d55-490e-8bad-a35d87ab3ca2",
+          "type" : "component"
+        } ],
+        "id" : "edc6892f-5b16-4b68-8e49-ea41e8cfa3f4",
+        "name" : "header",
+        "title" : "Theme Header",
+        "type" : "region"
+      }, {
+        "children" : [ {
+          "attributes" : {
+            "backgroundImageConfig" : "",
+            "backgroundImageOverlay" : "rgba(0,0,0,0)",
+            "componentSpacerSize" : "",
+            "dxpStyle" : { },
+            "layoutDirectionDesktop" : "row",
+            "layoutDirectionMobile" : "column",
+            "layoutDirectionTablet" : "column",
+            "maxContentWidth" : "",
+            "sectionColumnGutterWidth" : "",
+            "sectionConfig" : "{\"UUID\":\"af50a716-ee6c-45de-a219-ad5e8f8035da\",\"columns\":[{\"UUID\":\"ec6aeb9e-307f-4bb1-8e0f-a03b057b2fcb\",\"columnName\":\"Column 1\",\"columnKey\":\"footerSection\",\"columnWidth\":\"12\",\"seedComponents\":null}]}",
+            "sectionMinHeight" : "",
+            "sectionVerticalAlign" : "flex-start"
+          },
+          "children" : [ {
+            "id" : "ec6aeb9e-307f-4bb1-8e0f-a03b057b2fcb",
+            "name" : "footerSection",
+            "title" : "Theme Footer",
+            "type" : "region"
+          } ],
+          "definition" : "community_layout:section",
+          "id" : "af50a716-ee6c-45de-a219-ad5e8f8035da",
+          "type" : "component"
+        } ],
+        "id" : "f778008f-bfbf-4caa-a620-e4f33c8c52d9",
+        "name" : "footer",
+        "title" : "Theme Footer",
+        "type" : "region"
+      } ],
+      "definition" : "community_byo:scopedHeaderAndFooter",
+      "id" : "5bbe8a5d-85e1-4e52-a28c-63ee05ab96f6",
+      "type" : "component"
+    }
+  },
+  "urlName" : "scoped-header-and-footer"
+}

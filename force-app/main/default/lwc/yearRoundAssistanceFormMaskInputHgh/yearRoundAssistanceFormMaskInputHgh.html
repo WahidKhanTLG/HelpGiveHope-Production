@@ -1,0 +1,20 @@
+<template>
+    <div data-id="container" class={styling}>
+        <label class="slds-form-element__label" for={id}>
+            <template lwc:if={required}>
+                <abbr class="slds-required" title="required">*</abbr>
+            </template>
+            {label}
+        </label>
+        <div class="slds-form-element__control">
+            <input type="text" id={id} name={name} placeholder={placeholder} class="slds-input" 
+                onblur={blurHandler} onchange={changeHandler}
+            />
+        </div>
+        <template lwc:if={showError}>
+            <div class="slds-form-element__help">
+                <span>{errorMessage}</span>
+            </div>
+        </template>
+    </div>
+</template>

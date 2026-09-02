@@ -1,0 +1,29 @@
+<p>Hi {{{Account.npe01__One2OneContact__c}}},</p>
+
+<p>
+This is a friendly reminder that your Home Interview with the Help Give Hope Christmas Program is coming up in two days.
+</p>
+
+<p>Your scheduled interview details are below:</p>
+
+<p>
+<strong>Date:</strong> {{{Account.Interview_Date__c}}} {{{Account.Morning_Afternoon__c}}}<br>
+<strong>Location:</strong> Your home at {{{Account.BillingAddress}}}
+</p>
+
+<p>
+A member of our team will visit you at the scheduled time. Please ensure that an adult is present during the interview.
+</p>
+
+<p>
+If your availability has changed or you need to reschedule, please reply to this email as soon as possible.
+</p>
+
+<p>
+We're looking forward to meeting you and supporting your family this Christmas.
+</p>
+
+<p>
+Warmly,<br>
+The Help Give Hope Team
+</p>

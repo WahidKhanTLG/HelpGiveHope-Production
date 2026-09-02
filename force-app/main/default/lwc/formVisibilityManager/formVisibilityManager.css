@@ -1,0 +1,286 @@
+/* Styling for Form Visibility Manager */
+
+/* Header styling */
+.form-manager-header {
+    background-color: #f3f3f3;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5rem;
+}
+
+.form-manager-title {
+    color: #032d60;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.canonical-names-panel {
+    background: #eef4ff;
+    border: 1px solid #c9ddff;
+    border-radius: 0.5rem;
+    padding: 0.875rem 1rem;
+}
+
+.canonical-names-header {
+    align-items: center;
+    color: #032d60;
+    display: flex;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.canonical-names-list {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.canonical-names-item {
+    color: #032d60;
+    margin-bottom: 0.25rem;
+}
+
+.canonical-names-label {
+    font-weight: 600;
+}
+
+.canonical-hint {
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
+}
+
+.canonical-hint-match {
+    color: #2e844a;
+}
+
+.canonical-hint-custom {
+    color: #5c5c5c;
+}
+
+.canonical-quickfill {
+    background: #f7f9fb;
+    border: 1px dashed #cbd5e1;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+}
+
+.canonical-quickfill-title {
+    color: #032d60;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.canonical-quickfill-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.canonical-quickfill-button {
+    white-space: nowrap;
+}
+
+/* Card styling */
+.form-card {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16);
+    transition: box-shadow 0.3s ease;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.form-card:hover {
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,.18);
+}
+
+/* Table styling */
+.form-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.form-table th {
+    background-color: #f7f7f7;
+    color: #032d60;
+    font-weight: 700;
+    padding: 0.75rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    border-bottom: 2px solid #007bff;
+}
+
+/* Toggle button enhancements */
+.custom-toggle lightning-input {
+    transition: opacity 0.3s ease;
+}
+
+.custom-toggle lightning-input[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.form-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.form-table tr:hover {
+    background-color: #f1f9ff;
+}
+
+/* Status badge styling */
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-badge-active {
+    background-color: #2e844a;
+    color: #ffffff;
+}
+
+.status-badge-inactive {
+    background-color: #ba0517;
+    color: #ffffff;
+}
+
+/* Form actions styling */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Row highlight animation */
+@keyframes highlightRow {
+    0% { background-color: #fff; }
+    20% { background-color: #d4edda; }
+    100% { background-color: transparent; }
+}
+
+.highlight-row {
+    animation: highlightRow 3s ease;
+}
+
+/* New form button styling */
+.new-form-button {
+    background-color: #007bff;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.new-form-button:hover {
+    background-color: #0056b3;
+}
+
+/* Modal styling */
+.modal-header {
+    background-color: #032d60;
+    color: white;
+    padding: 1rem;
+}
+
+.modal-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* Empty state styling */
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f7f7f7;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+}
+
+.empty-state-icon {
+    margin-bottom: 1rem;
+}
+
+.empty-state-text {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+/* Message area styling */
+.message-area {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.message-area-mobile {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Mobile form card styling */
+.mobile-form-card {
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+}
+
+.mobile-form-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Unsaved changes indicator */
+.unsaved-indicator {
+    color: #ff6b35;
+    font-weight: bold;
+    margin-left: 0.25rem;
+    font-size: 1.2rem;
+}
+
+/* Toggle switch custom styling */
+.custom-toggle .slds-checkbox_faux {
+    background-color: #ff6b6b;
+}
+
+.custom-toggle input:checked + .slds-checkbox_faux {
+    background-color: #4caf50;
+}
+
+/* Responsive styling */
+@media screen and (max-width: 768px) {
+    .form-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .form-manager-title {
+        font-size: 1.25rem;
+    }
+    
+    .form-manager-header {
+        padding: 0.75rem;
+    }
+    
+    .mobile-form-card {
+        margin-bottom: 1rem;
+    }
+    
+    .message-area-mobile {
+        width: 100%;
+    }
+
+    .canonical-quickfill-buttons {
+        flex-direction: column;
+    }
+}

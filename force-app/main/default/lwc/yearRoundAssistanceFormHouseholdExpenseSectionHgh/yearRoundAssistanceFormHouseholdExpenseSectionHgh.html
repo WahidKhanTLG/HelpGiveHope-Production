@@ -1,0 +1,109 @@
+<template>
+    <lightning-card
+        title="Household Expense"
+        icon-name="custom:custom14"
+    >
+        <div class="slds-card__body slds-card__body_inner">
+            <div class="slds-m-vertical_large slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="rent"
+                        name="Rent"
+                        label="Rent"
+                        placeholder="Rent"
+                        required="Yes"
+                        mask-options={currencyMaskOption}
+                        onaccept={calculateHouseholdExpenses}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="utilities"
+                        name="Utilities"
+                        label="Utilities"
+                        placeholder="Utilities"
+                        required="Yes"
+                        mask-options={currencyMaskOption}
+                        onaccept={calculateHouseholdExpenses}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="internet"
+                        name="Internet"
+                        label="Internet / Cable"
+                        placeholder="Internet / Cable"
+                        required="Yes"
+                        mask-options={currencyMaskOption}
+                        onaccept={calculateHouseholdExpenses}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="groceries"
+                        name="Groceries"
+                        label="Groceries"
+                        placeholder="Groceries"
+                        required="Yes"
+                        mask-options={currencyMaskOption}
+                        onaccept={calculateHouseholdExpenses}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="householdNeeds"
+                        name="HouseholdNeeds"
+                        label="Household Needs"
+                        placeholder="Household Needs"
+                        required="Yes"
+                        mask-options={currencyMaskOption}
+                        onaccept={calculateHouseholdExpenses}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="other"
+                        name="Other"
+                        label="Other"
+                        placeholder="Other"
+                        required="Yes"
+                        mask-options={currencyMaskOption}
+                        onaccept={calculateHouseholdExpenses}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="carPayment"
+                        name="CarPayment"
+                        label="Car Payment"
+                        placeholder="Car Payment"
+                        required="Yes"
+                        mask-options={currencyMaskOption}
+                        onaccept={calculateHouseholdExpenses}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="creditCards"
+                        name="CreditCards"
+                        label="Credit Cards"
+                        placeholder="Credit Cards"
+                        required="Yes"
+                        mask-options={currencyMaskOption}
+                        onaccept={calculateHouseholdExpenses}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="totalHouseholdExpense"
+                        name="TotalHouseholdExpense"
+                        label="Total Household Expense"
+                        placeholder="Total Household Expense"
+                        disabled="Yes"
+                        mask-options={disabledCurrencyMaskOption}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Collection_Size</name>
+        <label>Assign Collection Size</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>var_Count</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>Gte</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_Category_Cap</targetReference>
+        </connector>
+    </assignments>
+    <customErrors>
+        <description>Category &gt; 4 for &quot;Furniture&quot; or &quot;Small Appliance&quot;</description>
+        <name>Enforce_per_category_cap_of_4_error</name>
+        <label>Enforce per-category cap of 4 error</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <customErrorMessages>
+            <errorMessage>You cannot have more than 4 Service Deliveries in this category.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Invalid_Contact_Selection</name>
+        <label>Invalid Contact Selection</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Category_either_Furniture_or_Small_Appliance</targetReference>
+        </connector>
+        <customErrorMessages>
+            <errorMessage>Selected Contact does not match Program Engagement.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Category_either_Furniture_or_Small_Appliance</name>
+        <label>Category either Furniture or Small Appliance</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Not In Given Set</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Category_Is_In_Given_Set</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.pmdm__Service__r.Category__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Furniture</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.pmdm__Service__r.Category__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Small Appliance</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Gte</targetReference>
+            </connector>
+            <label>Yes Category Is In Given Set</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Category_Cap</name>
+        <label>Check Category Cap</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Enforce_per_category_cap_of_4</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>var_Count</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>4.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Enforce_per_category_cap_of_4_error</targetReference>
+            </connector>
+            <label>Enforce per-category cap of 4</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_if_Client_field_is_Blank</name>
+        <label>Check if Client field is Blank</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Check_if_Client_Matches_Program_Engagement_Contact</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Blank</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Blank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.pmdm__Contact__r.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Client_Field_Value</targetReference>
+            </connector>
+            <label>Yes, Blank</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_if_Client_Matches_Program_Engagement_Contact</name>
+        <label>Check if Client Matches Program Engagement Contact</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Invalid_Contact_Selection</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Match</defaultConnectorLabel>
+        <rules>
+            <name>Match</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.pmdm__Contact__r.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Program_Engagement.pmdm__Contact__r.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Category_either_Furniture_or_Small_Appliance</targetReference>
+            </connector>
+            <label>Match</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Service Delivery BeforeSave Validation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Service Delivery BeforeSave Validation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Program_Engagement</name>
+        <label>Get Program Engagement</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Client_field_is_Blank</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>pmdm__ProgramEngagement__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Gte</name>
+        <label>Get Existing Service Deliveries</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Collection_Size</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>pmdm__Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.pmdm__Contact__r.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Category__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.pmdm__Service__r.Category__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>pmdm__ServiceDelivery__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Client_Field_Value</name>
+        <label>Update Client Field Value</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Category_either_Furniture_or_Small_Appliance</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>pmdm__Contact__c</field>
+            <value>
+                <elementReference>Get_Program_Engagement.pmdm__Contact__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Program_Engagement</targetReference>
+        </connector>
+        <object>pmdm__ServiceDelivery__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <name>var_Count</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+</Flow>

@@ -1,0 +1,280 @@
+<template>
+    <template lwc:if={displayUsedCarAssistanceOptions}>
+        <lightning-card
+            title="Used Car"
+            icon-name="custom:custom14"
+        >
+            <div class="slds-form-element" slot="actions">
+                <label class="slds-checkbox_toggle slds-grid">
+                    <span class="slds-form-element__label slds-m-bottom_none">Used Car</span>
+                    <input type="checkbox" data-group="CarAssistance" name="UserCarAssistance" value="used-car" 
+                        data-type="assistance"  onchange={toggleGroupBlock} onclick={preventUncheck}
+                    />
+                    <span id="used-car-toggle" class="slds-checkbox_faux_container">
+                        <span class="slds-checkbox_faux"></span>
+                        <span class="slds-checkbox_on">Yes</span>
+                        <span class="slds-checkbox_off">No</span>
+                    </span>
+                </label>
+            </div>
+
+            <div data-id="used-car" data-type="block" class="slds-card__body slds-card__body_inner slds-hide">
+                <div class="slds-m-vertical_large slds-grid slds-gutters slds-wrap">
+                    <div class="slds-col slds-size_12-of-12 slds-text-align_center" style="font-style: italic;">
+                        No additional information required.
+                    </div>
+                </div>
+            </div>
+        </lightning-card>
+
+        <lightning-card
+            title="Repair Car"
+            icon-name="custom:custom14"
+        >
+            <div class="slds-form-element" slot="actions">
+                <label class="slds-checkbox_toggle slds-grid">
+                    <span class="slds-form-element__label slds-m-bottom_none">Repair Car</span>
+                    <input type="checkbox" data-group="CarAssistance" name="RepairCarAssistance" value="repair-car" 
+                        data-type="assistance" onchange={toggleGroupBlock} onclick={preventUncheck}
+                    />
+                    <span id="repair-car-toggle" class="slds-checkbox_faux_container">
+                        <span class="slds-checkbox_faux"></span>
+                        <span class="slds-checkbox_on">Yes</span>
+                        <span class="slds-checkbox_off">No</span>
+                    </span>
+                </label>
+            </div>
+
+            <div data-id="repair-car" data-type="block" class="slds-card__body slds-card__body_inner slds-hide">
+                <div class="slds-m-vertical_large slds-grid slds-gutters slds-wrap">
+                    <div class="slds-col slds-size_12-of-12 slds-text-align_center" style="font-style: italic;">
+                        No additional information required.
+                    </div>
+                </div>
+            </div>
+        </lightning-card>
+    </template>
+
+    <template lwc:else>
+        <lightning-card
+            title="Utility"
+            icon-name="custom:custom14"
+        >
+            <div class="slds-form-element" slot="actions">
+                <label class="slds-checkbox_toggle slds-grid">
+                    <span class="slds-form-element__label slds-m-bottom_none">Utility Assistance</span>
+                    <input type="checkbox" data-group="GeneralAssistance" name="UtilityAssistance" value="utility" 
+                        data-type="assistance" onchange={toggleGroupBlock} onclick={preventUncheck}
+                    />
+                    <span id="utility-toggle" class="slds-checkbox_faux_container">
+                        <span class="slds-checkbox_faux"></span>
+                        <span class="slds-checkbox_on">Yes</span>
+                        <span class="slds-checkbox_off">No</span>
+                    </span>
+                </label>
+            </div>
+
+            <div data-id="utility" data-type="block" class="slds-card__body slds-card__body_inner slds-hide">
+                <div class="slds-m-vertical_large slds-grid slds-gutters slds-wrap">
+                    <div class="slds-col slds-size_12-of-12">
+                        <c-year-round-assistance-form-radio-group-hgh
+                            name="ShutoffNotice"
+                            label="Do you have a shutoff notice?"
+                            required="Yes"
+                            options={shutoffNoticeOptions}
+                        ></c-year-round-assistance-form-radio-group-hgh>
+                    </div>
+                    <div class="slds-col slds-size_12-of-12">
+                        <c-year-round-assistance-form-radio-group-hgh
+                            name="ReachedOutOACAC"
+                            label="Have you reached out to OACAC?"
+                            required="Yes"
+                            options={reachedOutOACACOptions}
+                        ></c-year-round-assistance-form-radio-group-hgh>
+                    </div>
+                    <div class="slds-col slds-size_12-of-12">
+                        <c-year-round-assistance-form-radio-group-hgh
+                            name="DeterminationMadeByOACAC"
+                            label="Has OACAC made a determination?"
+                            required="Yes"
+                            options={determinationMadeByOACACOptions}
+                        ></c-year-round-assistance-form-radio-group-hgh>
+                    </div>
+                </div>
+            </div>
+        </lightning-card>
+
+        <lightning-card
+            title="Rent"
+            icon-name="custom:custom14"
+        >
+            <div class="slds-form-element" slot="actions">
+                <label class="slds-checkbox_toggle slds-grid">
+                    <span class="slds-form-element__label slds-m-bottom_none">Rent Assistance</span>
+                    <input type="checkbox" data-group="GeneralAssistance" name="RentAssistance" value="rent" 
+                        data-type="assistance" onchange={toggleGroupBlock} onclick={preventUncheck}
+                    />
+                    <span id="rent-toggle" class="slds-checkbox_faux_container">
+                        <span class="slds-checkbox_faux"></span>
+                        <span class="slds-checkbox_on">Yes</span>
+                        <span class="slds-checkbox_off">No</span>
+                    </span>
+                </label>
+            </div>
+
+            <div data-id="rent" data-type="block" class="slds-card__body slds-card__body_inner slds-hide">
+                <div class="slds-m-vertical_large slds-grid slds-gutters slds-wrap">
+                    <div class="slds-col slds-size_12-of-12">
+                        <legend class="slds-form-element__legend slds-form-element__label slds-m-bottom_small">Landlord Name</legend>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <c-year-round-assistance-form-input-hgh
+                            name="FirstName"
+                            label="First Name"
+                            placeholder="First Name"
+                            required="Yes"
+                        ></c-year-round-assistance-form-input-hgh>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <c-year-round-assistance-form-input-hgh
+                            name="LastName"
+                            label="Last Name"
+                            placeholder="Last Name"
+                            required="Yes"
+                        ></c-year-round-assistance-form-input-hgh>
+                    </div>
+                    <div class="slds-col slds-size_12-of-12">
+                        <legend class="slds-form-element__legend slds-form-element__label slds-m-bottom_small">Landlord Phone</legend>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <c-year-round-assistance-form-mask-input-hgh
+                            name="Phone"
+                            label="Phone"
+                            placeholder="Phone"
+                            required="Yes"
+                            mask-options={phoneMaskOption}
+                            >
+                        </c-year-round-assistance-form-mask-input-hgh>
+                    </div>
+                    <div class="slds-col slds-size_12-of-12">
+                        <legend class="slds-form-element__legend slds-form-element__label slds-m-bottom_small">Landlord Address</legend>
+                    </div>
+                    <div class="slds-col slds-size_12-of-12">
+                        <c-year-round-assistance-form-input-hgh
+                            name="Street"
+                            label="Street"
+                            placeholder="Street"
+                            required="Yes"
+                            type="textarea"
+                        ></c-year-round-assistance-form-input-hgh>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <c-year-round-assistance-form-input-hgh
+                            name="City"
+                            label="City"
+                            placeholder="City"
+                            required="Yes"
+                        ></c-year-round-assistance-form-input-hgh>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <c-year-round-assistance-form-input-hgh
+                            name="State"
+                            label="State / Province"
+                            placeholder="State / Province"
+                            required="Yes"
+                        ></c-year-round-assistance-form-input-hgh>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <!-- <c-year-round-assistance-form-input-hgh
+                            name="ZipCode"
+                            label="Zip Code"
+                            placeholder="Zip Code"
+                            required="Yes"
+                        ></c-year-round-assistance-form-input-hgh> -->
+                        <c-year-round-assistance-form-mask-input-hgh
+                            name="ZipCode"
+                            label="Zip Code"
+                            placeholder="Zip Code"
+                            required="Yes"
+                            mask-options={zipCodeMaskOption}
+                        ></c-year-round-assistance-form-mask-input-hgh>
+                    </div>
+
+
+                </div>
+            </div>
+        </lightning-card>
+
+        <lightning-card
+            title="Educational"
+            icon-name="custom:custom14"
+        >
+            <div class="slds-form-element" slot="actions">
+                <label class="slds-checkbox_toggle slds-grid">
+                    <span class="slds-form-element__label slds-m-bottom_none">Educational Assistance</span>
+                    <input type="checkbox" data-group="GeneralAssistance" name="EducationalAssistance" value="educational" 
+                        data-type="assistance" onchange={toggleGroupBlock} onclick={preventUncheck}
+                    />
+                    <span id="educational-toggle" class="slds-checkbox_faux_container">
+                        <span class="slds-checkbox_faux"></span>
+                        <span class="slds-checkbox_on">Yes</span>
+                        <span class="slds-checkbox_off">No</span>
+                    </span>
+                </label>
+            </div>
+
+            <div data-id="educational" data-type="block" class="slds-card__body slds-card__body_inner slds-hide">
+                <div class="slds-m-vertical_large slds-grid slds-gutters slds-wrap">
+                    <div class="slds-col slds-size_12-of-12 slds-text-align_center" style="font-style: italic;">
+                        No additional information required.
+                    </div>
+                </div>
+            </div>
+        </lightning-card>
+
+        <lightning-card
+            title="Other"
+            icon-name="custom:custom14"
+        >
+            <div class="slds-form-element" slot="actions">
+                <label class="slds-checkbox_toggle slds-grid">
+                    <span class="slds-form-element__label slds-m-bottom_none">Other Assistance</span>
+                    <input type="checkbox" data-group="GeneralAssistance" name="OtherAssistance" value="other" 
+                        data-type="assistance" onchange={toggleGroupBlock} onclick={preventUncheck}
+                    />
+                    <span id="other-toggle" class="slds-checkbox_faux_container">
+                        <span class="slds-checkbox_faux"></span>
+                        <span class="slds-checkbox_on">Yes</span>
+                        <span class="slds-checkbox_off">No</span>
+                    </span>
+                </label>
+            </div>
+
+            <div data-id="other" data-type="block" class="slds-card__body slds-card__body_inner slds-hide">
+                <div class="slds-m-vertical_large slds-grid slds-gutters slds-wrap">
+                    <div class="slds-col slds-size_12-of-12">
+                        <c-year-round-assistance-form-input-hgh
+                            name="Description"
+                            label="Description"
+                            placeholder="Description of assistance"
+                            required="Yes"
+                            type="textarea"
+                        ></c-year-round-assistance-form-input-hgh>
+                    </div>
+                </div>
+            </div>
+        </lightning-card>
+    </template>
+    
+    <template lwc:if={error}>
+        <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+            <span class="slds-assistive-text">error</span>
+            <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small" title="Description of icon when needed">
+                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                </svg>
+            </span>
+            <h2>Please select atleast one assistance.</h2>
+        </div>
+    </template>
+</template>

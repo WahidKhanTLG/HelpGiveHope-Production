@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DigitalExperienceConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Used Car / Car Repair Program</label>
+    <site>
+        <urlPathPrefix>UsedCar</urlPathPrefix>
+    </site>
+    <space>site/Used_Car_Car_Repair_Program1</space>
+</DigitalExperienceConfig>

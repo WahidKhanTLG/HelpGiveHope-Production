@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- What got you to your current situation? --></label>
+    <name>Reason_for_Current_Situation__c</name>
+</CustomFieldTranslation>

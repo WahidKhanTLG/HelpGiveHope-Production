@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Assistance_Requested__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( TLG_Utility_Assistance__c , &apos;Utility Assistance &apos;, &apos;&apos;) &amp; 
+IF( TLG_Rent_Assistance__c , &apos;Rent Assistance &apos;, &apos;&apos;) &amp; 
+IF( TLG_Repair_Car_Assistance__c , &apos;Repair Car Assistance &apos;, &apos;&apos;) &amp; 
+IF( TLG_Used_Car_Assistance__c , &apos;Used Car Assistance &apos;, &apos;&apos;) &amp; 
+IF( TLG_Christmas_Assistance__c , &apos;Christmas Assistance &apos;, &apos;&apos;) &amp; 
+IF( TLG_Educational_Assistance__c , &apos;Educational Assistance &apos;, &apos;&apos;) &amp; 
+IF( TLG_Other_Assistance__c , &apos;Other Assistance &apos;, &apos;&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Assistance Requested</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

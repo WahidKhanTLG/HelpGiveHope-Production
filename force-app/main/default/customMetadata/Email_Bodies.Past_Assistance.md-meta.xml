@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Past Assistance</label>
+    <protected>false</protected>
+    <values>
+        <field>body__c</field>
+        <value xsi:type="xsd:string">&lt;p&gt;Help Give Hope does not operate a food pantry and is unable to assist with your request. There are numerous local churches that are operating food pantries, you can call and see which churches have food pantries. &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</value>
+    </values>
+    <values>
+        <field>subject__c</field>
+        <value xsi:type="xsd:string">Other Assistance - Food</value>
+    </values>
+</CustomMetadata>

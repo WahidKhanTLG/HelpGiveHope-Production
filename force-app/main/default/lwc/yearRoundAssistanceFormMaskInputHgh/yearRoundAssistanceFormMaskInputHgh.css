@@ -1,0 +1,64 @@
+/* yearRoundAssistanceFormMaskInputHgh — same styling as plain input */
+:host {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.slds-form-element.slds-has-error .slds-input {
+    border-color: #E53E3E;
+    box-shadow: 0 0 0 3px rgba(229,62,62,0.12);
+    background: #FFF5F5;
+}
+
+.slds-form-element__label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.01em;
+}
+
+.slds-required {
+    color: #E53E3E;
+    margin-right: 0.15rem;
+}
+
+.slds-input {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: #1A2E35;
+    background: #F8FFFE;
+    border: 1.5px solid #CBD5E1;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    line-height: 1.5;
+}
+
+.slds-input::placeholder {
+    color: #9AA5B4;
+    font-style: italic;
+}
+
+.slds-input:hover {
+    border-color: #7AB648;
+    background: #FFFFFF;
+}
+
+.slds-input:focus {
+    outline: none;
+    border-color: #00A79D;
+    box-shadow: 0 0 0 3px rgba(0,167,157,0.18);
+    background: #FFFFFF;
+}
+
+.slds-form-element__help {
+    display: block;
+    font-size: 0.75rem;
+    color: #E53E3E;
+    margin-top: 0.25rem;
+    font-weight: 500;
+}

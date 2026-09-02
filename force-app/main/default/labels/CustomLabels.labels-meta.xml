@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>headerCellAssistiveText</fullName>
+        <categories>TableWidget</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>headerCellAssistiveText</shortDescription>
+        <value>&quot;Table Header&quot;</value>
+    </labels>
+</CustomLabels>

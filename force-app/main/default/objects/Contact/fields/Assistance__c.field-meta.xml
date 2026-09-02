@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Assistance__c</fullName>
+    <externalId>false</externalId>
+    <formula>TRIM(
+    IF(Account.TLG_Christmas_Assistance__c, &apos;Christmas Assistance&apos;, &apos;&apos;) &amp;
+    IF(Account.TLG_Educational_Assistance__c,
+        IF(LEN(TRIM(IF(Account.TLG_Christmas_Assistance__c, &apos;Christmas Assistance&apos;, &apos;&apos;))) &gt; 0, &apos;, &apos;, &apos;&apos;) &amp;
+        &apos;Educational Assistance&apos;, &apos;&apos;) &amp;
+    IF(Account.TLG_Other_Assistance__c,
+        IF(LEN(TRIM(
+            IF(Account.TLG_Christmas_Assistance__c, &apos;Christmas Assistance&apos;, &apos;&apos;) &amp;
+            IF(Account.TLG_Educational_Assistance__c, &apos;, Educational Assistance&apos;, &apos;&apos;)
+        )) &gt; 0, &apos;, &apos;, &apos;&apos;) &amp;
+        &apos;Other Assistance&apos;, &apos;&apos;) &amp;
+    IF(Account.TLG_Rent_Assistance__c,
+        IF(LEN(TRIM(
+            IF(Account.TLG_Christmas_Assistance__c, &apos;Christmas Assistance&apos;, &apos;&apos;) &amp;
+            IF(Account.TLG_Educational_Assistance__c, &apos;, Educational Assistance&apos;, &apos;&apos;) &amp;
+            IF(Account.TLG_Other_Assistance__c, &apos;, Other Assistance&apos;, &apos;&apos;)
+        )) &gt; 0, &apos;, &apos;, &apos;&apos;) &amp;
+        &apos;Rent Assistance&apos;, &apos;&apos;) &amp;
+    IF(Account.TLG_Repair_Car_Assistance__c,
+        IF(LEN(TRIM(
+            IF(Account.TLG_Christmas_Assistance__c, &apos;Christmas Assistance&apos;, &apos;&apos;) &amp;
+            IF(Account.TLG_Educational_Assistance__c, &apos;, Educational Assistance&apos;, &apos;&apos;) &amp;
+            IF(Account.TLG_Other_Assistance__c, &apos;, Other Assistance&apos;, &apos;&apos;) &amp;
+            IF(Account.TLG_Rent_Assistance__c, &apos;, Rent Assistance&apos;, &apos;&apos;)
+        )) &gt; 0, &apos;, &apos;, &apos;&apos;) &amp;
+        &apos;Car Repair Assistance&apos;, &apos;&apos;) &amp;
+    IF(Account.TLG_Used_Car_Assistance__c,
+        IF(LEN(TRIM(
+            IF(Account.TLG_Christmas_Assistance__c, &apos;Christmas Assistance&apos;, &apos;&apos;) &amp;
+            IF(Account.TLG_Educational_Assistance__c, &apos;, Educational Assistance&apos;, &apos;&apos;) &amp;
+            IF(Account.TLG_Other_Assistance__c, &apos;, Other Assistance&apos;, &apos;&apos;) &amp;
+            IF(Account.TLG_Rent_Assistance__c, &apos;, Rent Assistance&apos;, &apos;&apos;) &amp;
+            IF(Account.TLG_Repair_Car_Assistance__c, &apos;, Car Repair Assistance&apos;, &apos;&apos;)
+        )) &gt; 0, &apos;, &apos;, &apos;&apos;) &amp;
+        &apos;Used Car Assistance&apos;, &apos;&apos;) &amp;
+    IF(Account.TLG_Utility_Assistance__c,
+        IF(LEN(TRIM(
+            IF(Account.TLG_Christmas_Assistance__c, &apos;Christmas Assistance&apos;, &apos;&apos;) &amp;
+            IF(Account.TLG_Educational_Assistance__c, &apos;, Educational Assistance&apos;, &apos;&apos;) &amp;
+            IF(Account.TLG_Other_Assistance__c, &apos;, Other Assistance&apos;, &apos;&apos;) &amp;
+            IF(Account.TLG_Rent_Assistance__c, &apos;, Rent Assistance&apos;, &apos;&apos;) &amp;
+            IF(Account.TLG_Repair_Car_Assistance__c, &apos;, Car Repair Assistance&apos;, &apos;&apos;) &amp;
+            IF(Account.TLG_Used_Car_Assistance__c, &apos;, Used Car Assistance&apos;, &apos;&apos;)
+        )) &gt; 0, &apos;, &apos;, &apos;&apos;) &amp;
+        &apos;Utility Assistance&apos;, &apos;&apos;)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Assistance</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

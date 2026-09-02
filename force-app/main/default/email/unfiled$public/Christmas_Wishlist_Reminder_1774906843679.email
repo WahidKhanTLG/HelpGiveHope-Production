@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<pre>Hi {{{Case.Contact_Name__c}}},
+
+This is a friendly reminder to complete your Christmas wishlist for the Help Give Hope Christmas Program.
+
+Please use the link below to submit your wishlist:
+https://helpgivehope.my.site.com/WishlistChristmasAidRequests/s/?recordId={{{Case.Id}}}
+
+We send these reminders daily until the wishlist is completed.
+
+Thank you for taking a moment to complete it.
+
+Warmly,
+
+The Help Give Hope Team
+</pre>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Kitchen_Chair_Quantity_Limit</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  pmdm__Service__r.Name = &quot;Kitchen Chair&quot;,
+  OR(
+    Quantity__c &lt; 2,
+    Quantity__c &gt; 10
+  )
+)</errorConditionFormula>
+    <errorMessage>Kitchen Chair quantity must be between 2 and 10</errorMessage>
+</ValidationRule>

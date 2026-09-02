@@ -1,0 +1,78 @@
+<template>
+    <div class="slds-modal__content slds-p-around_medium">
+        <div class="slds-media slds-media_center slds-m-bottom_medium">
+            <div class="slds-media__figure">
+                <lightning-icon icon-name="standard:household" size="large"></lightning-icon>
+            </div>
+            <div class="slds-media__body">
+                <h2 class="slds-text-heading_medium slds-m-bottom_xx-small">
+                    {householdName}
+                </h2>
+                <p class="slds-text-body_small slds-text-color_weak">
+                    Open the full Household record to manage contacts,
+                    relationships, donations and more.
+                </p>
+            </div>
+        </div>
+
+        <template if:true={contacts.data}>
+            <div class="slds-m-bottom_medium">
+                <h3 class="slds-text-title_caps slds-m-bottom_x-small">
+                    Household Members
+                </h3>
+                <ul class="slds-has-dividers_bottom-space">
+                    <template for:each={memberList} for:item="c">
+                        <li key={c.Id} class="slds-item slds-grid slds-grid_vertical-align-center slds-p-vertical_x-small">
+                            <lightning-icon icon-name="standard:contact" size="x-small" class="slds-m-right_small"></lightning-icon>
+                            <div class="slds-col">
+                                <p class="slds-text-body_regular slds-truncate">
+                                    <strong>{c.Name}</strong>
+                                    <template if:true={c.TLG_Relationship_with_Applicant__c}>
+                                        &nbsp;&mdash;&nbsp;{c.TLG_Relationship_with_Applicant__c}
+                                    </template>
+                                </p>
+                                <p class="slds-text-body_small slds-text-color_weak">
+                                    <template if:true={c.Phone}>{c.Phone}&nbsp;</template>
+                                    <template if:true={c.Email}>{c.Email}</template>
+                                </p>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </template>
+
+        <div class="slds-grid slds-grid_align-center slds-gutters_small">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-button
+                    label="View Full Household"
+                    variant="brand"
+                    icon-name="utility:open"
+                    class="slds-size_full"
+                    disabled={noHousehold}
+                    onclick={openHousehold}
+                ></lightning-button>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-button
+                    label="Cancel"
+                    variant="neutral"
+                    class="slds-size_full"
+                    onclick={closeAction}
+                ></lightning-button>
+            </div>
+        </div>
+
+        <template lwc:if={hasHousehold}>
+            <p class="slds-text-body_small slds-text-color_weak slds-m-top_small slds-text-align_center">
+                Household account found.
+            </p>
+        </template>
+
+        <template lwc:else>
+            <p class="slds-text-body_small slds-text-color_error slds-m-top_small slds-text-align_center">
+                This Case is not linked to a household account yet.
+            </p>
+        </template>
+    </div>
+</template>

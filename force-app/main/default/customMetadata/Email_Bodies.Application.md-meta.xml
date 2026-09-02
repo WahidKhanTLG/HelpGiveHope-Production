@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Application</label>
+    <protected>false</protected>
+    <values>
+        <field>body__c</field>
+        <value xsi:type="xsd:string">&lt;p&gt;Help Give Hope is designed to provide temporary assistance. Help Give Hope has assisted you previously and will not be able to assist at this time.&lt;/p&gt;</value>
+    </values>
+    <values>
+        <field>subject__c</field>
+        <value xsi:type="xsd:string">Rental Assistance - Previously assisted</value>
+    </values>
+</CustomMetadata>

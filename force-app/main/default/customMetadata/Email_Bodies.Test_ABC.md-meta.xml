@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Test ABC</label>
+    <protected>false</protected>
+    <values>
+        <field>body__c</field>
+        <value xsi:type="xsd:string">&lt;p&gt;Based on the information you provided on your application, we feel you do not have sufficient income to support a vehicle, based on our standards. Without a sufficient source of income to support, maintain, and operate a vehicle, Help Give Hope will not be able to add you to our waitlist for the used car program. When you can demonstrate sufficient income to support a vehicle, you can apply again.&amp;nbsp;&lt;/p&gt;</value>
+    </values>
+    <values>
+        <field>subject__c</field>
+        <value xsi:type="xsd:string">Used Car Application - Income</value>
+    </values>
+</CustomMetadata>

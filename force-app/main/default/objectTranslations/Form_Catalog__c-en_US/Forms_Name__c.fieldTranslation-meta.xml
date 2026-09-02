@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Forms Name --></label>
+    <name>Forms_Name__c</name>
+    <picklistValues>
+        <masterLabel>Christmas</masterLabel>
+        <translation><!-- Christmas --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>General Assistance</masterLabel>
+        <translation><!-- General Assistance --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Survey Form</masterLabel>
+        <translation><!-- Survey Form --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Used Car / Car Repair Program</masterLabel>
+        <translation><!-- Used Car / Car Repair Program --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

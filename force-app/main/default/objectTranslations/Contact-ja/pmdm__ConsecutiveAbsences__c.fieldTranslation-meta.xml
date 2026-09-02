@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>現在の日付からさかぼってカウントされるこの取引先責任者の連続欠席日数。最新のサービス提供が出席だった場合は 0 にクリアされます。</help>
+    <label><!-- Consecutive Absences --></label>
+    <name>pmdm__ConsecutiveAbsences__c</name>
+</CustomFieldTranslation>

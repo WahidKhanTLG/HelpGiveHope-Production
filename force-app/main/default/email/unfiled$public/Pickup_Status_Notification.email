@@ -1,0 +1,105 @@
+<messaging:emailTemplate subject="Pickup Status Update"
+                         recipientType="Contact"
+                         relatedToType="Account">
+
+    <messaging:htmlEmailBody >
+        <html>
+        <head>
+            <style>
+                body { font-family: Arial, sans-serif; line-height: 1.5; color: #333; }
+                h1 { color: #2c3e50; font-size: 18px; margin-bottom: 10px; }
+                h2 { color: #34495e; font-size: 16px; margin-bottom: 8px; }
+                h3 { color: #000000; font-size: 16px; margin-bottom: 8px; }
+                p { margin-bottom: 10px; }
+                ul { margin: 10px 0; padding-left: 20px; }
+                li { margin-bottom: 5px; }
+                .item { margin: 5px 0; padding-left: 10px; }
+                .bullet-item { display: flex; align-items: flex-start; margin-bottom: 5px; }
+                .bullet { display:inline-block; width:12px; height:11px; border:1px solid #000; margin-top: 5px; margin-right: 8px; flex-shrink: 0; }
+                .content { flex: 1; }
+                .santa-header { color: #2c3e50; font-size: 20px; font-weight: bold; margin-bottom: 15px; }
+            </style>
+        </head>
+        <body>
+        
+            <!-- Primary Contact Greeting -->
+            <h3>Dear {!recipient.Name},</h3>
+            
+            <!-- Pickup Status = Warehouse -->
+            <apex:outputText rendered="{!relatedTo.Pickup_Status__c='Warehouse'}">
+                <p>Congratulations on Being Selected as a Help Give Hope Family!</p>
+                <p>We're thrilled to welcome you as a Warehouse Pick-Up Family! This means You're scheduled to pick up your items on {!relatedTo.Pickup_Date__c} between 9:00 AM and 2:00 PM at 2809 North Cedarbrook.</p>
+                
+                <h1>Important Instructions:</h1>
+                <ul>
+                    <li>Arrival Time: Please arrive during your scheduled time. If early, you may have to wait.</li>
+                    <li>Location: Drive to the North entrance of the parking lot (near the cul-de-sac) and follow instructions from our volunteers.</li>
+                    <li>Items Set Aside for You:
+                        <ul>
+                            <apex:outputText rendered="{!NOT(ISBLANK(relatedTo.Number_of_Boxes__c))}">
+                                <li>{!relatedTo.Number_of_Boxes__c} Boxes containing gifts</li>
+                            </apex:outputText>
+                            <apex:outputText rendered="{!NOT(ISBLANK(relatedTo.Number_of_Totes__c))}">
+                                <li>{!FLOOR(relatedTo.Number_of_Totes__c)} Tote(s) with nonperishable food and hygiene items</li>
+                            </apex:outputText>
+                        </ul>
+                    </li>
+                </ul>
+                    
+                <!-- Furniture Records -->
+                <h2>Furniture Items:</h2>
+                <c:PickupServicesComponent acctId="{!relatedTo.Id}"/>
+
+                <!-- Bikes -->
+                <h2>Bike Items:</h2>
+                <c:PickupGiftComponent acctId="{!relatedTo.Id}"/>
+
+                <h1>Plan Your Transportation in Advance:</h1>
+                <ul>
+                    <li>If you're using your personal vehicle, please ensure the back seat and trunk/back end are clean and ready to transport your items.</li>
+                    <li>Need a truck? We've arranged a special rate with U-Haul at 1768 North Glenstone for $10 truck rentals. Call 417-887-5832 as soon as possible—rentals are first-come, first-served. Bring this email on your phone as proof of eligibility.</li>
+                </ul>
+
+                <h1>Picking Up on Someone's Behalf?</h1>
+                <p>If someone else is picking up your items, they will need:</p>
+                <ul>
+                    <li>Written permission from you</li>
+                    <li>A copy of this email</li>
+                    <li>Their photo ID to sign a release</li>
+                </ul>
+            </apex:outputText>
+
+            <!-- Pickup Status ≠ Warehouse -->
+            <apex:outputText rendered="{!relatedTo.Pickup_Status__c!='Warehouse'}">
+                <div class="santa-header">Congratulations!! You are a Help Give Hope 💹Santa Family!</div>
+                
+                <p>We're thrilled to let you know that Santa Claus will come to your home to deliver your gifts on Saturday 12/20/25, between 8:00 am and 2:00 pm. He and his elves will bring gifts, a food basket. Because Santa and his elves are excited to see all the children, please make sure the children are available on the date and time scheduled. We will call when we are on our way so that you are prepared.</p>
+
+                <!-- Conditional if Pickup Status = Santa/Warehouse -->
+                <apex:outputText rendered="{!relatedTo.Pickup_Status__c='Santa/Warehouse'}">
+                    <p>In addition to your Santa delivery, you will need to pick up your furniture. The furniture can be picked up at our warehouse at 2809 N. Cedarbrook, between 9:00 am and 2:00 pm on {!relatedTo.Pickup_Date__c}.</p>
+
+                    <h1>Important Instructions:</h1>
+                    <ul>
+                        <li>Arrival Time: Please arrive during your scheduled time. If you arrive early, you may have to wait.</li>
+                        <li>Location Details: Drive to the North entrance of the parking lot (near the cul-de-sac) and follow instructions from our volunteers.</li>
+                        
+                        <!-- Furniture items as list items using a special component -->
+                        <c:PickupServicesListComponent acctId="{!relatedTo.Id}"/>
+                    </ul>
+
+                    <h1>Plan Your Transportation in Advance</h1>
+                    <ul>
+                        <li>If you're using your personal vehicle, please ensure the back seat and trunk/back end are clean and ready to transport your items.</li>
+                        <li>Need a truck? We've arranged a special rate with U-Haul at 1768 North Glenstone for $10 truck rentals. Call 417-887-5832 as soon as possible—rentals are first-come, first-served. Bring this email on your phone as proof of eligibility.</li>
+                    </ul>
+                </apex:outputText>
+            </apex:outputText>
+
+            <p>Thank you for partnering with us to make this process smooth. We can't wait to see you in December!</p>
+            <p>Warm regards,<br/>The Help Give Hope Team</p>
+            
+        </body>
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

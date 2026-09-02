@@ -1,0 +1,3 @@
+:host {
+    --_slds-g-shadow-outset-focus: 0 0 0 1px var(--slds-g-color-neutral-base-100, #FFFFFF), 0 0 0 2px var(--slds-g-color-brand-base-40, #0B5CAB);
+}

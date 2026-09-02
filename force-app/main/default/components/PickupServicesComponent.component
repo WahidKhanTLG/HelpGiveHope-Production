@@ -1,0 +1,23 @@
+<apex:component controller="HouseholdShoppingEmailController" access="global">
+    <apex:attribute name="acctId" 
+        type="Id" 
+        assignTo="{!accountId}" 
+        required="true" 
+        description="Account Id"
+        access="global"/>
+
+    <apex:repeat value="{!services}" var="service">
+        <div class="item">
+            <span style="display:inline-block; width:12px; height:11px; border:1px solid #000; margin-top: 5px; margin-left: 60px;"></span>
+            {!service.displayName} x {!service.quantity}
+        </div>
+    </apex:repeat>
+    
+    <!-- Show message if no services found -->
+    <apex:outputText rendered="{!services.size == 0}">
+        <div class="item">
+            <span style="display:inline-block; width:12px; height:11px; border:1px solid #000; margin-top: 5px; margin-left: 60px;"></span>
+            No furniture items found.
+        </div>
+    </apex:outputText>
+</apex:component>

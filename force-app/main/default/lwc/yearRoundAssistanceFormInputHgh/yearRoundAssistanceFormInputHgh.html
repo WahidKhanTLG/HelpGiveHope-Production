@@ -1,0 +1,56 @@
+<template>
+  <div data-id="container" class={styling}>
+    <template lwc:if={isDateType}>
+      <lightning-input
+        type="date"
+        label={label}
+        value={_dateValue}
+        required={required}
+        min={minDate}
+        max={maxDate}
+        disabled={disabled}
+        onchange={dateChangeHandler}
+        onblur={dateBlurHandler}
+      ></lightning-input>
+    </template>
+    <template lwc:else>
+      <label class="slds-form-element__label" for={controlId}>
+        <template lwc:if={required}>
+          <abbr class="slds-required" title="required">*</abbr>
+        </template>
+        {label}
+      </label>
+      <div class="slds-form-element__control">
+        <template lwc:if={showInput}>
+          <input
+            type={inputType}
+            id={inputId}
+            name={name}
+            placeholder={inputPlaceholder}
+            class="slds-input"
+            onblur={blurHandler}
+            onchange={changeHandler}
+            onkeypress={keypressHandler}
+          />
+        </template>
+        <template lwc:else>
+          <textarea
+            id={textareaId}
+            name={name}
+            placeholder={placeholder}
+            class="slds-textarea"
+            style="resize: none"
+            onblur={blurHandler}
+            onchange={changeHandler}
+            onkeypress={keypressHandler}
+          ></textarea>
+        </template>
+      </div>
+      <template lwc:if={showError}>
+        <div class="slds-form-element__help">
+          <span>{errorMessage}</span>
+        </div>
+      </template>
+    </template>
+  </div>
+</template>

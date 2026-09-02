@@ -1,0 +1,469 @@
+<apex:page standardController="Account" renderAs="pdf" showHeader="false" applyBodyTag="false">
+    <apex:repeat value="{!Account.Contacts}" var="c">
+        <!-- One page per contact -->
+        <div style="page-break-after:auto; font-family: Arial, sans-serif;">
+
+            <table style="width:100%; border-collapse:separate; border-spacing:18px 16px; margin-top: 20px">
+                <!-- Repeat 8 rows; each has 3 identical labels -->
+                <tr>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:15px;">
+                            <div style="font-weight:bold;">
+                                <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                                </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:15px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:15px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Row 2 -->
+                <tr>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:15px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:15px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:15px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Row 3 -->
+                <tr>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:15px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:15px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Row 4 -->
+                <tr>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Row 5 -->
+                <tr>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Row 6 -->
+                <tr>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Row 7 -->
+                <tr>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Row 8 -->
+                <tr>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 8 -->
+                <tr>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 8 -->
+                <tr>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:top;">
+                        <div style="border:1px solid #E8E8E8; border-radius:10px; padding:10px;">
+                            <div style="font-weight:bold;">
+                            <apex:outputPanel rendered="{!c.npsp__Primary_Contact__c}">
+                                {!Account.npe01__One2OneContact__r.Name}
+                                </apex:outputPanel>
+                            </div>
+                            <div>
+                                {!c.Name}
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.GenderIdentity))}"> - {!IF(c.GenderIdentity = 'Male', '(M)',IF(c.GenderIdentity = 'Female', '(F)',IF(c.GenderIdentity = 'Nonbinary', '(NB)',IF(c.GenderIdentity = 'Not Listed', '(X)', ''))))}</apex:outputPanel>
+                                <apex:outputPanel rendered="{!NOT(ISBLANK(c.TLG_Age__c))}">, Age {!IF(FLOOR(c.TLG_Age__c) = 0, '', FLOOR(c.TLG_Age__c))}</apex:outputPanel>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                
+            </table>
+
+        </div>
+    </apex:repeat>
+</apex:page>

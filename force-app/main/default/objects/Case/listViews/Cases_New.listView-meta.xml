@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cases_New</fullName>
+    <columns>CASES.CASE_NUMBER</columns>
+    <columns>NAME</columns>
+    <columns>CASES.SUBJECT</columns>
+    <columns>CASES.CREATED_DATE</columns>
+    <columns>Assistance_Requested__c</columns>
+    <columns>Total_Score__c</columns>
+    <columns>TLG_Total_Household_Income__c</columns>
+    <columns>Total_Household_Expense__c</columns>
+    <columns>Primary_Contact_Phone__c</columns>
+    <columns>CASES.PRIORITY</columns>
+    <columns>TLG_Number_of_Individuals_in_household__c</columns>
+    <columns>TLG_Wages__c</columns>
+    <columns>How_long_have_you_lived_at_this_address__c</columns>
+    <columns>How_long_did_you_live_there__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CASES.STATUS</field>
+        <operation>equals</operation>
+        <value>New</value>
+    </filters>
+    <filters>
+        <field>New_Import__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>Cases New</label>
+</ListView>

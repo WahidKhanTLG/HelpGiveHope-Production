@@ -1,0 +1,541 @@
+<template>
+  <div class={cardClass}>
+  <lightning-card title={title} icon-name="custom:custom14">
+    <slot name="actions" slot="actions"></slot>
+    <div class="slds-card__body slds-card__body_inner">
+      <div class="slds-m-vertical_large slds-grid slds-gutters slds-wrap">
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-input-hgh
+            name="FirstName"
+            label="First Name"
+            placeholder="First Name"
+            required="Yes"
+          ></c-year-round-assistance-form-input-hgh>
+        </div>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-input-hgh
+            name="LastName"
+            label="Last Name"
+            placeholder="Last Name"
+            required="Yes"
+          ></c-year-round-assistance-form-input-hgh>
+        </div>
+        <template lwc:if={isApplicant}>
+          <div class="slds-col slds-size_12-of-12">
+            <c-year-round-assistance-form-input-hgh
+              name="Street"
+              label="Street"
+              placeholder="Street"
+              required="Yes"
+              type="textarea"
+            ></c-year-round-assistance-form-input-hgh>
+          </div>
+          <div
+            class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+          >
+            <c-year-round-assistance-form-dropdown-hgh
+              name="State"
+              label="State"
+              placeholder="Select State"
+              required="Yes"
+              options={stateOptions}
+            ></c-year-round-assistance-form-dropdown-hgh>
+          </div>
+          <div
+            class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+          >
+            <c-year-round-assistance-form-dropdown-hgh
+              name="City"
+              label="City"
+              placeholder="Select City"
+              required="Yes"
+              options={cityOptions}
+            ></c-year-round-assistance-form-dropdown-hgh>
+          </div>
+          <div
+            class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+          >
+            <c-year-round-assistance-form-dropdown-hgh
+              name="ZipCode"
+              label="Zip Code"
+              placeholder="Select Zip Code"
+              required="Yes"
+              options={zipCodeOptions}
+            ></c-year-round-assistance-form-dropdown-hgh>
+          </div>
+          <div
+            class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+          >
+            <c-year-round-assistance-form-mask-input-hgh
+              lwc:ref="monthsAtCurrentAddress"
+              name="monthsAtCurrentAddress"
+              label="How long have you lived at this address?"
+              placeholder="Months at current address"
+              required="Yes"
+              mask-options={monthsOfEmploymentOrUnemploymentMaskOption}
+              onaccept={addressMonthsChangeHandler}
+              remove-leading-zeros="Yes"
+            ></c-year-round-assistance-form-mask-input-hgh>
+          </div>
+          <template lwc:if={showPreviousAddressFields}>
+            <div class="slds-col slds-size_12-of-12">
+              <c-year-round-assistance-form-input-hgh
+                name="PreviousStreet"
+                label="Previous Address"
+                placeholder="Previous Address"
+                required="Yes"
+                type="textarea"
+              ></c-year-round-assistance-form-input-hgh>
+            </div>
+
+          <div
+            class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+          >
+            <c-year-round-assistance-form-dropdown-hgh
+              lwc:ref="previousState"
+              name="PreviousState"
+              label="Previous State"
+              placeholder="Select Previous State"
+              required="Yes"
+              options={previousStateOptions}
+              onchange={handlePreviousStateChange}
+            ></c-year-round-assistance-form-dropdown-hgh>
+          </div>
+
+          <div
+            class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+          >
+            <c-year-round-assistance-form-dropdown-hgh
+              key={selectedPreviousState}
+              lwc:ref="previousCity"
+              name="PreviousCity"
+              label="Previous City"
+              placeholder="Select Previous City"
+              required="Yes"
+              options={previousCityOptions}
+              onchange={handlePreviousCityChange}
+            ></c-year-round-assistance-form-dropdown-hgh>
+            <template lwc:if={isPreviousCityLoading}>
+              <div class="slds-col slds-shrink-none loader-inline">
+                <lightning-spinner
+                  alternative-text="Loading cities"
+                  size="small"
+                ></lightning-spinner>
+              </div>
+            </template>
+
+          </div>
+
+          <div
+            class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+          >
+            <c-year-round-assistance-form-dropdown-hgh
+              key={selectedPreviousCity}
+              lwc:ref="previousZipCode"
+              name="PreviousZipCode"
+              label="Previous Zip Code"
+              placeholder="Select Previous Zip Code"
+              required="Yes"
+              options={previousZipCodeOptions}
+            ></c-year-round-assistance-form-dropdown-hgh>
+             <template lwc:if={isPreviousZipLoading}>
+              <div class="slds-col slds-shrink-none loader-inline">
+                <lightning-spinner
+                  alternative-text="Loading zip codes"
+                  size="small"
+                ></lightning-spinner>
+              </div>
+            </template>
+            
+          </div>
+            <div  
+              class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+            >
+              <c-year-round-assistance-form-mask-input-hgh
+                name="PreviousAddressDuration"
+                label="How long did you live there?"
+                placeholder="Months at previous address"
+                required="Yes"
+                mask-options={monthsOfEmploymentOrUnemploymentMaskOption}
+                remove-leading-zeros="Yes"
+              ></c-year-round-assistance-form-mask-input-hgh>
+            </div>
+          </template>
+        </template>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-input-hgh
+            type="date"
+            name="DateOfBirth"
+            label="Date Of Birth"
+            required="Yes"
+            data-type="date"
+            min-date={minimumDateHtmlAttribute}
+            max-date={maximumDateHtmlAttribute}
+            onblur={calculateAge}
+            onchange={calculateAge}
+            restrict-typing="Yes"
+          ></c-year-round-assistance-form-input-hgh>
+        </div>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-dropdown-hgh
+            name="Gender"
+            label="Gender"
+            placeholder="Select Gender"
+            required="Yes"
+            options={genderOptions}
+          ></c-year-round-assistance-form-dropdown-hgh>
+        </div>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-input-hgh
+            lwc:ref="age"
+            name="Age"
+            label="Age"
+            placeholder="Age"
+            disabled="Yes"
+          ></c-year-round-assistance-form-input-hgh>
+        </div>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-mask-input-hgh
+            name="SSN"
+            label="Social Security Number"
+            required="Yes"
+            mask-options={ssnMaskOption}
+          ></c-year-round-assistance-form-mask-input-hgh>
+        </div>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-mask-input-hgh
+            name="Phone"
+            label="Phone"
+            placeholder="Phone"
+            required={isApplicant}
+            mask-options={phoneMaskOption}
+          ></c-year-round-assistance-form-mask-input-hgh>
+        </div>
+        <template lwc:if={isApplicant}>
+          <div
+            class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+          >
+            <c-year-round-assistance-form-input-hgh
+              name="EmailAddress"
+              label="Email Address"
+              placeholder="Email Address"
+              required="Yes"
+              data-type="email"
+            ></c-year-round-assistance-form-input-hgh>
+          </div>
+        </template>
+        <template lwc:else>
+          <div
+            class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+          >
+            <c-year-round-assistance-form-dropdown-hgh
+              name="RelationShip"
+              label="Relationship with Applicant"
+              placeholder="Select Relationship"
+              required="Yes"
+              options={relationShipOptions}
+              onchange={relationShipChangeHandler}
+            ></c-year-round-assistance-form-dropdown-hgh>
+          </div>
+          <template lwc:if={isCustomRelationship}>
+            <div
+              class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+            >
+              <c-year-round-assistance-form-input-hgh
+                name="RelationShipCustom"
+                label="Relationship Detail"
+                placeholder="Relationship Detail"
+                required="Yes"
+              ></c-year-round-assistance-form-input-hgh>
+            </div>
+          </template>
+        </template>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-dropdown-hgh
+            name="EmploymentStatus"
+            label="Employment Status"
+            placeholder="Select Employment Status"
+            required="Yes"
+            options={employmentStatusOptions}
+            onchange={employmentStatusChangeHandler}
+          ></c-year-round-assistance-form-dropdown-hgh>
+        </div>
+        <template lwc:if={isEmployed}>
+          <div
+            class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+          >
+            <c-year-round-assistance-form-input-hgh
+              name="EmployerName"
+              label="Employer Name"
+              placeholder="Employer Name"
+              required="Yes"
+            ></c-year-round-assistance-form-input-hgh>
+          </div>
+        </template>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-mask-input-hgh
+            lwc:ref="monthsOfEmploymentOrUnemployment"
+            name="MonthsOfEmploymentOrUnemployment"
+            label="Months Of Employment / Unemployment"
+            placeholder="Months Of Employment / Unemployment"
+            required="Yes"
+            mask-options={monthsOfEmploymentOrUnemploymentMaskOption}
+            onaccept={monthsChangeHandler}
+          ></c-year-round-assistance-form-mask-input-hgh>
+        </div>
+        <template lwc:if={showPreviousEmploymentFields}>
+          <div
+            class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+          >
+            <c-year-round-assistance-form-mask-input-hgh
+              name="JobsPast36Months"
+              label="Number of Jobs in Past 36 Months"
+              placeholder="Number of Jobs in Past 36 Months"
+              required="Yes"
+              mask-options={monthsOfEmploymentOrUnemploymentMaskOption}
+              remove-leading-zeros="Yes"
+            ></c-year-round-assistance-form-mask-input-hgh>
+          </div>
+        
+          <div
+            class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+          >
+            <c-year-round-assistance-form-input-hgh
+              name="PreviousEmployer"
+              label="Where were you previously employed?"
+              placeholder="Previous Employer"
+              required="Yes"
+            ></c-year-round-assistance-form-input-hgh>
+          </div>
+          <div
+            class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+          >
+            <c-year-round-assistance-form-mask-input-hgh
+              name="TotalTimeEmployed"
+              label="Total Time Employed (months)"
+              placeholder="Total Time Employed (months)"
+              required="Yes"
+              mask-options={monthsOfEmploymentOrUnemploymentMaskOption}
+              remove-leading-zeros="Yes"
+            ></c-year-round-assistance-form-mask-input-hgh>
+          </div>
+          <div
+            class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+          >
+            <c-year-round-assistance-form-input-hgh
+              name="HowLongEmployedThere"
+              label="How long were you employed there?(months)"
+              placeholder="e.g. 2"
+              required="Yes"
+            ></c-year-round-assistance-form-input-hgh>
+          </div>
+        </template>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-mask-input-hgh
+            lwc:ref="hoursWorkedPerWeek"
+            name="HoursWorkedPerWeek"
+            label="Hours Worked Per Week"
+            placeholder="Hours Worked Per Week"
+            required="Yes"
+            mask-options={hoursWorkedPerWeekMaskOption}
+            onaccept={calculateMonthlyWages}
+            remove-leading-zeros="Yes"
+          ></c-year-round-assistance-form-mask-input-hgh>
+        </div>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-mask-input-hgh
+            lwc:ref="payPerHour"
+            name="PayPerHour"
+            label="Pay Per Hour"
+            placeholder="Pay Per Hour"
+            required="Yes"
+            mask-options={payPerHourMaskOption}
+            onaccept={calculateMonthlyWages}
+            remove-leading-zeros="Yes"
+          ></c-year-round-assistance-form-mask-input-hgh>
+        </div>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-mask-input-hgh
+            lwc:ref="wages"
+            name="Wages"
+            label="Wages"
+            placeholder="Wages"
+            disabled="Yes"
+            mask-options={disabledCurrencyMaskOption}
+          ></c-year-round-assistance-form-mask-input-hgh>
+        </div>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-mask-input-hgh
+            lwc:ref="disability"
+            name="Disability"
+            label="SSI / Disability"
+            placeholder="SSI / Disability"
+            required="Yes"
+            mask-options={numberMax2000MaskOption}
+            onaccept={calculateTotalIncome}
+            remove-leading-zeros="Yes"
+          ></c-year-round-assistance-form-mask-input-hgh>
+        </div>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-mask-input-hgh
+            lwc:ref="tanif"
+            name="TANIF"
+            label="TANIF"
+            placeholder="TANIF"
+            required="Yes"
+            mask-options={numberMax2000MaskOption}
+            onaccept={calculateTotalIncome}
+            remove-leading-zeros="Yes"
+          ></c-year-round-assistance-form-mask-input-hgh>
+        </div>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-mask-input-hgh
+            lwc:ref="ss"
+            name="SS"
+            label="SS"
+            placeholder="SS"
+            required="Yes"
+            mask-options={numberMax2000MaskOption}
+            onaccept={calculateTotalIncome}
+            remove-leading-zeros="Yes"
+          ></c-year-round-assistance-form-mask-input-hgh>
+        </div>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-mask-input-hgh
+            lwc:ref="foodStamps"
+            name="FoodStamps"
+            label="Food Stamps"
+            placeholder="Food Stamps"
+            required="Yes"
+            mask-options={numberMax2000MaskOption}
+            onaccept={calculateTotalIncome}
+            remove-leading-zeros="Yes"
+          ></c-year-round-assistance-form-mask-input-hgh>
+        </div>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-mask-input-hgh
+            lwc:ref="unemployment"
+            name="Unemployment"
+            label="Unemployment"
+            placeholder="Unemployment"
+            required="Yes"
+            mask-options={numberMax5000MaskOption}
+            onaccept={calculateTotalIncome}
+            remove-leading-zeros="Yes"
+          ></c-year-round-assistance-form-mask-input-hgh>
+        </div>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-mask-input-hgh
+            lwc:ref="childSupport"
+            name="ChildSupport"
+            label="Child Support"
+            placeholder="Child Support"
+            required="Yes"
+            mask-options={numberMax2000MaskOption}
+            onaccept={calculateTotalIncome}
+            remove-leading-zeros="Yes"
+          ></c-year-round-assistance-form-mask-input-hgh>
+        </div>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-mask-input-hgh
+            lwc:ref="other"
+            name="Other"
+            label="Other"
+            placeholder="Other"
+            required="Yes"
+            mask-options={numberMax2000MaskOption}
+            onaccept={calculateTotalIncome}
+            remove-leading-zeros="Yes"
+          ></c-year-round-assistance-form-mask-input-hgh>
+        </div>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-mask-input-hgh
+            lwc:ref="veterans"
+            name="Veterans"
+            label="Veterans"
+            placeholder="Veterans"
+            required="Yes"
+            mask-options={numberMax2000MaskOption}
+            onaccept={calculateTotalIncome}
+            remove-leading-zeros="Yes"
+          ></c-year-round-assistance-form-mask-input-hgh>
+        </div>
+        <div
+          class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12"
+        >
+          <c-year-round-assistance-form-mask-input-hgh
+            lwc:ref="totalIncome"
+            name="TotalIncome"
+            label="Total Income"
+            placeholder="Total Income"
+            disabled="Yes"
+            mask-options={disabledCurrencyMaskOption}
+          ></c-year-round-assistance-form-mask-input-hgh>
+        </div>
+        <template lwc:if={isChristmasFlow}>
+            <template lwc:if={isApplicant}>
+                <div class="slds-col slds-size_12-of-12">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label">
+                            If your family is selected, would your children enjoy having Santa deliver gifts?
+                        </label>
+
+                        <lightning-input
+                            type="toggle"
+                            variant="label-hidden"
+                            name="ChristmasConsent"
+                            message-toggle-active="Yes"
+                            message-toggle-inactive="No"
+                            checked={christmasConsent}
+                            onchange={handleChristmasConsentChange}
+                        >
+                        </lightning-input>
+                    </div>
+                </div>
+            </template>
+        </template>
+      </div>
+    </div>
+  </lightning-card>
+  </div>
+</template>

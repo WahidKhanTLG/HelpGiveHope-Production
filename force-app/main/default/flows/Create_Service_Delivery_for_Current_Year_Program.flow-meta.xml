@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Service_Delivery</name>
+        <label>Assign Service Delivery</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varServiceDelivery.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>for_ServiceDeliveryName</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varServiceDelivery.pmdm__Service__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_on_Service_Delivery.pmdm__Service__r.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varServiceDelivery.pmdm__ProgramEngagement__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varServiceDelivery.pmdm__Contact__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.pmdm__Contact__r.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varServiceDelivery.pmdm__Account__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.pmdm__Account__r.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varServiceDelivery.Assistance_Requested__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Create.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ServiceDeliveriesCollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>varServiceDelivery</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_on_Service_Delivery</targetReference>
+        </connector>
+    </assignments>
+    <environments>Default</environments>
+    <formulas>
+        <description>{!$Record.pmdm__Account__r.Name}</description>
+        <name>for_ServiceDeliveryName</name>
+        <dataType>String</dataType>
+        <expression>TEXT({!Loop_on_Service_Delivery.pmdm__Service__r.Category__c}) &amp; &apos; | &apos; &amp;  
+RIGHT(
+(
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Twin&quot;), &quot;, Twin&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Full&quot;), &quot;, Full&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Queen&quot;), &quot;, Queen&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;King&quot;), &quot;, King&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Pots/Pans&quot;), &quot;, Pots/Pans&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Dishes&quot;), &quot;, Dishes&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Glassware&quot;), &quot;, Glassware&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Microwave&quot;), &quot;, Microwave&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Toaster&quot;), &quot;, Toaster&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Vacuum&quot;), &quot;, Vacuum&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Flatware&quot;), &quot;, Flatware&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Couch&quot;), &quot;, Couch&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Kitchen table&quot;), &quot;, Kitchen table&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Kitchen chairs&quot;), &quot;, Kitchen chairs&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Washer&quot;), &quot;, Washer&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Dryer&quot;), &quot;, Dryer&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Refrigerator&quot;), &quot;, Refrigerator&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Other&quot;), &quot;, Other&quot;, &quot;&quot;)
+),
+LEN(
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Twin&quot;), &quot;, Twin&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Full&quot;), &quot;, Full&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Queen&quot;), &quot;, Queen&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;King&quot;), &quot;, King&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Pots/Pans&quot;), &quot;, Pots/Pans&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Dishes&quot;), &quot;, Dishes&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Glassware&quot;), &quot;, Glassware&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Microwave&quot;), &quot;, Microwave&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Toaster&quot;), &quot;, Toaster&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Vacuum&quot;), &quot;, Vacuum&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Flatware&quot;), &quot;, Flatware&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Couch&quot;), &quot;, Couch&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Kitchen table&quot;), &quot;, Kitchen table&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Kitchen chairs&quot;), &quot;, Kitchen chairs&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Washer&quot;), &quot;, Washer&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Dryer&quot;), &quot;, Dryer&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Refrigerator&quot;), &quot;, Refrigerator&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Other&quot;), &quot;, Other&quot;, &quot;&quot;)
+) - 1
+)</expression>
+    </formulas>
+    <interviewLabel>Create Service Delivery for Current Year Program {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Create Service Delivery for Current Year Program</label>
+    <loops>
+        <name>Loop_on_Service_Delivery</name>
+        <label>Loop on Service Delivery</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <collectionReference>Get_Service_Participants</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_Service_Delivery</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Create_Service_Deliveries</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create</name>
+        <label>Create Assistance Requested</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Loop_on_Service_Delivery</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Account__c</field>
+            <value>
+                <elementReference>$Record.pmdm__Account__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Primary_Contact__c</field>
+            <value>
+                <elementReference>$Record.pmdm__Contact__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Program__c</field>
+            <value>
+                <elementReference>$Record.pmdm__Program__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Requested</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Assistance_Requested__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Service_Deliveries</name>
+        <label>Create Service Deliveries</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputReference>ServiceDeliveriesCollection</inputReference>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Service_Participants</name>
+        <label>Get Service Participants</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>pmdm__ProgramEngagement__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>pmdm__ServiceParticipant__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Service_Participants</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>pmdm__Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </filters>
+        <object>pmdm__ProgramEngagement__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>ServiceDeliveriesCollection</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>pmdm__ServiceDelivery__c</objectType>
+    </variables>
+    <variables>
+        <name>varServiceDelivery</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>pmdm__ServiceDelivery__c</objectType>
+    </variables>
+</Flow>

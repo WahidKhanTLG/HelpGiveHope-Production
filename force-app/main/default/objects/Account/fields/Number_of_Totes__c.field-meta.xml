@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_of_Totes__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+    AND(Household_Members__c &lt; 5, Household_Members__c &gt; 0),
+    1,
+    IF(
+        Household_Members__c &gt; 7,
+        3,
+        IF(
+            AND(Household_Members__c &gt;= 5, Household_Members__c &lt;= 7),
+            2,
+            0
+        )
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Number of Totes</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

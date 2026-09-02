@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>o</joinTable>
+        </blockInfo>
+        <columns>
+            <field>OPPORTUNITY_NAME</field>
+        </columns>
+        <columns>
+            <field>PRODUCT_NAME</field>
+        </columns>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>QUANTITY</field>
+        </columns>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>TOTAL_PRICE</field>
+        </columns>
+        <columns>
+            <field>OpportunityLineItem.Shirt_Size__c</field>
+        </columns>
+        <columns>
+            <field>OpportunityLineItem.Bike_Size__c</field>
+        </columns>
+        <columns>
+            <field>OpportunityLineItem.Pant_Size__c</field>
+        </columns>
+        <columns>
+            <field>OpportunityLineItem.Coat_Hoodie_Size__c</field>
+        </columns>
+        <columns>
+            <field>OpportunityLineItem.Clothing_For_Childs__c</field>
+        </columns>
+        <columns>
+            <field>OpportunityLineItem.Contact_Name__c</field>
+        </columns>
+        <format>Summary</format>
+        <name>Opportunities with Products</name>
+        <params>
+            <name>open</name>
+            <value>all</value>
+        </params>
+        <params>
+            <name>probability</name>
+            <value>&gt;0</value>
+        </params>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>OpportunityProduct</reportType>
+        <scope>organization</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>CREATED_DATE</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>o</joinTable>
+    </blockInfo>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Wish List Report</name>
+    <reportType>OpportunityProduct</reportType>
+    <showDetails>true</showDetails>
+</Report>

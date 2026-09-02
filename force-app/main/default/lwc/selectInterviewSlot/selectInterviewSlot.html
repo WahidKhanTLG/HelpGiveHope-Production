@@ -1,0 +1,79 @@
+<template>
+    <lightning-card title="Select Interview Slot">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </template>
+
+        <template if:false={isLoading}>
+            <template if:true={interviewDays.length}>
+                
+                <template if:true={hasExistingBooking}>
+                    <div class="slds-m-around_medium">
+                        <div class="slds-box slds-theme_shade slds-theme_alert-texture slds-grid slds-grid_vertical-align-center slds-wrap slds-is-relative">
+                            
+                            <template if:true={isUnscheduling}>
+                                <lightning-spinner alternative-text="Unscheduling..." size="small"></lightning-spinner>
+                            </template>
+
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-p-vertical_xx-small">
+                                <p class="slds-text-color_error">
+                                    <strong>Notice:</strong> This account already has a booked interview slot. To select a new time, remove the existing booking first.
+                                </p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-text-align_right slds-p-vertical_xx-small">
+                                <lightning-button 
+                                    label="Unschedule Booking" 
+                                    variant="destructive-text" 
+                                    icon-name="utility:delete" 
+                                    onclick={handleUnschedule}
+                                    disabled={isUnscheduling}> </lightning-button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <div class="slds-p-horizontal_medium">
+                    <div class="slds-box slds-m-bottom_small">
+                        <div class="slds-grid slds-wrap slds-gutters">
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                                <lightning-combobox
+                                    name="date"
+                                    label="Interview Date"
+                                    value={selectedDate}
+                                    options={dateOptions}
+                                    onchange={handleSelectDate}
+                                    disabled={dateDisabled}>
+                                </lightning-combobox>
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                                <lightning-combobox
+                                    name="slot"
+                                    label="Available Slots"
+                                    value={selectedScheduleId}
+                                    options={slotOptions}
+                                    onchange={handleSelectSlot}
+                                    disabled={slotDisabled}>
+                                </lightning-combobox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+                    <lightning-button
+                        label="Book Selected Slot"
+                        variant="brand"
+                        onclick={handleBook}
+                        disabled={bookDisabled}>
+                    </lightning-button>
+                </div>
+            </template>
+
+            <template if:false={interviewDays.length}>
+                <div class="slds-p-around_medium slds-text-color_weak slds-text-align_center">
+                    No interview days available for your account.
+                </div>
+            </template>
+        </template>
+    </lightning-card>
+</template>

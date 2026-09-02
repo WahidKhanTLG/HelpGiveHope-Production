@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <label>Category</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Beds</fullName>
+                <default>false</default>
+                <label>Beds</label>
+            </value>
+            <value>
+                <fullName>Bedding</fullName>
+                <default>false</default>
+                <label>Bedding</label>
+            </value>
+            <value>
+                <fullName>Furniture</fullName>
+                <default>false</default>
+                <label>Furniture</label>
+            </value>
+            <value>
+                <fullName>Small Appliance</fullName>
+                <default>false</default>
+                <label>Small Appliance</label>
+            </value>
+            <value>
+                <fullName>Mattress Only</fullName>
+                <default>false</default>
+                <label>Mattress Only</label>
+            </value>
+            <value>
+                <fullName>Bed Frame Only</fullName>
+                <default>false</default>
+                <label>Bed Frame Only</label>
+            </value>
+            <value>
+                <fullName>Pillows</fullName>
+                <default>false</default>
+                <label>Pillows</label>
+            </value>
+            <value>
+                <fullName>Towels</fullName>
+                <default>false</default>
+                <label>Towels</label>
+            </value>
+            <value>
+                <fullName>Washcloths</fullName>
+                <default>false</default>
+                <label>Washcloths</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

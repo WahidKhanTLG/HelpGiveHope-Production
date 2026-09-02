@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>18/10/2025 Zone 6</label>
+    <protected>false</protected>
+    <values>
+        <field>Interview_Date__c</field>
+        <value xsi:type="xsd:date">2025-10-18</value>
+    </values>
+    <values>
+        <field>Zone_Data__c</field>
+        <value xsi:type="xsd:string">Zone_6</value>
+    </values>
+</CustomMetadata>

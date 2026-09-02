@@ -1,0 +1,25 @@
+<template>
+    <div data-id="container" class={styling}>
+        <label class="slds-form-element__label" for={id}>
+            <template lwc:if={required}>
+                <abbr class="slds-required" title="required">*</abbr>
+            </template>
+            {label}
+        </label>
+        <div class="slds-form-element__control">
+            <div class="slds-select_container">
+                <select id={id} name={name} class="slds-select" required={isRequired} onchange={changeHandler}>
+                    <option value="">{placeholderText}</option>
+                    <template for:each={options} for:item="option">
+                        <option key={option.value} value={option.value}>{option.label}</option>
+                    </template>
+                </select>
+            </div>
+            <template lwc:if={showError}>
+                <div class="slds-form-element__help">
+                    <span>{errorMessage}</span>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

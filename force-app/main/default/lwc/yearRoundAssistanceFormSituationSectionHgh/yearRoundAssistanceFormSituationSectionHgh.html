@@ -1,0 +1,35 @@
+<template>
+  <lightning-card title={title} icon-name="custom:custom14">
+    <div class="slds-card__body slds-card__body_inner">
+      <div class="slds-m-vertical_large slds-grid slds-gutters slds-wrap">
+        <template lwc:if={showSituationField}>
+          <div class="slds-col slds-size_12-of-12">
+            <c-year-round-assistance-form-input-hgh
+              name="Reason_for_Current_Situation__c"
+              label="What got you to your current situation?"
+              placeholder="Please be as detailed as possible"
+              required="Yes"
+              type="textarea"
+            ></c-year-round-assistance-form-input-hgh>
+          </div>
+        </template>
+        <!-- <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12">
+          <c-year-round-assistance-form-mask-input-hgh
+            name="ResidencyLengthMonths"
+            label="Months at Current Address"
+            placeholder="Months at Current Address"
+            required="Yes"
+            mask-options={monthsMaskOption}
+            remove-leading-zeros="Yes"
+          ></c-year-round-assistance-form-mask-input-hgh>
+        </div> -->
+        <div class="slds-col slds-size_12-of-12">
+          <c-checkbox-toggle-input
+            name="Assisted_in_Past_12_Months__c"
+            label="Have you received assistance in paying rent or utilities in the past 12 months?"
+          ></c-checkbox-toggle-input>
+        </div>
+      </div>
+    </div>
+  </lightning-card>
+</template>

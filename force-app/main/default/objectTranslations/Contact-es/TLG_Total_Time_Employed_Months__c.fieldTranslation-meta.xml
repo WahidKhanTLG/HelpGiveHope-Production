@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Total Time Employed (Months) --></label>
+    <name>TLG_Total_Time_Employed_Months__c</name>
+</CustomFieldTranslation>

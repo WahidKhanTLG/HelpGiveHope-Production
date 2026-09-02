@@ -1,0 +1,24 @@
+lightning-card:not(:last-child) {
+    display: block;
+    margin-bottom: 2.5rem
+    /* margin-bottom: var(--slds-c-card-header-spacing-block-start, var(--sds-c-card-header-spacing-block-start, var(--slds-c-card-header-spacing-block, var(--sds-c-card-header-spacing-block, .75rem)))); */
+}
+
+.slds-form-element[slot="actions"] {
+    top: 20px;
+}
+
+.slds-checkbox_on, .slds-checkbox_off {
+    text-align: center;
+    padding-top: 3px;
+}
+
+/* 
+    .slds-card__body.slds-card__body_inner {
+        display: none;
+    }
+
+    .slds-form-element[slot="actions"]:has(input[type="checkbox"]:checked)+.slds-card__body.slds-card__body_inner {
+        display: block;
+    } 
+*/

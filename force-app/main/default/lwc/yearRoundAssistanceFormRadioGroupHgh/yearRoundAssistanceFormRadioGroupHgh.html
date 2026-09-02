@@ -1,0 +1,33 @@
+<template>
+    <fieldset data-id="container" class={styling}>
+        <legend class="slds-form-element__label"> <!-- slds-form-element__legend  -->
+            <template lwc:if={required}>
+                <abbr class="slds-required" title="required">*</abbr>
+            </template>
+            {label}
+        </legend>
+        <div class="slds-form-element__control">
+            <template for:each={optionList} for:item="option">
+                <span key={option.key} class={option.additionalInfo.fieldContainerStyling}>
+                    <input type="radio" data-id={option.key} id={option.key} value={option.value} name={uniqueName} onchange={changeHandler} />
+                    <label class="slds-radio__label" for={option.key}>
+                        <span class="slds-radio_faux"></span>
+                        <span class="slds-form-element__label">
+                            {option.label}
+                        </span>
+                        <template lwc:if={option.additionalInfo.show}>
+                            <input type="text" name="AdditionalInfo" class="slds-input" placeholder={option.additionalInfo.placeholder}
+                                onchange={additionalInfoChangeHandler} onblur={additionalInfoBlurHandler} oninput={additionalInfoInputHandler} 
+                            />
+                        </template>
+                    </label>
+                </span>
+            </template>
+        </div>
+        <template lwc:if={showError}>
+            <div class="slds-form-element__help">
+                <span>{errorMessage}</span>
+            </div>
+        </template>
+    </fieldset>
+</template>

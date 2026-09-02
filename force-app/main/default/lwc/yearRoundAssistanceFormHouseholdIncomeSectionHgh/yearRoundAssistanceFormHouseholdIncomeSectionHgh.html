@@ -1,0 +1,132 @@
+<template>
+    <lightning-card
+        title="Household Income"
+        icon-name="custom:custom14"
+    >
+        <div class="slds-card__body slds-card__body_inner">
+            <div class="slds-m-vertical_large slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="totalHouseholds"
+                        name="TotalHouseholds"
+                        label="Total # in household"
+                        placeholder="Total # in household"
+                        disabled="Yes"
+                        value={numberInHouseHold}
+                        mask-options={disabledNumberMaskOption}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="totalWages"
+                        name="TotalWages"
+                        label="Total Wages"
+                        placeholder="Total Wages"
+                        disabled="Yes"
+                        value={wages}
+                        mask-options={disabledCurrencyMaskOption}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="totalDisability"
+                        name="TotalDisability"
+                        label="Total Disability"
+                        placeholder="Total Disability"
+                        disabled="Yes"
+                        value={disability}
+                        mask-options={disabledCurrencyMaskOption}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="totalTanif"
+                        name="TotalTanif"
+                        label="Total Tanif"
+                        placeholder="Total Tanif"
+                        disabled="Yes"
+                        value={tanif}
+                        mask-options={disabledCurrencyMaskOption}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="totalSS"
+                        name="TotalSS"
+                        label="Total SS"
+                        placeholder="Total SS"
+                        disabled="Yes"
+                        value={ss}
+                        mask-options={disabledCurrencyMaskOption}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="totalFoodStamps"
+                        name="TotalFoodStamps"
+                        label="Total Food Stamps"
+                        placeholder="Total Food Stamps"
+                        disabled="Yes"
+                        value={foodStamps}
+                        mask-options={disabledCurrencyMaskOption}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="totalUnemployment"
+                        name="TotalUnemployment"
+                        label="Total Unemployment"
+                        placeholder="Total Unemployment"
+                        disabled="Yes"
+                        value={unemployment}
+                        mask-options={disabledCurrencyMaskOption}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="totalChildSupport"
+                        name="TotalChildSupport"
+                        label="Total Child Support"
+                        placeholder="Total Child Support"
+                        disabled="Yes"
+                        value={childSupport}
+                        mask-options={disabledCurrencyMaskOption}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="totalOther"
+                        name="TotalOther"
+                        label="Total Other"
+                        placeholder="Total Other"
+                        disabled="Yes"
+                        value={other}
+                        mask-options={disabledCurrencyMaskOption}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="totalVeterans"
+                        name="TotalVeterans"
+                        label="Total Veterans"
+                        placeholder="Total Veterans"
+                        disabled="Yes"
+                        value={veterans}
+                        mask-options={disabledCurrencyMaskOption}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-mask-input-hgh
+                        lwc:ref="totalIncome"
+                        name="TotalIncome"
+                        label="Total Income"
+                        placeholder="Total Income"
+                        disabled="Yes"
+                        value={totalIncome}
+                        mask-options={disabledCurrencyMaskOption}
+                    ></c-year-round-assistance-form-mask-input-hgh>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

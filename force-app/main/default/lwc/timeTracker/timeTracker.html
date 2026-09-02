@@ -1,0 +1,120 @@
+<template>
+  <div class="hg-shell">
+
+    <!-- LOCAL TOAST (works on Sites + Lightning) -->
+    <template if:true={localToast.visible}>
+      <div class="slds-notify_container slds-is-absolute slds-p-around_medium" style="top:0; left:0; right:0; z-index: 9999;">
+        <div class="slds-notify slds-notify_toast slds-theme_{localToast.variant}" role="status" aria-live="assertive">
+          <span class="slds-assistive-text">{localToast.variant}</span>
+          <span class="slds-icon_container slds-icon-utility-error slds-m-right_small" title={localToast.variant}>
+            <!-- optional icon slot; keep empty or add lightning-icon if you like -->
+          </span>
+          <div class="slds-notify__content">
+            <h2 class="slds-text-heading_small">
+              <span if:true={localToast.title}>{localToast.title}</span>
+            </h2>
+            <p class="slds-m-top_xx-small">{localToast.message}</p>
+          </div>
+          <div class="slds-notify__close">
+            <button class="slds-button slds-button_icon slds-button_icon-inverse" title="Close" onclick={closeLocalToast}>
+              <lightning-icon icon-name="utility:close" size="x-small" alternative-text="Close"></lightning-icon>
+              <span class="slds-assistive-text">Close</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- ROW 1: CENTERED HEADER (your logo) -->
+    <header class="hg-header-centered">
+      <div class="hg-header-logo">
+        <img src={logoUrl} alt="Help Give Hope logo" class="hg-logo-img" />
+      </div>
+      <h1 class="hg-title">Help Give Hope</h1>
+      <p class="hg-subtitle">
+        Volunteer Check-In System | Making a difference in our community
+      </p>
+    </header>
+
+    <!-- ROW 2: LEFT = MISSION, RIGHT = CARD -->
+    <div class="hg-content">
+      <!-- LEFT: Mission -->
+      <section class="hg-mission">
+        <div class="hg-illus">
+          <div class="hg-illus-icon">
+            <img src={missionUrl} alt="Mission logo" class="hg-logo-img" />
+          </div>
+          <div class="hg-illus-copy">
+            <h3>Our Mission</h3>
+            <p>
+              Since 1981, Help Give Hope has been committed to helping families have a brighter future.
+              The efforts of our donors and volunteers have made a difference for thousands of Ozarks children and families.
+            </p>
+            <ul class="hg-bullets">
+              <li>Over 8,000 Ozarks children have had a merrier Christmas</li>
+              <li>138 families have received reliable transportation</li>
+              <li>Thousands of dollars given for general assistance</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: Check In / Out card -->
+      <section class="hg-right">
+        <div class="hg-panel-head">
+          <div class="hg-badge">
+            <lightning-icon
+              icon-name="utility:handshake"
+              alternative-text="Check In / Out"
+              size="x-small"
+              variant="inverse">
+            </lightning-icon>
+          </div>
+          <h2 class="hg-panel-title">Check In / Out</h2>
+        </div>
+
+        <!-- Input / Image card -->
+        <div class="tt-bg">
+          <div class="tt-card">
+            <!-- Input state -->
+            <template if:false={showImage}>
+              <div class="tt-input-row">
+                <div class="tt-input-shell tt-input">
+                  <span class="tt-required" title="Required"></span>
+                  <lightning-input
+                    type="text"
+                    label="Phone or Email"
+                    variant="label-hidden"
+                    placeholder="Enter your phone/email"
+                    class="validate"
+                    message-when-bad-input="Invalid phone number or email address. Please provide valid details."
+                    data-field="emailPhone"
+                    onchange={handleEmail_PhoneChange}
+                    value={Email_Phone}
+                    required>
+                  </lightning-input>
+                </div>
+
+                <button class="tt-go" title="Submit" onclick={handleSubmit} disabled={isBusy}>
+                  <lightning-icon icon-name="utility:forward" alternative-text="Submit" size="x-small"></lightning-icon>
+                </button>
+              </div>
+            </template>
+
+            <!-- Image state -->
+            <template if:true={showImage}>
+              <div class="tt-image-wrap" aria-busy={isBusy}>
+                <img
+                  src={checkInOutImage}
+                  alt={imageAltText}
+                  class="tt-image"
+                  onclick={handleImageClick}/>
+                <div class="tt-image-caption">{imageAltText}</div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</template>

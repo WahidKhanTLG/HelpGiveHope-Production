@@ -1,0 +1,104 @@
+/* yearRoundAssistanceFormInputHgh — field-level styling */
+:host {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* Field container states */
+.slds-form-element {
+  margin-bottom: 0;
+}
+
+.slds-form-element.slds-has-error .slds-input,
+.slds-form-element.slds-has-error .slds-textarea {
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.12);
+  background: #fff5f5;
+}
+
+/* Label */
+.slds-form-element__label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.01em;
+}
+
+.slds-required {
+  color: #e53e3e;
+  margin-right: 0.15rem;
+}
+
+/* Input & Textarea */
+.slds-input,
+.slds-textarea {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: #1a2e35;
+  background: #f8fffe;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+  line-height: 1.5;
+}
+
+.slds-input::placeholder,
+.slds-textarea::placeholder {
+  color: #9aa5b4;
+  font-style: italic;
+}
+
+.slds-input:hover,
+.slds-textarea:hover {
+  border-color: #7ab648;
+  background: #ffffff;
+}
+
+.slds-input:focus,
+.slds-textarea:focus {
+  outline: none;
+  border-color: #00a79d;
+  box-shadow: 0 0 0 3px rgba(0, 167, 157, 0.18);
+  background: #ffffff;
+}
+
+.slds-input:disabled {
+  background: #f1f5f9;
+  color: #475569;
+  border-color: #e2e8f0;
+  cursor: not-allowed;
+}
+
+.slds-textarea {
+  min-height: 80px;
+  resize: none;
+}
+
+/* Error message */
+.slds-form-element__help {
+  display: block;
+  font-size: 0.75rem;
+  color: #e53e3e;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+/* Normalize lightning-input date to match custom inputs */
+.slds-form-element lightning-input {
+  display: block;
+}
+
+.slds-form-element lightning-input .slds-form-element__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #374151;
+  letter-spacing: 0.01em;
+}

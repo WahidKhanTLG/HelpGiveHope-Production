@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Christmas_Application_Status__c</fullName>
+    <label>Christmas Application Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New</fullName>
+                <default>true</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>Emailed/Called</fullName>
+                <default>false</default>
+                <label>Emailed/Called</label>
+            </value>
+            <value>
+                <fullName>Wishlist Incomplete</fullName>
+                <default>false</default>
+                <label>Wishlist Incomplete</label>
+            </value>
+            <value>
+                <fullName>Schedule Home Interview</fullName>
+                <default>false</default>
+                <label>Schedule Home Interview</label>
+            </value>
+            <value>
+                <fullName>Home Interview Scheduled</fullName>
+                <default>false</default>
+                <label>Home Interview Scheduled</label>
+            </value>
+            <value>
+                <fullName>Home Interview Completed</fullName>
+                <default>false</default>
+                <label>Home Interview Completed</label>
+            </value>
+            <value>
+                <fullName>Yes</fullName>
+                <default>false</default>
+                <label>Yes</label>
+            </value>
+            <value>
+                <fullName>No</fullName>
+                <default>false</default>
+                <label>No</label>
+            </value>
+            <value>
+                <fullName>Maybe</fullName>
+                <default>false</default>
+                <label>Maybe</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

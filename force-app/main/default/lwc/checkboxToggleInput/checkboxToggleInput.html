@@ -1,0 +1,25 @@
+<template>
+    <div data-id="container" class={styling}>
+        <label class="slds-form-element__label slds-m-bottom_none" for={id}>
+            <template lwc:if={required}>
+                <abbr class="slds-required" title="required">*</abbr>
+            </template>
+            {label}
+        </label>
+        <div class="slds-checkbox_toggle">
+            <input id={id} type="checkbox" name={name}
+                checked={checked} onchange={changeHandler} 
+            />
+            <span class="slds-checkbox_faux_container">
+                <span class="slds-checkbox_faux" aria-hidden="true" onclick={toggleClickHandler}></span>
+                <span class="slds-checkbox_on">{enableLabel}</span>
+                <span class="slds-checkbox_off">{disableLabel}</span>
+            </span>
+        </div>
+        <template lwc:if={showError}>
+            <div class="slds-form-element__help">
+                <span>{errorMessage}</span>
+            </div>
+        </template>
+    </div>
+</template>

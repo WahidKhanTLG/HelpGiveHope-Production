@@ -1,0 +1,17 @@
+<apex:component controller="HouseholdShoppingEmailController" access="global">
+    <apex:attribute name="acctId" 
+        type="Id" 
+        assignTo="{!accountId}" 
+        required="true" 
+        description="Account Id"
+        access="global"/>
+
+    <apex:repeat value="{!services}" var="service">
+        <li>{!service.displayName} x {!service.quantity}</li>
+    </apex:repeat>
+    
+    <!-- Show message if no services found -->
+    <apex:outputText rendered="{!services.size == 0}">
+        <li>No furniture items found.</li>
+    </apex:outputText>
+</apex:component>

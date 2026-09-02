@@ -1,0 +1,38 @@
+/* yearRoundAssistanceFormApplicantSectionHgh — card theming */
+:host {
+    display: block;
+
+    /* Pass HGH brand into lightning-card */
+    --slds-c-card-color-background: #FFFFFF;
+    --slds-c-card-color-border:     transparent;
+    --slds-c-card-radius-border:    12px;
+    --slds-c-card-sizing-border:    0px;
+
+    /* Card shadow via box-shadow token */
+    --sds-c-card-shadow: 0 2px 12px rgba(0,167,157,0.10);
+
+    filter: drop-shadow(0 2px 8px rgba(0,167,157,0.08));
+}
+
+.loader-inline {
+  position: relative;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.hgh-section-card--duplicate {
+    border: 2px solid red;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.hgh-duplicate-error {
+    color: #c23934;
+    background-color: #fde7e7;
+    border-left: 4px solid #c23934;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}

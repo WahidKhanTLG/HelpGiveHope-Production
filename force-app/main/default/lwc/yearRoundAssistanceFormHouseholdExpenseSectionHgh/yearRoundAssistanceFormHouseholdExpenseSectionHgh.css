@@ -1,0 +1,9 @@
+:host {
+    display: block;
+    --slds-c-card-color-background: #FFFFFF;
+    --slds-c-card-color-border: transparent;
+    --slds-c-card-radius-border: 12px;
+    --slds-c-card-sizing-border: 0px;
+    --sds-c-card-shadow: 0 2px 12px rgba(0,167,157,0.10);
+    filter: drop-shadow(0 2px 8px rgba(0,167,157,0.08));
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TLG_Total_Household_Expenses__c</fullName>
+    <formula>TLG_Rent__c + 
+    TLG_Utilities__c  +   
+    TLG_InternetCable__c    +   
+    TLG_Groceries__c    +
+    TLG_Household_Needs__c  +   
+    TLG_Other__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total Household Expenses</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

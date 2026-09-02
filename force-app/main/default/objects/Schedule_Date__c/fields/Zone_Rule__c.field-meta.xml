@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Zone_Rule__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Zone Rule</label>
+    <referenceTo>Zone_Rule__c</referenceTo>
+    <relationshipLabel>Schedule Dates</relationshipLabel>
+    <relationshipName>Schedule_Dates_Rule</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Landlord Authorization</label>
+    <protected>false</protected>
+    <values>
+        <field>body__c</field>
+        <value xsi:type="xsd:string">&lt;p&gt;&lt;span style=&quot;font-size: medium; font-family: -webkit-standard;&quot;&gt;In order to review your application, we need to speak with your landlord.&amp;nbsp;Please reach out to them (call, email or text) to authorize Help Give Hope to discuss your account. Respond to this email when that is done so we know to reach back out to them. This does not guarantee assistance, it is simply the next step in reviewing your application.&amp;nbsp;&lt;/span&gt;&lt;/p&gt;</value>
+    </values>
+    <values>
+        <field>subject__c</field>
+        <value xsi:type="xsd:string">Landlord Authorization</value>
+    </values>
+</CustomMetadata>

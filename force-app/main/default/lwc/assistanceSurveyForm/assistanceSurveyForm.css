@@ -1,0 +1,435 @@
+/* Updated Complete CSS (assistanceSurveyForm.css) */
+
+/* Define component-level CSS variables */
+:host {
+    --primary-color: #00A79D;
+    --secondary-color: #008F8C;
+    --accent-color: #E74C3C;
+    --background-color: #F9F9F9;
+    --success-color: #27AE60;
+    --text-color: #2C3E50;
+    --light-text: #7F8C8D;
+    --valid-bg-color: #e6f2f5;
+    --transition-speed: 0.3s;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Styles for the overall container and layout */
+.survey-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #f5f7fa;
+}
+
+.survey-container .slds-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    border: none;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.survey-container .slds-card__header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 1.5rem 2rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    transition: var(--transition-speed);
+}
+
+.survey-container .slds-card__header h1 {
+    font-weight: 600;
+    margin: 0;
+    font-size: 3rem;
+    line-height: 1.3;
+    text-align: center;
+    flex: 1;
+}
+
+.intro-text {
+    text-align: center;
+    padding: 1.5rem 2rem 0;
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.form-content {
+    padding: 1rem 2rem 2rem;
+}
+
+.form-section {
+    background-color: #f8fafc;
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.form-section.valid {
+    background-color: var(--valid-bg-color);
+}
+
+.thank-you-message {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-color);
+}
+
+.thank-you-message h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.thank-you-message p {
+    font-size: 2rem;
+    font-weight: bolder;
+    color: var(--light-text);
+}
+
+.form-label {
+    display: block;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+.rating-container {
+    margin-top: 0.5rem;
+}
+
+.rating-options {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.rating-options > div {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.25rem 0.5rem;
+    border-radius: 8px;
+    background: #f8fafc;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.rating-options > div.highlighted {
+    background: #f0f4f7;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.rating-options > div.selected {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
+}
+
+.rating-options > div.selected .rating-label,
+.rating-options > div.selected .emoji {
+    color: white;
+}
+
+.rating-options > div:hover {
+    background: #56dccf;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.emoji {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: var(--text-color);
+    transition: all var(--transition-speed) ease;
+}
+
+.rating-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: block;
+    color: var(--text-color);
+    transition: all var(--transition-speed) ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.custom-toggle lightning-input .slds-checkbox_faux {
+    background-color: #e0e0e0;
+    border-color: #e0e0e0;
+}
+
+.custom-toggle lightning-input [data-ally-state="checked"] .slds-checkbox_faux {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.custom-toggle lightning-input [data-ally-state="checked"] .slds-checkbox_faux:after {
+    border-color: white;
+}
+
+.submit-section {
+    text-align: center;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: all var(--transition-speed) ease;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* === UPDATED BUTTON STYLES START === */
+
+/* Apply custom styles to lightning-button using SLDS hooks */
+.submit-button {
+    /* Apply your gradient background */
+    --slds-c-button-color-background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --sds-c-button-neutral-color-background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    /* Remove border */
+    --slds-c-button-color-border: transparent;
+    --sds-c-button-neutral-color-border: transparent !important;
+
+    --slds-c-button-sizing-border: 0;
+    --slds-c-button-sizing-border: 0 !important;
+
+    /* Set text color */
+    --slds-c-button-text-color: white;
+    /* Apply border radius */
+    --slds-c-button-radius-border: 50px;
+    /* Apply padding hooks */
+    --slds-c-button-spacing-inline-start: 2.5rem;
+    --slds-c-button-spacing-inline-end: 2.5rem;
+    --slds-c-button-spacing-block-start: 0.85rem;
+    --slds-c-button-spacing-block-end: 0.85rem;
+    /* Font weight/size (applied directly) */
+    font-weight: 600;
+    font-size: 1rem;
+    /* Width/Display */
+    width: 100%;
+    display: block;
+    /* Transitions */
+    --slds-c-button-transition-duration: var(--transition-speed);
+    /* Box shadow */
+    --slds-c-button-shadow: 0 4px 12px rgba(0, 167, 157, 0.2);
+
+    /* --- Hover/Focus overrides --- */
+    --slds-c-button-color-background-hover: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Keep background on hover */
+    --slds-c-button-color-border-hover: transparent; /* Keep border transparent on hover */
+    --slds-c-button-text-color-hover: white; /* Keep text white on hover */
+    --slds-c-button-shadow-hover: 0 6px 16px rgba(0, 167, 157, 0.3); /* Your hover shadow */
+
+    /* --- ADDED FOCUS STATE OVERRIDE --- */
+    --slds-c-button-color-background-focus: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Keep background on focus */
+    --slds-c-button-color-border-focus: transparent; /* Keep border transparent on focus */
+    --slds-c-button-text-color-focus: white; /* Keep text white on focus */
+    --slds-c-button-shadow-focus: 0 0 3px 2px var(--secondary-color); /* Optional: Add a subtle focus ring using your color */
+    /* --- END FOCUS STATE OVERRIDE --- */
+
+    /* Ensure internal button element inherits background (might help) */
+    --slds-c-button-line-height: inherit; /* Adjust line height if needed */
+}
+
+/* Target internal elements to remove their background */
+.submit-button .slds-button__label,    /* Target the label container */
+.submit-button lightning-primitive-icon, /* Target the icon container */
+.submit-button button                   /* ALSO Target the internal button element */
+{
+    background: transparent !important; /* Force removal of any inner background */
+    color: inherit !important;          /* Ensure text/icon color is inherited */
+    border: none !important;            /* Ensure no internal border either */
+    box-shadow: none !important;        /* Ensure no internal box-shadow either */
+}
+
+/* Target the internal button for transform on hover */
+.submit-button:hover:not(:disabled) button {
+    transform: translateY(-2px);
+}
+
+/* Apply disabled styles using hooks */
+.submit-button[disabled] {
+    --slds-c-button-color-background: #cccccc;
+    --slds-c-button-text-color: #666666;
+    --slds-c-button-color-border: transparent;
+    --slds-c-button-shadow: none;
+    cursor: not-allowed;
+}
+
+/* Ensure the internal button also gets the disabled cursor */
+.submit-button[disabled] button {
+     cursor: not-allowed;
+}
+/* === UPDATED BUTTON STYLES END === */
+
+
+/* Keep existing styles for error messages, char counts, etc. */
+.error-message {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.char-count {
+    font-size: 0.9rem;
+    color: var(--light-text);
+    margin-top: 0.5rem;
+}
+
+/* Keep existing Media Queries */
+@media (min-width: 1024px) {
+    .survey-container {
+        padding: 3rem;
+    }
+    .survey-container .slds-card__header h1 {
+        font-size: 3rem;
+    }
+    .form-label {
+        font-size: 1.1rem;
+    }
+    .intro-text {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+    .rating-options > div {
+        padding: 1.5rem 0.5rem;
+    }
+    .rating-label {
+        font-size: 1rem;
+    }
+    .emoji {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .survey-container {
+        padding: 1rem;
+    }
+    .survey-container .slds-card__header h1 {
+        font-size: 3rem;
+    }
+    .form-content {
+        padding: 1rem;
+    }
+    .form-section {
+        margin: 1.25rem 0;
+    }
+    .rating-options {
+        flex-wrap: wrap;
+    }
+    .rating-options > div {
+        flex: 1 1 calc(50% - 0.75rem);
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .survey-container .slds-card__header {
+        padding: 1rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .logo {
+        height: 50px;
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    .rating-options > div {
+        flex: 1 1 100%;
+    }
+    .rating-label {
+        white-space: normal;
+    }
+    .submit-section {
+        margin-top: 1rem;
+    }
+    .thank-you-message {
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+    .thank-you-message.hidden {
+        display: none;
+    }
+}
+
+div.slds-grid.slds-grid_align-center:not(:last-child) {
+    margin-bottom: 2.5rem
+    /* margin-bottom: var(--slds-c-card-header-spacing-block-start, var(--sds-c-card-header-spacing-block-start, var(--slds-c-card-header-spacing-block, var(--sds-c-card-header-spacing-block, .75rem)))); */
+}
+
+/* Premium styling for the form unavailable message */
+.form-unavailable-container {
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.form-unavailable-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.form-unavailable-container .slds-card__header {
+    padding: 1rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.message-container {
+    padding: 1.5rem 1rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.message-container .slds-text-font_bold {
+    font-size: 1.2rem;
+    color: rgb(62, 62, 60);
+}
+
+.slds-box.slds-theme_info {
+    background-color: #f8fbfe;
+    border-color: #0070d2;
+    border-left-width: 4px;
+    color: #16325c;
+}

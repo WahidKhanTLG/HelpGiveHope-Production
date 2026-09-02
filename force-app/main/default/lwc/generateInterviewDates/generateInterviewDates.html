@@ -1,0 +1,836 @@
+<template>
+  <!-- Main Container with 2-Panel Layout -->
+  <div class="slds-grid slds-wrap slds-gutters_large slds-p-around_large main-container">
+    
+    <!-- Main Card Header with Tabs -->
+    <div class="slds-col slds-size_1-of-1">
+      <div class="slds-card">
+        <div class="slds-card__header gradient-header">
+          <header class="slds-media slds-media_center">
+            <div class="slds-media__figure">
+              <lightning-icon icon-name="standard:settings" size="medium" variant="inverse"></lightning-icon>
+            </div>
+            <div class="slds-media__body">
+              <h2 class="slds-card__header-title">
+                <span class="slds-text-heading_large gradient-title">{title}</span>
+              </h2>
+              <p class="slds-text-body_regular gradient-subtitle">Generate interview dates and create placeholders</p>
+            </div>
+          </header>
+        </div>
+        
+        <!-- Tab Navigation -->
+        <div class="slds-tabs_default">
+          <ul class="slds-tabs_default__nav">
+            <li class="slds-tabs_default__item">
+                <button type="button" class={datesTabClass}
+                  onclick={handleTabChange}
+                  data-tab-value="dates">
+                    <lightning-icon icon-name="standard:date_time" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                    Generate Schedule Dates
+                </button>
+            </li>
+            <li class="slds-tabs_default__item">
+                <button type="button" class={placeholdersTabClass}
+                  onclick={handleTabChange}
+                  data-tab-value="placeholders">
+                    <lightning-icon icon-name="standard:event" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                    Create Interview Placeholders
+                </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Date Generation Tab Content -->
+    <template if:true={isShowingDatesTab}>
+      <!-- Left Panel: Configuration (Narrower) -->
+      <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+        <!-- Main Configuration Card Container -->
+        <div class="slds-card main-config-card">
+          <div class="slds-card__header">
+            <header class="slds-media slds-media_center">
+              <div class="slds-media__figure">
+                <lightning-icon icon-name="standard:settings" size="small"></lightning-icon>
+              </div>
+              <div class="slds-media__body">
+                <h2 class="slds-card__header-title">
+                  <span class="slds-text-heading_medium">Date Configuration</span>
+                </h2>
+              </div>
+            </header>
+          </div>
+        
+          <div class="slds-card__body slds-card__body_inner">
+            <!-- Year Selection -->
+            <div class="config-section slds-m-bottom_medium">
+              <div class="slds-form-element__label slds-text-heading_small">Select Year</div>
+              <div class="slds-m-top_x-small">
+                <lightning-combobox
+                  label=""
+                  value={yearOption}
+                  options={yearOptions}
+                  placeholder="Choose year..."
+                  onchange={handleYearOption}
+                  disabled={busy}
+                  variant="label-hidden">
+                </lightning-combobox>
+                
+                <template if:true={showCustomYear}>
+                  <div class="slds-m-top_small">
+                    <lightning-input
+                      type="text"
+                      label=""
+                      value={customYear}
+                      placeholder="Enter custom year (e.g., 2026)"
+                      maxlength="4"
+                      minlength="4"
+                      pattern="^[0-9]{4}$"
+                      message-when-pattern-mismatch="Enter a 4-digit year"
+                      onchange={handleCustomYear}
+                      disabled={busy}
+                      variant="label-hidden">
+                    </lightning-input>
+                  </div>
+                </template>
+                
+                <!-- Year Status Banner -->
+                <template if:true={yearBanner}>
+                  <div class="slds-m-top_small">
+                    <div class="slds-notify slds-notify_toast slds-theme_info status-banner">
+                      <div class="slds-notify__content">
+                        <h2 class="slds-text-heading_small">
+                          <lightning-icon icon-name="utility:info" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                          {yearBanner}
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </div>
+
+            <!-- Zone Selection Section -->
+            <template if:true={year}>
+              <div class="config-section slds-m-bottom_medium">
+                <div class="zone-section-header">
+                  <div class="slds-form-element__label slds-text-heading_small">Select Zones</div>
+                  <template if:true={selectedZoneCount}>
+                    <span class="selected-zone-count-badge">{selectedZoneCount} selected</span>
+                  </template>
+                </div>
+                <div class="slds-m-top_x-small">
+                  
+            
+                  <!-- Zone Selection Cards -->
+                  <div class="zone-cards-container">
+                    <template for:each={zoneOptions} for:item="zone">
+                      <button key={zone.value} type="button" class="zone-card-wrapper" data-zone-id={zone.value} onclick={handleZoneTileClick}>
+                        <div class={zone.tileClass}>
+                          <div class="zone-card-content">
+                            <div class="zone-card-icon">
+                              <lightning-icon 
+                                icon-name={zone.iconName} 
+                                size="small" 
+                                variant={zone.iconVariant}>
+                              </lightning-icon>
+                              <template if:true={zone.selected}>
+                                <lightning-icon
+                                  icon-name="utility:check"
+                                  size="xx-small"
+                                  variant="inverse"
+                                  class="zone-selected-check">
+                                </lightning-icon>
+                              </template>
+                            </div>
+                            <div class="zone-card-info">
+                              <span class="zone-card-name">{zone.label}</span>
+                              <div class="zone-card-status-stack">
+                                <template if:true={zone.hasExistingRecords}>
+                                  <span class="zone-card-status records">Has Records</span>
+                                </template>
+                                <template if:true={zone.selected}>
+                                  <span class="zone-card-status selected">Selected</span>
+                                </template>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </button>
+                    </template>
+                  </div>
+            
+                  
+                  <!-- Selection Summary -->
+                  <div class="selection-summary slds-m-top_medium">
+                    <div class="slds-box slds-theme_shade">
+                      <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+                        <div class="slds-col">
+                          <span class="slds-text-body_regular">
+                            <lightning-icon icon-name="utility:check" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                            <template if:true={selectedZoneCount}>
+                              {selectedZoneCount} {selectedZoneLabel} selected
+                            </template>
+                            <template if:false={selectedZoneCount}>
+                              No zones selected
+                            </template>
+                          </span>
+                        </div>
+                      </div>
+                      <!-- Controls: Select All / Clear All always visible -->
+                      <div class="slds-grid slds-gutters_x-small slds-m-top_small">
+                        <div class="slds-col">
+                          <lightning-button
+                            label="Select All"
+                            onclick={selectAllZones}
+                            variant="brand"
+                            size="small"
+                            icon-name="utility:check"
+                            icon-position="left"
+                            class="slds-button_stretch enhanced-control-button">
+                          </lightning-button>
+                        </div>
+                        <div class="slds-col">
+                          <lightning-button
+                            label="Clear All"
+                            onclick={clearAllZones}
+                            variant="neutral"
+                            size="small"
+                            icon-name="utility:clear"
+                            icon-position="left"
+                            class="slds-button_stretch enhanced-control-button"
+                            disabled={disableGenerate}>
+                          </lightning-button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Existing Records Warning -->
+                  <template if:true={hasSelectedZonesWithExistingRecords}>
+                    <div class="slds-m-top_medium">
+                      <div class="slds-notify slds-notify_alert slds-theme_warning">
+                        <div class="slds-notify__content">
+                          <div class="slds-grid slds-grid_align-center">
+                            <lightning-icon icon-name="utility:warning" size="x-small" class="slds-m-right_small"></lightning-icon>
+                            <span class="slds-text-body_regular">
+                              Some zones have existing records for {year}. Records will be displayed below.
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </template>
+
+            <!-- Generate Action Section -->
+            <template if:true={showGenerateSection}>
+              <div class="config-section">
+                <div class="generate-action-card">
+                  <div class="slds-m-bottom_medium">
+                    <div class="generate-info">
+                      <h3 class="slds-text-heading_small slds-m-bottom_x-small">Ready to Generate</h3>
+                      <p class="slds-text-body_small slds-text-color_weak">
+                        This will create {expectedRecordCount} interview dates for the selected zones
+                      </p>
+                    </div>
+                  </div>
+                  <div class="slds-grid slds-gutters_small">
+                    <div class="slds-col slds-size_1-of-2">
+                      <lightning-button 
+                        variant="brand" 
+                        label="Generate Dates" 
+                        onclick={onGenerate} 
+                        disabled={disableGenerate}
+                        icon-name="utility:add"
+                        icon-position="left"
+                        class="slds-button_stretch generate-primary-button">
+                      </lightning-button>
+                    </div>
+                    <template if:true={selectedZoneCount}>
+                      <div class="slds-col slds-size_1-of-2">
+                        <lightning-button 
+                          label="Preview Schedule" 
+                          onclick={onPreview}
+                          disabled={busy}
+                          variant="neutral"
+                          icon-name="utility:preview"
+                          icon-position="left"
+                          class="slds-button_stretch">
+                        </lightning-button>
+                      </div>
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </template>
+            
+            <template if:true={busy}>
+              <div class="slds-align_absolute-center slds-m-top_medium">
+                <lightning-spinner alternative-text="Processing..." size="small"></lightning-spinner>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Generated Records & Results -->
+      <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-3">
+
+        <!-- Schedule Preview & Results Section -->
+        <template if:true={rows.length}>
+          <div class="slds-card results-panel">
+            <div class="slds-card__header">
+              <header class="slds-media slds-media_center">
+                <div class="slds-media__figure">
+                  <lightning-icon icon-name="standard:event" size="small" variant="success"></lightning-icon>
+                </div>
+                <div class="slds-media__body">
+                  <h2 class="slds-card__header-title">
+                    <span class="slds-text-heading_medium">Schedule Preview</span>
+                  </h2>
+                  <p class="slds-text-body_small slds-text-color_weak">Review and edit your generated schedule</p>
+                </div>
+                
+                <!-- Summary Badges -->
+                <div class="slds-no-flex">
+                  <div class="slds-grid slds-gutters_xx-small slds-grid_vertical-align-center">
+                    <div class="slds-col">
+                      <span class="slds-badge slds-badge_success">
+                        <lightning-icon icon-name="utility:add" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+                        {counts.create} Create
+                      </span>
+                    </div>
+                    <div class="slds-col">
+                      <span class="slds-badge slds-badge_warning">
+                        <lightning-icon icon-name="utility:edit" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+                        {counts.update} Update
+                      </span>
+                    </div>
+                    <div class="slds-col">
+                      <span class="slds-badge">
+                        <lightning-icon icon-name="utility:skip" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+                        {counts.skip} Skip
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </header>
+            </div>
+
+            <div class="slds-card__body slds-card__body_inner">
+              <!-- Debug tools: zone filter + two-column toggle -->
+              <div class="slds-grid slds-gutters_small slds-m-bottom_small">
+                <div class="slds-col slds-size_1-of-2">
+                  <lightning-combobox
+                    name="zoneFilter"
+                    label="Filter by Zone"
+                    value={zoneFilter}
+                    options={zoneFilterOptions}
+                    onchange={handleZoneFilterChange}>
+                  </lightning-combobox>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-p-top_large">
+                  <lightning-input type="toggle"
+                    label="Debug View (Rule → Date table)"
+                    checked={debugView}
+                    onchange={handleDebugToggle}>
+                  </lightning-input>
+                </div>
+              </div>
+
+              <!-- Two-column debug table -->
+              <template if:true={debugView}>
+                <lightning-datatable 
+                  key-field="id" 
+                  data={debugRows} 
+                  columns={debugColumns}
+                  hide-checkbox-column
+                  class="zone-table slds-m-bottom_medium">
+                </lightning-datatable>
+              </template>
+
+              <!-- Quick Actions -->
+              <div class="slds-grid slds-gutters_small slds-m-bottom_medium">
+                <div class="slds-col">
+                  <lightning-button
+                    label="Expand All Zones"
+                    onclick={expandAllZones}
+                    variant="neutral"
+                    size="small">
+                  </lightning-button>
+                </div>
+                <div class="slds-col">
+                  <lightning-button
+                    label="Collapse All Zones"
+                    onclick={collapseAllZones}
+                    variant="neutral"
+                    size="small">
+                  </lightning-button>
+                </div>
+                <div class="slds-col">
+                  <lightning-button-menu alternative-text="Display options" variant="border-filled" icon-size="x-small" menu-alignment="right" onselect={handleDisplayMenuSelect}>
+                    <lightning-menu-item value="toggleCompactView" label="Toggle Total Records Indicator"></lightning-menu-item>
+                    <lightning-menu-divider></lightning-menu-divider>
+                    <lightning-menu-item value="debugView" label="Debug View"></lightning-menu-item>
+                  </lightning-button-menu>
+                </div>
+                <div class="slds-col slds-no-flex">
+                  <div class="slds-text-body_small slds-text-color_weak">
+                    <lightning-icon icon-name="utility:info" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+                    Click dates to edit, select rows to generate specific zones
+                  </div>
+                </div>
+              </div>
+
+              <template if:true={previewLockedDateCount}>
+                <div class="slds-notify slds-notify_alert slds-theme_warning slds-m-bottom_medium" role="alert">
+                  <div class="slds-notify__content">
+                    <lightning-icon icon-name="utility:warning" size="x-small" class="slds-m-right_small"></lightning-icon>
+                    {previewLockedDateCount} unique date(s) already have booked placeholder rows behind them, so preview-side delete will skip those dates. Review the backend debug view for the exact schedule rows.
+                    <template if:true={previewLockedZoneNames}>
+                      <span class="slds-m-left_x-small">Zones: <strong>{previewLockedZoneNames}</strong></span>
+                    </template>
+                  </div>
+                </div>
+              </template>
+
+              <!-- Zone-Based Schedule Display -->
+              <div class="schedule-zones-container">
+                <template for:each={groupedByZone} for:item="zoneGroup">
+                  <div key={zoneGroup.zoneName} class="zone-section">
+                    
+                    <!-- Zone Header -->
+                    <button type="button" class="zone-header" onclick={toggleZoneExpansion} data-zone-name={zoneGroup.zoneName}>
+                      <div class="slds-grid slds-grid_vertical-align-center">
+                        <div class="slds-col slds-grow">
+                          <div class="slds-grid slds-grid_vertical-align-center slds-gutters_x-small">
+                            <div class="slds-col slds-shrink-none">
+                              <lightning-icon 
+                                icon-name={zoneGroup.expandIcon} 
+                                size="x-small" 
+                                class="expand-icon">
+                              </lightning-icon>
+                            </div>
+                            <div class="slds-col">
+                              <h3 class="zone-title">{zoneGroup.zoneName}</h3>
+                            </div>
+                            <div class="slds-col slds-shrink-none">
+                              <span class="slds-badge slds-badge_light zone-count-badge">
+                                {zoneGroup.itemCount} unique dates
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="slds-col slds-shrink-none">
+                          <div class="slds-grid slds-gutters_xx-small">
+                            <template if:true={zoneGroup.createCount}>
+                              <div class="slds-col">
+                                <span class="slds-badge slds-badge_success zone-action-badge">
+                                  {zoneGroup.createCount} Create
+                                </span>
+                              </div>
+                            </template>
+                            <template if:true={zoneGroup.updateCount}>
+                              <!-- Update badge intentionally hidden per requirements -->
+                            </template>
+                            <template if:true={zoneGroup.skipCount}>
+                              <div class="slds-col">
+                                <span class="slds-badge zone-action-badge">
+                                  {zoneGroup.skipCount} Skip
+                                </span>
+                              </div>
+                            </template>
+                            <template if:true={zoneGroup.lockedCount}>
+                              <div class="slds-col">
+                                <span class="slds-badge zone-action-badge">
+                                  {zoneGroup.lockedCount} Locked
+                                </span>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+
+                    <!-- Zone Content (Expandable) -->
+                    <template if:true={zoneGroup.isExpanded}>
+                      <div class="zone-content">
+                        <lightning-datatable 
+                          key-field="id" 
+                          data={zoneGroup.items} 
+                          columns={zoneColumns}
+                          selected-rows={zoneGroup.selectedRowIds}
+                          data-zone-name={zoneGroup.zoneName}
+                          onrowselection={handleRowSelection}
+                          draft-values={draftValues}
+                          onsave={handleSave}
+                          class="zone-table">
+                        </lightning-datatable>
+                      </div>
+                    </template>
+                  </div>
+                </template>
+              </div>
+            </div>
+          </div>
+          
+        </template>
+
+        <!-- Empty State -->
+        <template if:false={rows.length}>
+          <div class="slds-card empty-state-panel">
+            <div class="slds-card__body slds-card__body_inner">
+              <div class="slds-align_absolute-center slds-text-align_center slds-p-vertical_x-large">
+                <lightning-icon icon-name="standard:scheduling_policy" size="large" class="slds-icon-text-light"></lightning-icon>
+                <h3 class="slds-text-heading_medium slds-m-top_medium">Interview Schedule</h3>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+
+    <!-- Placeholder Tab Content -->
+    <template if:true={isShowingPlaceholdersTab}>
+      <div class="slds-col slds-size_1-of-1">
+        <!-- Empty State when no dates are generated -->
+        <template if:true={showEmptyPlaceholdersState}>
+          <div class="slds-text-align_center slds-p-around_xx-large">
+            <lightning-icon icon-name="standard:first_non_empty" size="large" class="slds-m-bottom_medium"></lightning-icon>
+            <h3 class="slds-text-heading_medium slds-m-bottom_small">No Schedule Dates Generated Yet</h3>
+            <p class="slds-text-body_regular">First generate schedule dates in the Date Generation tab.</p>
+            <p class="slds-text-body_small slds-m-top_small slds-text-color_weak">
+              After generating schedule dates, you can create placeholder records for each date.
+            </p>
+            <lightning-button 
+              label="Go to Date Generation Tab" 
+              onclick={handleTabChange}
+              data-tab-value="dates"
+              variant="neutral" 
+              class="slds-m-top_medium">
+            </lightning-button>
+          </div>
+        </template>
+        
+        <!-- Placeholder Generator Content -->
+        <template if:false={showEmptyPlaceholdersState}>
+          <div class="slds-grid slds-gutters">
+            <!-- Left Panel - Configuration -->
+            <div class="slds-col slds-size_4-of-12">
+              <div class="slds-card placeholders-card slds-m-bottom_small">
+                <div class="slds-card__header">
+                  <h3 class="slds-text-heading_small slds-m-bottom_small">Generate Interview Placeholders</h3>
+                </div>
+                <div class="slds-card__body slds-p-around_medium">
+                  <!-- Zone Selection -->
+                  <div class="slds-form-element slds-m-bottom_medium">
+                    <label class="slds-form-element__label slds-text-title_bold" for="zone-select">Zone</label>
+                    <div class="slds-form-element__control">
+                      <lightning-combobox
+                        name="zoneId"
+                        label=""
+                        variant="label-hidden"
+                        value={selectedZoneId}
+                        options={placeholderZoneOptions}
+                        onchange={handlePlaceholderZoneChange}
+                        disabled={busy}
+                      ></lightning-combobox>
+                      <template if:true={selectedZoneSummary}>
+                        <div class="slds-text-body_small slds-text-color_weak slds-m-top_xx-small">
+                          This zone has {selectedZoneDateCount} unique dates available
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                  
+                  <!-- Mode Selection -->
+                  <div class="slds-form-element slds-m-bottom_medium">
+                    <label class="slds-form-element__label slds-text-title_bold" for="mode-select">Mode</label>
+                    <div class="slds-form-element__control">
+                      <lightning-combobox
+                        name="mode"
+                        label=""
+                        variant="label-hidden"
+                        value={selectedMode}
+                        options={modeOptions}
+                        onchange={handleModeChange}
+                        disabled={busy}
+                      ></lightning-combobox>
+                    </div>
+                  </div>
+                  
+                  <!-- Slots per Date -->
+                  <div class="slds-form-element slds-m-bottom_medium">
+                    <label class="slds-form-element__label slds-text-title_bold" for="slots-select">Slots per Date</label>
+                    <div class="slds-form-element__control">
+                      <lightning-combobox
+                        name="slots"
+                        label=""
+                        variant="label-hidden"
+                        value={selectedSlots}
+                        options={slotsOptions}
+                        onchange={handleSlotsChange}
+                        disabled={busy}
+                      ></lightning-combobox>
+                    </div>
+                  </div>
+                  
+                  <!-- Process Button -->
+                  <div class="slds-m-top_medium">
+                    <lightning-button
+                      label="Create Interview Placeholders"
+                      onclick={handleProcessPlaceholders}
+                      disabled={isProcessDisabled}
+                      variant="brand"
+                      icon-name="utility:record_create"
+                    ></lightning-button>
+                  </div>
+                  
+                  <!-- Last Run Summary -->
+                  <template if:true={lastGeneratedSummary}>
+                    <div class="slds-box slds-box_xx-small slds-theme_success slds-m-top_medium">
+                      <lightning-icon icon-name="utility:success" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+                      <span>{lastGeneratedSummary}</span>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Right Panel - Date Selection -->
+            <div class="slds-col slds-size_8-of-12">
+              <div class="slds-card placeholders-card slds-m-bottom_small">
+                <div class="slds-card__header">
+                  <h3 class="slds-text-heading_small slds-m-bottom_small">
+                    Select Dates
+                    <template if:true={selectedDateIds.length}>
+                      <span class="slds-badge slds-m-left_small">{selectedDateIds.length} selected</span>
+                    </template>
+                  </h3>
+                </div>
+                <div class="slds-card__body slds-p-around_medium placeholders-body">
+                  <template if:true={busy}>
+                    <div class="slds-is-relative slds-p-vertical_large">
+                      <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+                    </div>
+                  </template>
+                  
+                  <template if:false={busy}>
+                    <!-- Date Card View (for few dates) -->
+                    <template if:true={shouldShowDateCards}>
+                      <div class="date-cards-container slds-grid slds-wrap slds-gutters">
+                        <template for:each={dateOptions} for:item="date">
+                          <div key={date.value} class="slds-col slds-size_1-of-4 slds-p-vertical_x-small">
+                            <button type="button" class={date.pillClass} data-date={date.value} onclick={handleDateCardClick} onkeydown={handleDateCardKeydown}>
+                              <div class="pill-content">
+                                <lightning-icon icon-name="standard:date_time" size="x-small"></lightning-icon>
+                                <span class="date-name">{date.label}</span>
+                                <template if:true={date.isSelected}>
+                                  <lightning-icon icon-name="utility:check" size="x-small" class="pill-check"></lightning-icon>
+                                </template>
+                              </div>
+                            </button>
+                          </div>
+                        </template>
+                      </div>
+                    </template>
+                    
+                    <!-- List View (for many dates) -->
+                    <template if:false={shouldShowDateCards}>
+                      <lightning-dual-listbox
+                        name="dates"
+                        label=""
+                        source-label="Available Dates"
+                        selected-label="Selected Dates"
+                        options={dateOptionsForListbox}
+                        value={selectedUniqueDates}
+                        onchange={handleDateListboxChange}
+                        disable-reordering
+                      ></lightning-dual-listbox>
+                    </template>
+                    
+                    <!-- Expected record count -->
+                    <template if:true={totalRecordsToGenerate}>
+                      <div class="slds-box slds-box_xx-small slds-theme_info slds-m-top_medium">
+                        <lightning-icon icon-name="utility:info" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+                        <span>This will generate {totalRecordsToGenerate} placeholder records.</span>
+                      </div>
+                    </template>
+                    
+                    <!-- Empty state -->
+                    <template if:false={dateOptions.length}>
+                      <div class="slds-text-align_center slds-p-around_medium slds-text-color_weak">
+                        <lightning-icon icon-name="standard:date_time" size="small" class="slds-m-bottom_small"></lightning-icon>
+                        <template if:false={selectedZoneId}>
+                          <p>Select a zone to see available dates</p>
+                        </template>
+                        <template if:true={selectedZoneId}>
+                          <p>No schedule dates found for {year} in this zone. Use "Generate Dates" in the Date Generation tab first.</p>
+                        </template>
+                      </div>
+                    </template>
+                  </template>
+                </div>
+              </div>
+
+              <div class="slds-card placeholders-card slds-m-bottom_small">
+                <div class="slds-card__header">
+                  <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-gutters_small">
+                    <div class="slds-col">
+                      <h3 class="slds-text-heading_small">Existing Placeholder Rows (Backend Debug View)</h3>
+                      <p class="slds-text-body_small slds-text-color_weak slds-m-top_xx-small">
+                        Toggle to review the real backend placeholder rows, see each schedule record Id, and delete only rows that are not already booked.
+                      </p>
+                    </div>
+                    <div class="slds-col slds-no-flex">
+                      <lightning-input
+                        type="toggle"
+                        label="Show backend placeholder debug view"
+                        checked={showExistingPlaceholderRows}
+                        onchange={handleExistingPlaceholderToggle}>
+                      </lightning-input>
+                    </div>
+                  </div>
+                </div>
+
+                <template if:true={showExistingPlaceholderRows}>
+                  <div class="slds-card__body slds-p-around_medium placeholders-body">
+                    <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-m-bottom_small slds-gutters_small">
+                      <div class="slds-col">
+                        <p class="slds-text-body_small slds-text-color_weak">
+                          <template if:true={selectedZoneId}>
+                            Showing rows for the selected zone in {activePlaceholderYear}.
+                          </template>
+                          <template if:false={selectedZoneId}>
+                            Showing rows for all zones in {activePlaceholderYear}.
+                          </template>
+                        </p>
+                        <p class="slds-text-body_small slds-text-color_weak slds-m-top_xx-small">
+                          Booked rows stay visible for debugging, but their checkboxes are disabled because the backend trigger blocks deleting them.
+                        </p>
+                      </div>
+                      <template if:true={showDeleteSelectedPlaceholderButton}>
+                        <div class="slds-col slds-no-flex">
+                          <lightning-button
+                            label="Delete Selected Placeholder Rows"
+                            title="Delete the selected unbooked placeholder rows"
+                            onclick={handleDeleteSelectedPlaceholders}
+                            variant="destructive"
+                            disabled={busy}
+                            icon-name="utility:clear"
+                            icon-position="left">
+                          </lightning-button>
+                        </div>
+                      </template>
+                    </div>
+
+                    <template if:true={hasExistingPlaceholderRows}>
+                      <lightning-datatable
+                        key-field="id"
+                        data={existingPlaceholderRows}
+                        columns={existingPlaceholderColumns}
+                        disabled-rows={disabledPlaceholderScheduleIds}
+                        selected-rows={selectedPlaceholderScheduleIds}
+                        onrowselection={handleExistingPlaceholderSelection}
+                        class="zone-table">
+                      </lightning-datatable>
+                      <template if:true={selectedPlaceholderScheduleCount}>
+                        <div class="slds-m-top_small slds-text-body_small slds-text-color_weak">
+                          {selectedPlaceholderScheduleCount} {selectedPlaceholderScheduleLabel} selected.
+                        </div>
+                      </template>
+                    </template>
+
+                    <template if:false={hasExistingPlaceholderRows}>
+                      <div class="slds-text-align_center slds-p-around_medium slds-text-color_weak">
+                        <lightning-icon icon-name="standard:event" size="small" class="slds-m-bottom_small"></lightning-icon>
+                        <p>No placeholder rows found for the current filter.</p>
+                      </div>
+                    </template>
+                  </div>
+                </template>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <template if:true={showDeleteModal}>
+    <dialog open aria-labelledby="modal-heading-01" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <header class="slds-modal__header slds-theme_error">
+          <lightning-button-icon
+            icon-name="utility:close"
+            onclick={closeDeleteModal}
+            alternative-text="Close"
+            variant="bare-inverse"
+            class="slds-modal__close">
+          </lightning-button-icon>
+          <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+            <lightning-icon icon-name="utility:warning" size="small" variant="inverse" class="slds-m-right_x-small"></lightning-icon>
+            Delete Selected Unique Dates
+          </h2>
+        </header>
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+          <div class="slds-box slds-theme_warning slds-m-bottom_medium">
+            <lightning-icon icon-name="utility:warning" size="small" variant="warning" class="slds-m-right_small"></lightning-icon>
+            This will permanently delete <strong>{deleteSelectionCount}</strong> selected {deleteSelectionLabel} for <strong>{year}</strong>, which currently map to <strong>{deleteSelectionRecordCount}</strong> {deleteSelectionRecordLabel}.
+          </div>
+
+          <template if:true={deleteSelectionZoneNames}>
+            <p class="slds-m-bottom_medium slds-text-body_regular">
+              Zones: <strong>{deleteSelectionZoneNames}</strong>
+            </p>
+          </template>
+
+          <template if:true={deleteLockedSelectionCount}>
+            <div class="slds-box slds-theme_warning slds-m-bottom_medium">
+              <lightning-icon icon-name="utility:lock" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+              {deleteLockedSelectionCount} selected {deleteLockedSelectionLabel} locked because booked placeholder rows already exist, so those dates will be skipped from delete.
+            </div>
+          </template>
+
+          <p class="slds-m-bottom_medium slds-text-body_regular">
+            Any related unbooked placeholder records for those dates will also be removed.
+          </p>
+
+          <p class="slds-text-body_regular">
+            Type <strong>DELETE</strong> to confirm.
+          </p>
+          
+          <lightning-input
+            type="text"
+            value={deleteConfirmationText}
+            onchange={handleDeleteConfirmationChange}
+            placeholder="Type DELETE to confirm"
+            class="slds-m-top_small">
+          </lightning-input>
+        </div>
+        <footer class="slds-modal__footer">
+          <lightning-button 
+            variant="neutral" 
+            label="Cancel" 
+            title="Cancel deletion"
+            onclick={closeDeleteModal}>
+          </lightning-button>
+          <lightning-button 
+            variant="destructive" 
+            label="Delete Selected" 
+            title="Permanently delete the selected unique dates and related unbooked placeholders"
+            onclick={confirmDeleteAll}
+            disabled={disableDeleteConfirm}
+            class="slds-m-left_x-small">
+          </lightning-button>
+        </footer>
+      </div>
+    </dialog>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+</template>

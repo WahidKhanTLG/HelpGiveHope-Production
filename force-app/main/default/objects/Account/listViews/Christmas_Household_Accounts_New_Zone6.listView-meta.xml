@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Christmas_Household_Accounts_New_Zone6</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Christmas_Application_Status__c</columns>
+    <columns>Zone__c</columns>
+    <columns>ACCOUNT.ADDRESS1_STREET</columns>
+    <columns>Census_Tract__c</columns>
+    <columns>Assistance_Requested__c</columns>
+    <columns>Likelihood_of_assisting_again__c</columns>
+    <columns>ACCOUNT.CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Account.Christmas_Household_Account</value>
+    </filters>
+    <filters>
+        <field>Christmas_Application_Status__c</field>
+        <operation>notEqual</operation>
+        <value>No</value>
+    </filters>
+    <filters>
+        <field>Census_Tract__c</field>
+        <operation>equals</operation>
+        <value>15.00,14.01,14.02,29.00,41.08,41.09,58.01,30.03,30.04,41.07,41.06,42.01,42.02,41.05,41.04,48.04,48.05,48.02,48.03</value>
+    </filters>
+    <label>Christmas Household Accounts - Zone6</label>
+</ListView>

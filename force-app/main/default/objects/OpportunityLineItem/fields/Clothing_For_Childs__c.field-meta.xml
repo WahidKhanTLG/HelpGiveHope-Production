@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Clothing_For_Childs__c</fullName>
+    <label>Clothing For Childs</label>
+    <required>false</required>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Clothing_For_Childs</valueSetName>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

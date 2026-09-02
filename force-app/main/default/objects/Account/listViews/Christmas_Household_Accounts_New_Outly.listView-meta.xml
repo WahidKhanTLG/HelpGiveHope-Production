@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Christmas_Household_Accounts_New_Outly</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Christmas_Application_Status__c</columns>
+    <columns>Zone__c</columns>
+    <columns>ACCOUNT.ADDRESS1_STREET</columns>
+    <columns>Census_Tract__c</columns>
+    <columns>Assistance_Requested__c</columns>
+    <columns>Likelihood_of_assisting_again__c</columns>
+    <columns>ACCOUNT.CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>ACCOUNT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Account.Christmas_Household_Account</value>
+    </filters>
+    <filters>
+        <field>Christmas_Application_Status__c</field>
+        <operation>notEqual</operation>
+        <value>No</value>
+    </filters>
+    <filters>
+        <field>Census_Tract__c</field>
+        <operation>equals</operation>
+        <value>202.02,202.04,202.05,202.06,202.07,203.02,203.03,203.04,203.07,203.08,203.09,203.10,202.01</value>
+    </filters>
+    <label>Christmas Household Accounts - Outlying</label>
+</ListView>

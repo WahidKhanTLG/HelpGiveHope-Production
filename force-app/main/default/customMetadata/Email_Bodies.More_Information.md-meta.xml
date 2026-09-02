@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>More Information</label>
+    <protected>false</protected>
+    <values>
+        <field>body__c</field>
+        <value xsi:type="xsd:string">&lt;p&gt;Please reach out to City Utilities and authorize Help Give Hope to discuss your account. Once you have done that, let me know and I will discuss your account with City Utilities. This does not guarantee our assistance, it is just the next step in reviewing your application.&amp;nbsp;&lt;/p&gt;</value>
+    </values>
+    <values>
+        <field>subject__c</field>
+        <value xsi:type="xsd:string">Utility Assistance - More Information City Utilities</value>
+    </values>
+</CustomMetadata>

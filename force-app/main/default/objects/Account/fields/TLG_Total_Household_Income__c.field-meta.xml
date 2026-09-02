@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TLG_Total_Household_Income__c</fullName>
+    <formula>TLG_Wages__c +  TLG_SSIDisability__c    +   TLG_TANIF__c    +   TLG_SS__c   +   TLG_Food_Stamps__c     +    TLG_Unemployment__c +   TLG_Child_Support__c    +   TLG_Other__c    +   TLG_Veterans__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total Household Income</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

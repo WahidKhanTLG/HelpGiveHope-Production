@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Assistance_Requested__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Assistance Requested</label>
+    <referenceTo>Assistance_Requested__c</referenceTo>
+    <relationshipLabel>Service Deliveries</relationshipLabel>
+    <relationshipName>Service_Deliveries</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

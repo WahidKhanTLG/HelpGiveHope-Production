@@ -1,0 +1,9 @@
+.slds-radio.has-description-box label {
+    display: flex;
+    align-items: center;
+}
+
+.slds-radio.has-description-box .slds-form-element__label {
+    margin: 0;
+    white-space: nowrap; /* Prevent from break label when has spaces */
+}

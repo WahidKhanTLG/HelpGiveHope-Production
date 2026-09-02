@@ -1,0 +1,171 @@
+<!--
+  @description       : 
+  @author            : Syed Kashan
+  @group             : 
+  @last modified on  : 08-28-2024
+  @last modified by  : Syed Kashan
+-->
+<template>
+  <template if:true={showConfirmDialog}>
+      <section role="dialog" tabindex="-1" aria-modal="true" class="slds-modal slds-fade-in-open">
+          <div class="slds-modal__container">
+              <header class="slds-modal__header">
+                  <h2 class="slds-modal__title">Confirm Send Email</h2>
+              </header>
+              <div class="slds-modal__content slds-p-around_medium">
+                  <p>Are you sure you want to send this email?</p>
+              </div>
+              <footer class="slds-modal__footer">
+                  <button class="slds-button slds-button_neutral" onclick={closeConfirmDialog}>Cancel</button>
+                  <button class="slds-button slds-button_brand" onclick={confirmSend}>Send</button>
+              </footer>
+          </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+  <div class="slds-form slds-p-around_x-large send-email-form" role="list">
+    <div class="card-panel">
+      <div class="component-header">
+        <img src="/servlet/servlet.FileDownload?file=015QQ00000Ayncn" alt="Help Give Hope Logo" class="header-logo"/>
+        <h1 class="header-title">Help Give Hope</h1>
+      </div>
+      <template if:true={isLoading}>
+        <div class="custom-loader-container" style="display: flex !important; visibility: visible !important; opacity: 1 !important; z-index: 9999 !important;">
+          <!-- <lightning-spinner alternative-text="Loading" size="large" variant="brand"></lightning-spinner> -->
+          <div class="custom-loader-logo">
+            <!-- Lodestone Group logo as loader -->
+            <!-- Replace \'DOCUMENT_ID_HERE\' with the actual Document Id for TLGLogoPNG -->
+            <img src="/servlet/servlet.FileDownload?file=015QQ00000Ayno6" alt="The Lodestone Group Logo Loader" class="animated-loader-logo"/>
+          </div>
+          <p class="loader-text">Loading...</p> <!-- Added Loading text -->
+        </div>
+      </template>
+      <template if:false={isLoading}>
+        <div class="form-section">
+          <h2 class="section-title">Recipients</h2>
+          <section data-id="email-address-section" class="email-section-glow">
+            <div class="email-input-container email-input-glow">
+              <div class="slds-form-element slds-form-element_horizontal slds-is-editing slds-form-element_1-col">
+                <span class="label-helptext-wrapper"> <!-- Added wrapper -->
+                  <lightning-helptext content="Primary contact(s) for this account. Read-only. If you need to change, update the contact record."></lightning-helptext>
+                  <label class="slds-form-element__label" for="single-form-element-id-02">To</label>
+                </span>
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                  <input type="text" id="single-form-element-id-02" name="emailTo" placeholder="To" class="slds-input validate to-input-highlight"
+                    value={toEmails} required readonly aria-label="To Email Addresses"/>
+                  <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right cc-btn animated-btn"
+                    title="Show CC field" aria-label="Show CC field" onclick={toggleCC} style="right: 2.5rem;">
+                    <lightning-icon icon-name="utility:adduser" size="x-small" alternative-text="CC"></lightning-icon>
+                  </button>
+                  <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right bcc-btn animated-btn"
+                    title="Show BCC field" aria-label="Show BCC field" onclick={toggleBCC}>
+                    <lightning-icon icon-name="utility:email" size="x-small" alternative-text="BCC"></lightning-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <template lwc:if={isCCVisible}>
+              <div class="email-input-container email-input-glow">
+                <div class="slds-form-element slds-form-element_horizontal slds-is-editing slds-form-element_1-col">
+                  <span class="label-helptext-wrapper">
+                    <lightning-helptext content="Add CC recipients. Multiple emails should be comma separated."></lightning-helptext>
+                    <label class="slds-form-element__label" for="cc-input">CC</label>
+                  </span>
+                  <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                    <input type="text" id="cc-input" name="emailCC" placeholder="CC" class="slds-input validate"
+                      value={ccEmails} onchange={handleCCChange} aria-label="CC Email Addresses"/>
+                  </div>
+                </div>
+              </div>
+              <template if:true={ccError}>
+                <div class="slds-text-color_error slds-text-body_small">{ccError}</div>
+              </template>
+            </template>
+            <template lwc:if={isBCCVisible}>
+              <div class="email-input-container email-input-glow">
+                <div class="slds-form-element slds-form-element_horizontal slds-is-editing slds-form-element_1-col">
+                  <span class="label-helptext-wrapper">
+                    <lightning-helptext content="Add BCC recipients. Multiple emails should be comma separated."></lightning-helptext>
+                    <label class="slds-form-element__label" for="bcc-input">BCC</label>
+                  </span>
+                  <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                    <input type="text" id="bcc-input" name="emailBCC" placeholder="BCC" class="slds-input validate"
+                      value={bccEmails} onchange={handleBCCChange} aria-label="BCC Email Addresses"/>
+                  </div>
+                </div>
+              </div>
+              <template if:true={bccError}>
+                <div class="slds-text-color_error slds-text-body_small">{bccError}</div>
+              </template>
+            </template>
+          </section>
+        </div>
+        <div class="form-section">
+          <h2 class="section-title">Template & Status</h2>
+          <div class="slds-grid slds-gutters slds-m-top_large template-status-row">
+            <div class="slds-col slds-size_2-of-3">
+              <div class="slds-is-editing">
+                <lightning-combobox
+                  name="template"
+                  label="Template"
+                  placeholder="Select Template"
+                  class="validate"
+                  options={templateOptions}
+                  onchange={handleTemplateChange}
+                  required
+                  disabled={isActionDisabled}>
+                </lightning-combobox>
+              </div>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+              <div class="slds-is-editing">
+                <lightning-combobox
+                  name="status"
+                  label="Status"
+                  placeholder="Select Status"
+                  class="validate"
+                  value={caseStatus}
+                  options={statusOptions}
+                  onchange={handleStatusChange}
+                  required
+                  disabled={isActionDisabled}>
+                </lightning-combobox>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-section">
+          <h2 class="section-title">Message</h2>
+          <div class="slds-is-editing slds-m-top_large">
+            <lightning-input
+              name="subject"
+              class="validate"
+              label="Subject"
+              value={selectedSubject}
+              placeholder="Subject"
+              onchange={handleSubjectChange}
+              required
+              disabled={isActionDisabled}
+              message-when-value-missing="Subject is required."
+            >
+            </lightning-input>
+          </div>
+          <div class="slds-is-editing slds-m-top_large">
+            <lightning-input-rich-text
+              name="body"
+              label="Body"
+              value={selectedBody}
+              placeholder="Body"
+              onchange={handleBodyChange}
+              disabled={isActionDisabled}>
+            </lightning-input-rich-text>
+          </div>
+        </div>
+        <div class="send-btn-row slds-align_absolute-center slds-m-top_x-large">
+          <lightning-button variant="brand" label="One-time response" onclick={handleOneTimeResponse} disabled={saving} title="Send a one-time email response" class="animated-btn"></lightning-button>
+          <lightning-button style="margin-left:5px;" label={sendEmail_MetadataTemplateLabel} onclick={handleSaveResponse} disabled={saving} title="Send and save/update template" class="animated-btn"></lightning-button>
+        </div>
+      </template>
+    </div>
+  </div>
+</template>

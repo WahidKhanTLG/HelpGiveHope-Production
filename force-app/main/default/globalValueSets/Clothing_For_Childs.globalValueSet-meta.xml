@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Shirt</fullName>
+        <default>false</default>
+        <label>Shirt</label>
+    </customValue>
+    <customValue>
+        <fullName>Pant</fullName>
+        <default>false</default>
+        <label>Pant</label>
+    </customValue>
+    <customValue>
+        <fullName>Coat/Hoodie</fullName>
+        <default>false</default>
+        <label>Coat/Hoodie</label>
+    </customValue>
+    <customValue>
+        <fullName>Bike</fullName>
+        <default>false</default>
+        <label>Bike</label>
+    </customValue>
+    <masterLabel>Clothing For Childs</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

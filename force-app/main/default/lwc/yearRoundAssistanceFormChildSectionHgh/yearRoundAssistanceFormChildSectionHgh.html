@@ -1,0 +1,94 @@
+<template>
+    <div class={cardClass}>
+    <lightning-card
+        title={title}
+        icon-name="custom:custom14"
+    >
+        <slot name="actions" slot="actions"></slot>
+        <div class="slds-card__body slds-card__body_inner">
+
+            <div class="slds-m-vertical_large slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-input-hgh
+                        name="FirstName"
+                        label="First Name"
+                        placeholder="First Name"
+                        required="Yes"
+                    ></c-year-round-assistance-form-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-input-hgh
+                        name="LastName"
+                        label="Last Name"
+                        placeholder="Last Name"
+                        required="Yes"
+                    ></c-year-round-assistance-form-input-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-input-hgh
+                        type="date"
+                        name="DateOfBirth"
+                        label="Date Of Birth"
+                        required="Yes"
+                        data-type="date"
+                        min-date={minimumDateHtmlAttribute}
+                        max-date={maximumDateHtmlAttribute}
+                        onblur={calculateAge}
+                        onchange={calculateAge}
+                        restrict-typing="Yes"
+                    ></c-year-round-assistance-form-input-hgh>
+                </div>
+                <div class="slds-col slds-size_6-of-12">
+                    <c-year-round-assistance-form-input-hgh
+                        lwc:ref="age"
+                        name="Age"
+                        label="Age"
+                        placeholder="Age"
+                        disabled="Yes"
+                    ></c-year-round-assistance-form-input-hgh>
+                </div>
+                <div class="slds-col slds-size_6-of-12">
+                    <c-year-round-assistance-form-dropdown-hgh
+                        name="Gender"
+                        label="Gender"
+                        placeholder="Select Gender"
+                        required="Yes"
+                        options={genderOptions}
+                    ></c-year-round-assistance-form-dropdown-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <c-year-round-assistance-form-dropdown-hgh
+                        name="RelationShip"
+                        label="Relationship with Applicant"
+                        placeholder="Select Relationship"
+                        required="Yes"
+                        options={relationShipOptions}
+                    ></c-year-round-assistance-form-dropdown-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12">
+                    <c-year-round-assistance-form-radio-group-hgh
+                        name="LegalGuardian"
+                        label="Are you their Legal Guardian?"
+                        required="Yes"
+                        options={legalGuardianOptions}
+                    ></c-year-round-assistance-form-radio-group-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12">
+                    <c-year-round-assistance-form-radio-group-hgh
+                        name="SchoolAttending"
+                        label="School Attending"
+                        required="Yes"
+                        options={schoolAttendingOptions}
+                    ></c-year-round-assistance-form-radio-group-hgh>
+                </div>
+            </div>
+
+            <template lwc:if={isDuplicate}>
+                <div class="hgh-duplicate-error slds-m-bottom_small">
+                    {duplicateMessage}
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+    </div>
+</template>

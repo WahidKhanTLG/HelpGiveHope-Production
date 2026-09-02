@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>No response</label>
+    <protected>false</protected>
+    <values>
+        <field>body__c</field>
+        <value xsi:type="xsd:string">&lt;p&gt;Please reach out to:&lt;/p&gt;&lt;p&gt;James Automotive&lt;/p&gt;&lt;p&gt;417-684-5724&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Set up an appointment for them to look at your vehicle. You will be responsible for towing it to the shop. This is not a guarantee that we will provide repairs, only a review of your vehicle. Once James Automotive has reviewed your vehicle they will reach out to us to discuss and then we can determine what, if anything, we can do to help.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Be aware that they will need your vehicle for a while to diagnose your issues.&amp;nbsp;&lt;/p&gt;</value>
+    </values>
+    <values>
+        <field>subject__c</field>
+        <value xsi:type="xsd:string">Car Repair - Reach out</value>
+    </values>
+</CustomMetadata>

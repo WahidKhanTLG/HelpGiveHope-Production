@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldSets>
+        <label><!-- BDE Entry FS --></label>
+        <name>npsp__BDE_Entry_FS</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- BDE List FS --></label>
+        <name>npsp__BDE_List_FS</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Manage Household Custom --></label>
+        <name>npsp__Manage_Household_Custom</name>
+    </fieldSets>
+    <quickActions>
+        <label><!-- Add Bulk Needs --></label>
+        <name>Add_Bulk_Need</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Schedule Interview --></label>
+        <name>Schedule_Interview</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Send Christmas Form --></label>
+        <name>Send_Christmas_Form</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Send Email --></label>
+        <name>Send_Email</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Christmas Household Account --></label>
+        <name>Christmas_Household_Account</name>
+    </recordTypes>
+    <recordTypes>
+        <description>Un compte représentant un foyer comptant un ou plusieurs individus</description>
+        <label>Compte de foyer</label>
+        <name>HH_Account</name>
+    </recordTypes>
+    <recordTypes>
+        <description>Un compte représentant une organisation</description>
+        <label>Organisation</label>
+        <name>Organization</name>
+    </recordTypes>
+    <webLinks>
+        <label><!-- AltavistaNews --></label>
+        <name>AltavistaNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Stickers --></label>
+        <name>Create_Stickers</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- HooversProfile --></label>
+        <name>HooversProfile</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- ShoppingList --></label>
+        <name>ShoppingList</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- YahooMaps --></label>
+        <name>YahooMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Manage_Household --></label>
+        <name>npsp__Manage_Household</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_Gift --></label>
+        <name>npsp__New_Gift</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Recalculate_Rollups --></label>
+        <name>npsp__Recalculate_Rollups</name>
+    </webLinks>
+</CustomObjectTranslation>

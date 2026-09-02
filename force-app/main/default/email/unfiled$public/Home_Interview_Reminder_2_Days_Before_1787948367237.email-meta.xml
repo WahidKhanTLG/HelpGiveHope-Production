@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Home Interview Reminder - 2 Days Before</name>
+    <relatedEntityType>Account</relatedEntityType>
+    <style>none</style>
+    <subject>Reminder: Your Home Interview – Help Give Hope Christmas Program</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>
