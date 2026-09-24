@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Geocoding_Service</name>
         <label>Geocoding Service</label>
-        <locationX>242</locationX>
-        <locationY>384</locationY>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
         <actionName>GeoCodingService</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -17,17 +17,25 @@
         <nameSegment>GeoCodingService</nameSegment>
         <offset>0</offset>
     </actionCalls>
-    <apiVersion>62.0</apiVersion>
+    <apiVersion>64.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <decisions>
-        <name>Is_Address_Null</name>
-        <label>Is Address Null?</label>
-        <locationX>374</locationX>
-        <locationY>276</locationY>
-        <defaultConnectorLabel>Null</defaultConnectorLabel>
+        <description>GeoCodingService needs street, city and state; it fails on any of them being blank.</description>
+        <name>Is_Address_Complete</name>
+        <label>Is Address Complete?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Incomplete</defaultConnectorLabel>
         <rules>
-            <name>Not_Null</name>
+            <name>Complete</name>
             <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.BillingStreet</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
             <conditions>
                 <leftValueReference>$Record.BillingCity</leftValueReference>
                 <operator>IsNull</operator>
@@ -36,7 +44,7 @@
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.BillingStreet</leftValueReference>
+                <leftValueReference>$Record.BillingState</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
@@ -45,10 +53,42 @@
             <connector>
                 <targetReference>Geocoding_Service</targetReference>
             </connector>
-            <label>Not Null</label>
+            <label>Complete</label>
         </rules>
     </decisions>
-    <description>V2</description>
+    <decisions>
+        <name>Is_New_Christmas_Household</name>
+        <label>Is New Christmas Household?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Is_Address_Complete</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>New_Christmas_Household</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.TLG_Christmas_Assistance__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Christmas_Account_Record_Type</targetReference>
+            </connector>
+            <label>New Christmas Household</label>
+        </rules>
+    </decisions>
+    <description>Single after-save automation for Account. Merges Account Before Trigger Flow (Christmas record type and geocoding on create) and Account - On Update (geocoding when the billing address changes). GeoCodingService queues the census lookup itself, since callouts can&apos;t run while the record is saving.</description>
     <environments>Default</environments>
     <interviewLabel>Account - After Save Trigger {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Account - After Save Trigger</label>
@@ -71,18 +111,32 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <start>
-        <locationX>50</locationX>
+    <recordUpdates>
+        <name>Update_Christmas_Account_Record_Type</name>
+        <label>Update Christmas Account Record Type</label>
+        <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_Address_Complete</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <stringValue>012QQ0000085ZbdYAE</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_New_Christmas_Household</targetReference>
+        </connector>
+        <filterFormula>OR(ISNEW(), ISCHANGED({!$Record.BillingStreet}), ISCHANGED({!$Record.BillingCity}), ISCHANGED({!$Record.BillingState}), ISCHANGED({!$Record.BillingCountry}))</filterFormula>
         <object>Account</object>
-        <recordTriggerType>Create</recordTriggerType>
-        <scheduledPaths>
-            <connector>
-                <targetReference>Is_Address_Null</targetReference>
-            </connector>
-            <pathType>AsyncAfterCommit</pathType>
-        </scheduledPaths>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
 </Flow>
