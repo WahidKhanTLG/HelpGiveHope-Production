@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Placeholder_Sync_Enabled__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>When true, every unbooked interview slot is mirrored to Google Calendar as an Available event and converted to a booked event when scheduled. When false, only booked interviews are mirrored.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Placeholder Sync Enabled</label>
+    <type>Checkbox</type>
+</CustomField>

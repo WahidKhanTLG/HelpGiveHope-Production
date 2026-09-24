@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Default</label>
+    <protected>false</protected>
+    <values>
+        <field>Auto_Send_Link_On_Booking__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Days_Ahead_Visible__c</field>
+        <value xsi:type="xsd:double">90.0</value>
+    </values>
+    <values>
+        <field>Email_Template_Developer_Name__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Enabled__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Enforce_Single_Interview_Per_Time__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Max_Reschedules__c</field>
+        <value xsi:type="xsd:double">3.0</value>
+    </values>
+    <values>
+        <field>Org_Wide_Email_Display_Name__c</field>
+        <value xsi:type="xsd:string">Help Give Hope Support</value>
+    </values>
+    <values>
+        <field>Reschedule_Cutoff_Hours__c</field>
+        <value xsi:type="xsd:double">24.0</value>
+    </values>
+    <values>
+        <field>Send_Confirmation_On_Change__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Show_Interviewer_To_Applicant__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Site_Base_Url__c</field>
+        <value xsi:type="xsd:string">https://helpgivehope.my.site.com/Christmas/interview</value>
+    </values>
+    <values>
+        <field>Support_Phone__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Token_Validity_Days__c</field>
+        <value xsi:type="xsd:double">45.0</value>
+    </values>
+</CustomMetadata>

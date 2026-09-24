@@ -1,32 +1,61 @@
 import { LightningElement, api, track, wire } from 'lwc';
-import getInterviewDays from '@salesforce/apex/SelectInterviewSlotController.getInterviewDays';
-import updateInterviewSchedule from '@salesforce/apex/SelectInterviewSlotController.updateInterviewSchedule';
-import unscheduleInterview from '@salesforce/apex/SelectInterviewSlotController.unscheduleInterview'; 
+
+import getInterviewDays
+    from '@salesforce/apex/SelectInterviewSlotController.getInterviewDays';
+
+import updateInterviewSchedule
+    from '@salesforce/apex/SelectInterviewSlotController.updateInterviewSchedule';
+
+import bookAndAssignInterview
+    from '@salesforce/apex/SelectInterviewSlotController.bookAndAssignInterview';
+
+import unscheduleInterview
+    from '@salesforce/apex/SelectInterviewSlotController.unscheduleInterview';
+
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { refreshApex } from '@salesforce/apex';
-import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
+
+import {
+    getRecord,
+    getFieldValue
+} from 'lightning/uiRecordApi';
+
 import { CurrentPageReference } from 'lightning/navigation';
-import ACCOUNT_SCHEDULE_FIELD from '@salesforce/schema/Account.Interview_Day_Schedule__c';
-import CASE_ACCOUNT_FIELD from '@salesforce/schema/Case.AccountId';
+
+import ACCOUNT_SCHEDULE_FIELD
+    from '@salesforce/schema/Account.Interview_Day_Schedule__c';
+
+import CASE_ACCOUNT_FIELD
+    from '@salesforce/schema/Case.AccountId';
+
 
 export default class SelectInterviewSlot extends LightningElement {
-    // @api recordId;
+
     @api accountId;
 
     @track interviewDays = [];
     @track selectedScheduleId = '';
     @track selectedDate = '';
+    @track selectedVolunteerId = '';
+
     @track dateOptions = [];
     @track slotOptions = [];
-    
+
     @track isLoading = false;
     @track isUnscheduling = false;
+
     @track hasExistingBooking = false;
+
     @track contextAccountId = '';
     @track contextCaseId = '';
 
     _recordId;
     wiredAccountResult;
+
+
+    // =========================================================
+    // RECORD CONTEXT
+    // =========================================================
 
     @api
     get recordId() {
@@ -35,223 +64,903 @@ export default class SelectInterviewSlot extends LightningElement {
 
     set recordId(value) {
         this._recordId = value;
-        // Case Ids start with '500' — wait for wiredCaseRecord to resolve the Account Id.
-        // Account Ids (start with '001') or other non-Case Ids can be used directly.
-        if (value?.startsWith('500')) {
-            // contextAccountId will be set by wiredCaseRecord once it resolves
-            this.contextCaseId = value;
+
+        if (!value) {
             return;
         }
-        const newContext = this.accountId || value || this.contextAccountId;
-        const changed = newContext && newContext !== this.contextAccountId;
-        this.contextAccountId = newContext;
+
+        /*
+         * Case Id
+         * Wait for wiredCaseRecord to resolve Account Id.
+         */
+        if (value.startsWith('500')) {
+            this.contextCaseId = value;
+            this.contextAccountId = '';
+            return;
+        }
+
+        /*
+         * Account context
+         */
+        const newContext =
+            this.accountId ||
+            value;
+
+        const changed =
+            newContext &&
+            newContext !== this.contextAccountId;
+
+        this.contextAccountId =
+            newContext;
+
         if (changed) {
             this.loadInterviewDays();
         }
     }
-    
+
 
     connectedCallback() {
-        this.contextAccountId = this.accountId || this.recordId || '';
+        const initialId =
+            this.accountId ||
+            this._recordId ||
+            '';
+
+        if (!initialId) {
+            return;
+        }
+
+        /*
+         * Case context
+         */
+        if (initialId.startsWith('500')) {
+            this.contextCaseId =
+                initialId;
+
+            this.contextAccountId =
+                '';
+
+            return;
+        }
+
+        /*
+         * Account context
+         */
+        this.contextAccountId =
+            initialId;
+
         this.loadInterviewDays();
     }
 
-    // Computed: only wire Case record when recordId is a Case (prefix '500')
+
+    // =========================================================
+    // CASE -> ACCOUNT
+    // =========================================================
+
     get _caseIdForLookup() {
         const id = this._recordId;
-        return id?.startsWith('500') ? id : null;
+
+        return id?.startsWith('500')
+            ? id
+            : null;
     }
 
-    // Resolve Case → Account Id so existing-booking check works on Case pages
-    @wire(getRecord, { recordId: '$_caseIdForLookup', fields: [CASE_ACCOUNT_FIELD] })
-    wiredCaseRecord({ data }) {
+
+    @wire(
+        getRecord,
+        {
+            recordId: '$_caseIdForLookup',
+            fields: [CASE_ACCOUNT_FIELD]
+        }
+    )
+    wiredCaseRecord({ data, error }) {
+
         if (data) {
-            const acctId = getFieldValue(data, CASE_ACCOUNT_FIELD);
-            if (acctId && acctId !== this.contextAccountId) {
-                this.contextAccountId = acctId;
+
+            const accountId =
+                getFieldValue(
+                    data,
+                    CASE_ACCOUNT_FIELD
+                );
+
+            if (
+                accountId &&
+                accountId !== this.contextAccountId
+            ) {
+                this.contextAccountId =
+                    accountId;
+
                 this.loadInterviewDays();
             }
+
+        } else if (error) {
+
+            this.showToast(
+                'Error',
+                'Unable to resolve the Account for this Case.',
+                'error'
+            );
         }
-        // If error, recordId was not a Case — no action needed
     }
 
-    @wire(getRecord, { recordId: '$contextAccountId', fields: [ACCOUNT_SCHEDULE_FIELD] })
+
+    // =========================================================
+    // CURRENT ACCOUNT BOOKING
+    // =========================================================
+
+    @wire(
+        getRecord,
+        {
+            recordId: '$contextAccountId',
+            fields: [ACCOUNT_SCHEDULE_FIELD]
+        }
+    )
     wiredAccount(result) {
-        const { data, error } = result || {};
+
+        const {
+            data,
+            error
+        } = result || {};
+
         if (data) {
-            const bookedId = getFieldValue(data, ACCOUNT_SCHEDULE_FIELD);
-            this.hasExistingBooking = !!bookedId;
-            this.wiredAccountResult = result;
+
+            const bookedScheduleId =
+                getFieldValue(
+                    data,
+                    ACCOUNT_SCHEDULE_FIELD
+                );
+
+            this.hasExistingBooking =
+                !!bookedScheduleId;
+
+            this.wiredAccountResult =
+                result;
+
+            /*
+             * If booking does not exist,
+             * reset volunteer selection.
+             */
+            if (!this.hasExistingBooking) {
+                this.selectedVolunteerId = '';
+            }
+
         } else if (error) {
-            this.hasExistingBooking = false;
+
+            this.hasExistingBooking =
+                false;
         }
     }
+
+
+    // =========================================================
+    // PAGE REFERENCE FALLBACK
+    // =========================================================
 
     @wire(CurrentPageReference)
     handlePageRef(ref) {
-        if (!ref) return;
-        // Fallback: get recordId from URL state if not provided as @api
-        const state = ref.state || {};
-        const urlRecordId = state.recordId || state.c__recordId;
-        if (!this.contextAccountId && urlRecordId) {
-            if (urlRecordId.startsWith('500')) {
-                this._recordId = urlRecordId;
-                this.contextCaseId = urlRecordId;
-                return;
-            }
-            this.contextAccountId = urlRecordId;
-            this.loadInterviewDays();
+
+        if (!ref) {
+            return;
         }
+
+        const state =
+            ref.state || {};
+
+        const urlRecordId =
+            state.recordId ||
+            state.c__recordId;
+
+        if (
+            !urlRecordId ||
+            this.contextAccountId ||
+            this.contextCaseId
+        ) {
+            return;
+        }
+
+        if (urlRecordId.startsWith('500')) {
+
+            this._recordId =
+                urlRecordId;
+
+            this.contextCaseId =
+                urlRecordId;
+
+            return;
+        }
+
+        this.contextAccountId =
+            urlRecordId;
+
+        this.loadInterviewDays();
     }
 
-    get bookDisabled() {
-        return this.isLoading || !this.selectedScheduleId || this.hasExistingBooking;
+
+    // =========================================================
+    // GETTERS
+    // =========================================================
+
+    get isCaseContext() {
+        return !!this.contextCaseId;
     }
 
-    get slotDisabled() {
-        return this.isLoading || this.hasExistingBooking || !this.selectedDate;
+
+    get hasAvailableInterviewDays() {
+        return (
+            Array.isArray(this.interviewDays) &&
+            this.interviewDays.length > 0
+        );
     }
+
+
+    get showNoAvailability() {
+        return (
+            !this.hasExistingBooking &&
+            !this.hasAvailableInterviewDays
+        );
+    }
+
 
     get dateDisabled() {
-        return this.isLoading || this.hasExistingBooking;
+        return this.isLoading;
     }
 
+
+    get slotDisabled() {
+        return (
+            this.isLoading ||
+            !this.selectedDate
+        );
+    }
+
+
+    get bookButtonLabel() {
+
+        if (this.isCaseContext) {
+            return 'Book & Assign Volunteer';
+        }
+
+        return 'Book Selected Slot';
+    }
+
+
+    get bookDisabled() {
+
+        if (this.isLoading) {
+            return true;
+        }
+
+        if (!this.selectedDate) {
+            return true;
+        }
+
+        if (!this.selectedScheduleId) {
+            return true;
+        }
+
+        /*
+         * Volunteer is mandatory
+         * when booking from Case.
+         */
+        if (
+            this.isCaseContext &&
+            !this.selectedVolunteerId
+        ) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    // =========================================================
+    // LOAD INTERVIEW DAYS
+    // =========================================================
+
     async loadInterviewDays() {
-        const acctId = this.contextAccountId;
-        if (!acctId) return;
-        this.isLoading = true;
+
+        const accountId =
+            this.contextAccountId;
+
+        if (!accountId) {
+            return;
+        }
+
+        this.isLoading =
+            true;
+
         try {
-            const days = await getInterviewDays({ accountId: acctId });
-            this.interviewDays = days || [];
 
-            // Build unique date list for Date dropdown
-            const dateSet = new Set();
-            for (const d of (this.interviewDays || [])) {
-                if (d.Interview_Date__c) dateSet.add(d.Interview_Date__c);
+            const days =
+                await getInterviewDays({
+                    accountId
+                });
+
+            this.interviewDays =
+                days || [];
+
+            const dateSet =
+                new Set();
+
+            for (
+                const day of this.interviewDays
+            ) {
+                if (day.Interview_Date__c) {
+                    dateSet.add(
+                        day.Interview_Date__c
+                    );
+                }
             }
-            const dateArray = Array.from(dateSet);
-            dateArray.sort((a, b) => a.localeCompare(b)); // ISO date asc
-            this.dateOptions = dateArray.map(dt => ({ label: formatDateLabel(dt), value: dt }));
 
-            // If previously selected date no longer exists, clear it and slots
-            if (this.dateOptions.some(o => o.value === this.selectedDate)) {
-                // Rebuild slots for the selected date in case data changed
+            const dateArray =
+                Array.from(dateSet);
+
+            dateArray.sort(
+                (a, b) =>
+                    a.localeCompare(b)
+            );
+
+            this.dateOptions =
+                dateArray.map(
+                    dateValue => ({
+                        label:
+                            formatDateLabel(
+                                dateValue
+                            ),
+                        value:
+                            dateValue
+                    })
+                );
+
+            /*
+             * Preserve selection only
+             * if date still exists.
+             */
+            const dateStillExists =
+                this.dateOptions.some(
+                    option =>
+                        option.value ===
+                        this.selectedDate
+                );
+
+            if (dateStillExists) {
+
                 this.buildSlotOptionsForSelectedDate();
+
             } else {
-                this.selectedDate = '';
-                this.slotOptions = [];
-                this.selectedScheduleId = '';
+
+                this.selectedDate =
+                    '';
+
+                this.selectedScheduleId =
+                    '';
+
+                this.slotOptions =
+                    [];
             }
+
         } catch (error) {
-            this.showToast('Error loading interview days', error.body?.message || error.message, 'error');
+
+            this.showToast(
+                'Error loading interview days',
+                this.reduceError(error),
+                'error'
+            );
+
         } finally {
-            this.isLoading = false;
+
+            this.isLoading =
+                false;
         }
     }
 
+
+    // =========================================================
+    // DATE SELECTION
+    // =========================================================
+
     handleSelectDate(event) {
-        this.selectedDate = event.detail.value;
-        this.selectedScheduleId = '';
+
+        this.selectedDate =
+            event.detail.value;
+
+        this.selectedScheduleId =
+            '';
+
         this.buildSlotOptionsForSelectedDate();
     }
 
+
     buildSlotOptionsForSelectedDate() {
+
         if (!this.selectedDate) {
-            this.slotOptions = [];
+
+            this.slotOptions =
+                [];
+
+            this.selectedScheduleId =
+                '';
+
             return;
         }
-        const combined = [];
-        (this.interviewDays || [])
-            .filter(day => day.Interview_Date__c === this.selectedDate)
+
+        const combined =
+            [];
+
+        this.interviewDays
+            .filter(
+                day =>
+                    day.Interview_Date__c ===
+                    this.selectedDate
+            )
             .forEach(day => {
-                const mode = day.Schedule_Mode__c; // 'Morning' or 'AfterNoon'
-                const modeLabel = mode === 'AfterNoon' ? 'Afternoon' : mode;
-                const modeOrder = mode === 'Morning' ? 0 : 1; // Morning first, then Afternoon
-                (day.Interview_Day_Schedules__r || []).forEach(s => {
-                    const namePart = (s.Name || '').replace('AfterNoon', 'Afternoon');
-                    const label = `${modeLabel}: ${namePart}`;
-                    combined.push({ label, value: s.Id, sortKey: `${modeOrder}|${namePart}` });
-                });
+
+                const mode =
+                    day.Schedule_Mode__c;
+
+                const modeLabel =
+                    mode === 'AfterNoon'
+                        ? 'Afternoon'
+                        : mode;
+
+                const modeOrder =
+                    mode === 'Morning'
+                        ? 0
+                        : 1;
+
+                const schedules =
+                    day.Interview_Day_Schedules__r ||
+                    [];
+
+                schedules.forEach(
+                    schedule => {
+
+                        const namePart =
+                            (
+                                schedule.Name ||
+                                ''
+                            ).replace(
+                                'AfterNoon',
+                                'Afternoon'
+                            );
+
+                        combined.push({
+                            label:
+                                `${modeLabel}: ${namePart}`,
+                            value:
+                                schedule.Id,
+                            sortKey:
+                                `${modeOrder}|${namePart}`
+                        });
+                    }
+                );
             });
-        combined.sort((a, b) => (a.sortKey || '').localeCompare(b.sortKey || ''));
-        this.slotOptions = dedupeOptions(combined).map(({ label, value }) => ({ label, value }));
-        if (!this.slotOptions.some(o => o.value === this.selectedScheduleId)) {
-            this.selectedScheduleId = '';
+
+
+        combined.sort(
+            (a, b) =>
+                (
+                    a.sortKey ||
+                    ''
+                ).localeCompare(
+                    b.sortKey ||
+                    ''
+                )
+        );
+
+
+        this.slotOptions =
+            dedupeOptions(combined)
+                .map(
+                    ({
+                        label,
+                        value
+                    }) => ({
+                        label,
+                        value
+                    })
+                );
+
+
+        const selectedStillExists =
+            this.slotOptions.some(
+                option =>
+                    option.value ===
+                    this.selectedScheduleId
+            );
+
+        if (!selectedStillExists) {
+            this.selectedScheduleId =
+                '';
         }
     }
+
+
+    // =========================================================
+    // SLOT
+    // =========================================================
 
     handleSelectSlot(event) {
-        this.selectedScheduleId = event.detail.value;
+        this.selectedScheduleId =
+            event.detail.value;
     }
+
+
+    // =========================================================
+    // VOLUNTEER
+    // =========================================================
+
+    handleVolunteerChange(event) {
+        this.selectedVolunteerId =
+            event.detail.recordId ||
+            '';
+    }
+
+
+    // =========================================================
+    // BOOK + ASSIGN
+    // =========================================================
 
     async handleBook() {
-        const acctId = this.contextCaseId || this.contextAccountId;
-        if (!this.selectedScheduleId || !acctId) return;
-        this.isLoading = true;
+
+        const contextId =
+            this.contextCaseId ||
+            this.contextAccountId;
+
+        if (
+            !contextId ||
+            !this.selectedScheduleId
+        ) {
+            return;
+        }
+
+        /*
+         * Additional protection.
+         */
+        if (
+            this.isCaseContext &&
+            !this.selectedVolunteerId
+        ) {
+
+            this.showToast(
+                'Volunteer Required',
+                'Please select a volunteer before booking the interview.',
+                'warning'
+            );
+
+            return;
+        }
+
+
+        this.isLoading =
+            true;
+
         try {
-            await updateInterviewSchedule({ scheduleId: this.selectedScheduleId, accountId: acctId });
-            this.showToast('Success', 'Interview slot booked!', 'success');
-            // Clear selection and refresh options
-            this.selectedScheduleId = '';
-            
-            await refreshApex(this.wiredAccountResult);
+
+            /*
+             * CASE:
+             * Book slot + assign volunteer.
+             */
+            if (this.isCaseContext) {
+
+                await bookAndAssignInterview({
+                    scheduleId:
+                        this.selectedScheduleId,
+
+                    accountId:
+                        this.contextCaseId,
+
+                    volunteerId:
+                        this.selectedVolunteerId
+                });
+
+
+                this.showToast(
+                    'Success',
+                    'Interview booked and volunteer assigned successfully.',
+                    'success'
+                );
+
+            } else {
+
+                /*
+                 * ACCOUNT fallback:
+                 * Preserve previous booking behavior.
+                 */
+                await updateInterviewSchedule({
+                    scheduleId:
+                        this.selectedScheduleId,
+
+                    accountId:
+                        this.contextAccountId
+                });
+
+
+                this.showToast(
+                    'Success',
+                    'Interview slot booked successfully.',
+                    'success'
+                );
+            }
+
+
+            /*
+             * Clear local selections.
+             */
+            this.selectedDate =
+                '';
+
+            this.selectedScheduleId =
+                '';
+
+            this.selectedVolunteerId =
+                '';
+
+            this.slotOptions =
+                [];
+
+
+            /*
+             * Refresh Account booking field.
+             */
+            if (this.wiredAccountResult) {
+                await refreshApex(
+                    this.wiredAccountResult
+                );
+            }
+
+
+            /*
+             * Reload available schedules.
+             */
             await this.loadInterviewDays();
+
+
         } catch (error) {
-            this.showToast('Error booking slot', error.body?.message || error.message, 'error');
+
+            this.showToast(
+                'Error booking interview',
+                this.reduceError(error),
+                'error'
+            );
+
         } finally {
-            this.isLoading = false;
+
+            this.isLoading =
+                false;
         }
     }
+
+
+    // =========================================================
+    // UNSCHEDULE
+    // =========================================================
 
     async handleUnschedule() {
-        this.isUnscheduling = true;
+
+        if (!this.contextAccountId) {
+            return;
+        }
+
+        this.isUnscheduling =
+            true;
+
         try {
-            await unscheduleInterview({ accountId: this.contextAccountId });
-            this.showToast('Success', 'Interview unscheduled successfully.', 'success');
-            
-            this.selectedDate = '';
-            this.selectedScheduleId = '';
-            
-            await refreshApex(this.wiredAccountResult);
+
+            await unscheduleInterview({
+                accountId:
+                    this.contextAccountId
+            });
+
+
+            this.showToast(
+                'Success',
+                'Interview unscheduled successfully.',
+                'success'
+            );
+
+
+            this.selectedDate =
+                '';
+
+            this.selectedScheduleId =
+                '';
+
+            this.selectedVolunteerId =
+                '';
+
+            this.slotOptions =
+                [];
+
+
+            if (this.wiredAccountResult) {
+                await refreshApex(
+                    this.wiredAccountResult
+                );
+            }
+
+
             await this.loadInterviewDays();
+
+
         } catch (error) {
-            this.showToast('Error', error.body?.message || error.message, 'error');
+
+            this.showToast(
+                'Error',
+                this.reduceError(error),
+                'error'
+            );
+
         } finally {
-            this.isUnscheduling = false;
+
+            this.isUnscheduling =
+                false;
         }
     }
 
-    showToast(title, message, variant) {
-        this.dispatchEvent(new ShowToastEvent({ title, message, variant }));
+
+    // =========================================================
+    // TOAST / ERROR
+    // =========================================================
+
+    showToast(
+        title,
+        message,
+        variant
+    ) {
+        this.dispatchEvent(
+            new ShowToastEvent({
+                title,
+                message,
+                variant
+            })
+        );
     }
-    
+
+
+    reduceError(error) {
+
+        if (
+            error?.body?.message
+        ) {
+            return error.body.message;
+        }
+
+        if (
+            Array.isArray(
+                error?.body
+            )
+        ) {
+            return error.body
+                .map(
+                    item =>
+                        item.message
+                )
+                .join(', ');
+        }
+
+        return (
+            error?.message ||
+            'Unknown error'
+        );
+    }
 }
 
-// Deduplicate options by value; Name already unique enough but keep safe
+
+// =========================================================
+// HELPERS
+// =========================================================
+
 function dedupeOptions(options) {
-    const seen = new Set();
-    const out = [];
-    (options || []).forEach(o => {
-        if (!seen.has(o.value)) { seen.add(o.value); out.push(o); }
-    });
-    return out;
+
+    const seen =
+        new Set();
+
+    const output =
+        [];
+
+    (options || [])
+        .forEach(option => {
+
+            if (
+                !seen.has(
+                    option.value
+                )
+            ) {
+
+                seen.add(
+                    option.value
+                );
+
+                output.push(
+                    option
+                );
+            }
+        });
+
+    return output;
 }
 
-// Format YYYY-MM-DD to "DayName Mon DD, YYYY" (e.g., "Mon Oct 04, 2025")
-const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-function formatDateLabel(isoDate) {
-    if (!isoDate) return '';
-    const parts = isoDate.split('-');
-    if (parts.length !== 3) return isoDate;
-    const y = Number(parts[0]);
-    const m = Number(parts[1]);
-    const d = Number(parts[2]);
-    if (Number.isNaN(y) || Number.isNaN(m) || Number.isNaN(d)) return isoDate;
-    const dateObj = new Date(y, m - 1, d);
-    const wd = WEEKDAYS[dateObj.getDay()];
-    const mon = MONTHS[dateObj.getMonth()];
-    // Do not pad day with leading zero to match format like "Wed Oct 3, 2025"
-    const dd = String(d);
-    return `${wd} ${mon} ${dd}, ${y}`;
+
+const WEEKDAYS = [
+    'Sun',
+    'Mon',
+    'Tue',
+    'Wed',
+    'Thu',
+    'Fri',
+    'Sat'
+];
+
+
+const MONTHS = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
+];
+
+
+function formatDateLabel(
+    isoDate
+) {
+
+    if (!isoDate) {
+        return '';
+    }
+
+    const parts =
+        isoDate.split('-');
+
+    if (parts.length !== 3) {
+        return isoDate;
+    }
+
+    const year =
+        Number(parts[0]);
+
+    const month =
+        Number(parts[1]);
+
+    const day =
+        Number(parts[2]);
+
+
+    if (
+        Number.isNaN(year) ||
+        Number.isNaN(month) ||
+        Number.isNaN(day)
+    ) {
+        return isoDate;
+    }
+
+
+    const dateObj =
+        new Date(
+            year,
+            month - 1,
+            day
+        );
+
+
+    const weekday =
+        WEEKDAYS[
+            dateObj.getDay()
+        ];
+
+
+    const monthLabel =
+        MONTHS[
+            dateObj.getMonth()
+        ];
+
+
+    return `${weekday} ${monthLabel} ${day}, ${year}`;
 }

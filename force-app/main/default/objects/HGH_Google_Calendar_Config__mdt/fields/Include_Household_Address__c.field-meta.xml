@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Include_Household_Address__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Put the household billing address in the Google event location. Attendees (applicant and volunteer) can see it.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Include Household Address</label>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,458 @@
+<template>
+    <div class="component-shell">
+        <template lwc:if={loading}>
+            <div class="loading-panel">
+                <lightning-spinner alternative-text="Loading interview"></lightning-spinner>
+            </div>
+        </template>
+
+        <template lwc:else>
+            <template lwc:if={errorMessage}>
+                <div class="message-card message-error" role="alert">
+                    <lightning-icon icon-name="utility:error" size="x-small" alternative-text="Error"></lightning-icon>
+                    <span>{errorMessage}</span>
+                </div>
+            </template>
+
+            <template lwc:else>
+                <template lwc:if={showLanding}>
+                    <div class="landing-wrap">
+                        <section class="landing-hero">
+                            <div>
+                                <p class="brand-overline">HELP GIVE HOPE</p>
+                                <h1>My Assigned Interviews</h1>
+                                <p>Open an assigned household visit to start or resume the interview.</p>
+                            </div>
+                            <lightning-button
+                                class="hero-button"
+                                label="Refresh"
+                                icon-name="utility:refresh"
+                                onclick={loadAssignedList}>
+                            </lightning-button>
+                        </section>
+
+                        <template lwc:if={hasAssignedInterviews}>
+                            <template for:each={assignedGroups} for:item="group">
+                                <section key={group.key} class="assignment-group">
+                                    <h2 class="assignment-group-title">{group.label}</h2>
+                                    <div class="assignment-grid">
+                                        <template for:each={group.rows} for:item="visit">
+                                            <article key={visit.scheduleId} class="assignment-card">
+                                                <div class="assignment-card-top">
+                                                    <div>
+                                                        <div class="assignment-time">{visit.timeLabel}</div>
+                                                        <div class="assignment-household">{visit.householdName}</div>
+                                                        <div class="muted-text">Case {visit.caseNumber}</div>
+                                                    </div>
+                                                    <span class="soft-pill">{visit.statusLabel}</span>
+                                                </div>
+
+                                                <div class="assignment-details">
+                                                    <div>
+                                                        <span class="field-label">Zone</span>
+                                                        <span>{visit.zoneName}</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="field-label">Address</span>
+                                                        <span>{visit.address}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="assignment-action">
+                                                    <lightning-button
+                                                        class="brand-button"
+                                                        label={visit.actionLabel}
+                                                        variant="brand"
+                                                        data-schedule-id={visit.scheduleId}
+                                                        onclick={handleOpenAssignedInterview}>
+                                                    </lightning-button>
+                                                </div>
+                                            </article>
+                                        </template>
+                                    </div>
+                                </section>
+                            </template>
+                        </template>
+
+                        <template lwc:else>
+                            <div class="empty-state">
+                                <div class="empty-icon">
+                                    <lightning-icon icon-name="utility:check" size="small" alternative-text="No assigned interviews"></lightning-icon>
+                                </div>
+                                <div>
+                                    <h3>No assigned interviews</h3>
+                                    <p>There are no active interviews assigned to your user right now.</p>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+                <template lwc:else>
+                    <div class="interview-wrap">
+                        <template lwc:if={showBackToAssignments}>
+                            <div class="top-action-row">
+                                <button type="button" class="text-action" onclick={handleBackToAssignments}>
+                                    <lightning-icon icon-name="utility:back" size="xx-small" alternative-text="Back"></lightning-icon>
+                                    <span>My Assigned Interviews</span>
+                                </button>
+                            </div>
+                        </template>
+
+                        <template lwc:if={hasConfigWarnings}>
+                            <div class="message-card message-warning" role="alert">
+                                <lightning-icon icon-name="utility:warning" size="x-small" alternative-text="Warning"></lightning-icon>
+                                <span>{configWarningText}</span>
+                            </div>
+                        </template>
+
+                        <template lwc:if={showReadOnlyNotice}>
+                            <div class="message-card message-info" role="status">
+                                <lightning-icon icon-name="utility:info" size="x-small" alternative-text="Information"></lightning-icon>
+                                <span>{notReadyMessage}</span>
+                            </div>
+                        </template>
+
+                        <template lwc:if={showOfflineNotice}>
+                            <div class="message-card message-warning" role="status">
+                                <lightning-icon icon-name="utility:warning" size="x-small" alternative-text="Offline"></lightning-icon>
+                                <span>{offlineNoticeText}</span>
+                            </div>
+                        </template>
+
+                        <section class="hero-header">
+                            <div class="hero-top-row">
+                                <div>
+                                    <p class="brand-overline hero-overline">HELP GIVE HOPE</p>
+                                    <p class="hero-context">IN-HOME INTERVIEW</p>
+                                </div>
+                                <div class="header-actions">
+                                    <div class="header-badges">
+                                        <span class="hero-pill">{assignmentStatus}</span>
+
+                                        <template lwc:if={readOnly}>
+                                            <span class="hero-pill">Read Only</span>
+                                        </template>
+                                    </div>
+
+                                    <lightning-button-icon
+                                        icon-name="utility:refresh"
+                                        alternative-text="Refresh Interview"
+                                        title="Refresh Interview"
+                                        onclick={handleRefresh}
+                                        class="header-refresh">
+                                    </lightning-button-icon>
+                                </div>
+                            </div>
+
+                            <div class="hero-title-block">
+                                <h1>{householdName}</h1>
+                                <p>Case {caseNumber}</p>
+                            </div>
+
+                            <div class="hero-meta-grid">
+                                <div class="hero-meta-item">
+                                    <span class="hero-meta-label">Address</span>
+                                    <span class="hero-meta-value">{address}</span>
+                                </div>
+                                <div class="hero-meta-item">
+                                    <span class="hero-meta-label">Interview Date</span>
+                                    <span class="hero-meta-value">{formattedInterviewDate}</span>
+                                </div>
+                                <div class="hero-meta-item">
+                                    <span class="hero-meta-label">Time</span>
+                                    <span class="hero-meta-value">{formattedTimeRange}</span>
+                                </div>
+                                <div class="hero-meta-item">
+                                    <span class="hero-meta-label">Zone</span>
+                                    <span class="hero-meta-value">{zoneName}</span>
+                                </div>
+                                <div class="hero-meta-item">
+                                    <span class="hero-meta-label">Interviewer</span>
+                                    <span class="hero-meta-value">{interviewerName}</span>
+                                </div>
+                                <div class="hero-meta-item">
+                                    <span class="hero-meta-label">Interviewee</span>
+                                    <span class="hero-meta-value">{intervieweeName}</span>
+                                </div>
+                                <div class="hero-meta-item hero-meta-wide">
+                                    <span class="hero-meta-label">Primary Contact Phone</span>
+                                    <span class="hero-meta-value">{intervieweePhone}</span>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="wizard-shell">
+                            <div class="wizard-progress-shell">
+                                <div class="wizard-progress" role="navigation" aria-label="Interview steps">
+                                    <template for:each={stepModels} for:item="step">
+                                        <div key={step.key} class="step-node">
+                                            <button
+                                                type="button"
+                                                class={step.buttonClass}
+                                                data-index={step.index}
+                                                onclick={handleStepClick}
+                                                disabled={step.disabled}
+                                                title={step.title}>
+                                                <span class="step-circle">{step.number}</span>
+                                                <span class="step-caption">{step.caption}</span>
+                                            </button>
+                                            <template lwc:if={step.showConnector}>
+                                                <span class={step.connectorClass}></span>
+                                            </template>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+
+                            <section class="form-card">
+                                <div class="form-card-heading">
+                                    <div>
+                                        <p class="step-kicker">{currentStepCounter}</p>
+                                        <h2>{currentStepTitle}</h2>
+                                        <p class="form-description">{currentStepSubtitle}</p>
+                                    </div>
+                                    <template lwc:if={canAddAnotherItem}>
+                                        <lightning-button
+                                            class="brand-button"
+                                            label="Add Item"
+                                            icon-name="utility:add"
+                                            variant="brand"
+                                            onclick={handleOpenAddItemFromCurrent}
+                                            disabled={saveDisabled}>
+                                        </lightning-button>
+                                    </template>
+                                </div>
+
+                                <template lwc:if={isSectionStep}>
+                                    <div class="section-content">
+                                        <template lwc:if={hasCurrentSectionItems}>
+                                            <div class="item-list">
+                                                <template for:each={currentSectionItems} for:item="item">
+                                                    <article key={item.clientKey} class="item-card inline-item-card" data-card-key={item.clientKey}>
+                                                        <div class="item-card-heading inline-item-heading">
+                                                            <div>
+                                                                <span class="item-eyebrow">Requested Item</span>
+                                                                <template lwc:if={item.isNew}>
+                                                                    <h3>{item.itemTitle}</h3>
+                                                                </template>
+                                                                <template lwc:else>
+                                                                    <h3>{item.serviceName}</h3>
+                                                                    <template lwc:if={item.hasGender}>
+                                                                        <p class="muted-text">Gender: {item.gender}</p>
+                                                                    </template>
+                                                                </template>
+                                                            </div>
+
+                                                            <template lwc:if={item.showRemove}>
+                                                                <lightning-button-icon
+                                                                    icon-name="utility:close"
+                                                                    alternative-text="Remove item"
+                                                                    title="Remove item"
+                                                                    variant="bare"
+                                                                    class="inline-remove-button"
+                                                                    data-key={item.clientKey}
+                                                                    onclick={handleRemoveItem}>
+                                                                </lightning-button-icon>
+                                                            </template>
+                                                        </div>
+
+                                                        <template lwc:if={item.isNew}>
+                                                            <div class="inline-add-fields">
+                                                                <template lwc:if={item.showGender}>
+                                                                    <lightning-combobox
+                                                                        label="Gender"
+                                                                        value={item.gender}
+                                                                        options={item.genderOptions}
+                                                                        data-key={item.clientKey}
+                                                                        data-field="gender"
+                                                                        onchange={handleItemChange}
+                                                                        disabled={readOnly}>
+                                                                    </lightning-combobox>
+                                                                </template>
+
+                                                                <lightning-combobox
+                                                                    label="Requested Item"
+                                                                    value={item.serviceId}
+                                                                    options={item.serviceOptions}
+                                                                    data-key={item.clientKey}
+                                                                    data-field="serviceId"
+                                                                    onchange={handleItemChange}
+                                                                    disabled={readOnly}
+                                                                    required>
+                                                                </lightning-combobox>
+                                                            </div>
+                                                        </template>
+
+                                                        <div class="item-fields">
+                                                            <lightning-input
+                                                                type="number"
+                                                                min="1"
+                                                                step="1"
+                                                                label="Quantity"
+                                                                value={item.quantity}
+                                                                data-key={item.clientKey}
+                                                                data-field="quantity"
+                                                                onchange={handleItemChange}
+                                                                disabled={readOnly}
+                                                                required>
+                                                            </lightning-input>
+
+                                                            <lightning-combobox
+                                                                label="Volunteer Recommendation"
+                                                                value={item.recommendation}
+                                                                options={recommendationOptions}
+                                                                data-key={item.clientKey}
+                                                                data-field="recommendation"
+                                                                onchange={handleItemChange}
+                                                                disabled={readOnly}
+                                                                required>
+                                                            </lightning-combobox>
+                                                        </div>
+                                                    </article>
+                                                </template>
+                                            </div>
+                                        </template>
+
+                                        <template lwc:else>
+                                            <div class="section-empty-state">
+                                                <div class="empty-icon">
+                                                    <lightning-icon icon-name="utility:add" size="x-small" alternative-text="No item"></lightning-icon>
+                                                </div>
+                                                <div>
+                                                    <h3>No requested items in this section</h3>
+                                                    <p>This step remains available even when no Service Delivery exists. Add an item only when the household needs one.</p>
+                                                </div>
+                                            </div>
+                                        </template>
+
+                                        <div class="notes-panel">
+                                            <lightning-textarea
+                                                label="Notes"
+                                                value={currentSectionNotes}
+                                                onchange={handleCurrentSectionNotesChange}
+                                                disabled={readOnly}>
+                                            </lightning-textarea>
+                                        </div>
+                                    </div>
+                                </template>
+
+                                <template lwc:if={isNarrativeStep}>
+                                    <div class="narrative-grid">
+                                        <div class="field-panel">
+                                            <div class="field-panel-heading">
+                                                <h3>Why Help</h3>
+                                                <p>Explain why Help Give Hope should assist this household.</p>
+                                            </div>
+                                            <lightning-textarea
+                                                label="Why should Help Give Hope assist this household?"
+                                                value={whyHelp}
+                                                onchange={handleWhyHelpChange}
+                                                disabled={narrativesReadOnly}>
+                                            </lightning-textarea>
+                                        </div>
+
+                                        <div class="field-panel">
+                                            <div class="field-panel-heading">
+                                                <h3>Why Not Help</h3>
+                                                <p>Document any reason Help Give Hope should not assist this household.</p>
+                                            </div>
+                                            <lightning-textarea
+                                                label="Why should Help Give Hope not assist this household?"
+                                                value={whyNotHelp}
+                                                onchange={handleWhyNotHelpChange}
+                                                disabled={narrativesReadOnly}>
+                                            </lightning-textarea>
+                                        </div>
+
+                                        <template lwc:if={showSanta}>
+                                            <div class="field-panel narrative-full-width">
+                                                <div class="field-panel-heading">
+                                                    <h3>Santa</h3>
+                                                    <p>Christmas-program preference for this household.</p>
+                                                </div>
+                                                <lightning-input
+                                                    type="checkbox"
+                                                    label="Interested in Santa gift delivery"
+                                                    checked={santaInterest}
+                                                    onchange={handleSantaChange}
+                                                    disabled={santaReadOnly}>
+                                                </lightning-input>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+
+                                <template lwc:if={isCompleteStep}>
+                                    <div class="complete-panel">
+                                        <div class="complete-icon-wrap">
+                                            <lightning-icon icon-name="utility:check" size="small" alternative-text="Complete"></lightning-icon>
+                                        </div>
+                                        <div>
+                                            <h3>Ready to complete the interview?</h3>
+                                            <p>Your draft has been saved as you moved through the steps. Complete Interview will finish the visit and lock volunteer editing.</p>
+                                        </div>
+                                    </div>
+                                </template>
+
+                                <div class="wizard-actions">
+                                    <div class="wizard-actions-left">
+                                        <lightning-button
+                                            class="wizard-action-button"
+                                            label="Previous"
+                                            icon-name="utility:chevronleft"
+                                            onclick={handlePrevious}
+                                            disabled={previousDisabled}
+                                            stretch>
+                                        </lightning-button>
+                                    </div>
+
+                                    <div class="wizard-actions-right">
+                                        <lightning-button
+                                        class="wizard-action-button"
+                                            label="Save Draft"
+                                            onclick={handleSaveDraft}
+                                            disabled={saveDisabled}
+                                            stretch>
+                                        </lightning-button>
+
+                                        <lightning-button
+                                        class="wizard-action-button"
+                                            label="Save &amp; Exit"
+                                            onclick={handleSaveExit}
+                                            disabled={saveDisabled}
+                                            stretch>
+                                        </lightning-button>
+
+                                        <template lwc:if={isCompleteStep}>
+                                            <lightning-button
+                                                class="brand-button wizard-action-button"
+                                                label="Complete Interview"
+                                                variant="brand"
+                                                onclick={handleComplete}
+                                                disabled={saveDisabled}
+                                            stretch>
+                                            </lightning-button>
+                                        </template>
+                                        <template lwc:else>
+                                            <lightning-button
+                                                class="brand-button wizard-action-button"
+                                                label="Next"
+                                                variant="brand"
+                                                icon-name="utility:chevronright"
+                                                icon-position="right"
+                                                onclick={handleNext}
+                                                disabled={nextDisabled}
+                                            stretch>
+                                            </lightning-button>
+                                        </template>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </template>
+            </template>
+        </template>
+    </div>
+</template>

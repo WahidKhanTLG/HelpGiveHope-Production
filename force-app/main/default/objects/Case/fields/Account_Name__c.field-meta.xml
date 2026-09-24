@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Name__c</fullName>
+    <description>Read-only formula field. Exposes the related Account name as a plain text field so it can be used as a Flow Data Table column, which cannot read related fields such as Account.Name. Stores no data and does not affect any existing automation.</description>
+    <externalId>false</externalId>
+    <formula>Account.Name</formula>
+    <inlineHelpText>Name of the Account this Case belongs to.</inlineHelpText>
+    <label>Account Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

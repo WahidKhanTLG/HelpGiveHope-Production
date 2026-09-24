@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enforce_Single_Interview_Per_Time__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>When true, only one interview can be booked for a given date and start time across all zones (one interviewer at a time). Applicants are not offered times already booked in another zone.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Enforce Single Interview Per Time</label>
+    <type>Checkbox</type>
+</CustomField>

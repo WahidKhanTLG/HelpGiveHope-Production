@@ -76,6 +76,16 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.TLG_Household_Member_Status__c</fieldItem>
+                <identifier>RecordTLG_Household_Member_Status_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Year_started_with_HGH__c</fieldItem>
                 <identifier>RecordYear_started_with_HGH__cField</identifier>
                 <visibilityRule>
@@ -99,6 +109,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Value_Of_Assistance__c</fieldItem>
                 <identifier>RecordValue_Of_Assistance_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.TLG_Household_Member_Status_Reason__c</fieldItem>
+                <identifier>RecordTLG_Household_Member_Status_Reason_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>

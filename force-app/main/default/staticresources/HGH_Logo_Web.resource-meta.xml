@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StaticResource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <cacheControl>Public</cacheControl>
+    <contentType>image/png</contentType>
+    <description>Web-optimised copy of LogoFull (640px, ~120 KB) for public pages. LogoFull.png itself is 1.9 MB.</description>
+</StaticResource>

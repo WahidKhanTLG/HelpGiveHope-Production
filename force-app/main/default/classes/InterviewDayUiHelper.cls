@@ -1,5 +1,9 @@
 public with sharing class InterviewDayUiHelper {
 
+    private static final Integer FIXED_SLOT_DURATION_MINUTES = 15;
+    private static final Integer INTERVIEW_WINDOW_MINUTES = 240;
+    private static final Integer FIXED_SLOTS_PER_MODE = INTERVIEW_WINDOW_MINUTES / FIXED_SLOT_DURATION_MINUTES;
+
     public class DeleteSelectedSchedulesResultDTO {
         @AuraEnabled public Integer deletedScheduleCount;
         @AuraEnabled public Integer skippedBookedCount;
@@ -848,7 +852,7 @@ public with sharing class InterviewDayUiHelper {
             insert as user schedulesToInsert;
         }
 
-        return 'Processed ' + dayByKey.size() + ' date(s) for mode "' + mode + '" with ' + schedulesToInsert.size() + ' schedule(s) created or ensured.' + '\nBatchId: ' + batchId;
+        return 'Processed ' + dayByKey.size() + ' date(s) for mode "' + mode + '" with ' + schedulesToInsert.size() + ' fixed 15-minute schedule(s) created or ensured.' + '\nBatchId: ' + batchId;
     }
 
     @AuraEnabled(cacheable=true)
@@ -907,7 +911,7 @@ public with sharing class InterviewDayUiHelper {
             Interview_Day__c interviewDay = new Interview_Day__c();
             interviewDay.Zone__c = zoneCode.Zone__c;
             interviewDay.Schedule_Mode__c = normalizedMode;
-            interviewDay.Total_Slots__c = totalSlots;
+            interviewDay.Total_Slots__c = FIXED_SLOTS_PER_MODE;
             interviewDay.Year__c = year;
             interviewDay.Status__c = 'Planned';
             interviewDay.Generated_Batch_Id__c = batchId;
@@ -1005,7 +1009,7 @@ public with sharing class InterviewDayUiHelper {
             }
 
             return String.format(
-                'Successfully processed {0} zone codes with mode "{1}" and {2} slots. Created {3} Interview_Day_Schedule__c records.',
+                'Successfully processed {0} zone codes with mode "{1}" and fixed 15-minute slots. Created {3} Interview_Day_Schedule__c records.',
                 new List<Object>{ zoneCodes.size(), mode, totalSlots, totalRecords }
             );
         } catch (AuraHandledException e) {
@@ -1185,7 +1189,7 @@ public with sharing class InterviewDayUiHelper {
             }
 
             String message = String.format(
-                'Successfully processed {0} out of {1} selected zone codes with mode "{2}" and {3} slots. Created {4} Interview_Day_Schedule__c records.',
+                'Successfully processed {0} out of {1} selected zone codes with mode "{2}" and fixed 15-minute slots. Created {4} Interview_Day_Schedule__c records.',
                 new List<Object>{ validZoneCodes.size(), zoneCodes.size(), mode, totalSlots, totalRecords }
             );
             if (!processedZoneCodes.isEmpty()) {
@@ -1739,12 +1743,8 @@ public with sharing class InterviewDayUiHelper {
         if (totalSlots == null || totalSlots <= 0) {
             return 0;
         }
-        if (!isCombinedMode) {
-            return totalSlots;
-        }
-        Integer morningSlots = (totalSlots + 1) / 2;
-        Integer afternoonSlots = totalSlots / 2;
-        return mode == 'Morning' ? morningSlots : afternoonSlots;
+
+        return FIXED_SLOTS_PER_MODE;
     }
 
     private static String generateBatchId() {

@@ -32,7 +32,7 @@ public class YearRoundAssistanceFormControllerTest {
     @IsTest
     static void testSave() {
         Account account = new Account(Name = 'Test Account', BillingState = 'Missouri');
-        Contact applicant = new Contact(FirstName = 'John', LastName = 'Doe', Email = 'john.doe@example.com');
+        Contact applicant = new Contact(FirstName = 'John', LastName = 'Doe', Email = 'john.doe@example.com', Birthdate = Date.today().addYears(-30), TLG_Social_Security_Number__c = 111223333);
         TLG_LandLord__c landlord = new TLG_LandLord__c(Name = 'Test Landlord');
         Case assistanceCase = new Case(
             Status = 'New',
@@ -42,14 +42,14 @@ public class YearRoundAssistanceFormControllerTest {
         );
         
         List<YearRoundAssistanceFormController.ChildPayload> children = new List<YearRoundAssistanceFormController.ChildPayload>();
-        Contact childContact = new Contact(FirstName = 'Child1', LastName = 'Doe');
+        Contact childContact = new Contact(FirstName = 'Child1', LastName = 'Doe', Birthdate = Date.today().addYears(-8), TLG_Social_Security_Number__c = 222334444);
         YearRoundAssistanceFormController.ChildPayload childPayload = new YearRoundAssistanceFormController.ChildPayload();
         childPayload.child = childContact;
         childPayload.relationshipWithApplicant = 'Child';
         children.add(childPayload);
 
         List<YearRoundAssistanceFormController.AdultPayload> adults = new List<YearRoundAssistanceFormController.AdultPayload>();
-        Contact adultContact = new Contact(FirstName = 'Adult1', LastName = 'Doe');
+        Contact adultContact = new Contact(FirstName = 'Adult1', LastName = 'Doe', Birthdate = Date.today().addYears(-40), TLG_Social_Security_Number__c = 333445555);
         YearRoundAssistanceFormController.AdultPayload adultPayload = new YearRoundAssistanceFormController.AdultPayload();
         adultPayload.adult = adultContact;
         adultPayload.relationshipWithApplicant = 'Spouse';
@@ -141,7 +141,9 @@ public class YearRoundAssistanceFormControllerTest {
                 'attributes' => new Map<String, Object>{ 'type' => 'Contact' },
                 'FirstName' => 'Jane',
                 'LastName' => 'Noel',
-                'Email' => 'jane.noel.recordtype@example.com'
+                'Email' => 'jane.noel.recordtype@example.com',
+                'Birthdate' => String.valueOf(Date.today().addYears(-35)),
+                'TLG_Social_Security_Number__c' => 444556666
             },
             'children' => new List<Object>(),
             'adults' => new List<Object>(),

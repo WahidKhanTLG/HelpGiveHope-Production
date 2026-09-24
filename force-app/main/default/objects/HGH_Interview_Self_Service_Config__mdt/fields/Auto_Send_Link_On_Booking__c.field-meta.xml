@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Auto_Send_Link_On_Booking__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>When true, the staff Schedule Interview action (run from a Case) generates the scheduling link and emails it to the applicant as part of the booking. Applicant reschedules never resend.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Auto-Send Link On Booking</label>
+    <type>Checkbox</type>
+</CustomField>

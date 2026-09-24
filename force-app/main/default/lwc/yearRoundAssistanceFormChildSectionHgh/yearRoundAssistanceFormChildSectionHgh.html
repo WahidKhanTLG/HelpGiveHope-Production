@@ -1,10 +1,21 @@
 <template>
     <div class={cardClass}>
-    <lightning-card
-        title={title}
-        icon-name="custom:custom14"
-    >
-        <slot name="actions" slot="actions"></slot>
+  <lightning-card>
+    <div class="hgh-section-header">
+      <div class="hgh-section-heading">
+        <lightning-icon
+          icon-name="custom:custom14"
+          size="small"
+          alternative-text=""
+          class="hgh-section-icon"
+        ></lightning-icon>
+        <h2 class="hgh-section-title">{title}</h2>
+      </div>
+      <div class="hgh-section-actions">
+        <slot name="actions"></slot>
+      </div>
+    </div>
+    <slot name="status-reason"></slot>
         <div class="slds-card__body slds-card__body_inner">
 
             <div class="slds-m-vertical_large slds-grid slds-gutters slds-wrap">
@@ -64,6 +75,27 @@
                         required="Yes"
                         options={relationShipOptions}
                     ></c-year-round-assistance-form-dropdown-hgh>
+                </div>
+                <div class="slds-col slds-size_12-of-12 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                    <template lwc:if={storedSsn}>
+                        <c-year-round-assistance-form-input-hgh
+                            name="SSN"
+                            label="Social Security Number"
+                            value={storedSsnDisplay}
+                            read-only="Yes"
+                        ></c-year-round-assistance-form-input-hgh>
+                    </template>
+
+                    <template lwc:else>
+                        <c-year-round-assistance-form-mask-input-hgh
+                            name="SSN"
+                            label="Social Security Number"
+                            placeholder="XXX-XX-XXXX"
+                            required="Yes"
+                            mask-options={ssnMaskOption}
+                            onblur={handleSsnBlur}
+                        ></c-year-round-assistance-form-mask-input-hgh>
+                    </template>
                 </div>
                 <div class="slds-col slds-size_12-of-12">
                     <c-year-round-assistance-form-radio-group-hgh

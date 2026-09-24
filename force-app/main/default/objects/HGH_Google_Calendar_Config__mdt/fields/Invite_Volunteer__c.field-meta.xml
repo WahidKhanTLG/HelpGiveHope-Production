@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Invite_Volunteer__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Add the assigned volunteer (User email) as an attendee on booked interview events.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Invite Volunteer</label>
+    <type>Checkbox</type>
+</CustomField>

@@ -15,6 +15,7 @@
     <columns>TLG_Wages__c</columns>
     <columns>How_long_have_you_lived_at_this_address__c</columns>
     <columns>How_long_did_you_live_there__c</columns>
+    <columns>Account_Census_Tract__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>CASES.STATUS</field>

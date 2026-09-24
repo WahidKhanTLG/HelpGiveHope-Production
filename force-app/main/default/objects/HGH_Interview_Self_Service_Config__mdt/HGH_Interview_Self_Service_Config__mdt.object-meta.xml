@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Settings for the applicant-facing interview self-service page (view / change interview slot). One record named Default.</description>
+    <label>HGH Interview Self-Service Config</label>
+    <pluralLabel>HGH Interview Self-Service Configs</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

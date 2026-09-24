@@ -1,0 +1,102 @@
+/* Brand tokens: overridable from Builder through the Brand Color property (see brandStyle in JS). */
+.hgh {
+    --hgh-primary: #0d7995;
+    --hgh-primary-dark: #0a5f76;
+    --hgh-primary-soft: #e4f2f5;
+    --hgh-accent: #8cc63f;
+    --hgh-text: #1f2a2e;
+    --hgh-muted: #5f6f74;
+    --hgh-border: #d9e2e5;
+    --hgh-surface: #ffffff;
+    --hgh-surface-alt: #f6f9f8;
+    --hgh-danger: #b42318;
+    --hgh-radius: 14px;
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 1.25rem 1rem 2rem;
+    color: var(--hgh-text);
+    line-height: 1.5;
+}
+.hgh p { margin: 0; }
+.hgh-header { margin-bottom: 1.5rem; }
+.hgh-logo { display: block; width: 100%; max-width: 15rem; height: auto; margin-bottom: 1rem; }
+.hgh-eyebrow { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--hgh-primary); font-weight: 700; }
+.hgh-title { font-size: 2rem; font-weight: 700; line-height: 1.15; margin: 0.25rem 0 0.5rem; color: var(--hgh-text); }
+.hgh-greeting { font-size: 1.05rem; color: var(--hgh-muted); }
+.hgh-loading { position: relative; min-height: 10rem; }
+.hgh-muted { color: var(--hgh-muted); font-size: 0.925rem; }
+.hgh-inline-icon { --sds-c-icon-color-foreground-default: var(--hgh-primary); --slds-c-icon-color-foreground-default: var(--hgh-primary); margin-right: 0.35rem; vertical-align: -2px; }
+
+/* cards */
+.hgh-card { background: var(--hgh-surface); border: 1px solid var(--hgh-border); border-radius: var(--hgh-radius); padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04); }
+.hgh-card_booking { border-left: 6px solid var(--hgh-primary); }
+.hgh-card_pending { border-left: 6px solid var(--hgh-accent); }
+.hgh-card__label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--hgh-muted); font-weight: 700; margin-bottom: 0.75rem; }
+.hgh-card__text { font-size: 1rem; }
+.hgh-booking { display: flex; gap: 1.25rem; align-items: center; }
+.hgh-booking__calendar { flex: 0 0 4.25rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--hgh-border); text-align: center; background: var(--hgh-surface); }
+.hgh-booking__month { display: block; background: var(--hgh-primary); color: #fff; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.25rem 0; text-transform: uppercase; }
+.hgh-booking__day { display: block; font-size: 1.9rem; font-weight: 700; line-height: 1.2; padding: 0.3rem 0 0.4rem; color: var(--hgh-text); }
+.hgh-booking__date { font-size: 1.2rem; font-weight: 700; }
+.hgh-booking__time { font-size: 1.05rem; margin-top: 0.15rem; }
+.hgh-booking__meta { margin-top: 0.35rem; color: var(--hgh-muted); font-size: 0.95rem; }
+.hgh-booking__hint { margin-top: 0.5rem; font-size: 0.85rem; color: var(--hgh-muted); }
+
+/* notices */
+.hgh-notice { display: flex; gap: 0.75rem; align-items: flex-start; border-radius: 12px; padding: 0.9rem 1rem; margin-bottom: 1.25rem; border: 1px solid transparent; font-size: 0.95rem; }
+.hgh-notice__icon { flex: 0 0 auto; margin-top: 0.1rem; }
+.hgh-notice_success { background: #e9f7ef; border-color: #b7e3c7; color: #0f5132; --sds-c-icon-color-foreground-default: #0f5132; --slds-c-icon-color-foreground-default: #0f5132; }
+.hgh-notice_error { background: #fdecec; border-color: #f5c2c0; color: var(--hgh-danger); --sds-c-icon-color-foreground-default: var(--hgh-danger); --slds-c-icon-color-foreground-default: var(--hgh-danger); }
+.hgh-notice_warn { background: #fff7e8; border-color: #f7dfb0; color: #6b4a00; --sds-c-icon-color-foreground-default: #b26a00; --slds-c-icon-color-foreground-default: #b26a00; }
+
+/* picker */
+.hgh-section-title { font-size: 1.35rem; font-weight: 700; margin: 0.5rem 0 0.25rem; }
+.hgh-picker > .hgh-muted { margin-bottom: 1rem; }
+.hgh-day { border: 1px solid var(--hgh-border); border-radius: var(--hgh-radius); background: var(--hgh-surface); margin-bottom: 0.75rem; overflow: hidden; transition: box-shadow 0.15s ease, border-color 0.15s ease; }
+.hgh-day_open { border-color: var(--hgh-primary); box-shadow: 0 4px 14px rgba(13, 121, 149, 0.12); }
+.hgh-day__header { display: flex; align-items: center; gap: 0.75rem; width: 100%; padding: 0.9rem 1.1rem; background: transparent; border: 0; cursor: pointer; text-align: left; color: inherit; font: inherit; }
+.hgh-day__header:hover { background: var(--hgh-surface-alt); }
+.hgh-day__date { flex: 1 1 auto; display: flex; flex-direction: column; }
+.hgh-day__weekday { font-weight: 700; font-size: 1.05rem; }
+.hgh-day__long { color: var(--hgh-muted); font-size: 0.9rem; }
+.hgh-day__badges { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: flex-end; }
+.hgh-badge { display: inline-block; border-radius: 999px; padding: 0.15rem 0.65rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; }
+.hgh-badge_morning { background: #eef7dd; color: #4a7a12; }
+.hgh-badge_afternoon { background: #e4f2f5; color: #0a5f76; }
+.hgh-badge_count { background: var(--hgh-primary-soft); color: var(--hgh-primary-dark); }
+.hgh-day__chevron { flex: 0 0 auto; --sds-c-icon-color-foreground-default: var(--hgh-muted); --slds-c-icon-color-foreground-default: var(--hgh-muted); }
+.hgh-slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr)); gap: 0.6rem; padding: 0.25rem 1.1rem 1.1rem; border-top: 1px dashed var(--hgh-border); padding-top: 1rem; }
+.hgh-chip { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.15rem; min-height: 3.1rem; padding: 0.55rem 0.75rem; border-radius: 10px; border: 1.5px solid var(--hgh-border); background: var(--hgh-surface); color: var(--hgh-text); font: inherit; font-weight: 600; cursor: pointer; transition: all 0.12s ease; }
+.hgh-chip:hover:not(:disabled) { border-color: var(--hgh-primary); background: var(--hgh-primary-soft); transform: translateY(-1px); }
+.hgh-chip:focus-visible { outline: 3px solid rgba(13, 121, 149, 0.35); outline-offset: 1px; }
+.hgh-chip_selected { background: var(--hgh-primary); border-color: var(--hgh-primary); color: #fff; }
+.hgh-chip:disabled { cursor: not-allowed; opacity: 0.55; background: var(--hgh-surface-alt); }
+.hgh-chip__time { white-space: nowrap; }
+.hgh-chip__note { font-size: 0.7rem; font-weight: 500; opacity: 0.85; }
+
+/* footer */
+.hgh-footer { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: center; }
+.hgh-link { background: none; border: 0; padding: 0; color: var(--hgh-primary); font: inherit; font-weight: 600; cursor: pointer; text-decoration: underline; }
+
+/* dialog */
+.hgh-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.55); z-index: 9000; }
+.hgh-dialog { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(92vw, 26rem); background: var(--hgh-surface); border-radius: 16px; padding: 1.5rem; z-index: 9001; box-shadow: 0 20px 50px rgba(15, 23, 42, 0.3); color: var(--hgh-text); }
+.hgh-dialog__title { font-size: 1.25rem; font-weight: 700; margin: 0 0 1rem; }
+.hgh-dialog__summary { background: var(--hgh-primary-soft); border-radius: 12px; padding: 0.9rem 1rem; margin-bottom: 0.75rem; }
+.hgh-dialog__date { font-weight: 700; }
+.hgh-dialog__time { font-size: 1.15rem; color: var(--hgh-primary-dark); font-weight: 700; }
+.hgh-dialog__actions { display: flex; gap: 0.6rem; justify-content: flex-end; margin-top: 1.25rem; flex-wrap: wrap; }
+.hgh-btn { font: inherit; font-weight: 700; border-radius: 10px; padding: 0.6rem 1.1rem; cursor: pointer; border: 1.5px solid transparent; }
+.hgh-btn_primary { background: var(--hgh-primary); color: #fff; }
+.hgh-btn_primary:hover:not(:disabled) { background: var(--hgh-primary-dark); }
+.hgh-btn_ghost { background: transparent; border-color: var(--hgh-border); color: var(--hgh-text); }
+.hgh-btn:disabled { opacity: 0.6; cursor: wait; }
+
+@media (max-width: 600px) {
+    .hgh { padding: 1rem 0.75rem 2.5rem; }
+    .hgh-title { font-size: 1.6rem; }
+    .hgh-booking { flex-direction: row; gap: 1rem; }
+    .hgh-day__header { flex-wrap: wrap; }
+    .hgh-day__badges { width: 100%; justify-content: flex-start; padding-left: 0; }
+    .hgh-slots { grid-template-columns: repeat(2, 1fr); }
+}

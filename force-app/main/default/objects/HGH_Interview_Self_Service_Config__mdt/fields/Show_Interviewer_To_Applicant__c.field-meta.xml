@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Show_Interviewer_To_Applicant__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Show the assigned volunteer&apos;s name on the applicant self-service page. Names that look auto-generated (e.g. User123456) are never shown.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Show Interviewer To Applicant</label>
+    <type>Checkbox</type>
+</CustomField>

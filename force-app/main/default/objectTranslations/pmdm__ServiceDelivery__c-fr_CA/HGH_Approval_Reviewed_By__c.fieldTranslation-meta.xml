@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- HGH Approval Reviewed By --></label>
+    <name>HGH_Approval_Reviewed_By__c</name>
+    <relationshipLabel><!-- Reviewed Service Deliveries --></relationshipLabel>
+</CustomFieldTranslation>

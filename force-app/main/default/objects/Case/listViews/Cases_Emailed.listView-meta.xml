@@ -7,11 +7,13 @@
     <columns>CASES.CREATED_DATE</columns>
     <columns>Assistance_Requested__c</columns>
     <columns>CASES.PRIORITY</columns>
+    <columns>TLG_Wages__c</columns>
+    <columns>Account_Census_Tract__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>CASES.STATUS</field>
         <operation>equals</operation>
-        <value>Escalated</value>
+        <value>Escalated,Emailed/called</value>
     </filters>
     <label>Cases Emailed</label>
 </ListView>

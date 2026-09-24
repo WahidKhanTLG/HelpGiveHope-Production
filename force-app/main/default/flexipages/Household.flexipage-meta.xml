@@ -692,6 +692,9 @@
                             <value>FULL_NAME</value>
                         </valueListItems>
                         <valueListItems>
+                            <value>TLG_Household_Member_Status__c</value>
+                        </valueListItems>
+                        <valueListItems>
                             <value>CONTACT.PHONE1</value>
                         </valueListItems>
                         <valueListItems>
@@ -850,10 +853,13 @@
                             <value>CASES.PRIORITY</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>CASES.CREATED_DATE_DATE_ONLY</value>
+                            <value>CASES.STATUS</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>CASES.STATUS</value>
+                            <value>CASES.RECORDTYPE</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CASES.CREATED_DATE_DATE_ONLY</value>
                         </valueListItems>
                         <valueListItems>
                             <value>OWNER_NAME</value>

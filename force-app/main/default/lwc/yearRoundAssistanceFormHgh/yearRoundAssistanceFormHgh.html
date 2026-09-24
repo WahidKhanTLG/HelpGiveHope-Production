@@ -19,6 +19,95 @@
   <template lwc:else>
     <!-- ACTIVE FORM CONTENT -->
     <template lwc:if={formStatus.isActive}>
+      <template lwc:if={showEntryGate}>
+        <div class="hgh-entry-backdrop"></div>
+        <section
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="entry-heading"
+          aria-describedby="entry-description"
+          class="hgh-entry-dialog"
+          data-entry-dialog
+          onkeydown={handleGateKeydown}
+        >
+          <div class="hgh-entry-card hgh-entry-card--wide">
+            <header class="hgh-entry-header">
+              <img src={logoUrl} alt="Help Give Hope" class="hgh-entry-logo" />
+              <h2 id="entry-heading">{formTitle}</h2>
+            </header>
+
+            <div class="hgh-entry-content">
+              <p id="entry-description">
+               Please enter your Social Security Number to continue.
+              </p>
+
+              <div class="hgh-entry-grid">
+                <div class="hgh-entry-field hgh-entry-field--full">
+                  <label class="hgh-ssn-label" for="applicant-lookup-ssn">
+                    <span class="hgh-required">*</span> Social Security Number (SSN)
+                  </label>
+                  <div class="slds-form-element__control hgh-ssn-input-wrap">
+                    <input
+                      id="applicant-lookup-ssn"
+                      data-lookup-ssn
+                      class="slds-input hgh-ssn-input"
+                      type={lookupSsnInputType}
+                      value={lookupSsn}
+                      inputmode="numeric"
+                      placeholder="XXX-XX-XXXX"
+                      autocomplete="off"
+                      required
+                      disabled={isLookingUp}
+                      aria-invalid={lookupSsnAriaInvalid}
+                      oninput={changeLookupSsn}
+                      onblur={blurLookupSsn}
+                      onkeydown={handleLookupSsnKeydown}
+                    />
+                    <button
+                      type="button"
+                      class="hgh-ssn-toggle"
+                      title={lookupSsnToggleLabel}
+                      aria-label={lookupSsnToggleLabel}
+                      disabled={isLookingUp}
+                      onpointerdown={handleLookupSsnTogglePointerDown}
+                      onclick={toggleLookupSsnVisibility}
+                    >
+                      <lightning-icon
+                        icon-name={lookupSsnEyeIcon}
+                        size="x-small"
+                        alternative-text=""
+                      ></lightning-icon>
+                    </button>
+                  </div>
+                  <template lwc:if={lookupSsnValidationError}>
+                    <div class="hgh-field-error" role="alert">{lookupSsnValidationError}</div>
+                  </template>
+                </div>
+              </div>
+
+              <template lwc:if={lookupError}>
+                <div class="hgh-inline-error hgh-entry-error" role="alert">{lookupError}</div>
+              </template>
+
+              <div class="hgh-entry-actions">
+                <lightning-button
+                  variant="brand"
+                  label="Continue"
+                  onclick={continueFromEntry}
+                  disabled={searchDisabled}
+                ></lightning-button>
+              </div>
+
+              <template lwc:if={isLookingUp}>
+                <div class="hgh-entry-loader" role="status" aria-live="polite">
+                  <lightning-spinner alternative-text="Checking your information" size="medium"></lightning-spinner>
+                  <span>Checking your information...</span>
+                </div>
+              </template>
+            </div>
+          </div>
+        </section>
+      </template>
       <!-- Branded Page Header -->
       <template lwc:if={showHeader}>
         <div class="slds-grid slds-grid_align-center">
@@ -44,7 +133,7 @@
                   class="hgh-header-text"
                   style="text-align: center; width: 100%"
                 >
-                  <h1 class="hgh-form-title" style="text-align: center">
+                  <h1 class="hgh-form-title" style="text-align: center" tabindex="-1" data-form-heading>
                     {formTitle}
                   </h1>
                   <p class="hgh-tagline" style="text-align: center">
@@ -74,30 +163,66 @@
       </template>
 
       <div class="hgh-form-body">
-        <template lwc:if={showPage1}>
-          <div class="slds-grid slds-grid_align-center">
+        <template lwc:if={submissionError}>
+          <div class="hgh-inline-error hgh-form-notice" role="alert">{submissionError}</div>
+        </template>
+        <template lwc:if={showApplicationPage1}>
+          
+
+    <!-- Existing household members banner -->
+    <template lwc:if={showHouseholdMembersFoundBanner}>
+        <div class="slds-grid slds-grid_align-center">
             <div
-              class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+                class="slds-col
+                       slds-size_12-of-12
+                       slds-medium-size_8-of-12
+                       slds-large-size_6-of-12"
             >
-              <c-year-round-assistance-form-applicant-section-hgh
+                <div
+                    class="hgh-household-found-banner"
+                    role="status"
+                >
+                    <lightning-icon
+                        icon-name="utility:people"
+                        size="small"
+                        alternative-text=""
+                        class="hgh-household-found-icon"
+                    ></lightning-icon>
+
+                    <div>
+                        <strong>
+                            Household members found
+                        </strong>
+
+                        <p>
+                           We found an existing application associated with this SSN.
+                           Please review the information below.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Applicant -->
+    <div class="slds-grid slds-grid_align-center">
+        <div
+            class="slds-col
+                   slds-size_12-of-12
+                   slds-medium-size_8-of-12
+                   slds-large-size_6-of-12"
+        >
+            <c-year-round-assistance-form-applicant-section-hgh
                 data-type="applicant"
+                initial-data={applicantInitialData}
+                onprefillready={updateSummary}
                 assistance-type={assistanceType}
                 onincomechange={updateSummary}
-              ></c-year-round-assistance-form-applicant-section-hgh>
-            </div>
-          </div>
+            ></c-year-round-assistance-form-applicant-section-hgh>
+        </div>
+    </div>
 
-          <div class="slds-grid slds-grid_align-center">
-            <div
-              class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
-            >
-              <c-year-round-assistance-form-child-section-hgh
-                title="Child 1"
-                data-type="child"
-              ></c-year-round-assistance-form-child-section-hgh>
-            </div>
-          </div>
-
+    <!-- Children continue below -->
           <template for:each={children} for:item="child">
             <div key={child.key} class="slds-grid slds-grid_align-center">
               <div
@@ -106,17 +231,68 @@
                 <c-year-round-assistance-form-child-section-hgh
                   title={child.title}
                   data-type="child"
+                  data-key={child.key}
+                  initial-data={child.initialData}
+                  read-only={child.isInactive}
+                  onprefillready={updateSummary}
                 >
-                  <lightning-button-icon
-                    slot="actions"
-                    icon-name="utility:close"
-                    size="medium"
-                    variant="bare"
-                    alternative-text="Remove"
-                    class="slds-m-left_xx-small"
-                    data-key={child.key}
-                    onclick={removeChildHandler}
-                  ></lightning-button-icon>
+                  <template lwc:if={child.isExisting}>
+                    <div slot="actions" class="hgh-member-status-panel">
+                      <label class="hgh-member-status">
+                        <input
+                          type="checkbox"
+                          class="hgh-member-status__input"
+                          data-key={child.key}
+                          checked={child.isActive}
+                          onchange={handleChildStatusChange}
+                          aria-label="Household member active status"
+                        />
+                        <span class="hgh-member-status__switch" aria-hidden="true">
+                          <span class="hgh-member-status__dot"></span>
+                        </span>
+                        <span class="hgh-member-status__label">
+                          <template lwc:if={child.isActive}>Active</template>
+                          <template lwc:else>Inactive</template>
+                        </span>
+                      </label>
+                    </div>
+
+                    <template lwc:if={child.isInactive}>
+                      <div slot="status-reason" class="hgh-member-reason-slot">
+                        <div class="hgh-member-reason">
+                          <label class="hgh-member-reason__label">
+                            <span class="hgh-required">*</span>
+                            Reason for Inactive Status
+                          </label>
+                          <textarea
+                            class="slds-textarea hgh-member-reason__input"
+                            data-key={child.key}
+                            data-status-reason={child.key}
+                            value={child.statusReason}
+                            maxlength="1000"
+                            placeholder="Enter reason"
+                            oninput={handleChildStatusReasonChange}
+                          ></textarea>
+                          <template lwc:if={child.statusReasonError}>
+                            <div class="hgh-member-reason__error" role="alert">
+                              {child.statusReasonError}
+                            </div>
+                          </template>
+                        </div>
+                      </div>
+                    </template>
+                  </template>
+                  <template lwc:else>
+                    <div slot="actions" class="hgh-member-status-panel">
+                      <lightning-button
+                        variant="neutral"
+                        label="Remove Member"
+                        title="Remove Member"
+                        data-key={child.key}
+                        onclick={removeChildHandler}
+                      ></lightning-button>
+                    </div>
+                  </template>
                 </c-year-round-assistance-form-child-section-hgh>
               </div>
             </div>
@@ -136,7 +312,6 @@
               </div>
             </div>
           </div>
-
           <template for:each={adults} for:item="adult">
             <div key={adult.key} class="slds-grid slds-grid_align-center">
               <div
@@ -146,18 +321,69 @@
                   title={adult.title}
                   is-applicant="false"
                   data-type="adult"
+                  data-key={adult.key}
+                  initial-data={adult.initialData}
+                  read-only={adult.isInactive}
+                  onprefillready={updateSummary}
                   onincomechange={updateSummary}
                 >
-                  <lightning-button-icon
-                    slot="actions"
-                    icon-name="utility:close"
-                    size="medium"
-                    variant="bare"
-                    alternative-text="Remove"
-                    class="slds-m-left_xx-small"
-                    data-key={adult.key}
-                    onclick={removeAdultHandler}
-                  ></lightning-button-icon>
+                  <template lwc:if={adult.isExisting}>
+                    <div slot="actions" class="hgh-member-status-panel">
+                      <label class="hgh-member-status">
+                        <input
+                          type="checkbox"
+                          class="hgh-member-status__input"
+                          data-key={adult.key}
+                          checked={adult.isActive}
+                          onchange={handleAdultStatusChange}
+                          aria-label="Household member active status"
+                        />
+                        <span class="hgh-member-status__switch" aria-hidden="true">
+                          <span class="hgh-member-status__dot"></span>
+                        </span>
+                        <span class="hgh-member-status__label">
+                          <template lwc:if={adult.isActive}>Active</template>
+                          <template lwc:else>Inactive</template>
+                        </span>
+                      </label>
+                    </div>
+
+                    <template lwc:if={adult.isInactive}>
+                      <div slot="status-reason" class="hgh-member-reason-slot">
+                        <div class="hgh-member-reason">
+                          <label class="hgh-member-reason__label">
+                            <span class="hgh-required">*</span>
+                            Reason for Inactive Status
+                          </label>
+                          <textarea
+                            class="slds-textarea hgh-member-reason__input"
+                            data-key={adult.key}
+                            data-status-reason={adult.key}
+                            value={adult.statusReason}
+                            maxlength="1000"
+                            placeholder="Enter reason"
+                            oninput={handleAdultStatusReasonChange}
+                          ></textarea>
+                          <template lwc:if={adult.statusReasonError}>
+                            <div class="hgh-member-reason__error" role="alert">
+                              {adult.statusReasonError}
+                            </div>
+                          </template>
+                        </div>
+                      </div>
+                    </template>
+                  </template>
+                  <template lwc:else>
+                    <div slot="actions" class="hgh-member-status-panel">
+                      <lightning-button
+                        variant="neutral"
+                        label="Remove Member"
+                        title="Remove Member"
+                        data-key={adult.key}
+                        onclick={removeAdultHandler}
+                      ></lightning-button>
+                    </div>
+                  </template>
                 </c-year-round-assistance-form-applicant-section-hgh>
               </div>
             </div>
@@ -218,22 +444,6 @@
             <div
               class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
             >
-            <template lwc:if={duplicateEntryError}>
-              <div class="slds-grid slds-grid_align-center">
-                <div class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12">
-                  <div class="slds-notify slds-notify_alert slds-alert_error slds-m-bottom_medium" role="alert">
-                    <span class="slds-assistive-text">Error</span>
-                    <lightning-icon
-                      icon-name="utility:error"
-                      size="x-small"
-                      variant="inverse"
-                      class="slds-m-right_x-small"
-                    ></lightning-icon>
-                    <span>{duplicateEntryError}</span>
-                  </div>
-                </div>
-              </div>
-            </template>
               <div class="hgh-proceed-row">
                 <lightning-button
                   variant="brand"
@@ -291,7 +501,7 @@
         </template>
         <template lwc:if={showLoader}>
           <div class="slds-is-fixed slds-backdrop slds-backdrop_open">
-            <lightning-spinner variant="brand" size="large"></lightning-spinner>
+            <lightning-spinner alternative-text="Processing application" variant="brand" size="large"></lightning-spinner>
           </div>
         </template>
       </div>

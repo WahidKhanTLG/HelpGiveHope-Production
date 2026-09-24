@@ -765,4 +765,12 @@
         </columns>
         <masterLabel>Interview Schedules</masterLabel>
     </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Original_Case_Owner_Id__c</field>
+            <table>Case.Interview_Schedules__r</table>
+        </columns>
+        <masterLabel>Interview Day Schedules</masterLabel>
+    </sections>
 </ReportType>

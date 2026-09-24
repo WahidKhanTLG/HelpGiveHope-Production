@@ -1,0 +1,74 @@
+{
+  "type" : "sfdc_cms__view",
+  "title" : "Interview",
+  "contentBody" : {
+    "component" : {
+      "children" : [ {
+        "children" : [ {
+          "attributes" : {
+            "backgroundImageConfig" : "",
+            "backgroundImageOverlay" : "rgba(0,0,0,0)",
+            "componentSpacerSize" : "",
+            "layoutDirectionDesktop" : "row",
+            "layoutDirectionMobile" : "column",
+            "layoutDirectionTablet" : "column",
+            "maxContentWidth" : "",
+            "sectionColumnGutterWidth" : "",
+            "sectionConfig" : "{\"UUID\":\"ea2628bf-b751-4212-8c35-e54646333312\",\"columns\":[{\"UUID\":\"a1faef31-f141-48f7-b93c-d7e307bb60be\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}",
+            "sectionMinHeight" : "",
+            "sectionVerticalAlign" : "flex-start"
+          },
+          "children" : [ {
+            "children" : [ {
+              "attributes" : {
+                "accentColor" : "",
+                "brandColor" : "",
+                "logoUrl" : "",
+                "organizationName" : "Help Give Hope",
+                "pageHeading" : "Your Home Interview",
+                "showLogo" : false
+              },
+              "definition" : "c:interviewSelfService",
+              "id" : "1c13c9d1-930e-4931-a040-af2de8dc7e33",
+              "type" : "component"
+            } ],
+            "id" : "a1faef31-f141-48f7-b93c-d7e307bb60be",
+            "name" : "col1",
+            "title" : "Column 1",
+            "type" : "region"
+          } ],
+          "definition" : "community_layout:section",
+          "id" : "ea2628bf-b751-4212-8c35-e54646333312",
+          "type" : "component"
+        } ],
+        "id" : "3dc0db46-2899-460f-99d6-39c634d27cd2",
+        "name" : "content",
+        "title" : "Content",
+        "type" : "region"
+      }, {
+        "children" : [ {
+          "attributes" : {
+            "customHeadTags" : "",
+            "description" : "",
+            "pageTitle" : "Interview",
+            "recordId" : "{!recordId}"
+          },
+          "definition" : "community_builder:seoAssistant",
+          "id" : "f1ec2aa4-8622-4eb9-91de-e4a0c95d8ca4",
+          "type" : "component"
+        } ],
+        "id" : "52589463-64f0-4bc6-9d96-639b0475788a",
+        "name" : "sfdcHiddenRegion",
+        "title" : "sfdcHiddenRegion",
+        "type" : "region"
+      } ],
+      "definition" : "community_layout:sldsFlexibleLayout",
+      "id" : "6e71288d-85da-4c19-b1c6-114ab4b0a1a3",
+      "type" : "component"
+    },
+    "dataProviders" : [ ],
+    "themeLayoutType" : "Inner",
+    "viewType" : "custom-interview"
+  },
+  "urlName" : "interview"
+}

@@ -7,7 +7,16 @@ export default class YearRoundAssistanceFormRadioGroupHgh extends LightningEleme
     @api options;
     errorMessage = '';
     showError = false;
+    _readOnly = false;
 
+
+    @api get readOnly() {
+        return this._readOnly === true;
+    }
+
+    set readOnly(value) {
+        this._readOnly = value === true || /^(true|yes|y)$/i.test(String(value));
+    }
     prefix = null;
 
     connectedCallback() {

@@ -1,9 +1,25 @@
 /**
  * Trigger to synchronize Zone__c between Interview_Day__c and Interview_Day_Schedule__c
  * This ensures that the direct Zone relationship on Interview_Day_Schedule__c stays in sync
- * with the Zone on the parent Interview_Day__c record
+ * with the Zone on the parent Interview_Day__c record.
+ *
+ * Also the Google Calendar producer for schedules (see InterviewDayScheduleTriggerHandler):
+ * marks rows Pending / queues cleanup of deleted events / enqueues the sync job. The original
+ * zone-sync and naming logic below is unchanged.
  */
-trigger InterviewDayScheduleSyncZone on Interview_Day_Schedule__c (before insert, before update, before delete) {
+trigger InterviewDayScheduleSyncZone on Interview_Day_Schedule__c (
+    before insert, before update, before delete,
+    after insert, after update, after delete
+) {
+
+    // ---------------- after contexts: Google Calendar producer ----------------
+    if (Trigger.isAfter) {
+        if (Trigger.isDelete) {
+            InterviewDayScheduleTriggerHandler.afterDelete(Trigger.old);
+        }
+        InterviewDayScheduleTriggerHandler.afterAny();
+        return;
+    }
 
     if (Trigger.isDelete) {
         for (Interview_Day_Schedule__c sched : Trigger.old) {
@@ -12,6 +28,14 @@ trigger InterviewDayScheduleSyncZone on Interview_Day_Schedule__c (before insert
             }
         }
         return;
+    }
+
+    // ---------------- before insert/update: time labels + Google sync flags ----------------
+    InterviewDayScheduleTriggerHandler.stampTimeLabels(Trigger.new);
+    if (Trigger.isInsert) {
+        InterviewDayScheduleTriggerHandler.beforeInsert(Trigger.new);
+    } else if (Trigger.isUpdate) {
+        InterviewDayScheduleTriggerHandler.beforeUpdate(Trigger.new, Trigger.oldMap);
     }
 
     // Collect parent Interview Day Ids

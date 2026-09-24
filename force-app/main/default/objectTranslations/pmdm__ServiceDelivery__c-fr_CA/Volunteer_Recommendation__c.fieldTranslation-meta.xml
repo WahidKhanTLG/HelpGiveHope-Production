@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Volunteer Recommendation --></label>
+    <name>Volunteer_Recommendation__c</name>
+    <picklistValues>
+        <masterLabel>Concerns</masterLabel>
+        <translation><!-- Concerns --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Do Not Recommend</masterLabel>
+        <translation><!-- Do Not Recommend --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Neutral</masterLabel>
+        <translation><!-- Neutral --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Recommend</masterLabel>
+        <translation><!-- Recommend --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Strongly Recommend</masterLabel>
+        <translation><!-- Strongly Recommend --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

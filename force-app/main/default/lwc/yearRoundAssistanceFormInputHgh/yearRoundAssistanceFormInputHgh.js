@@ -12,6 +12,9 @@ export default class YearRoundAssistanceFormInputHgh extends LightningElement {
   _disabled = false;
   _restrictTyping = false;
   _dateValue = "";
+  _pendingValue = "";
+  _hasPendingValue = false;
+  _readOnly = false;
 
   errorMessage = "";
   showError = false;
@@ -20,6 +23,11 @@ export default class YearRoundAssistanceFormInputHgh extends LightningElement {
     if (this._type === "date") return;
     if (!this.inputEl || this.disabled === undefined) return;
     this.inputEl.disabled = this.disabled;
+    this.inputEl.readOnly = this.readOnly;
+    if (this._hasPendingValue) {
+      this.inputEl.value = this._pendingValue;
+      this._hasPendingValue = false;
+    }
   }
 
   get isDateType() {
@@ -27,7 +35,7 @@ export default class YearRoundAssistanceFormInputHgh extends LightningElement {
   }
 
   get dateInputEl() {
-    return this.template.querySelector("lightning-input");
+      return this.template.querySelector("[data-date-input]");
   }
 
   get id() {
@@ -101,6 +109,12 @@ export default class YearRoundAssistanceFormInputHgh extends LightningElement {
     }
   }
 
+  @api get readOnly() { return this._readOnly; }
+  set readOnly(value) {
+    this._readOnly = value === true || /^(true|yes|y)$/i.test(String(value));
+    if (this.inputEl) this.inputEl.readOnly = this._readOnly;
+  }
+
   @api get restrictTyping() {
     return this._restrictTyping === true;
   }
@@ -113,7 +127,7 @@ export default class YearRoundAssistanceFormInputHgh extends LightningElement {
     if (this._type === "date") {
       return this.dateInputEl?.value || this._dateValue || "";
     }
-    return this.inputEl?.value || "";
+    return this.inputEl?.value ?? this._pendingValue ?? "";
   }
 
   set value(newValue) {
@@ -123,8 +137,9 @@ export default class YearRoundAssistanceFormInputHgh extends LightningElement {
       if (el) el.value = this._dateValue;
       return;
     }
-    const inputEl = this.inputEl;
-    if (inputEl) inputEl.value = newValue || "";
+    this._pendingValue = String(newValue ?? "");
+    this._hasPendingValue = !this.inputEl;
+    if (this.inputEl) this.inputEl.value = this._pendingValue;
   }
 
   @api setCustomValidity(errorMessage) {
@@ -176,10 +191,15 @@ export default class YearRoundAssistanceFormInputHgh extends LightningElement {
   }
 
   dateChangeHandler(event) {
-    this._dateValue = event.detail.value || "";
-    this.dispatchEvent(
-      new CustomEvent("change", { detail: { value: this._dateValue } })
-    );
+      this._dateValue = event.target.value || "";
+
+      this.dispatchEvent(
+          new CustomEvent("change", {
+              detail: {
+                  value: this._dateValue
+              }
+          })
+      );
   }
 
   dateBlurHandler() {

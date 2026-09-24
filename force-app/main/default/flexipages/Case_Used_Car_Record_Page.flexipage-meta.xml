@@ -193,26 +193,6 @@
                 <identifier>RecordChristmas_Form_Sent_Count_cField</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Total_Assistance_Value__c</fieldItem>
-                <identifier>RecordTotal_Assistance_Value_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Wishlist_Reminder_Emails_Enabled__c</fieldItem>
-                <identifier>RecordWishlist_Reminder_Emails_Enabled_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-s1-left</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -269,8 +249,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.How_long_have_you_lived_at_this_address__c</fieldItem>
-                <identifier>RecordHow_long_have_you_lived_at_this_address_cField</identifier>
+                <fieldItem>Record.Wishlist_Reminder_Emails_Enabled__c</fieldItem>
+                <identifier>RecordWishlist_Reminder_Emails_Enabled_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -279,8 +259,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.How_long_did_you_live_there__c</fieldItem>
-                <identifier>RecordHow_long_did_you_live_there_cField</identifier>
+                <fieldItem>Record.Total_Assistance_Value__c</fieldItem>
+                <identifier>RecordTotal_Assistance_Value_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-s1-right</name>
@@ -308,6 +288,104 @@
             </componentInstance>
         </itemInstances>
         <name>Facet-s1-container</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Applicant_Employer_Name__c</fieldItem>
+                <identifier>RecordApplicant_Employer_Name_cField2</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Applicant_Employment_Status__c</fieldItem>
+                <identifier>RecordApplicant_Employment_Status_cField2</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.How_long_have_you_lived_at_this_address__c</fieldItem>
+                <identifier>RecordHow_long_have_you_lived_at_this_address_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Jobs_In_Past_36_Months__c</fieldItem>
+                <identifier>RecordJobs_In_Past_36_Months_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-a9cc24af-f3a3-4fba-853d-13d041a928c2</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Applicant_Previous_Employer__c</fieldItem>
+                <identifier>RecordApplicant_Previous_Employer_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Contact.how_long_were_you_employed_there__c</fieldItem>
+                <identifier>RecordContacthow_long_were_you_employed_there_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.How_long_did_you_live_there__c</fieldItem>
+                <identifier>RecordHow_long_did_you_live_there_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-7afcd7c4-c1a6-49cc-9713-8993aecc4634</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-a9cc24af-f3a3-4fba-853d-13d041a928c2</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column12</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-7afcd7c4-c1a6-49cc-9713-8993aecc4634</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column13</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-17ef964b-cbef-44c6-8a36-39d6c9a16682</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -821,16 +899,6 @@
                 <identifier>RecordAccountZoneField</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Account_Interview_Schedule__c</fieldItem>
-                <identifier>RecordAccountInterviewScheduleField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-s3-left</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -871,8 +939,8 @@
                     <name>uiBehavior</name>
                     <value>readonly</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Account_Census_Tract__c</fieldItem>
-                <identifier>RecordAccountCensusTractField</identifier>
+                <fieldItem>Record.Account_Interview_Schedule__c</fieldItem>
+                <identifier>RecordAccountInterviewScheduleField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-s3-right</name>
@@ -1063,6 +1131,16 @@
                 <identifier>RecordNeedScoreField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Total_Score__c</fieldItem>
+                <identifier>RecordTotalScoreField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-s6-left</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1095,16 +1173,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Assisted_in_Past_12_Months__c</fieldItem>
                 <identifier>RecordAssisted_in_Past_12_Months_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Total_Score__c</fieldItem>
-                <identifier>RecordTotalScoreField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-s6-right</name>
@@ -1305,12 +1373,8 @@
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Current_Address__c</fieldItem>
-                <identifier>RecordCurrent_Address_cField</identifier>
+                <fieldItem>Record.Account.BillingAddress</fieldItem>
+                <identifier>RecordAccountBillingAddressField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-dcabb606-a467-4839-bbff-9686b147c1df</name>
@@ -1319,12 +1383,15 @@
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Previous_Address__c</fieldItem>
-                <identifier>RecordPrevious_Address_cField</identifier>
+                <fieldItem>Record.Account.ShippingAddress</fieldItem>
+                <identifier>RecordAccountShippingAddressField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.How_long_have_you_lived_at_this_address__c}</leftValue>
+                        <operator>LT</operator>
+                        <rightValue>36</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <name>Facet-ecf93556-6f85-4531-9fd4-d2fe63045722</name>
@@ -1423,6 +1490,24 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection_s1</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-17ef964b-cbef-44c6-8a36-39d6c9a16682</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Employer Information</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection7</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -1746,6 +1831,16 @@
         </itemInstances>
         <mode>Replace</mode>
         <name>detailTabContent</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>inHomeInterviewMobile</componentName>
+                <identifier>c_inHomeInterviewMobile</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-f90c2b98-5eeb-40ee-a943-005700d0a4fb</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -2242,6 +2337,13 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab3</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>System Administrator</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -2260,6 +2362,27 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>detailTab</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>System Administrator</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-f90c2b98-5eeb-40ee-a943-005700d0a4fb</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Home Interview</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab12</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -2274,6 +2397,13 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab4</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>System Administrator</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -2288,6 +2418,13 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab5</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>System Administrator</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -2316,6 +2453,13 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab9</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>System Administrator</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -2330,6 +2474,13 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab10</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>System Administrator</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -2344,6 +2495,13 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab6</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>System Administrator</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -2358,6 +2516,13 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab11</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>System Administrator</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -2372,6 +2537,13 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab7</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>System Administrator</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
@@ -2480,7 +2652,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>flowArguments</name>
-                    <value>[{&quot;label&quot;:&quot;recordId&quot;,&quot;value&quot;:null,&quot;dataType&quot;:&quot;String&quot;,&quot;supportsRecordId&quot;:true,&quot;selected&quot;:false}]</value>
+                    <value>[{&quot;label&quot;:&quot;recordId&quot;,&quot;dataType&quot;:&quot;String&quot;,&quot;supportsRecordId&quot;:true,&quot;value&quot;:&quot;{!Record.Id}&quot;}]</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>flowLayout</name>
@@ -2488,7 +2660,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>flowName</name>
-                    <value>Account_Duplicate_Contacts</value>
+                    <value>Case_Duplicate_Applications</value>
                 </componentInstanceProperties>
                 <componentName>flowruntime:interview</componentName>
                 <identifier>flowruntime_interview</identifier>

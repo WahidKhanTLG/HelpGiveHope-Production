@@ -36,3 +36,85 @@
     font-size: 0.85rem;
     margin-top: 4px;
 }
+/* Responsive section header: compact on desktop and mobile. */
+.hgh-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1rem 1rem 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hgh-section-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.hgh-section-icon {
+    flex-shrink: 0;
+}
+
+.hgh-section-title {
+    margin: 0;
+    min-width: 0;
+    color: #181818;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+/* Important: do not use a 22rem flex-basis here.
+ * In a column layout that value becomes height and caused the large blank mobile area. */
+.hgh-section-actions {
+    flex: 0 0 auto;
+    min-width: 0;
+    max-width: 100%;
+}
+
+@media (max-width: 600px) {
+    .hgh-section-header {
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.9rem 0.9rem 0.35rem;
+    }
+
+    .hgh-section-heading {
+        min-width: 0;
+    }
+
+    .hgh-section-actions {
+        flex: 0 0 auto;
+        width: auto;
+        margin-left: auto;
+    }
+
+    .slds-card__body_inner {
+        padding-top: 0;
+    }
+
+    .slds-m-vertical_large {
+        margin-top: 0.75rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .hgh-section-header {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .hgh-section-heading {
+        gap: 0.45rem;
+    }
+
+    .hgh-section-title {
+        font-size: 0.95rem;
+    }
+}

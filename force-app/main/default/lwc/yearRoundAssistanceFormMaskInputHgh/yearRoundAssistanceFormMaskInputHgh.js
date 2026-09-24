@@ -11,6 +11,7 @@ export default class YearRoundAssistanceFormMaskInputHgh extends LightningElemen
     @api maskOptions;
 
     _disabled = false;
+    _readOnly = false;
     _removeLeadingZeros = false;
 
     errorMessage = '';
@@ -35,6 +36,7 @@ export default class YearRoundAssistanceFormMaskInputHgh extends LightningElemen
         if(!this.inputEl || this.disabled === undefined) return;
 
         this.inputEl.disabled = this.disabled;
+        this.inputEl.readOnly = this.readOnly;
     }
 
     init() {
@@ -165,6 +167,15 @@ export default class YearRoundAssistanceFormMaskInputHgh extends LightningElemen
         }
     }
 
+
+    @api get readOnly() {
+        return this._readOnly === true;
+    }
+
+    set readOnly(value) {
+        this._readOnly = value === true || /^(true|yes|y)$/i.test(String(value));
+        if (this.inputEl) this.inputEl.readOnly = this._readOnly;
+    }
     @api get removeLeadingZeros() {
         return this._removeLeadingZeros === true;
     }

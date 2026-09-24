@@ -3,10 +3,14 @@
     <apiVersion>61.0</apiVersion>
     <isExposed>true</isExposed>
     <targets>
+        <target>lightning__AppPage</target>
         <target>lightningCommunity__Page</target>
         <target>lightningCommunity__Default</target>
     </targets>
     <targetConfigs>
+        <targetConfig targets="lightning__AppPage">
+            <property label="Assistance Type" name="assistanceType" type="String" datasource="Year Round Assitance,User/Repair Car Assitance,Christmas Assitance" default="Year Round Assitance" />
+        </targetConfig>
         <targetConfig targets="lightningCommunity__Default">
             <!-- <property label="Assistance Type" name="assitanceType" type="String" /> -->
             <property label="Assistance Type" name="assistanceType" type="String" datasource="Year Round Assitance,User/Repair Car Assitance,Christmas Assitance" />

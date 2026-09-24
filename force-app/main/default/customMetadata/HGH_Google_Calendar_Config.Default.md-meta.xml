@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Default</label>
+    <protected>false</protected>
+    <values>
+        <field>Available_Color_Id__c</field>
+        <value xsi:type="xsd:string">2</value>
+    </values>
+    <values>
+        <field>Available_Title_Pattern__c</field>
+        <value xsi:type="xsd:string">Available - {ZoneName} {Mode} - Slot {Slot}</value>
+    </values>
+    <values>
+        <field>Booked_Color_Id__c</field>
+        <value xsi:type="xsd:string">11</value>
+    </values>
+    <values>
+        <field>Calendar_Id__c</field>
+        <value xsi:type="xsd:string">c_5539365b18e102199d9584d18f7a31fefbd114d66e203186019a5e39673b6054@group.calendar.google.com</value>
+    </values>
+    <values>
+        <field>Enabled__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Event_Title_Pattern__c</field>
+        <value xsi:type="xsd:string">Help Give Hope Home Interview - {CaseNumber}</value>
+    </values>
+    <values>
+        <field>Include_Household_Address__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Invite_Applicant__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Invite_Volunteer__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Placeholder_Sync_Enabled__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Send_Updates__c</field>
+        <value xsi:type="xsd:string">all</value>
+    </values>
+    <values>
+        <field>Sweep_Interval_Minutes__c</field>
+        <value xsi:type="xsd:double">5.0</value>
+    </values>
+    <values>
+        <field>Sync_Batch_Size__c</field>
+        <value xsi:type="xsd:double">25.0</value>
+    </values>
+    <values>
+        <field>Time_Zone__c</field>
+        <value xsi:type="xsd:string">America/Chicago</value>
+    </values>
+</CustomMetadata>

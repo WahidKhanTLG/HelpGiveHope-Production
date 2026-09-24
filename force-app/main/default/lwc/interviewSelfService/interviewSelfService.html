@@ -1,0 +1,166 @@
+<template>
+    <div class="hgh" style={brandStyle}>
+        <header class="hgh-header">
+            <template lwc:if={displayLogo}>
+                <img class="hgh-logo" src={logoSrc} alt={organizationName} />
+            </template>
+            <template lwc:else>
+                <p class="hgh-eyebrow">{organizationName}</p>
+            </template>
+            <h1 class="hgh-title">{pageHeading}</h1>
+            <template lwc:if={isOk}>
+                <p class="hgh-greeting">{greeting}</p>
+            </template>
+        </header>
+
+        <template lwc:if={loading}>
+            <div class="hgh-loading">
+                <lightning-spinner alternative-text="Loading your interview details" size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <template lwc:else>
+            <template lwc:if={isBlocked}>
+                <div class="hgh-notice hgh-notice_warn" role="alert">
+                    <lightning-icon icon-name="utility:info" size="small" class="hgh-notice__icon"></lightning-icon>
+                    <p>{statusMessage}</p>
+                </div>
+            </template>
+
+            <template lwc:if={isOk}>
+                <template lwc:if={hasBooking}>
+                    <section class="hgh-card hgh-card_booking">
+                        <p class="hgh-card__label">Your interview is scheduled for</p>
+                        <div class="hgh-booking">
+                            <div class="hgh-booking__calendar" aria-hidden="true">
+                                <span class="hgh-booking__month">{currentMonthShort}</span>
+                                <span class="hgh-booking__day">{currentDayNumber}</span>
+                            </div>
+                            <div class="hgh-booking__details">
+                                <p class="hgh-booking__date">{currentWeekday}, {currentLongDate}</p>
+                                <p class="hgh-booking__time">
+                                    <lightning-icon icon-name="utility:clock" size="x-small" class="hgh-inline-icon"></lightning-icon>
+                                    {currentTimeRange}
+                                </p>
+                                <template lwc:if={booking.currentInterviewer}>
+                                    <p class="hgh-booking__meta">
+                                        <lightning-icon icon-name="utility:user" size="x-small" class="hgh-inline-icon"></lightning-icon>
+                                        Your interviewer: {booking.currentInterviewer}
+                                    </p>
+                                </template>
+                                <p class="hgh-booking__hint">A calendar invitation has been sent to your email.</p>
+                            </div>
+                        </div>
+                    </section>
+                </template>
+                <template lwc:else>
+                    <section class="hgh-card hgh-card_pending">
+                        <p class="hgh-card__label">Not scheduled yet</p>
+                        <p class="hgh-card__text">Pick the time that works best for your household below. The visit takes about 15 minutes.</p>
+                    </section>
+                </template>
+
+                <template lwc:if={successMessage}>
+                    <div class="hgh-notice hgh-notice_success" role="status">
+                        <lightning-icon icon-name="utility:check" size="small" class="hgh-notice__icon"></lightning-icon>
+                        <p>{successMessage}</p>
+                    </div>
+                </template>
+                <template lwc:if={errorMessage}>
+                    <div class="hgh-notice hgh-notice_error" role="alert">
+                        <lightning-icon icon-name="utility:error" size="small" class="hgh-notice__icon"></lightning-icon>
+                        <p>{errorMessage}</p>
+                    </div>
+                </template>
+
+                <template lwc:if={canChange}>
+                    <section class="hgh-picker">
+                        <h2 class="hgh-section-title">{sectionTitle}</h2>
+                        <p class="hgh-muted">{pickerNote}</p>
+
+                        <template lwc:if={showNoSlotsMessage}>
+                            <div class="hgh-notice hgh-notice_warn">
+                                <lightning-icon icon-name="utility:event" size="small" class="hgh-notice__icon"></lightning-icon>
+                                <p>There are no open interview times for your area right now. Please check back later or contact us.</p>
+                            </div>
+                        </template>
+
+                        <template for:each={days} for:item="day">
+                            <article key={day.interviewDayId} class={day.cardClass}>
+                                <button class="hgh-day__header" type="button" data-day-id={day.interviewDayId} onclick={handleToggleDay} aria-expanded={day.expanded}>
+                                    <span class="hgh-day__date">
+                                        <span class="hgh-day__weekday">{day.weekday}</span>
+                                        <span class="hgh-day__long">{day.longDate}</span>
+                                    </span>
+                                    <span class="hgh-day__badges">
+                                        <span class={day.modeClass}>{day.mode}</span>
+                                        <span class="hgh-badge hgh-badge_count">{day.openCount} open</span>
+                                    </span>
+                                    <lightning-icon icon-name={day.iconName} size="x-small" class="hgh-day__chevron"></lightning-icon>
+                                </button>
+
+                                <template lwc:if={day.expanded}>
+                                    <div class="hgh-slots">
+                                        <template for:each={day.slots} for:item="slot">
+                                            <button
+                                                key={slot.scheduleId}
+                                                class={slot.chipClass}
+                                                type="button"
+                                                title={slot.title}
+                                                disabled={slot.disabled}
+                                                aria-pressed={slot.selected}
+                                                data-schedule-id={slot.scheduleId}
+                                                data-slot-label={slot.rangeLabel}
+                                                data-day-label={day.fullLabel}
+                                                onclick={handleSlotClick}
+                                            >
+                                                <span class="hgh-chip__time">{slot.rangeLabel}</span>
+                                                <template lwc:if={slot.reason}>
+                                                    <span class="hgh-chip__note">{slot.reason}</span>
+                                                </template>
+                                            </button>
+                                        </template>
+                                    </div>
+                                </template>
+                            </article>
+                        </template>
+                    </section>
+                </template>
+                <template lwc:else>
+                    <div class="hgh-notice hgh-notice_warn">
+                        <lightning-icon icon-name="utility:lock" size="small" class="hgh-notice__icon"></lightning-icon>
+                        <p>{booking.cannotChangeReason}</p>
+                    </div>
+                </template>
+
+                <footer class="hgh-footer">
+                    <p class="hgh-muted">{supportLine}</p>
+                    <button class="hgh-link" type="button" onclick={handleRefresh}>Refresh available times</button>
+                </footer>
+            </template>
+
+            <template lwc:if={showStandaloneError}>
+                <div class="hgh-notice hgh-notice_error" role="alert">
+                    <lightning-icon icon-name="utility:error" size="small" class="hgh-notice__icon"></lightning-icon>
+                    <p>{errorMessage}</p>
+                </div>
+            </template>
+        </template>
+
+        <template lwc:if={showConfirm}>
+            <div class="hgh-overlay" onclick={handleCancelConfirm}></div>
+            <div class="hgh-dialog" role="dialog" aria-modal="true" aria-labelledby="hgh-confirm-title">
+                <h2 id="hgh-confirm-title" class="hgh-dialog__title">{confirmTitle}</h2>
+                <div class="hgh-dialog__summary">
+                    <p class="hgh-dialog__date">{selectedDayLabel}</p>
+                    <p class="hgh-dialog__time">{selectedSlotLabel}</p>
+                </div>
+                <p class="hgh-muted">{confirmNote}</p>
+                <div class="hgh-dialog__actions">
+                    <button class="hgh-btn hgh-btn_ghost" type="button" onclick={handleCancelConfirm} disabled={saving}>Go back</button>
+                    <button class="hgh-btn hgh-btn_primary" type="button" onclick={handleConfirm} disabled={saving}>{confirmButtonLabel}</button>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

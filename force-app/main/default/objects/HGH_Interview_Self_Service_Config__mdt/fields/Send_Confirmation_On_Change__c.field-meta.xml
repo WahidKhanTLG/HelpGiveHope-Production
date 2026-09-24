@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Send_Confirmation_On_Change__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>After an applicant books or changes their slot online, email them a confirmation that includes their scheduling link. Turn the Is_Schedule branch of the Send_Email_on_Interview_Schedule flow off when this is on, or the applicant receives two emails.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Send Confirmation On Change</label>
+    <type>Checkbox</type>
+</CustomField>

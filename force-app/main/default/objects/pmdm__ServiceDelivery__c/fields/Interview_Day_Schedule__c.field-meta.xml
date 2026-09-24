@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Interview_Day_Schedule__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Scheduled in-home interview associated with this requested item response.</description>
+    <label>Interview Day Schedule</label>
+    <referenceTo>Interview_Day_Schedule__c</referenceTo>
+    <relationshipLabel>Interview Service Deliveries</relationshipLabel>
+    <relationshipName>Interview_Service_Deliveries</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

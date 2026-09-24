@@ -167,6 +167,11 @@
             <field>Case__c</field>
             <table>Interview_Day__c.Interview_Day_Schedules__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Original_Case_Owner_Id__c</field>
+            <table>Interview_Day__c.Interview_Day_Schedules__r</table>
+        </columns>
         <masterLabel>Interview Day Schedules</masterLabel>
     </sections>
     <sections>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HGH_Approval_Reviewed_By__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>HGH Approval Reviewed By</label>
+    <referenceTo>User</referenceTo>
+    <relationshipLabel>Reviewed Service Deliveries</relationshipLabel>
+    <relationshipName>Reviewed_Service_Deliveries</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

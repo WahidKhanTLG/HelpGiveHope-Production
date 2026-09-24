@@ -66,6 +66,7 @@ export default class GenerateInterviewDates extends LightningElement {
   @track selectedZoneId = '';
   @track selectedMode = '';
   @track selectedSlots = '';
+  fixedSlotsPerMode = '16';
   @track dateOptions = [];
   @track selectedDateIds = [];
   @track selectedUniqueDates = []; 
@@ -1414,11 +1415,12 @@ export default class GenerateInterviewDates extends LightningElement {
   // Handle mode selection
   handleModeChange(e) {
     this.selectedMode = e.detail.value;
+    this.selectedSlots = this.selectedMode ? this.fixedSlotsPerMode : '';
   }
 
-  // Handle slots selection
+  // Slot count is fixed because each appointment slot is 15 minutes.
   handleSlotsChange(e) {
-    this.selectedSlots = e.detail.value;
+    this.selectedSlots = e.detail.value || this.fixedSlotsPerMode;
   }
 
   // Process placeholders
@@ -1535,12 +1537,9 @@ export default class GenerateInterviewDates extends LightningElement {
   get slotsOptions() {
     if (!this.selectedMode) return [];
 
-    // Always show 10 to 20 as values regardless of mode
-    const options = [];
-    for (let i = 10; i <= 20; i++) {
-      options.push({ label: `${i} slots`, value: String(i) });
-    }
-    return options;
+    return [
+      { label: '16 slots - fixed 15 minutes each', value: this.fixedSlotsPerMode }
+    ];
   }
   
   get modeOptions() {

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Self_Service_Token_Hash__c</fullName>
+    <caseSensitive>true</caseSensitive>
+    <description>SHA-256 hex of the applicant self-service token. The raw token is never stored. Hide from all profiles; written by Apex in system mode.</description>
+    <externalId>true</externalId>
+    <label>Self-Service Token Hash</label>
+    <length>64</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

@@ -1,17 +1,35 @@
 <template>
   <div data-id="container" class={styling}>
-    <template lwc:if={isDateType}>
-      <lightning-input
-        type="date"
-        label={label}
-        value={_dateValue}
-        required={required}
-        min={minDate}
-        max={maxDate}
-        disabled={disabled}
-        onchange={dateChangeHandler}
-        onblur={dateBlurHandler}
-      ></lightning-input>
+   <template lwc:if={isDateType}>
+        <label class="slds-form-element__label" for="date-input">
+            <template lwc:if={required}>
+                <abbr class="slds-required" title="required">*</abbr>
+            </template>
+            {label}
+        </label>
+
+        <div class="slds-form-element__control">
+            <input
+                id="date-input"
+                data-date-input
+                type="date"
+                class="slds-input hgh-date-input"
+                value={_dateValue}
+                required={required}
+                min={minDate}
+                max={maxDate}
+                disabled={disabled}
+                readonly={readOnly}
+                onchange={dateChangeHandler}
+                onblur={dateBlurHandler}
+            />
+        </div>
+
+        <template lwc:if={showError}>
+            <div class="slds-form-element__help">
+                <span>{errorMessage}</span>
+            </div>
+        </template>
     </template>
     <template lwc:else>
       <label class="slds-form-element__label" for={controlId}>
@@ -26,6 +44,7 @@
             type={inputType}
             id={inputId}
             name={name}
+            readonly={readOnly}
             placeholder={inputPlaceholder}
             class="slds-input"
             onblur={blurHandler}
@@ -37,6 +56,7 @@
           <textarea
             id={textareaId}
             name={name}
+            readonly={readOnly}
             placeholder={placeholder}
             class="slds-textarea"
             style="resize: none"

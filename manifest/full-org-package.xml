@@ -23,12 +23,40 @@
         <members>FormVisibilityControllerTest</members>
         <members>GeoCodingService</members>
         <members>GeoCodingServiceTest</members>
+        <members>GoogleCalendarEventDeleteJob</members>
+        <members>GoogleCalendarService</members>
+        <members>GoogleCalendarServiceTest</members>
+        <members>GoogleCalendarSettings</members>
+        <members>GoogleCalendarSyncJob</members>
+        <members>GoogleCalendarSyncJobTest</members>
+        <members>GoogleCalendarSyncQueueable</members>
+        <members>GoogleCalendarSyncQueueableTest</members>
+        <members>GoogleCalendarSyncScheduler</members>
+        <members>HghHouseholdReuseController</members>
+        <members>HghHouseholdReuseControllerTest</members>
         <members>HouseholdShoppingController</members>
         <members>HouseholdShoppingControllerTest</members>
         <members>HouseholdShoppingEmailController</members>
         <members>HouseholdShoppingEmailControllerTest</members>
+        <members>InHomeInterviewMobileController</members>
+        <members>InHomeInterviewMobileControllerTest</members>
+        <members>InterviewBookingService</members>
+        <members>InterviewBookingServiceTest</members>
+        <members>InterviewCaseSharingService</members>
+        <members>InterviewCaseSharingServiceTest</members>
+        <members>InterviewDayGenerator</members>
+        <members>InterviewDayGeneratorTest</members>
+        <members>InterviewDayScheduleTriggerHandler</members>
         <members>InterviewDayUiHelper</members>
         <members>InterviewDayUiHelperTest</members>
+        <members>InterviewDayWindow</members>
+        <members>InterviewDaysTriggerTest</members>
+        <members>InterviewSchedulingTestData</members>
+        <members>InterviewSelfServiceConfig</members>
+        <members>InterviewSelfServiceController</members>
+        <members>InterviewSelfServiceControllerTest</members>
+        <members>InterviewSelfServiceService</members>
+        <members>InterviewSelfServiceServiceTest</members>
         <members>MicrobatchSelfRegController</members>
         <members>MicrobatchSelfRegControllerTest</members>
         <members>MyProfilePageController</members>
@@ -133,6 +161,10 @@
         <members>LEXTHEMINGHelpGiveHope</members>
         <members>LEXTHEMINGHelpGiveHope2</members>
         <name>BrandingSet</name>
+    </types>
+    <types>
+        <members>HGH_Volunteer_Interview_Briefcase</members>
+        <name>BriefcaseDefinition</name>
     </types>
     <types>
         <members>Case.Assistance_Application</members>
@@ -347,6 +379,7 @@
         <members>BenefitManagementRecertification__c.Type__c</members>
         <members>Case.Account_Census_Tract__c</members>
         <members>Case.Account_Interview_Schedule__c</members>
+        <members>Case.Account_Name__c</members>
         <members>Case.Account_Primary_Contact__c</members>
         <members>Case.Account_Zone__c</members>
         <members>Case.Adult_Employer_Name__c</members>
@@ -363,6 +396,7 @@
         <members>Case.Assistance_Requested__c</members>
         <members>Case.Assistance_Type__c</members>
         <members>Case.Assisted_in_Past_12_Months__c</members>
+        <members>Case.Case_Link__c</members>
         <members>Case.Census_Tract_fmr__c</members>
         <members>Case.Christmas_Form_Sent_Count__c</members>
         <members>Case.Contact_Name__c</members>
@@ -397,9 +431,15 @@
         <members>Case.Primary_Contact_frm__c</members>
         <members>Case.Prior_Assistance_Score__c</members>
         <members>Case.Reason_for_Current_Situation__c</members>
+        <members>Case.Record_Type_Name__c</members>
+        <members>Case.Reschedule_Count__c</members>
         <members>Case.Residency_Length_Months__c</members>
         <members>Case.Residency_Length_Score__c</members>
         <members>Case.Score_Tier__c</members>
+        <members>Case.Self_Service_Last_Action_On__c</members>
+        <members>Case.Self_Service_Link_Sent_On__c</members>
+        <members>Case.Self_Service_Token_Expires__c</members>
+        <members>Case.Self_Service_Token_Hash__c</members>
         <members>Case.Situation_Score__c</members>
         <members>Case.TLG_Car_Payment__c</members>
         <members>Case.TLG_Child_Support__c</members>
@@ -473,6 +513,8 @@
         <members>Contact.TLG_Has_OACAC_made_a_determination__c</members>
         <members>Contact.TLG_Have_you_reached_out_to_OACAC__c</members>
         <members>Contact.TLG_Hours_worked_per_week__c</members>
+        <members>Contact.TLG_Household_Member_Status_Reason__c</members>
+        <members>Contact.TLG_Household_Member_Status__c</members>
         <members>Contact.TLG_Id_Formula__c</members>
         <members>Contact.TLG_Other_Assistance__c</members>
         <members>Contact.TLG_Other__c</members>
@@ -529,17 +571,54 @@
         <members>Form_Catalog__c.Message__c</members>
         <members>Form_Catalog__c.Start_Date__c</members>
         <members>Form_Catalog__c.Status__c</members>
+        <members>HGH_Google_Calendar_Config__mdt.Available_Color_Id__c</members>
+        <members>HGH_Google_Calendar_Config__mdt.Available_Title_Pattern__c</members>
+        <members>HGH_Google_Calendar_Config__mdt.Booked_Color_Id__c</members>
+        <members>HGH_Google_Calendar_Config__mdt.Calendar_Id__c</members>
+        <members>HGH_Google_Calendar_Config__mdt.Enabled__c</members>
+        <members>HGH_Google_Calendar_Config__mdt.Event_Title_Pattern__c</members>
+        <members>HGH_Google_Calendar_Config__mdt.Include_Household_Address__c</members>
+        <members>HGH_Google_Calendar_Config__mdt.Invite_Applicant__c</members>
+        <members>HGH_Google_Calendar_Config__mdt.Invite_Volunteer__c</members>
+        <members>HGH_Google_Calendar_Config__mdt.Placeholder_Sync_Enabled__c</members>
+        <members>HGH_Google_Calendar_Config__mdt.Send_Updates__c</members>
+        <members>HGH_Google_Calendar_Config__mdt.Sweep_Interval_Minutes__c</members>
+        <members>HGH_Google_Calendar_Config__mdt.Sync_Batch_Size__c</members>
+        <members>HGH_Google_Calendar_Config__mdt.Time_Zone__c</members>
+        <members>HGH_Interview_Self_Service_Config__mdt.Auto_Send_Link_On_Booking__c</members>
+        <members>HGH_Interview_Self_Service_Config__mdt.Days_Ahead_Visible__c</members>
+        <members>HGH_Interview_Self_Service_Config__mdt.Email_Template_Developer_Name__c</members>
+        <members>HGH_Interview_Self_Service_Config__mdt.Enabled__c</members>
+        <members>HGH_Interview_Self_Service_Config__mdt.Enforce_Single_Interview_Per_Time__c</members>
+        <members>HGH_Interview_Self_Service_Config__mdt.Max_Reschedules__c</members>
+        <members>HGH_Interview_Self_Service_Config__mdt.Org_Wide_Email_Display_Name__c</members>
+        <members>HGH_Interview_Self_Service_Config__mdt.Reschedule_Cutoff_Hours__c</members>
+        <members>HGH_Interview_Self_Service_Config__mdt.Send_Confirmation_On_Change__c</members>
+        <members>HGH_Interview_Self_Service_Config__mdt.Show_Interviewer_To_Applicant__c</members>
+        <members>HGH_Interview_Self_Service_Config__mdt.Site_Base_Url__c</members>
+        <members>HGH_Interview_Self_Service_Config__mdt.Support_Phone__c</members>
+        <members>HGH_Interview_Self_Service_Config__mdt.Token_Validity_Days__c</members>
         <members>HGH_Zone_Code__c.Active__c</members>
         <members>HGH_Zone_Code__c.Code__c</members>
         <members>HGH_Zone_Code__c.Zone__c</members>
         <members>Interview_Date__mdt.Interview_Date__c</members>
         <members>Interview_Date__mdt.Zone_Data__c</members>
+        <members>Interview_Day_Schedule__c.Assigned_On__c</members>
+        <members>Interview_Day_Schedule__c.Assigned_Volunteer__c</members>
+        <members>Interview_Day_Schedule__c.Assignment_Status__c</members>
         <members>Interview_Day_Schedule__c.Booked__c</members>
         <members>Interview_Day_Schedule__c.Case__c</members>
+        <members>Interview_Day_Schedule__c.Completed_On__c</members>
         <members>Interview_Day_Schedule__c.End_Time_Text__c</members>
         <members>Interview_Day_Schedule__c.End_Time__c</members>
+        <members>Interview_Day_Schedule__c.Google_Calendar_Id__c</members>
+        <members>Interview_Day_Schedule__c.Google_Event_Id__c</members>
+        <members>Interview_Day_Schedule__c.Google_Last_Sync__c</members>
+        <members>Interview_Day_Schedule__c.Google_Sync_Error__c</members>
+        <members>Interview_Day_Schedule__c.Google_Sync_Status__c</members>
         <members>Interview_Day_Schedule__c.Interview_Date__c</members>
         <members>Interview_Day_Schedule__c.Interview_Day__c</members>
+        <members>Interview_Day_Schedule__c.Original_Case_Owner_Id__c</members>
         <members>Interview_Day_Schedule__c.Schedule_Mode__c</members>
         <members>Interview_Day_Schedule__c.Start_Time_Text__c</members>
         <members>Interview_Day_Schedule__c.Start_Time__c</members>
@@ -650,12 +729,20 @@
         <members>pmdm__ServiceDelivery__c.Furniture_User_Entry__c</members>
         <members>pmdm__ServiceDelivery__c.Gender__c</members>
         <members>pmdm__ServiceDelivery__c.Genderpick__c</members>
+        <members>pmdm__ServiceDelivery__c.HGH_Approval_Overridden__c</members>
+        <members>pmdm__ServiceDelivery__c.HGH_Approval_Override_Reason__c</members>
+        <members>pmdm__ServiceDelivery__c.HGH_Approval_Reviewed_By__c</members>
+        <members>pmdm__ServiceDelivery__c.HGH_Approval_Reviewed_On__c</members>
+        <members>pmdm__ServiceDelivery__c.HGH_Approval__c</members>
+        <members>pmdm__ServiceDelivery__c.Interview_Day_Schedule__c</members>
         <members>pmdm__ServiceDelivery__c.Notes__c</members>
         <members>pmdm__ServiceDelivery__c.Program__c</members>
         <members>pmdm__ServiceDelivery__c.QuantityAmount__c</members>
         <members>pmdm__ServiceDelivery__c.Quantity__c</members>
         <members>pmdm__ServiceDelivery__c.Status__c</members>
         <members>pmdm__ServiceDelivery__c.Subcategory__c</members>
+        <members>pmdm__ServiceDelivery__c.Volunteer_Notes__c</members>
+        <members>pmdm__ServiceDelivery__c.Volunteer_Recommendation__c</members>
         <members>pmdm__ServiceDelivery__c.Why_NOT_Help__c</members>
         <members>pmdm__Service__c.Active__c</members>
         <members>pmdm__Service__c.Appliances_User_Entry__c</members>
@@ -677,13 +764,16 @@
         <members>pmdm__Service__c.Dishes_Quantity__c</members>
         <members>pmdm__Service__c.Distribution__c</members>
         <members>pmdm__Service__c.Dryer_Quantity__c</members>
+        <members>pmdm__Service__c.Existing_Bed_Bedding_Notes__c</members>
         <members>pmdm__Service__c.Family_Improvement_Why_Help__c</members>
         <members>pmdm__Service__c.Flatware_Quantity__c</members>
+        <members>pmdm__Service__c.Furniture_Large_Appliances_Notes__c</members>
         <members>pmdm__Service__c.Furniture_User_Entry__c</members>
         <members>pmdm__Service__c.Gender__c</members>
         <members>pmdm__Service__c.Glassware_Quantity__c</members>
         <members>pmdm__Service__c.Kitchen_Chairs_Quantity__c</members>
         <members>pmdm__Service__c.Kitchen_Table_Quantity__c</members>
+        <members>pmdm__Service__c.Linens_Notes__c</members>
         <members>pmdm__Service__c.Mattress_Full_Quantity__c</members>
         <members>pmdm__Service__c.Mattress_King_Quantity__c</members>
         <members>pmdm__Service__c.Mattress_Queen_Quantity__c</members>
@@ -691,11 +781,14 @@
         <members>pmdm__Service__c.Max_Quantity__c</members>
         <members>pmdm__Service__c.Microwave_Quantity__c</members>
         <members>pmdm__Service__c.Min_Quantity__c</members>
+        <members>pmdm__Service__c.New_Bed_Needs_Notes__c</members>
         <members>pmdm__Service__c.Other_Quantity__c</members>
+        <members>pmdm__Service__c.Other_Requested_Items_Notes__c</members>
         <members>pmdm__Service__c.Pillows__c</members>
         <members>pmdm__Service__c.Pots_Pans_Quantity__c</members>
         <members>pmdm__Service__c.Quantity__c</members>
         <members>pmdm__Service__c.Refrigerator_Quantity__c</members>
+        <members>pmdm__Service__c.Small_Appliances_Notes__c</members>
         <members>pmdm__Service__c.Sub_Category__c</members>
         <members>pmdm__Service__c.Subcategory_Text_Helper__c</members>
         <members>pmdm__Service__c.Subcategory__c</members>
@@ -748,6 +841,8 @@
         <members>Email_Bodies.gergreg</members>
         <members>Email_Bodies.t</members>
         <members>Email_Bodies.tes</members>
+        <members>HGH_Google_Calendar_Config.Default</members>
+        <members>HGH_Interview_Self_Service_Config.Default</members>
         <members>Interview_Date.X01_10_2025_Zone_3</members>
         <members>Interview_Date.X01_10_2025_Zone_5</members>
         <members>Interview_Date.X02_10_2025_Zone_2</members>
@@ -1037,6 +1132,8 @@
         <members>GenericVisitTaskContext</members>
         <members>GnrcVstKeyPerformanceInd</members>
         <members>GnrcVstTaskContextRelation</members>
+        <members>HGH_Google_Calendar_Config__mdt</members>
+        <members>HGH_Interview_Self_Service_Config__mdt</members>
         <members>HGH_Zone_Code__c</members>
         <members>Idea</members>
         <members>Image</members>
@@ -1220,6 +1317,8 @@
         <members>Contact-pt_BR</members>
         <members>Email_Bodies__mdt-en_US</members>
         <members>Form_Catalog__c-en_US</members>
+        <members>HGH_Google_Calendar_Config__mdt-en_US</members>
+        <members>HGH_Interview_Self_Service_Config__mdt-en_US</members>
         <members>HGH_Zone_Code__c-en_US</members>
         <members>Interview_Date__mdt-en_US</members>
         <members>Interview_Day_Schedule__c-en_US</members>
@@ -1658,6 +1757,7 @@
         <members>site/Christmas1.sfdc_cms__route/Error</members>
         <members>site/Christmas1.sfdc_cms__route/Forgot_Password</members>
         <members>site/Christmas1.sfdc_cms__route/Home</members>
+        <members>site/Christmas1.sfdc_cms__route/Interview__c</members>
         <members>site/Christmas1.sfdc_cms__route/Login</members>
         <members>site/Christmas1.sfdc_cms__route/News_Detail__c</members>
         <members>site/Christmas1.sfdc_cms__route/Register</members>
@@ -1668,6 +1768,7 @@
         <members>site/Christmas1.sfdc_cms__theme/Build_Your_Own_LWR</members>
         <members>site/Christmas1.sfdc_cms__themeLayout/scopedHeaderAndFooter</members>
         <members>site/Christmas1.sfdc_cms__themeLayout/snaThemeLayout</members>
+        <members>site/Christmas1.sfdc_cms__view/Interview</members>
         <members>site/Christmas1.sfdc_cms__view/checkPasswordResetEmail</members>
         <members>site/Christmas1.sfdc_cms__view/error</members>
         <members>site/Christmas1.sfdc_cms__view/forgotPassword</members>
@@ -1882,6 +1983,14 @@
         <name>ExplainabilityActionVersion</name>
     </types>
     <types>
+        <members>HGH_Google_Auth</members>
+        <name>ExternalAuthIdentityProvider</name>
+    </types>
+    <types>
+        <members>HGH_Google_Calendar_OAuth</members>
+        <name>ExternalCredential</name>
+    </types>
+    <types>
         <members>Rule69c21572f477e6fbfac56a2c0c69297982ccd2f61c4cc7265b9efc53f5427a45</members>
         <members>Rule7cbff298820c5de2dabb38c1d374efdf1e11e5058d3f3f6ed4591ef5b5192488</members>
         <name>FieldRestrictionRule</name>
@@ -1937,6 +2046,7 @@
         <members>Account_Duplicate_Contacts</members>
         <members>Account_On_Update</members>
         <members>Beds_Selection</members>
+        <members>Case_Duplicate_Applications</members>
         <members>Check_Verified_Email</members>
         <members>Count_Related_Contacts</members>
         <members>Create_Assistance_Request_and_Items</members>
@@ -1949,8 +2059,11 @@
         <members>Form_Availability_Flow</members>
         <members>Form_Availability_Scheduled_Status</members>
         <members>Form_Availability_Update_Status</members>
+        <members>HGH_Interview_Volunteer_Assignment</members>
+        <members>HGH_Set_Preliminary_Item_Approval</members>
         <members>Household_Financial_Snapshot</members>
         <members>Household_income_flow</members>
+        <members>Interview_Schedule_Day_Send_Email</members>
         <members>Landlord_fields_flow</members>
         <members>Resume_Wishlist_Reminder_Emails</members>
         <members>Schedule_Interview</members>
@@ -1979,6 +2092,7 @@
         <members>Account_Duplicate_Contacts</members>
         <members>Account_On_Update</members>
         <members>Beds_Selection</members>
+        <members>Case_Duplicate_Applications</members>
         <members>Check_Verified_Email</members>
         <members>Count_Related_Contacts</members>
         <members>Create_Assistance_Request_and_Items</members>
@@ -1991,8 +2105,11 @@
         <members>Form_Availability_Flow</members>
         <members>Form_Availability_Scheduled_Status</members>
         <members>Form_Availability_Update_Status</members>
+        <members>HGH_Interview_Volunteer_Assignment</members>
+        <members>HGH_Set_Preliminary_Item_Approval</members>
         <members>Household_Financial_Snapshot</members>
         <members>Household_income_flow</members>
+        <members>Interview_Schedule_Day_Send_Email</members>
         <members>Landlord_fields_flow</members>
         <members>Resume_Wishlist_Reminder_Emails</members>
         <members>Schedule_Interview</members>
@@ -2071,6 +2188,7 @@
         <members>npsp</members>
         <members>omnistudio</members>
         <members>pmdm</members>
+        <members>sf_chttr_apps</members>
         <members>sf_com_apps</members>
         <members>sfdobase</members>
         <name>InstalledPackage</name>
@@ -2165,6 +2283,8 @@
         <members>Global-Global Layout</members>
         <members>GnrcVstKeyPerformanceInd-Generic Visit Key Performance Indicator Layout</members>
         <members>GnrcVstTaskContextRelation-Generic Visit Task Context Relation Layout</members>
+        <members>HGH_Google_Calendar_Config__mdt-HGH Google Calendar Config Layout</members>
+        <members>HGH_Interview_Self_Service_Config__mdt-HGH Interview Self-Service Config Layout</members>
         <members>HGH_Zone_Code__c-HGH Zone Code Layout</members>
         <members>Idea-Idea Layout</members>
         <members>Image-Image Layout</members>
@@ -2235,6 +2355,9 @@
         <members>checkboxToggleInput</members>
         <members>formVisibilityManager</members>
         <members>generateInterviewDates</members>
+        <members>hghHouseholdReuseUtils</members>
+        <members>inHomeInterviewMobile</members>
+        <members>interviewSelfService</members>
         <members>selectInterviewSlot</members>
         <members>sendEmail</members>
         <members>timeTracker</members>
@@ -2515,6 +2638,10 @@
         <name>ModerationRule</name>
     </types>
     <types>
+        <members>HGH_Google_Calendar</members>
+        <name>NamedCredential</name>
+    </types>
+    <types>
         <members>SFDC_Default_Navigation_Christmas</members>
         <members>SFDC_Default_Navigation_General_Assistance</members>
         <members>SFDC_Default_Navigation_Survey_Form</members>
@@ -2562,6 +2689,12 @@
     <types>
         <members>Data_Migration_Audit_Fields</members>
         <members>Decision_Explainer_CC</members>
+        <members>HGH_Calendar_Integration_Admin</members>
+        <members>HGH_Duplicate_Case_Fields</members>
+        <members>HGH_In_Home_Interview_Reviewer</members>
+        <members>HGH_In_Home_Interview_Volunteer</members>
+        <members>HGH_Interview_Scheduling_Staff</members>
+        <members>HGH_Interview_Self_Service_Guest</members>
         <members>Waive_MFA</members>
         <members>sfdcInternalInt__sfdc_activityplatform</members>
         <members>sfdcInternalInt__sfdc_nc_constraints_engine_deploy</members>
@@ -2595,6 +2728,7 @@
         <members>Customer Community User</members>
         <members>General Assistance Profile</members>
         <members>Guest License User</members>
+        <members>HGH Volunteer</members>
         <members>Identity User</members>
         <members>MarketingProfile</members>
         <members>Minimum Access - API Only Integrations</members>
@@ -2788,6 +2922,11 @@
         <members>flow_orchestration_work_item_ootb_crt_two_four_eight</members>
         <members>screen_flows_prebuilt_crt</members>
         <name>ReportType</name>
+    </types>
+    <types>
+        <members>HGH_Executive_Admin</members>
+        <members>Volunteer</members>
+        <name>Role</name>
     </types>
     <types>
         <members>Account</members>
@@ -3185,6 +3324,7 @@
         <name>StandardValueSet</name>
     </types>
     <types>
+        <members>HGH_Logo_Web</members>
         <members>Logo</members>
         <members>LogoFull</members>
         <members>SNA_DgvMi_sf_default_cdn_Wishlist_Christmas_Aid_Requests1</members>
@@ -3353,6 +3493,7 @@
         <members>Account_Duplicate_Contacts</members>
         <members>Account_On_Update</members>
         <members>Beds_Selection</members>
+        <members>Case_Duplicate_Applications</members>
         <members>Check_Verified_Email</members>
         <members>Count_Related_Contacts</members>
         <members>Create_Assistance_Request_and_Items</members>
@@ -3365,8 +3506,11 @@
         <members>Form_Availability_Flow</members>
         <members>Form_Availability_Scheduled_Status</members>
         <members>Form_Availability_Update_Status</members>
+        <members>HGH_Interview_Volunteer_Assignment</members>
+        <members>HGH_Set_Preliminary_Item_Approval</members>
         <members>Household_Financial_Snapshot</members>
         <members>Household_income_flow</members>
+        <members>Interview_Schedule_Day_Send_Email</members>
         <members>Landlord_fields_flow</members>
         <members>Resume_Wishlist_Reminder_Emails</members>
         <members>Schedule_Interview</members>

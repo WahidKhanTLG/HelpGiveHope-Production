@@ -102,3 +102,58 @@
   color: #374151;
   letter-spacing: 0.01em;
 }
+
+:host {
+    width: 100%;
+    min-width: 0;
+}
+
+.hgh-date-input {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 2.6rem;
+
+    padding: 0.5rem 0.75rem;
+
+    font-family: inherit;
+    font-size: 0.875rem;
+    line-height: 1.5;
+
+    color: #1a2e35;
+    background: #f8fffe;
+
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+
+    box-sizing: border-box;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.hgh-date-input:hover {
+    border-color: #7ab648;
+    background: #ffffff;
+}
+
+.hgh-date-input:focus {
+    outline: none;
+    border-color: #00a79d;
+    box-shadow: 0 0 0 3px rgba(0, 167, 157, 0.18);
+    background: #ffffff;
+}
+
+@media (max-width: 600px) {
+    .hgh-date-input {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+
+        /* Prevent iPhone auto zoom */
+        font-size: 16px;
+    }
+}

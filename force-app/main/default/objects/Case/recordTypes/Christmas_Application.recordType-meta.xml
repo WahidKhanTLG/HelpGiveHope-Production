@@ -58,6 +58,10 @@
         </values>
         <values>
             <fullName>Medium</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
             <default>true</default>
         </values>
     </picklistValues>
