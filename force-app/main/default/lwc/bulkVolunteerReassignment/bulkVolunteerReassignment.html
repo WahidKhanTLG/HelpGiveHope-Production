@@ -1,0 +1,221 @@
+<template>
+    <div class="page-shell">
+        <section class="hero-card">
+            <div class="brand-row">
+                <img class="brand-logo" src={logoUrl} alt="Help Give Hope" />
+                <div class="hero-copy">
+                    <p class="eyebrow">HOME INTERVIEW OPERATIONS</p>
+                    <h1>Bulk Volunteer Reassignment</h1>
+                    <p class="subtitle">
+                        Filter scheduled interviews by Zone and current-year Scheduled Date,
+                        then reassign one or multiple visits in a single controlled action.
+                    </p>
+                </div>
+            </div>
+            <div class="year-pill">{currentYear}</div>
+        </section>
+
+        <template if:true={pageError}>
+            <div class="message message-error" role="alert">
+                <lightning-icon icon-name="utility:error" size="x-small" alternative-text="Error"></lightning-icon>
+                <span>{pageError}</span>
+            </div>
+        </template>
+
+        <template if:true={resultMessage}>
+            <div class={resultMessageClass} role="status">
+                <lightning-icon icon-name={resultIcon} size="x-small" alternative-text="Status"></lightning-icon>
+                <div>
+                    <strong>{resultMessage}</strong>
+                    <template if:true={hasResultDetails}>
+                        <ul class="result-details">
+                            <template for:each={resultDetails} for:item="detail">
+                                <li key={detail}>{detail}</li>
+                            </template>
+                        </ul>
+                    </template>
+                </div>
+            </div>
+        </template>
+
+        <section class="content-card filter-card">
+            <div class="section-heading">
+                <div>
+                    <p class="step-label">STEP 1</p>
+                    <h2>Find Scheduled Interviews</h2>
+                </div>
+                <p class="section-note">Scheduled Date options are limited to the selected Zone and {currentYear}.</p>
+            </div>
+
+            <div class="filter-grid">
+                <lightning-combobox
+                    name="zone"
+                    label="Zone"
+                    value={selectedZoneId}
+                    placeholder="Select a Zone"
+                    options={zoneOptions}
+                    onchange={handleZoneChange}
+                    required>
+                </lightning-combobox>
+
+                <lightning-combobox
+                    name="scheduleDate"
+                    label="Scheduled Date"
+                    value={selectedDate}
+                    placeholder={datePlaceholder}
+                    options={dateOptions}
+                    onchange={handleDateChange}
+                    disabled={dateDisabled}
+                    required>
+                </lightning-combobox>
+            </div>
+
+            <template if:true={loadingDates}>
+                <div class="inline-loading">
+                    <lightning-spinner alternative-text="Loading scheduled dates" size="small"></lightning-spinner>
+                </div>
+            </template>
+        </section>
+
+        <section class="content-card table-card">
+            <div class="section-heading table-heading">
+                <div>
+                    <p class="step-label">STEP 2</p>
+                    <h2>Select Interviews</h2>
+                </div>
+                <div class="selection-badge">Selected {selectedCount} / {maxSelection}</div>
+            </div>
+
+            <template if:true={loadingRows}>
+                <div class="table-loading">
+                    <lightning-spinner alternative-text="Loading interviews" size="medium"></lightning-spinner>
+                </div>
+            </template>
+
+            <template if:false={loadingRows}>
+                <template if:true={hasRows}>
+                    <div class="table-toolbar">
+                        <lightning-input
+                            type="checkbox"
+                            label="Select All (maximum 20 per batch)"
+                            checked={allEligibleSelected}
+                            disabled={selectAllDisabled}
+                            onchange={handleSelectAll}>
+                        </lightning-input>
+                        <div class="table-toolbar-actions">
+                            <span class="record-count">{rowCountLabel}</span>
+                            <lightning-button-icon
+                                icon-name="utility:refresh"
+                                alternative-text="Refresh interviews"
+                                title="Refresh interviews"
+                                variant="border-filled"
+                                onclick={handleRefreshInterviews}
+                                disabled={loadingRows}>
+                            </lightning-button-icon>
+                        </div>
+                    </div>
+
+                    <div class="table-scroll" role="region" aria-label="Scheduled interviews">
+                        <table class="interview-table">
+                            <thead>
+                                <tr>
+                                    <th class="select-column"><span class="slds-assistive-text">Select</span></th>
+                                    <th>Case</th>
+                                    <th>Household</th>
+                                    <th>Time</th>
+                                    <th>Current Volunteer</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={rows} for:item="row">
+                                    <tr key={row.scheduleId} class={row.rowClass}>
+                                        <td class="select-column">
+                                            <lightning-input
+                                                type="checkbox"
+                                                variant="label-hidden"
+                                                label={row.checkboxLabel}
+                                                data-id={row.scheduleId}
+                                                checked={row.selected}
+                                                disabled={row.disabled}
+                                                onchange={handleRowSelection}>
+                                            </lightning-input>
+                                        </td>
+                                        <td>
+                                            <span class="case-number">{row.caseNumber}</span>
+                                        </td>
+                                        <td>
+                                            <span class="household-name">{row.householdName}</span>
+                                        </td>
+                                        <td>
+                                            <span class="time-window">{row.timeWindow}</span>
+                                        </td>
+                                        <td>
+                                            <span>{row.currentVolunteerName}</span>
+                                        </td>
+                                        <td>
+                                            <span class={row.statusClass}>{row.assignmentStatus}</span>
+                                            <template if:true={row.lockedReason}>
+                                                <div class="locked-reason">{row.lockedReason}</div>
+                                            </template>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                </template>
+
+                <template if:false={hasRows}>
+                    <div class="empty-state">
+                        <lightning-icon icon-name="utility:calendar" size="medium" alternative-text="No interviews"></lightning-icon>
+                        <h3>{emptyStateTitle}</h3>
+                        <p>{emptyStateMessage}</p>
+                    </div>
+                </template>
+            </template>
+        </section>
+
+        <section class="content-card action-card">
+            <div class="section-heading">
+                <div>
+                    <p class="step-label">STEP 3</p>
+                    <h2>Choose New Volunteer</h2>
+                </div>
+                <p class="section-note">Applicant, contact, Zone, date, and appointment time remain unchanged.</p>
+            </div>
+
+            <div class="action-grid">
+                <lightning-record-picker
+                    name="volunteer"
+                    label="Reassign To"
+                    object-api-name="User"
+                    value={selectedVolunteerId}
+                    placeholder="Search an active volunteer"
+                    filter={volunteerFilter}
+                    display-info={volunteerDisplayInfo}
+                    matching-info={volunteerMatchingInfo}
+                    onchange={handleVolunteerChange}
+                    disabled={volunteerDisabled}
+                    required>
+                </lightning-record-picker>
+
+                <div class="action-button-wrap">
+                    <lightning-button
+                        variant="brand"
+                        label={reassignButtonLabel}
+                        title="Reassign selected interviews"
+                        onclick={handleReassign}
+                        disabled={reassignDisabled}>
+                    </lightning-button>
+                </div>
+            </div>
+
+            <p class="automation-note">
+                Reassignment updates the existing Interview Day Schedule assignment lookup.
+                Existing HGH assignment automation continues to handle assignment status, timestamp,
+                Case ownership/access, and related side effects.
+            </p>
+        </section>
+    </div>
+</template>

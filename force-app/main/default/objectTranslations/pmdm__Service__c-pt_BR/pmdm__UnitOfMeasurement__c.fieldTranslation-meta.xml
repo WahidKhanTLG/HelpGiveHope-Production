@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>A unidade usada para acompanhar o serviço. Por exemplo: horas, refeições, sessões, entregas, kits, etc. Definir uma Unidade de medida padroniza a forma como você mede a prestação do serviço.</help>
+    <label><!-- Unit of Measurement --></label>
+    <name>pmdm__UnitOfMeasurement__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Engajamento de programa</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Engajamentos de programa</value>
+    </caseValues>
+    <fieldSets>
+        <label>CreateProgramEngagement</label>
+        <name>pmdm__CreateProgramEngagement</name>
+    </fieldSets>
+    <fieldSets>
+        <label>SessionParticipantView</label>
+        <name>pmdm__SessionParticipantView</name>
+    </fieldSets>
+    <gender>Masculine</gender>
+    <nameFieldLabel>Nome do engajamento em programa</nameFieldLabel>
+    <validationRules>
+        <errorMessage>Selecione uma Conta que corresponda ao Contato relacionado.</errorMessage>
+        <name>pmdm__ACCOUNT_MATCHES_CONTACT_ACCOUNT</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>A data de término deve ser posterior à data de aplicação</errorMessage>
+        <name>pmdm__APPLICATION_DATE_BEFORE_END_DATE</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>A data de início deve ser posterior à data de aplicação</errorMessage>
+        <name>pmdm__APPLICATION_DATE_BEFORE_START_DATE</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Selecione uma data de término que esteja na data de início do programa ou após, e que esteja na data de término do programa ou antes.</errorMessage>
+        <name>pmdm__END_DATE_WITHIN_PROGRAM_DATES</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Selecione uma Coorte de programa que corresponda ao Programa.</errorMessage>
+        <name>pmdm__PROGRAM_MATCHES_COHORT_PROGRAM</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>A data de início deve ser anterior à data de término</errorMessage>
+        <name>pmdm__START_DATE_BEFORE_END_DATE</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Selecione uma data de início que esteja na data de início do programa ou após, e que esteja na data de término do programa ou antes.</errorMessage>
+        <name>pmdm__START_DATE_WITHIN_PROGRAM_DATES</name>
+    </validationRules>
+</CustomObjectTranslation>

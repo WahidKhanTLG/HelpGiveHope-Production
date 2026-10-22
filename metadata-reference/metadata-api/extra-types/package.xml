@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>sfdc_asset_company_assets</members>
+        <name>ContentWorkspace</name>
+    </types>
+    <types>
+        <members>Author</members>
+        <members>Library Administrator</members>
+        <members>Viewer</members>
+        <name>ContentWorkspacePermission</name>
+    </types>
+    <types>
+        <members>SFDC_DevConsole</members>
+        <name>DebugLevel</name>
+    </types>
+    <version>68.0</version>
+</Package>

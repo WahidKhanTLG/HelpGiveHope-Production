@@ -8,6 +8,14 @@
         <plural>true</plural>
         <value>Asignaciones de CCG</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Manage Allocations Additional Fields --></label>
+        <name>npsp__ManageAllocationsAdditionalFields</name>
+    </fieldSets>
     <gender>Feminine</gender>
     <nameFieldLabel>Nombre de asignación de CCG</nameFieldLabel>
+    <webLinks>
+        <label><!-- Manage_Allocations --></label>
+        <name>npsp__Manage_Allocations</name>
+    </webLinks>
 </CustomObjectTranslation>

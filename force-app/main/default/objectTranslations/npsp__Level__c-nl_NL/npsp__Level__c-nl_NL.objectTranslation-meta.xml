@@ -8,6 +8,14 @@
         <plural>true</plural>
         <value>Niveaus</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- LevelEdit --></label>
+        <name>npsp__LevelEdit</name>
+    </fieldSets>
     <gender>Neuter</gender>
     <nameFieldLabel>Niveaunaam</nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- Target is a required field on Level.  Please specify the Target object for this Level. --></errorMessage>
+        <name>npsp__Target_Required</name>
+    </validationRules>
 </CustomObjectTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The total number of Service Participants with Status set to Enrolled linked to this Service Schedule --></help>
+    <label>Participants inscrits</label>
+    <name>pmdm__ParticipantsEnrolled__c</name>
+</CustomFieldTranslation>

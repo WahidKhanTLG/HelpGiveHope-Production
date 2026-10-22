@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The default Service quantity reflected on a Service Delivery when tracking attendance. --></help>
+    <label>Standard-Leistungsmenge</label>
+    <name>pmdm__DefaultServiceQuantity__c</name>
+</CustomFieldTranslation>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Cohorte de programa</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Cohortes de programa</value>
+    </caseValues>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Cohorte de programa</nameFieldLabel>
+    <validationRules>
+        <errorMessage>La Fecha de finalización debe estar comprendida entre las fechas de inicio y finalización del programa</errorMessage>
+        <name>pmdm__END_DATE_PROGRAM_DATES</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>La fecha de inicio debe ser anterior a la fecha de finalización.</errorMessage>
+        <name>pmdm__START_DATE_BEFORE_END_DATE</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>La Fecha de inicio debe estar dentro del intervalo de las fechas de inicio y finalización del programa relacionado.</errorMessage>
+        <name>pmdm__START_DATE_PROGRAM_DATES</name>
+    </validationRules>
+</CustomObjectTranslation>

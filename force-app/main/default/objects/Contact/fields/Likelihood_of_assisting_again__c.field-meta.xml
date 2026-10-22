@@ -5,6 +5,7 @@
     <formula>TEXT(Account.Likelihood_of_assisting_again__c)</formula>
     <label>Likelihood of assisting again</label>
     <required>false</required>
+    <trackHistory>false</trackHistory>
     <type>Text</type>
     <unique>false</unique>
 </CustomField>

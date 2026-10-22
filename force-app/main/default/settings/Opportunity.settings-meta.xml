@@ -6,11 +6,12 @@
     <enableExpandedPipelineInspectionSetup>true</enableExpandedPipelineInspectionSetup>
     <enableFindSimilarOpportunities>false</enableFindSimilarOpportunities>
     <enableForecastCategoryMetrics>true</enableForecastCategoryMetrics>
-    <enableOpportunityFieldHistoryTracking>false</enableOpportunityFieldHistoryTracking>
+    <enableOpportunityFieldHistoryTracking>true</enableOpportunityFieldHistoryTracking>
     <enableOpportunityInsightsInMobile>false</enableOpportunityInsightsInMobile>
     <enableOpportunityTeam>false</enableOpportunityTeam>
     <enablePipelineChangesMetrics>true</enablePipelineChangesMetrics>
     <enablePipelineInspection>true</enablePipelineInspection>
+    <enablePipelineInspectionHideMyPipeline>false</enablePipelineInspectionHideMyPipeline>
     <enablePipelineInspectionSingleCategoryRollup>true</enablePipelineInspectionSingleCategoryRollup>
     <enableServiceCaseInsights>false</enableServiceCaseInsights>
     <enableUpdateReminders>true</enableUpdateReminders>

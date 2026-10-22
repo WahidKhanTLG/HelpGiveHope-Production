@@ -42,4 +42,8 @@
     </caseValues>
     <gender>Feminine</gender>
     <nameFieldLabel>Name des Verwendungszwecks</nameFieldLabel>
+    <webLinks>
+        <label><!-- Recalculate_Rollups --></label>
+        <name>npsp__Recalculate_Rollups</name>
+    </webLinks>
 </CustomObjectTranslation>

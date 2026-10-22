@@ -1,7 +1,7 @@
 /**
  * Household lookup/reuse using existing Account, Contact, Case and relationship objects.
  * No additional custom object, custom permission, permission set or server session.
- * Public lookup/save uses tightly scoped SYSTEM_MODE operations because the form runs as a Site Guest User.
+ * Public lookup/save runs without sharing and with default (system) CRUD/FLS because the form runs as a Site Guest User.
  * Server-side household, membership, record-version, record-type and SSN protections remain enforced.
  * Record versions are an optimistic-concurrency hint, NOT authorization or proof of lookup.
  */
@@ -10,14 +10,21 @@ public without sharing class HghHouseholdReuseController {
     private static final String SSN_FIELD = 'TLG_Social_Security_Number__c';
     private static final String CONTACT_SELECT = 'SELECT Id, AccountId, FirstName, LastName, Email, '
         + 'Birthdate, GenderIdentity, Phone, TLG_Social_Security_Number__c, TLG_Household_Member_Status__c, '
-        + 'TLG_Household_Member_Status_Reason__c, MailingStreet, MailingCity, '
-        + 'MailingState, MailingPostalCode, MailingCountry, LastModifiedDate FROM Contact ';
+        + 'TLG_Household_Member_Status_Reason__c, MailingStreet, MailingCity, MailingState, MailingPostalCode, '
+        + 'MailingCountry, TLG_Employed_or_unemployed__c, TLG_Employer_Name__c, TLG_Previous_Employer__c, '
+        + 'how_long_were_you_employed_there__c, Employment_Unemployment_duration_months__c, '
+        + 'TLG_Hours_worked_per_week__c, TLG_Rate_of_Pay__c, Number_of_Jobs_in_Past_36_Months__c, '
+        + 'TLG_Total_Time_Employed_Months__c, TLG_Wages_per_month__c, TLG_Relationship_with_Applicant__c, '
+        + 'TLG_Are_you_their_legal_guardian__c, School_Attending__c, LastModifiedDate FROM Contact ';
     private static final Set<String> CONTACT_FIELDS = new Set<String>{
         'FirstName', 'LastName', 'Email', 'Birthdate', 'GenderIdentity', 'Phone',
         'MailingStreet', 'MailingCity', 'MailingState', 'MailingPostalCode', 'MailingCountry',
         'TLG_Social_Security_Number__c', 'TLG_Employed_or_unemployed__c',
+        'TLG_Employer_Name__c', 'TLG_Previous_Employer__c', 'how_long_were_you_employed_there__c',
         'Employment_Unemployment_duration_months__c', 'TLG_Hours_worked_per_week__c',
-        'TLG_Rate_of_Pay__c', 'TLG_Wages_per_month__c', 'TLG_SSI_Disability__c', 'TLG_TANIF__c',
+        'TLG_Rate_of_Pay__c', 'Number_of_Jobs_in_Past_36_Months__c',
+        'TLG_Total_Time_Employed_Months__c', 'TLG_Wages_per_month__c',
+        'TLG_Relationship_with_Applicant__c', 'TLG_SSI_Disability__c', 'TLG_TANIF__c',
         'TLG_SS__c', 'TLG_Food_Stamps__c', 'TLG_Unemployment__c', 'TLG_Child_Support__c',
         'TLG_Other__c', 'TLG_Veterans__c', 'TLG_Are_you_their_legal_guardian__c', 'School_Attending__c'
     };
@@ -118,11 +125,9 @@ public without sharing class HghHouseholdReuseController {
             }
 
             Decimal numericSsn = Decimal.valueOf(normalized);
-            List<Contact> candidates = (List<Contact>) Database.queryWithBinds(
+            List<Contact> candidates = (List<Contact>) Database.query(
                 'SELECT Id, AccountId FROM Contact WHERE TLG_Social_Security_Number__c = :numericSsn ' +
-                'AND (TLG_Household_Member_Status__c = :activeStatus OR TLG_Household_Member_Status__c = NULL) LIMIT 21',
-                new Map<String, Object>{'numericSsn' => numericSsn, 'activeStatus' => 'Active'},
-                AccessLevel.SYSTEM_MODE
+                'AND (TLG_Household_Member_Status__c = \'Active\' OR TLG_Household_Member_Status__c = NULL) LIMIT 21'
             );
 
             if (candidates.isEmpty()) {
@@ -205,7 +210,7 @@ public without sharing class HghHouseholdReuseController {
             if (1 + payload.children.size() + payload.adults.size() > MAX_MEMBERS) {
                 throw new ReuseException('This household needs assisted processing. Please contact Help Give Hope.');
             }
-            // Public form runs as a Site Guest User, so authorized reuse reads/writes run in SYSTEM_MODE.
+            // Public form runs as a Site Guest User; this class is without sharing, so reads/writes use default system access.
             Account currentHousehold = loadAccount(payload.reuseAccountId, true);
             List<Contact> currentFamily = loadFamily(currentHousehold.Id, true);
             verifyVersions(payload.reuseRecordVersions, versionMap(currentHousehold, currentFamily));
@@ -213,10 +218,7 @@ public without sharing class HghHouseholdReuseController {
             if (!currentById.containsKey(payload.applicant.Id)) {
                 throw new ReuseException('The applicant no longer belongs to this household. Please contact Help Give Hope.');
             }
-            // Supplied IDs never establish authority. Recheck applicant role and live membership.
-            if (!isApplicantForHousehold(payload.applicant.Id, currentHousehold)) {
-                throw new ReuseException('This Contact is not an existing applicant for this household. Please search again.');
-            }
+            // Any active member of the household may apply; the household's primary contact is switched to them below.
 
             Set<Id> activeSubmittedIds = new Set<Id>();
             for (YearRoundAssistanceFormController.ChildPayload row : payload.children) {
@@ -315,15 +317,15 @@ public without sharing class HghHouseholdReuseController {
             householdUpdate.Id = currentHousehold.Id;
             // Name, owner, primary Contact, statuses, and historical blank fields are not overwritten.
             YearRoundAssistanceFormController.prepareAccount(householdUpdate);
-            Database.update(householdUpdate, AccessLevel.SYSTEM_MODE);
+            Database.update(householdUpdate);
             List<Contact> inserts = new List<Contact>();
             List<Contact> updates = new List<Contact>();
             for (MemberWrite member : members) {
                 if (member.isNew) inserts.add(member.record);
                 else updates.add(member.record);
             }
-            if (!inserts.isEmpty()) Database.insert(inserts, AccessLevel.SYSTEM_MODE);
-            if (!updates.isEmpty()) Database.update(updates, AccessLevel.SYSTEM_MODE);
+            if (!inserts.isEmpty()) Database.insert(inserts);
+            if (!updates.isEmpty()) Database.update(updates);
 
             if (!statusById.isEmpty()) {
                 List<Contact> statusUpdates = new List<Contact>();
@@ -335,10 +337,14 @@ public without sharing class HghHouseholdReuseController {
                         TLG_Household_Member_Status_Reason__c = statusRow.status == 'Inactive' ? statusRow.reason : null
                     ));
                 }
-                Database.update(statusUpdates, AccessLevel.SYSTEM_MODE);
+                Database.update(statusUpdates);
             }
 
             Contact applicant = members[0].record;
+            // The member who applies becomes the household's primary contact (same as the new-application path).
+            if (currentHousehold.npe01__One2OneContact__c != applicant.Id) {
+                Database.update(new Account(Id = currentHousehold.Id, npe01__One2OneContact__c = applicant.Id));
+            }
             Case application = (Case) copyAllowedFields(payload.assistanceCase, Case.SObjectType, CASE_FIELDS, true);
             application.AccountId = currentHousehold.Id;
             application.ContactId = applicant.Id;
@@ -347,13 +353,13 @@ public without sharing class HghHouseholdReuseController {
             application.TLG_Number_of_Children__c = payload.children.size();
             application.TLG_Number_of_Individuals_in_household__c = members.size();
             applyCaseRecordType(payload.assistanceCase, application);
-            Database.insert(application, AccessLevel.SYSTEM_MODE);
+            Database.insert(application);
             saveRelationships(members, applicant.Id);
             if (payload.landlord != null) {
                 TLG_LandLord__c landlord = (TLG_LandLord__c) copyAllowedFields(payload.landlord, TLG_LandLord__c.SObjectType, LANDLORD_FIELDS, true);
                 landlord.TLG_Contact__c = applicant.Id;
                 landlord.Case__c = application.Id;
-                Database.insert(landlord, AccessLevel.SYSTEM_MODE);
+                Database.insert(landlord);
             }
             // Existing household members are either Active in this application or explicitly marked Inactive; no Contact is deleted.
             // No per-Case member snapshot or exactly-once receipt is persisted in this variant.
@@ -377,18 +383,6 @@ public without sharing class HghHouseholdReuseController {
 
             return 'The application could not be saved. No partial changes were kept. Please review the form or ask Help Give Hope to check permissions and validation rules.';
         }
-    }
-    private static Boolean isApplicantForHousehold(Id contactId, Account household) {
-        if (household.npe01__One2OneContact__c == contactId) return true;
-        List<Case> applications = [
-            SELECT Id
-            FROM Case
-            WHERE ContactId = :contactId
-            AND AccountId = :household.Id
-            WITH SYSTEM_MODE
-            LIMIT 1
-        ];
-        return !applications.isEmpty();
     }
     /** Format-only for finding an existing stored value; not identity/SSA verification. */
     @TestVisible private static String normalizeLookupSsn(String value) {
@@ -437,10 +431,9 @@ public without sharing class HghHouseholdReuseController {
     // Lookup-only system-mode readers for the public guest path.
     // They return only the whitelisted fields used by memberDto().
     private static Account loadAccountForLookup(Id accountId) {
-        List<Account> records = (List<Account>) Database.queryWithBinds(
+        List<Account> records = (List<Account>) Database.query(
             'SELECT Id, npe01__One2OneContact__c, BillingStreet, BillingCity, BillingState, '
-            + 'BillingPostalCode, BillingCountry, LastModifiedDate FROM Account WHERE Id = :accountId',
-            new Map<String, Object>{'accountId' => accountId}, AccessLevel.SYSTEM_MODE
+            + 'BillingPostalCode, BillingCountry, LastModifiedDate FROM Account WHERE Id = :accountId'
         );
         if (records.isEmpty()) {
             throw new ReuseException('We could not load the saved household. Please contact Help Give Hope.');
@@ -449,12 +442,10 @@ public without sharing class HghHouseholdReuseController {
     }
 
     private static List<Contact> loadFamilyForLookup(Id accountId) {
-        List<Contact> family = (List<Contact>) Database.queryWithBinds(
+        List<Contact> family = (List<Contact>) Database.query(
             CONTACT_SELECT
-                + 'WHERE AccountId = :accountId AND (TLG_Household_Member_Status__c = :activeStatus OR TLG_Household_Member_Status__c = NULL) '
-                + 'ORDER BY CreatedDate, Id LIMIT 51',
-            new Map<String, Object>{'accountId' => accountId, 'activeStatus' => 'Active'},
-            AccessLevel.SYSTEM_MODE
+                + 'WHERE AccountId = :accountId AND (TLG_Household_Member_Status__c = \'Active\' OR TLG_Household_Member_Status__c = NULL) '
+                + 'ORDER BY CreatedDate, Id LIMIT 51'
         );
         if (family.size() > MAX_MEMBERS) {
             throw new ReuseException(
@@ -465,20 +456,18 @@ public without sharing class HghHouseholdReuseController {
     }
 
     private static Account loadAccount(Id accountId, Boolean lockRecord) {
-        List<Account> records = (List<Account>) Database.queryWithBinds(
+        List<Account> records = (List<Account>) Database.query(
             'SELECT Id, npe01__One2OneContact__c, BillingStreet, BillingCity, BillingState, '
             + 'BillingPostalCode, BillingCountry, LastModifiedDate FROM Account WHERE Id = :accountId'
-            + (lockRecord ? ' FOR UPDATE' : ''),
-            new Map<String, Object>{'accountId' => accountId}, AccessLevel.SYSTEM_MODE
+            + (lockRecord ? ' FOR UPDATE' : '')
         );
         if (records.isEmpty()) throw new ReuseException('The household is unavailable to this user. Please contact Help Give Hope.');
         return records[0];
     }
     private static List<Contact> loadFamily(Id accountId, Boolean lockRecords) {
-        List<Contact> family = (List<Contact>) Database.queryWithBinds(
-            CONTACT_SELECT + 'WHERE AccountId = :accountId AND (TLG_Household_Member_Status__c = :activeStatus OR TLG_Household_Member_Status__c = NULL)'
-                + (lockRecords ? ' LIMIT 51 FOR UPDATE' : ' ORDER BY CreatedDate, Id LIMIT 51'),
-            new Map<String, Object>{'accountId' => accountId, 'activeStatus' => 'Active'}, AccessLevel.SYSTEM_MODE
+        List<Contact> family = (List<Contact>) Database.query(
+            CONTACT_SELECT + 'WHERE AccountId = :accountId AND (TLG_Household_Member_Status__c = \'Active\' OR TLG_Household_Member_Status__c = NULL)'
+                + (lockRecords ? ' LIMIT 51 FOR UPDATE' : ' ORDER BY CreatedDate, Id LIMIT 51')
         );
         if (family.size() > MAX_MEMBERS) throw new ReuseException('This household needs assisted processing. Please contact Help Give Hope.');
         return family;
@@ -668,10 +657,8 @@ public without sharing class HghHouseholdReuseController {
 
         if (submittedSsnValues.isEmpty()) return;
 
-        List<Contact> matches = (List<Contact>) Database.queryWithBinds(
-            'SELECT Id, AccountId, TLG_Social_Security_Number__c FROM Contact WHERE TLG_Social_Security_Number__c IN :submittedSsnValues',
-            new Map<String, Object>{'submittedSsnValues' => submittedSsnValues},
-            AccessLevel.SYSTEM_MODE
+        List<Contact> matches = (List<Contact>) Database.query(
+            'SELECT Id, AccountId, TLG_Social_Security_Number__c FROM Contact WHERE TLG_Social_Security_Number__c IN :submittedSsnValues'
         );
 
         for (Contact match : matches) {
@@ -712,7 +699,6 @@ public without sharing class HghHouseholdReuseController {
             SELECT Id, npe4__RelatedContact__c FROM npe4__Relationship__c
             WHERE npe4__Contact__c = :applicantId
             AND npe4__RelatedContact__c IN :relatedIds
-            WITH SYSTEM_MODE
         ]) {
             if (existing.containsKey(relationship.npe4__RelatedContact__c)) {
                 throw new ReuseException('Duplicate household relationships need staff review before this application can be saved.');
@@ -741,7 +727,7 @@ public without sharing class HghHouseholdReuseController {
             if (relationship.Id == null) inserts.add(relationship);
             else updates.add(relationship);
         }
-        if (!inserts.isEmpty()) Database.insert(inserts, AccessLevel.SYSTEM_MODE);
-        if (!updates.isEmpty()) Database.update(updates, AccessLevel.SYSTEM_MODE);
+        if (!inserts.isEmpty()) Database.insert(inserts);
+        if (!updates.isEmpty()) Database.update(updates);
     }
 }

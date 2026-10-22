@@ -4,7 +4,9 @@
     <allowMembersToFlag>false</allowMembersToFlag>
     <changePasswordTemplate>unfiled$public/CommunityChangePasswordEmailTemplate</changePasswordTemplate>
     <communityRoles/>
+    <disablePvtPagesForPwdResetInLWR>false</disablePvtPagesForPwdResetInLWR>
     <disableReputationRecordConversations>false</disableReputationRecordConversations>
+    <emailDomainSubstitutionEnabled>false</emailDomainSubstitutionEnabled>
     <emailSenderAddress>zack+helpgivehope@thelodestonegroup.com</emailSenderAddress>
     <emailSenderName>Time Tracker</emailSenderName>
     <embeddedLoginEnabled>false</embeddedLoginEnabled>
@@ -45,6 +47,7 @@
         <selfRegProfilePageOverrideSetting>Designer</selfRegProfilePageOverrideSetting>
     </networkPageOverrides>
     <picassoSite>Time_Tracker1</picassoSite>
+    <secondaryEmailSenderEnabled>false</secondaryEmailSenderEnabled>
     <selfRegistration>false</selfRegistration>
     <sendWelcomeEmail>true</sendWelcomeEmail>
     <site>Time_Tracker</site>

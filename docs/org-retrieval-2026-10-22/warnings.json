@@ -1,0 +1,2097 @@
+[
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'ExperienceBundle' named 'Survey_Form1' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'ExperienceBundle' named 'Christmas1' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'ExperienceBundle' named 'Time_Tracker1' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'ExperienceBundle' named 'Used_Car_Car_Repair_Program1' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'ExperienceBundle' named 'General_Assistance1' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npe4__Relationship__c-Relationship Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Partial_Soft_Credit__c-Partial Soft Credit Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'Campaign-NPSP Campaign Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__RecurringDonationChangeLog__c-Recurring Donation Change Log Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__DataImportBatch__c-NPSP Data Import Batch Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Error__c-Error Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Data_Import_Field_Mapping__mdt-Data Import Field Mapping Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'Opportunity-Membership Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Address__c-Address Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Account_Soft_Credit__c-Account Soft Credit Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__RecurringDonationStatusMapping__mdt-Recurring Donation Status Mapping Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'Account-Household Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Allocation__c-Allocation Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npe03__Recurring_Donation__c-Recurring Donation Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'pmdm__ServiceSession__c-Service Session Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'pmdm__Bucket__mdt-Bucket Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'Opportunity-In-Kind Gift Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npe5__Affiliation__c-Affiliation Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'omnistudio__DocumentTemplateSetting__mdt-Document Template Setting Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__General_Accounting_Unit__c-General Accounting Unit Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'omnistudio__PDFTronEncryptionKey__mdt-PDFTron Encryption Key Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npe01__OppPayment__c-Payment Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Data_Import_Field_Mapping_Set__mdt-Data Import Field Mapping Set Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'omnistudio__Interface_DRGeneric__c-Interface_DRGeneric Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Data_Import_Object_Mapping_Set__mdt-Data Import Object Mapping Set Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'pmdm__Service__c-Service Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Schedulable__c-Schedulable Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__GetStartedChecklistSection__mdt-GS Checklist Section Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Data_Import_Object_Mapping__mdt-Data Import Object Mapping Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'pmdm__BucketedValue__mdt-Bucketed Value Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'pmdm__BucketedField__mdt-Bucketed Field Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'pmdm__ServiceDelivery__c-Service Delivery Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'omnistudio__TestResult__c-Test Result Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Trigger_Handler__c-Trigger Handler Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'omnistudio__VlocityDocuSignTemplate__c-Vlocity DocuSign Template Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Filter_Rule__mdt-Filter Rule Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Engagement_Plan_Task__c-Engagement Plan Task Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'omnistudio__VlocityScheduledJob__c-Vlocity Scheduled Job Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__DataImport__c-Data Import Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__GetStartedCompletionChecklistState__c-Get Started Completion Checklist State Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'omnistudio__VlocityTrackingEntry__c-Vlocity Tracking Entry Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Batch__c-Batch Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'Opportunity-Matching Gift Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Level__c-Level Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'omnistudio__DRBulkData__c-DataRaptor Bulk Data Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'omnistudio__VlocityDataPack__c-Vlocity Data Pack Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'pmdm__ProgramCohort__c-Program Cohort Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Grant_Deadline__c-Grant Deadline Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__fflib_AppBinding__mdt-Binding Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npo02__Household__c-Household Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'Opportunity-Major Gift Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'pmdm__Program__c-Program Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Form_Template__c-Form Template Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'pmdm__ServiceSchedule__c-Service Schedule Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'Opportunity-Donation Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'Contact-Program Management' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Opportunity_Stage_To_State_Mapping__mdt-Opportunity Stage To State Mapping Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Engagement_Plan_Template__c-Engagement Plan Template Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Fund__c-Fund Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'omnistudio__DRBatchQueue__c-DRBatch Queue Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Rollup__mdt-Rollup Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'pmdm__ProgramEngagement__c-Program Engagement Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'pmdm__ServiceParticipant__c-Service Participant Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'Opportunity-Grant Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'Account-Organization Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Custom_Notification__mdt-Custom Notification Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npe4__Relationship_Error__c-Relationship Error Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__GetStartedChecklistItem__mdt-GS Checklist Item Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Engagement_Plan__c-Engagement Plan Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'omnistudio__VlocityErrorLogEntry__c-Vlocity Error Log Entry Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'npsp__Filter_Group__mdt-Filter Group Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'Layout' named 'pmdm__FeatureGate__mdt-Feature Gate Layout' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'QuickAction' named 'New_Recurring_Donation' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'QuickAction' named 'NewServiceDelivery' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'QuickAction' named 'New_Campaign' cannot be found"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Create_Services' cannot be found: Invalid full name, Current Name: Create_Services, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Interview_Schedule_Day_Send_Email' cannot be found: Invalid full name, Current Name: Interview_Schedule_Day_Send_Email, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Case_Duplicate_Applications' cannot be found: Invalid full name, Current Name: Case_Duplicate_Applications, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'WishList_Form' cannot be found: Invalid full name, Current Name: WishList_Form, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Create_Service_Delivery_for_Current_Year_Program' cannot be found: Invalid full name, Current Name: Create_Service_Delivery_for_Current_Year_Program, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Update_Initial_and_Cumulative_total_income_on_Account' cannot be found: Invalid full name, Current Name: Update_Initial_and_Cumulative_total_income_on_Account, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Case_Sync_Christmas_Application_Status_to_Account' cannot be found: Invalid full name, Current Name: Case_Sync_Christmas_Application_Status_to_Account, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Send_Email_On_Christmas_Form_Submitt' cannot be found: Invalid full name, Current Name: Send_Email_On_Christmas_Form_Submitt, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Count_Related_Contacts' cannot be found: Invalid full name, Current Name: Count_Related_Contacts, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'HGH_Interview_Volunteer_Assignment' cannot be found: Invalid full name, Current Name: HGH_Interview_Volunteer_Assignment, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Account_After_Save_Trigger' cannot be found: Invalid full name, Current Name: Account_After_Save_Trigger, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Send_Christmas_Email' cannot be found: Invalid full name, Current Name: Send_Christmas_Email, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Subcategory_Separator' cannot be found: Invalid full name, Current Name: Subcategory_Separator, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Bulk_Wishlist_Email' cannot be found: Invalid full name, Current Name: Bulk_Wishlist_Email, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Contact_Create_NPSP_Relationship' cannot be found: Invalid full name, Current Name: Contact_Create_NPSP_Relationship, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'of_application_submitted_Case' cannot be found: Invalid full name, Current Name: of_application_submitted_Case, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Check_Verified_Email' cannot be found: Invalid full name, Current Name: Check_Verified_Email, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Email_Reminder_to_customers_wishlist' cannot be found: Invalid full name, Current Name: Email_Reminder_to_customers_wishlist, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Account_Before_Trigger_Flow' cannot be found: Invalid full name, Current Name: Account_Before_Trigger_Flow, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Screen_flow_wishlist' cannot be found: Invalid full name, Current Name: Screen_flow_wishlist, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Form_Availability_Scheduled_Status' cannot be found: Invalid full name, Current Name: Form_Availability_Scheduled_Status, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Daily_Wishlist_Reminder' cannot be found: Invalid full name, Current Name: Daily_Wishlist_Reminder, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Service_Screen_Display' cannot be found: Invalid full name, Current Name: Service_Screen_Display, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'HGH_Set_Preliminary_Item_Approval' cannot be found: Invalid full name, Current Name: HGH_Set_Preliminary_Item_Approval, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'pmdm__Auto_Populate_Date_And_Name_On_Program_Engagement' cannot be found: Invalid full name, Current Name: pmdm__Auto_Populate_Date_And_Name_On_Program_Engagement, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Account_Duplicate_Contacts' cannot be found: Invalid full name, Current Name: Account_Duplicate_Contacts, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Service_Delivery_BeforeSave_Validation' cannot be found: Invalid full name, Current Name: Service_Delivery_BeforeSave_Validation, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Schedule_Interview' cannot be found: Invalid full name, Current Name: Schedule_Interview, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Form_Availability_Update_Status' cannot be found: Invalid full name, Current Name: Form_Availability_Update_Status, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Household_income_flow' cannot be found: Invalid full name, Current Name: Household_income_flow, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Account_On_Update' cannot be found: Invalid full name, Current Name: Account_On_Update, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Resume_Wishlist_Reminder_Emails' cannot be found: Invalid full name, Current Name: Resume_Wishlist_Reminder_Emails, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Send_Email_on_Interview_Schedule' cannot be found: Invalid full name, Current Name: Send_Email_on_Interview_Schedule, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'pmdm__ServiceDelivery' cannot be found: Invalid full name, Current Name: pmdm__ServiceDelivery, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Update_Application_Status' cannot be found: Invalid full name, Current Name: Update_Application_Status, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Landlord_fields_flow' cannot be found: Invalid full name, Current Name: Landlord_fields_flow, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Beds_Selection' cannot be found: Invalid full name, Current Name: Beds_Selection, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Zone_Update_Name_Before_Save' cannot be found: Invalid full name, Current Name: Zone_Update_Name_Before_Save, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Temporary_Flow' cannot be found: Invalid full name, Current Name: Temporary_Flow, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Form_Availability_Flow' cannot be found: Invalid full name, Current Name: Form_Availability_Flow, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Email_Scheduler' cannot be found: Invalid full name, Current Name: Email_Scheduler, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Update_Email_and_Phone_on_Account' cannot be found: Invalid full name, Current Name: Update_Email_and_Phone_on_Account, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Household_Financial_Snapshot' cannot be found: Invalid full name, Current Name: Household_Financial_Snapshot, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'updating_zones_in_interview_days' cannot be found: Invalid full name, Current Name: updating_zones_in_interview_days, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Email_on_Applying_for_Christmas_Program' cannot be found: Invalid full name, Current Name: Email_on_Applying_for_Christmas_Program, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Update_Service_Description_in_Delivery' cannot be found: Invalid full name, Current Name: Update_Service_Description_in_Delivery, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Create_Assistance_Request_and_Items' cannot be found: Invalid full name, Current Name: Create_Assistance_Request_and_Items, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'WorkflowFlowAutomation' named 'Test_Flow' cannot be found: Invalid full name, Current Name: Test_Flow, Required Delimiter: ."
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/accordionSection/accordionSection.js",
+    "problem": "Duplicate object names in the same package, 'lwc/accordionSection/accordionSection.js'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/accordionSection/accordionSection.js-meta.xml",
+    "problem": "Duplicate object names in the same package, 'lwc/accordionSection/accordionSection.js-meta.xml'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/accordionSection/accordionSection.js",
+    "problem": "Duplicate object names in the same package, 'lwc/accordionSection/accordionSection.js'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/accordionSection/accordionSection.css",
+    "problem": "Duplicate object names in the same package, 'lwc/accordionSection/accordionSection.css'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/accordionSection/accordionSection.html",
+    "problem": "Duplicate object names in the same package, 'lwc/accordionSection/accordionSection.html'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/accordionSection/accordionSection.js-meta.xml",
+    "problem": "Duplicate object names in the same package, 'lwc/accordionSection/accordionSection.js-meta.xml'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/modal/modal.js-meta.xml",
+    "problem": "Duplicate object names in the same package, 'lwc/modal/modal.js-meta.xml'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/modal/modal.html",
+    "problem": "Duplicate object names in the same package, 'lwc/modal/modal.html'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/modal/modal.css",
+    "problem": "Duplicate object names in the same package, 'lwc/modal/modal.css'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/modal/modal.js",
+    "problem": "Duplicate object names in the same package, 'lwc/modal/modal.js'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/util/util.js-meta.xml",
+    "problem": "Duplicate object names in the same package, 'lwc/util/util.js-meta.xml'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/util/util.js",
+    "problem": "Duplicate object names in the same package, 'lwc/util/util.js'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/modal/modal.js",
+    "problem": "Duplicate object names in the same package, 'lwc/modal/modal.js'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/modal/modal.js-meta.xml",
+    "problem": "Duplicate object names in the same package, 'lwc/modal/modal.js-meta.xml'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/outputField/outputField.html",
+    "problem": "Duplicate object names in the same package, 'lwc/outputField/outputField.html'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/outputField/outputField.js-meta.xml",
+    "problem": "Duplicate object names in the same package, 'lwc/outputField/outputField.js-meta.xml'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/outputField/outputField.js",
+    "problem": "Duplicate object names in the same package, 'lwc/outputField/outputField.js'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/pubsub/pubsub.js",
+    "problem": "Duplicate object names in the same package, 'lwc/pubsub/pubsub.js'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "lwc/pubsub/pubsub.js-meta.xml",
+    "problem": "Duplicate object names in the same package, 'lwc/pubsub/pubsub.js-meta.xml'; please rename one"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 193 (IPolicySubStatusCode). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 194 (IPolicyStatus). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 195 (IPolicyAuditTerm). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 198 (IPolicyPlanType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 232 (FulfillmentType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 991 (AdQuoteLineSkippable). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 199 (IPolicyPolicyType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 992 (AQLASPLineStatus). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 233 (FulfillmentStatus). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 112 (ReturnOrderLineItemProcessPlan). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 113 (ReturnOrderLineItemReasonForReturn). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 114 (ReturnOrderLineItemRepaymentMethod). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 235 (IPParticipantRole). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 874 (ASSPage). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 236 (IPPRelationshipToInsured). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 875 (ASSPosition). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 513 (IPolicyPremiumPaymentType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 514 (IPolicyTerm). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 515 (IPolicyPremiumCalcMethod). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 487 (ReturnOrderLineItemReasonForRejection). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 378 (OrderItemSummaryChgRsn). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 379 (OrderSummaryRoutingSchdRsn). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 811 (ATCSDataType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 812 (ATCSDisplayType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 813 (APTCMediaType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 32 (SalesTeamRole). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 381 (OrderSummaryStatus). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 266 (CareItemStatus). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 389 (IPolicyChannel). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 664 (ACSizeTypeMediaType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 665 (ACSizeTypeUnitOfMeasure). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 666 (AOIAdBleedAmountUom). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 667 (AOIMaxFreqInterval). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 668 (AOIMaxUserFreqInterval). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 669 (AOIMediaType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 709 (ASSProgramRunType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 46 (IdeaCategory). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 790 (AQLAPPriorityType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 791 (AQLUEGoalType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 792 (AQLUEGoalUnitType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 275 (IPCancelationReasonType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 671 (ASSAdSpaceType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 672 (MediaChannelMediaType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 673 (MChannelPricingCategory). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 674 (MCPublicationFrequency). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 710 (ASSPublisherDayPart). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 678 (AQLAdBleedAmountUom). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 679 (AQLMFrequencyInterval). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 713 (AOICustomerDayPart). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 714 (AOISponsorshipType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 54 (QuoteStatus). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 58 (QuestionOrigin). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 680 (AQLMUFInterval). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 681 (AQLMediaType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 166 (WorkTypeDefApptType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 167 (WorkTypeGroupAddInfo). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 288 (IPCCategory). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 168 (ServTerrMemRoleType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 202 (IPolicyPremiumFrequency). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 203 (IPolicyPlanTier). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 205 (SalesAgreementStatus). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 689 (AOIAPPriorityType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 62 (IdeaThemeStatus). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 68 (RoleInTerritory2). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 292 (IPCBenefitPaymentFrequency). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 690 (AOIUEGoalType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 691 (AOIUEGoalUnitType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 298 (IPolicyChangeType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 694 (AQLCustomerDayPart). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 299 (IPolicyChangeSubType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 695 (AQLSponsorshipType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 70 (AccountContactMultiRoles). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 856 (MCPeriodicalType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 978 (AdOpportunityDealType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 857 (MCGeographicalCoverage). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 979 (ASSCreativeFormatType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 76 (ResourceAbsenceType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 78 (ServiceAppointmentStatus). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 1206 (AOLConditionRequirements). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 1205 (AQLConditionRequirements). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 100 (ReturnOrderStatus). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 980 (ASUType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 101 (ReturnOrderShipmentType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 981 (ASAType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 1169 (ACSizeTypeCreativeType). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Unable to retrieve file for id 989 (ACSTypeAppearanceOrder). This Standard Value Set is either inaccessible or not supported in Metadata API."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Cannot retrieve documents in a user's private folder; move the document to a named folder"
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "A SiteDotCom site using template [Build Your Own (LWR)] does not support MD API Retrieval."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "A SiteDotCom site using template [Build Your Own (LWR)] does not support MD API Retrieval."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "A SiteDotCom site using template [Build Your Own (LWR)] does not support MD API Retrieval."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "A SiteDotCom site using template [Build Your Own (LWR)] does not support MD API Retrieval."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/package.xml",
+    "problem": "A SiteDotCom site using template [Build Your Own (LWR)] does not support MD API Retrieval."
+  },
+  {
+    "batch": "core",
+    "fileName": "unpackaged/ExperienceBundle",
+    "problem": "Wishlist_Christmas_Aid_Requests1 wasn\u2019t retrieved because ExperienceBundle isn\u2019t enabled for Aura sites. To enable ExperienceBundle, in Setup, select Enable ExperienceBundle Metadata API in Digital Experiences | Settings."
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Settings type: 'ConversationServiceIntegration' is unknown"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Settings type: 'WebApplication' is unknown"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'CommSubscription.All_CommSubscriptions' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'FlowOrchestrationWorkItem.ALL_Open_Work_Items' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ContactPointConsent.All_ContactPointConsents' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ExpressionSet.All_ExpressionSets' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'WorkOrder.My_WorkOrders' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Scorecard.MyScorecards' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'SocialPost.AllSocialPosts' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'DelegatedAccount.My_External_Managed_Accounts' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'DelegatedAccount.All_External_Managed_Accounts' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Incident.AllIncidentsDefault' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'CommSubscriptionConsent.All_CommSubscriptionConsents' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'EngagementInteraction.All_EngagementInteractions' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'AuthorizationFormDataUse.All_AuthorizationFormDataUses' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'GnrcVstTaskContextRelation.All_GnrcVstTaskContextRelation' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ProcessException.all_process_exceptions' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ContactPointPhone.All_ContactPointPhones' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Recommendation.All_Recommendations' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'AssessmentTaskOrder.All_AssessmentTaskOrder' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ContactPointAddress.All_ContactPointAddresses' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ServiceContract.All_ServiceContracts' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ActionPlan.My_ActionPlans' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'GenericVisitTask.All_GenericVisitTask' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Visit.All_Visit' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'BusinessMilestone.All_BusinessMilestones' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'AuthorizationFormText.All_AuthorizationFormTexts' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'GenericVisitTaskContext.All_GenericVisitTaskContext' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Pricebook2.All_Pricebooks' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Task.UnscheduledTasks' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Problem.AllProblemsDefault' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Task.CompletedTasks' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ContentDocument.OwnedContentDocuments' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Event.TodaysAgenda' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Task.OverdueTasks' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Individual.All_Individuals' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'PartyConsent.All_PartyConsents' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Applicant.All_Applicants' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'VisitedParty.All_VisitedParty' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ContactRequest.My_ContactRequests' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'CommSubscriptionChannelType.All_CommSubscriptionChannelTypes' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'AssessmentIndicatorDefinition.All_AssessmentIndicatorDefinition' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'CalculationProcedure.All_CalculationProcedures' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Event.MyTeamsRecentEvents' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ApprovalSubmissionDetail.All_ApprovalSubmissionDetails' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ActionPlan.All_ActionPlans' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ApplicationFormProduct.All_ApplicationFormProducts' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'LocationTrustMeasure.AllLocationTrustMeasures' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Entitlement.All_Entitlements' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Visitor.All_Visitor' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ContactPointTypeConsent.All_ContactPointTypeConsents' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Task.TodaysTasks' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'FlowOrchestrationInstance.All_Orchestration_Instances' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'DocumentChecklistItem.All_DocumentChecklistItems' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'CommSubscriptionTiming.All_CommSubscriptionTimings' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'EngagementAttendee.My_EngagementAttendees' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ChangeRequest.AllChangeRequestsDefault' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'BatchJobPart.All_Tasks' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'CaseParticipant.All_CaseParticipants' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'BusinessBrand.All_BusinessBrands' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ApplicationForm.All_ApplicationForms' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'DataUsePurpose.All_DataUsePurposes' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Task.DelegatedTasks' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'SocialPersona.AllSocialPersonas' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'PersonLifeEvent.All_PersonLifeEvents' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ApprovalWorkItem.Assigned_ApprovalWorkItems' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ApprovalSubmission.Pending_ApprovalSubmissions' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'BatchJobPartFailedRecord.All_Failed_Records' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'AssessmentTaskContentDocument.All_AssessmentTaskContentDocument' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'EngagementChannelType.All_EngagementChannelTypes' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ApprovalSubmission.My_ApprovalSubmissions' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'CalculationMatrix.All_CalculationMatrices' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'EngagementTopic.All_EngagementTopics' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Task.OpenTasks' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'EngagementInteraction.My_EngagementInteractions' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ContactPointEmail.All_ContactPointEmails' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'CollaborationGroup.All_ChatterGroups' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'BatchJob.All_Batch_Jobs' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Event.MyRecentEvents' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Problem.AllOpenProblems' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'FlowOrchestrationWorkItem.All_Work_Items' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'AssessmentTask.All_AssessmentTask' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'BatchJobPart.All_Tasks_Calc' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'EngagementAttendee.All_EngagementAttendees' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'AuthorizationFormConsent.All_AuthorizationFormConsents' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Scorecard.AllScorecards' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'AuthorizationForm.All_AuthorizationForms' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'WorkOrder.All_WorkOrders' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'GnrcVstKeyPerformanceInd.All_GnrcVstKeyPerformanceInd' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'OmniESignatureTemplate.All_OmniESignatureTemplates' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Task.RecurringTasks' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Seller.All_Sellers' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'EngagementTopic.My_EngagementTopics' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ApprovalWorkItem.All_ApprovalWorkItems' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Event.MyTeamsUpcomingEvents' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Customer.All_Customers' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'ApprovalSubmission.All_ApprovalSubmissions' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'AssessmentTaskDefinition.All_AssessmentTaskDefinition' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'RecordAlert.all_record_alerts' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'DataUseLegalBasis.All_DataUseLegalBases' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Idea.Ideas_Last_7_Days' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'ListView' named 'Event.MyUpcomingEvents' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.PreviewDetails' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingEndUser.Language' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.CampaignId' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.OpportunityId' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.EndUserContactId' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.ChannelType' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.AcceptTime' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.CaseId' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.OwnerId' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingEndUser.LeadId' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.ChannelKey' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingEndUser.MessagingChannelId' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingEndUser.MessagingPlatformKey' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.MessagingChannelId' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.Status' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingEndUser.MessageType' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingEndUser.ProfilePictureUrl' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingEndUser.Locale' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.ChannelName' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingEndUser.MessagingConsentStatus' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.EndedByType' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.ErrorReason' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingEndUser.AccountId' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.LeadId' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'CommSubscriptionChannelType.MessagingChannelId' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingEndUser.Name' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.EndUserAccountId' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.EndUserMessageCount' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.StartTime' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.AgentMessageCount' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingEndUser.ContactId' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.Origin' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingEndUser.HasInitialResponseSent' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.EndUserLanguage' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingEndUser.OwnerId' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.MessagingEndUserId' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.SuspendedByType' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingEndUser.MessagingExternalUserKey' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingSession.EndTime' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'CommSubscriptionChannelType.MessagingChannelUsageId' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomField' named 'MessagingEndUser.IsFullyOptedIn' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'SharingRules' named 'MessagingEndUser' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'SharingRules' named 'MessagingSession' cannot be found"
+  },
+  {
+    "batch": "local-coverage",
+    "fileName": "package.xml",
+    "problem": "Cannot retrieve documents in a user's private folder; move the document to a named folder"
+  },
+  {
+    "batch": "local-object-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomObject' named 'MessagingEndUser' cannot be found"
+  },
+  {
+    "batch": "local-object-coverage",
+    "fileName": "package.xml",
+    "problem": "Entity of type 'CustomObject' named 'MessagingSession' cannot be found"
+  },
+  {
+    "batch": "local-object-coverage",
+    "fileName": "package.xml",
+    "problem": "Can't retrieve non-customizable CustomObject named: DecisionTblFileImportData"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'ForecastingItem__hd.OverriddenRollupMgrView__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'ForecastingItem__hd.RawRollup__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'ForecastingItem__hd.OwnerOnlyQuantity__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'Opportunity__hd.StageName__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'ForecastingItem__hd.RawOwnerOnly__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'ForecastingItem__hd.ForecastAmount__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'ForecastingItem__hd.QuantityWithoutAdjustments__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'ForecastingItem__hd.AmountWithoutAdjustments__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'Opportunity__hd.CloseDate__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'Opportunity__hd.Amount__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'ForecastingItem__hd.QuantityWithoutManagerAdjustment__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'ForecastingItem__hd.OwnerOnlyAmount__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'ForecastingItem__hd.AmountWithoutManagerAdjustment__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'ForecastingItem__hd.OverriddenRollupOwnerView__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'Opportunity__hd.ForecastCategoryName__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'Opportunity__hd.NextStep__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'Opportunity__hd.Probability__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'CustomField' named 'ForecastingItem__hd.ForecastQuantity__c' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'ListView' named 'TagCategory.All_TagCategories' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'ListView' named 'RecordAggregationResult.All_RecordAggregationResults' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'ListView' named 'TagCategoryAssignment.All_TagCategoryAssignments' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'ListView' named 'Employee.AllEmployees' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'ListView' named 'Employee.EmployeesWithoutUser' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Entity of type 'ListView' named 'InternalOrganizationUnit.AllInternalOrganizationUnits' cannot be found"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Can't retrieve non-customizable CustomObject named: omnistudio__PDFTronEncryptionKey__mdt"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Can't retrieve non-customizable CustomObject named: npsp__Custom_Notification__mdt"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Can't retrieve non-customizable CustomObject named: omnistudio__DocuSignSystemUser__c"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Can't retrieve non-customizable CustomObject named: npsp__fflib_AppBinding__mdt"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Can't retrieve non-customizable CustomObject named: npsp__Package_Settings__c"
+  },
+  {
+    "batch": "missing-parent-children",
+    "fileName": "unpackaged/package.xml",
+    "problem": "Can't retrieve non-customizable CustomObject named: npsp__Addr_Verification_Settings__c"
+  }
+]

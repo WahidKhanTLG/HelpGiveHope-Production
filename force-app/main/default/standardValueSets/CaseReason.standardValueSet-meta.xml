@@ -31,4 +31,16 @@
         <label>New problem</label>
         <cssExposed>false</cssExposed>
     </standardValue>
+    <standardValue>
+        <fullName>Unconfirmed Interview</fullName>
+        <default>false</default>
+        <label>Unconfirmed Interview</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Confirmed Interview</fullName>
+        <default>false</default>
+        <label>Confirmed Interview</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
 </StandardValueSet>

@@ -8,7 +8,15 @@
         <plural>true</plural>
         <value>Lots d&apos;importation de données NPSP</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Batch Gift Entry Tab Columns --></label>
+        <name>npsp__BatchGiftEntryTabColumns</name>
+    </fieldSets>
     <gender>Masculine</gender>
     <nameFieldLabel>Nom du lot</nameFieldLabel>
     <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Process_Batch --></label>
+        <name>npsp__Process_Batch</name>
+    </webLinks>
 </CustomObjectTranslation>

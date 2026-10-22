@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>Un proveedor de servicios interno o un proveedor de servicios de una organización asociada que se agregó como un contacto en su base de datos.</help>
+    <label><!-- Service Provider --></label>
+    <name>pmdm__Service_Provider__c</name>
+    <relationshipLabel><!-- Service Deliveries (Service Provider) --></relationshipLabel>
+</CustomFieldTranslation>

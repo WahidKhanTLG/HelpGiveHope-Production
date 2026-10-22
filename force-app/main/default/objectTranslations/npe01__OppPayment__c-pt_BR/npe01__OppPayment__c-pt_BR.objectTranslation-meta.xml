@@ -8,6 +8,18 @@
         <plural>true</plural>
         <value>Pagamentos</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Payment Wizard FS --></label>
+        <name>npsp__Payment_WizardFS</name>
+    </fieldSets>
     <gender>Masculine</gender>
     <nameFieldLabel>Número do pagamento</nameFieldLabel>
+    <webLinks>
+        <label><!-- Schedule_Payments --></label>
+        <name>npe01__Schedule_Payments</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Writeoff_Payments --></label>
+        <name>npe01__Writeoff_Payments</name>
+    </webLinks>
 </CustomObjectTranslation>

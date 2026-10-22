@@ -23,12 +23,12 @@
         <default>false</default>
     </values>
     <values>
-        <fullName>Home Interview Scheduled</fullName>
-        <default>false</default>
-    </values>
-    <values>
         <fullName>New</fullName>
         <default>true</default>
+    </values>
+    <values>
+        <fullName>Wishlist Completed</fullName>
+        <default>false</default>
     </values>
     <values>
         <fullName>Wishlist Incomplete</fullName>

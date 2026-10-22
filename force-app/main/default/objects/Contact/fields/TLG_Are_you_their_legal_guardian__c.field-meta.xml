@@ -6,6 +6,7 @@ No</inlineHelpText>
     <label>Are you their legal guardian</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>

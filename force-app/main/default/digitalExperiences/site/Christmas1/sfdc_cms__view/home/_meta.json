@@ -1,5 +1,6 @@
 {
   "apiName" : "home",
   "type" : "sfdc_cms__view",
-  "path" : "views"
+  "path" : "views",
+  "contentKey" : "MCW6D2P7NBCRBNZH6NLYBL5KZ6O4"
 }

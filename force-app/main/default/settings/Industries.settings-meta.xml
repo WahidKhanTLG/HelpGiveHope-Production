@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <IndustriesSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <disableGiftCommitmentScheduleValidations>false</disableGiftCommitmentScheduleValidations>
+    <disableGiftCommitmentValidations>false</disableGiftCommitmentValidations>
+    <disableGiftTransactionValidations>false</disableGiftTransactionValidations>
+    <enableAIQuestionGeneration>false</enableAIQuestionGeneration>
     <enableAccountScoreEnabled>false</enableAccountScoreEnabled>
     <enableActionPlanTaskComment>false</enableActionPlanTaskComment>
     <enableActionableList>false</enableActionableList>
+    <enableActionableListDMO>false</enableActionableListDMO>
+    <enableAutoIdentifyDocAITemplates>false</enableAutoIdentifyDocAITemplates>
     <enableCBSFAnyWordSearch>false</enableCBSFAnyWordSearch>
     <enableCdsApplicationForm>false</enableCdsApplicationForm>
     <enableCdsApplicationFormProduct>false</enableCdsApplicationFormProduct>
+    <enableChecklistOrgPref>false</enableChecklistOrgPref>
     <enableCompliantDataSharingForAccount>false</enableCompliantDataSharingForAccount>
     <enableCompliantDataSharingForCustomObjects>false</enableCompliantDataSharingForCustomObjects>
     <enableCompliantDataSharingForOpportunity>false</enableCompliantDataSharingForOpportunity>
     <enableCriteriaBasedSearchAndFilter>false</enableCriteriaBasedSearchAndFilter>
+    <enableDependentTaskAssignment>false</enableDependentTaskAssignment>
     <enableDiscoveryFrameworkMetadata>false</enableDiscoveryFrameworkMetadata>
     <enableDontSharePartyprofWPortalOrgPref>false</enableDontSharePartyprofWPortalOrgPref>
     <enableEnhancedQuestionCreation>true</enableEnhancedQuestionCreation>
     <enableEnhancedUIForISPref>false</enableEnhancedUIForISPref>
+    <enableEventMgmtBudgetEvntTypeFilter>false</enableEventMgmtBudgetEvntTypeFilter>
     <enableFormFramework>false</enableFormFramework>
     <enableFundraising>false</enableFundraising>
     <enableGiftEntryGrid>false</enableGiftEntryGrid>
@@ -26,6 +35,7 @@
     <enableInteractionSummaryPref>false</enableInteractionSummaryPref>
     <enableInteractionSummaryRoleHierarchy>true</enableInteractionSummaryRoleHierarchy>
     <enableNewTimelineSetupFlow>false</enableNewTimelineSetupFlow>
+    <enableNextGenDF>false</enableNextGenDF>
     <enableOutcomes>false</enableOutcomes>
     <enablePartyProfileParentSharingOrgPref>false</enablePartyProfileParentSharingOrgPref>
     <enablePartyprofParentMultiSharingOrgPref>false</enablePartyprofParentMultiSharingOrgPref>
@@ -34,11 +44,13 @@
     <enableProgramCohorts>false</enableProgramCohorts>
     <enableProviderManagementPref>false</enableProviderManagementPref>
     <enableRecordAlertCustomSharingPref>false</enableRecordAlertCustomSharingPref>
+    <enableRecordAlertDCFAccess>false</enableRecordAlertDCFAccess>
     <enableSourceCodeGeneration>false</enableSourceCodeGeneration>
     <enableStageAssignmentRulesReEvaluation>false</enableStageAssignmentRulesReEvaluation>
     <enableTimelineCachePref>true</enableTimelineCachePref>
     <enableTimelinePref>false</enableTimelinePref>
     <enableTrackApplicationsPref>false</enableTrackApplicationsPref>
+    <enableUseFscPackageDatamodel>false</enableUseFscPackageDatamodel>
     <enableVisitInventoryEnabled>false</enableVisitInventoryEnabled>
     <enableVolunteerManagement>false</enableVolunteerManagement>
     <nonProfitCloudEmbeddedAI>false</nonProfitCloudEmbeddedAI>

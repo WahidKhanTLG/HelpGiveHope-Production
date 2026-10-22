@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>A relação do Contato com o Engajamento em programas. Os valores são determinados pelo seu administrador.</help>
+    <label><!-- Role --></label>
+    <name>pmdm__Role__c</name>
+    <picklistValues>
+        <masterLabel>Client</masterLabel>
+        <translation>Cliente</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Service Provider</masterLabel>
+        <translation>Provedor de serviços</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Volunteer</masterLabel>
+        <translation>Voluntário</translation>
+    </picklistValues>
+</CustomFieldTranslation>

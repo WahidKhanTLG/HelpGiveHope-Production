@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CaseSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aiCaseCommentRefine>false</aiCaseCommentRefine>
+    <caseAssignRuleCommunity>false</caseAssignRuleCommunity>
     <caseAutoProcUser>false</caseAutoProcUser>
     <caseDescAttachments>false</caseDescAttachments>
     <caseFeedItemSettings>
@@ -15,6 +17,7 @@
     <defaultCaseOwnerType>User</defaultCaseOwnerType>
     <defaultCaseUser>hghtlg@thelodestonegroup.com</defaultCaseUser>
     <emailToCase>
+        <enableE2CAdvancedSecurity>false</enableE2CAdvancedSecurity>
         <enableE2CAttachmentAsFile>true</enableE2CAttachmentAsFile>
         <enableE2CDeduplicateAttachments>false</enableE2CDeduplicateAttachments>
         <enableE2CExternalServer>false</enableE2CExternalServer>
@@ -58,9 +61,11 @@
     <enableEscalateQfiToCaseInternal>false</enableEscalateQfiToCaseInternal>
     <enableEscalateQfiToCaseNetworks>false</enableEscalateQfiToCaseNetworks>
     <enableExtNetworksCaseFeedEnabled>false</enableExtNetworksCaseFeedEnabled>
+    <enableModernSlackSwarming>false</enableModernSlackSwarming>
     <enableMultiLangSolnSrchCSS>false</enableMultiLangSolnSrchCSS>
     <enableMultiLangSolnSrchPKB>false</enableMultiLangSolnSrchPKB>
     <enableMultiLangSolution>false</enableMultiLangSolution>
+    <enableSlackSwarmingPhasedRollout>false</enableSlackSwarmingPhasedRollout>
     <enableSolutionCategory>false</enableSolutionCategory>
     <enableSolutionInlineCategory>true</enableSolutionInlineCategory>
     <enableSolutionShortSummary>true</enableSolutionShortSummary>
@@ -73,6 +78,7 @@
     <notifyOwnerOnCaseComment>false</notifyOwnerOnCaseComment>
     <notifyOwnerOnCaseOwnerChange>false</notifyOwnerOnCaseOwnerChange>
     <rtaCaseComment>false</rtaCaseComment>
+    <rtaCaseDescFieldAccess>false</rtaCaseDescFieldAccess>
     <showEmailAttachmentsInCaseAttachmentsRL>true</showEmailAttachmentsInCaseAttachmentsRL>
     <systemUserEmail>automatedcase@00dhp000009vcj4mam.ext</systemUserEmail>
     <useSystemEmailAddress>true</useSystemEmailAddress>

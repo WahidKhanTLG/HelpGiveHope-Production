@@ -11,4 +11,8 @@
     <gender>Feminine</gender>
     <nameFieldLabel>ID d&apos;adresse</nameFieldLabel>
     <startsWith>Vowel</startsWith>
+    <webLinks>
+        <label><!-- Verify_Address --></label>
+        <name>npsp__Verify_Address</name>
+    </webLinks>
 </CustomObjectTranslation>

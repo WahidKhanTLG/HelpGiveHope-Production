@@ -40,6 +40,10 @@
         <plural>true</plural>
         <value>Leistungssitzungen</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- RecentSessionsView --></label>
+        <name>pmdm__RecentSessionsView</name>
+    </fieldSets>
     <gender>Feminine</gender>
     <nameFieldLabel>Name der Leistungssitzung</nameFieldLabel>
 </CustomObjectTranslation>

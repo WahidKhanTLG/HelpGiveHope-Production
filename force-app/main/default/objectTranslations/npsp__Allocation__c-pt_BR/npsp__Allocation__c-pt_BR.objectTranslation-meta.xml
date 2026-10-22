@@ -8,6 +8,14 @@
         <plural>true</plural>
         <value>Alocações de GAU</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Manage Allocations Additional Fields --></label>
+        <name>npsp__ManageAllocationsAdditionalFields</name>
+    </fieldSets>
     <gender>Feminine</gender>
     <nameFieldLabel>Nome da alocação de GAU</nameFieldLabel>
+    <webLinks>
+        <label><!-- Manage_Allocations --></label>
+        <name>npsp__Manage_Allocations</name>
+    </webLinks>
 </CustomObjectTranslation>

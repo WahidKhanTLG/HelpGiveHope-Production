@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Cases_Emailed</fullName>
+    <columns>ACCOUNT.NAME</columns>
     <columns>CASES.CASE_NUMBER</columns>
     <columns>NAME</columns>
-    <columns>CASES.SUBJECT</columns>
-    <columns>CASES.CREATED_DATE</columns>
-    <columns>Assistance_Requested__c</columns>
+    <columns>Current_Address__Street__s</columns>
+    <columns>Current_Address__City__s</columns>
+    <columns>CASES.STATUS</columns>
+    <columns>Primary_Contact_Phone__c</columns>
     <columns>CASES.PRIORITY</columns>
-    <columns>TLG_Wages__c</columns>
-    <columns>Account_Census_Tract__c</columns>
+    <columns>Interview_Day_Schedule__c</columns>
+    <columns>Home_Interview_Recommendation__c</columns>
+    <columns>TLG_Number_of_Individuals_in_household__c</columns>
+    <columns>CASES.TYPE</columns>
+    <columns>Interested_in_Santa_Gifts__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>CASES.STATUS</field>
+        <operation>notEqual</operation>
+        <value>Closed,Declined,New,On Hold,Assisted</value>
+    </filters>
+    <filters>
+        <field>CASES.RECORDTYPE</field>
         <operation>equals</operation>
-        <value>Escalated,Emailed/called</value>
+        <value>Case.Christmas_Application</value>
+    </filters>
+    <filters>
+        <field>CASES.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Case.Christmas_Application</value>
     </filters>
     <label>Cases Emailed</label>
 </ListView>

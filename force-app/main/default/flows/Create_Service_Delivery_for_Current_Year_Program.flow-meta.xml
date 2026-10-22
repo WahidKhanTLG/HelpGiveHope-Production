@@ -46,7 +46,14 @@
             <assignToReference>varServiceDelivery.Assistance_Requested__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Create.Id</elementReference>
+                <elementReference>Create</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varServiceDelivery.pmdm__DeliveryDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -68,44 +75,44 @@
         <expression>TEXT({!Loop_on_Service_Delivery.pmdm__Service__r.Category__c}) &amp; &apos; | &apos; &amp;  
 RIGHT(
 (
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Twin&quot;), &quot;, Twin&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Full&quot;), &quot;, Full&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Queen&quot;), &quot;, Queen&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;King&quot;), &quot;, King&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Pots/Pans&quot;), &quot;, Pots/Pans&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Dishes&quot;), &quot;, Dishes&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Glassware&quot;), &quot;, Glassware&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Microwave&quot;), &quot;, Microwave&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Toaster&quot;), &quot;, Toaster&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Vacuum&quot;), &quot;, Vacuum&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Flatware&quot;), &quot;, Flatware&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Couch&quot;), &quot;, Couch&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Kitchen table&quot;), &quot;, Kitchen table&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Kitchen chairs&quot;), &quot;, Kitchen chairs&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Washer&quot;), &quot;, Washer&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Dryer&quot;), &quot;, Dryer&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Refrigerator&quot;), &quot;, Refrigerator&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Other&quot;), &quot;, Other&quot;, &quot;&quot;)
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Twin&quot;), &quot;, Twin&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Full&quot;), &quot;, Full&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Queen&quot;), &quot;, Queen&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;King&quot;), &quot;, King&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Pots/Pans&quot;), &quot;, Pots/Pans&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Dishes&quot;), &quot;, Dishes&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Glassware&quot;), &quot;, Glassware&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Microwave&quot;), &quot;, Microwave&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Toaster&quot;), &quot;, Toaster&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Vacuum&quot;), &quot;, Vacuum&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Flatware&quot;), &quot;, Flatware&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Couch&quot;), &quot;, Couch&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Kitchen table&quot;), &quot;, Kitchen table&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Kitchen chairs&quot;), &quot;, Kitchen chairs&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Washer&quot;), &quot;, Washer&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Dryer&quot;), &quot;, Dryer&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Refrigerator&quot;), &quot;, Refrigerator&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quot;, &quot;&quot;)
 ),
 LEN(
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Twin&quot;), &quot;, Twin&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Full&quot;), &quot;, Full&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Queen&quot;), &quot;, Queen&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;King&quot;), &quot;, King&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Pots/Pans&quot;), &quot;, Pots/Pans&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Dishes&quot;), &quot;, Dishes&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Glassware&quot;), &quot;, Glassware&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Microwave&quot;), &quot;, Microwave&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Toaster&quot;), &quot;, Toaster&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Vacuum&quot;), &quot;, Vacuum&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Flatware&quot;), &quot;, Flatware&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Couch&quot;), &quot;, Couch&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Kitchen table&quot;), &quot;, Kitchen table&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Kitchen chairs&quot;), &quot;, Kitchen chairs&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Washer&quot;), &quot;, Washer&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Dryer&quot;), &quot;, Dryer&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Refrigerator&quot;), &quot;, Refrigerator&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Other&quot;), &quot;, Other&quot;, &quot;&quot;)
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Twin&quot;), &quot;, Twin&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Full&quot;), &quot;, Full&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Queen&quot;), &quot;, Queen&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;King&quot;), &quot;, King&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Pots/Pans&quot;), &quot;, Pots/Pans&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Dishes&quot;), &quot;, Dishes&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Glassware&quot;), &quot;, Glassware&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Microwave&quot;), &quot;, Microwave&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Toaster&quot;), &quot;, Toaster&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Vacuum&quot;), &quot;, Vacuum&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Flatware&quot;), &quot;, Flatware&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Couch&quot;), &quot;, Couch&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Kitchen table&quot;), &quot;, Kitchen table&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Kitchen chairs&quot;), &quot;, Kitchen chairs&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Washer&quot;), &quot;, Washer&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Dryer&quot;), &quot;, Dryer&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Refrigerator&quot;), &quot;, Refrigerator&quot;, &quot;&quot;) &amp;
+IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quot;, &quot;&quot;)
 ) - 1
 )</expression>
     </formulas>
@@ -168,6 +175,12 @@ IF(INCLUDES( {!Loop_on_Service_Delivery.pmdm__Service__r.Test__c}, &quot;Other&q
             <field>Program__c</field>
             <value>
                 <elementReference>$Record.pmdm__Program__r.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Request_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>

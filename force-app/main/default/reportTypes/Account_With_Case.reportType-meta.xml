@@ -1818,6 +1818,11 @@
             <field>Account_Primary_Contact__c</field>
             <table>Account.Cases</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Home_Interview_Recommendation__c</field>
+            <table>Account.Cases</table>
+        </columns>
         <masterLabel>Cases</masterLabel>
     </sections>
 </ReportType>

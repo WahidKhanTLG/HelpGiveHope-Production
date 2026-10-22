@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>Valeur exacte qui doit être compartimentée. Si le champ est une liste de sélection, il doit s’agir de la valeur API de la valeur de liste de sélection.</help>
+    <label><!-- Value --></label>
+    <name>pmdm__Value__c</name>
+</CustomFieldTranslation>

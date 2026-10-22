@@ -100,7 +100,7 @@ private class InterviewSelfServiceControllerTest {
         System.assertEquals(false, InterviewSchedulingTestData.slot(slots[0].Id).Booked__c, 'First slot released');
         System.assertEquals(false, InterviewSchedulingTestData.slot(slots[1].Id).Booked__c, 'Second slot released');
         System.assertEquals(true, InterviewSchedulingTestData.slot(slots[2].Id).Booked__c);
-        System.assertEquals(slots[2].Id, [SELECT Interview_Day_Schedule__c FROM Account WHERE Id = :app.AccountId].Interview_Day_Schedule__c);
+        System.assertEquals(slots[2].Id, [SELECT Interview_Day_Schedule__c FROM Case WHERE Id = :app.Id].Interview_Day_Schedule__c);
     }
 
     @IsTest

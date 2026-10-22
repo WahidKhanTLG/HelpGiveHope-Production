@@ -106,6 +106,10 @@
                     </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>hideChatterActions</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>3</value>
                 </componentInstanceProperties>
@@ -152,12 +156,8 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Zone__c</fieldItem>
-                <identifier>RecordZone_cField</identifier>
+                <fieldItem>Record.Account.Zones__c</fieldItem>
+                <identifier>RecordAccountZones_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -202,10 +202,30 @@
                 <identifier>RecordChristmas_Form_Sent_Count__cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Home_Interview_Recommendation__c</fieldItem>
+                <identifier>RecordHome_Interview_Recommendation__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-s1-left</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.RecordTypeId</fieldItem>
+                <identifier>RecordRecordTypeIdField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
@@ -356,8 +376,8 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.Primary_Contact__r.how_long_were_you_employed_there__c</fieldItem>
-                <identifier>RecordPrimary_Contact_rhow_long_were_you_employed_there_cField</identifier>
+                <fieldItem>Record.Contact.how_long_were_you_employed_there__c</fieldItem>
+                <identifier>RecordContacthow_long_were_you_employed_there_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1493,7 +1513,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
-                    <value>Employer Information</value>
+                    <value>Employment Information</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection7</identifier>
@@ -1992,13 +2012,13 @@
                             <value>Category__c</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>Subcategory__c</value>
-                        </valueListItems>
-                        <valueListItems>
                             <value>Genderpick__c</value>
                         </valueListItems>
                         <valueListItems>
                             <value>Quantity__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Subcategory__c</value>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
@@ -2023,6 +2043,82 @@
             </componentInstance>
         </itemInstances>
         <name>serviceDeliveriesTab</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>MassChangeOwner</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>New</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>maxRecordsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>Case.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Assistance_Requested__r</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListDisplayType</name>
+                    <value>ADVGRID</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListFieldAliases</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>NAME</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Program__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Account__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Primary_Contact__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Status__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Request_Date__c</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListLabel</name>
+                    <value>Assistance Requested</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldAlias</name>
+                    <value>__DEFAULT__</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldOrder</name>
+                    <value>Default</value>
+                </componentInstanceProperties>
+                <componentName>lst:dynamicRelatedList</componentName>
+                <identifier>lst_dynamicRelatedList2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-78222e20-9b9a-4acd-87c2-e9a1442253ba</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -2054,10 +2150,19 @@
                             <value>CONTACT.PHONE1</value>
                         </valueListItems>
                         <valueListItems>
+                            <value>TLG_Household_Member_Status__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>TLG_Household_Member_Status_Reason__c</value>
+                        </valueListItems>
+                        <valueListItems>
                             <value>TLG_Age__c</value>
                         </valueListItems>
                         <valueListItems>
                             <value>CONTACT.EMAIL</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CONTACT.LAST_UPDATE</value>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
@@ -2082,6 +2187,36 @@
             </componentInstance>
         </itemInstances>
         <name>contactsTab</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>Case.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Histories</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListSingleContainer</componentName>
+                <identifier>force_relatedListSingleContainer2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-92f99705-ea60-4c5f-b78b-cc3be7b2b4a2</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -2397,6 +2532,27 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
+                    <value>Facet-78222e20-9b9a-4acd-87c2-e9a1442253ba</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Assistance Requested</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab7</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>System Administrator</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
                     <value>contactsTab</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -2405,13 +2561,20 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>contactsTabItem</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>System Administrator</rightValue>
-                    </criteria>
-                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-92f99705-ea60-4c5f-b78b-cc3be7b2b4a2</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Case History</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab6</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>

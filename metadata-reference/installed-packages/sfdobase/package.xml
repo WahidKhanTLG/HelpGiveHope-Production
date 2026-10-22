@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>sfdobase__Application</members>
+        <members>sfdobase__Application_TEST</members>
+        <members>sfdobase__Configuration</members>
+        <members>sfdobase__Configuration_TEST</members>
+        <members>sfdobase__LoadedModule</members>
+        <members>sfdobase__LoadedModule_TEST</members>
+        <members>sfdobase__Module</members>
+        <members>sfdobase__ModuleLoader</members>
+        <members>sfdobase__ModuleLoader_TEST</members>
+        <members>sfdobase__ModuleSelector</members>
+        <members>sfdobase__ModuleSelector_TEST</members>
+        <members>sfdobase__Module_TEST</members>
+        <members>sfdobase__Stub</members>
+        <name>ApexClass</name>
+    </types>
+    <version>68.0</version>
+</Package>

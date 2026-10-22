@@ -62,6 +62,9 @@ public without sharing class YearRoundAssistanceFormController {
             if (request == null || request.account == null || request.applicant == null) {
                 return 'Applicant and household information are required.';
             }
+            if (request.children == null || request.children.isEmpty()) {
+                return 'Please add at least one child to the household before submitting.';
+            }
             if (request.reuseAccountId != null) {
                 return HghHouseholdReuseController.saveReuse(request);
             }
@@ -135,7 +138,7 @@ public without sharing class YearRoundAssistanceFormController {
                 existingOneToOneContactId = loadOneToOneContactId(account.Id);
                 updateExistingAccountFromPayload(account);
             } else {
-                Database.insert(account, AccessLevel.SYSTEM_MODE);
+                Database.insert(account);
             }
 
             Contact applicant = payload.applicant;
@@ -145,16 +148,16 @@ public without sharing class YearRoundAssistanceFormController {
 
             if (existingApplicant != null) {
                 applicant.Id = existingApplicant.Id;
-                Database.update(applicant, AccessLevel.SYSTEM_MODE);
+                Database.update(applicant);
             } else {
-                Database.insert(applicant, AccessLevel.SYSTEM_MODE);
+                Database.insert(applicant);
             }
 
             if (existingOneToOneContactId != applicant.Id) {
                 Database.update(new Account(
                     Id = account.Id,
                     npe01__One2OneContact__c = applicant.Id
-                ), AccessLevel.SYSTEM_MODE);
+                ));
             }
 
             List<Contact> childrenToInsert = new List<Contact>();
@@ -207,24 +210,24 @@ public without sharing class YearRoundAssistanceFormController {
                 resolvedAdults.add(adult);
             }
 
-            if (!childrenToInsert.isEmpty()) Database.insert(childrenToInsert, AccessLevel.SYSTEM_MODE);
-            if (!childrenToUpdate.isEmpty()) Database.update(childrenToUpdate, AccessLevel.SYSTEM_MODE);
-            if (!adultsToInsert.isEmpty()) Database.insert(adultsToInsert, AccessLevel.SYSTEM_MODE);
-            if (!adultsToUpdate.isEmpty()) Database.update(adultsToUpdate, AccessLevel.SYSTEM_MODE);
+            if (!childrenToInsert.isEmpty()) Database.insert(childrenToInsert);
+            if (!childrenToUpdate.isEmpty()) Database.update(childrenToUpdate);
+            if (!adultsToInsert.isEmpty()) Database.insert(adultsToInsert);
+            if (!adultsToUpdate.isEmpty()) Database.update(adultsToUpdate);
 
             Case assistanceCase = payload.assistanceCase;
             if (assistanceCase != null) {
                 assistanceCase.AccountId = account.Id;
                 assistanceCase.ContactId = applicant.Id;
                 normalizeCaseRecordType(assistanceCase);
-                Database.insert(assistanceCase, AccessLevel.SYSTEM_MODE);
+                Database.insert(assistanceCase);
             }
 
             TLG_LandLord__c landlord = payload.landlord;
             if (landlord != null) {
                 landlord.TLG_Contact__c = applicant.Id;
                 if (assistanceCase != null) landlord.Case__c = assistanceCase.Id;
-                Database.insert(landlord, AccessLevel.SYSTEM_MODE);
+                Database.insert(landlord);
             }
 
             Set<Id> relatedContactIds = new Set<Id>();
@@ -238,7 +241,6 @@ public without sharing class YearRoundAssistanceFormController {
                     FROM npe4__Relationship__c
                     WHERE npe4__Contact__c = :applicant.Id
                     AND npe4__RelatedContact__c IN :relatedContactIds
-                    WITH SYSTEM_MODE
                 ]) {
                     existingRelationshipMap.put(rel.npe4__RelatedContact__c, rel);
                 }
@@ -280,8 +282,8 @@ public without sharing class YearRoundAssistanceFormController {
                 rel.Adult_Type_Custom__c = adultPayload.customRelationshipWithApplicant;
             }
 
-            if (!relationshipsToInsert.isEmpty()) Database.insert(relationshipsToInsert, AccessLevel.SYSTEM_MODE);
-            if (!relationshipsToUpdate.isEmpty()) Database.update(relationshipsToUpdate, AccessLevel.SYSTEM_MODE);
+            if (!relationshipsToInsert.isEmpty()) Database.insert(relationshipsToInsert);
+            if (!relationshipsToUpdate.isEmpty()) Database.update(relationshipsToUpdate);
 
             Database.releaseSavepoint(sp);
             return 'OK';
@@ -324,7 +326,6 @@ public without sharing class YearRoundAssistanceFormController {
             SELECT Id, AccountId, TLG_Social_Security_Number__c
             FROM Contact
             WHERE TLG_Social_Security_Number__c IN :values
-            WITH SYSTEM_MODE
         ]) {
             String key = ssnDigits(existing.TLG_Social_Security_Number__c);
             if (!result.containsKey(key)) result.put(key, new List<Contact>());
@@ -347,7 +348,6 @@ public without sharing class YearRoundAssistanceFormController {
             SELECT Id, npe01__One2OneContact__c
             FROM Account
             WHERE Id = :accountId
-            WITH SYSTEM_MODE
             LIMIT 1
         ];
         if (accounts.isEmpty()) {
@@ -374,7 +374,7 @@ public without sharing class YearRoundAssistanceFormController {
             Interested_in_Santa_Gifts__c = submitted.Interested_in_Santa_Gifts__c
         );
         prepareAccount(updateRow);
-        Database.update(updateRow, AccessLevel.SYSTEM_MODE);
+        Database.update(updateRow);
     }
 
     private static void markActive(Contact contactRecord) {

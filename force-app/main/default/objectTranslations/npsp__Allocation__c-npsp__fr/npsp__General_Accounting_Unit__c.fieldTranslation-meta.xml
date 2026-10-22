@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The General Accounting Unit this Allocation is attributed to. Only General Accounting Units marked as active are available for new Allocations. --></help>
+    <label>Unité comptable générale</label>
+    <lookupFilter>
+        <errorMessage>Les allocations ne peuvent être assignées qu’à des unités comptables générales actives. Les allocations assignées à des unités comptables générales inactives ne peuvent pas être modifiées.</errorMessage>
+        <informationalMessage>Seules les unités comptables générales actives peuvent être sélectionnées.</informationalMessage>
+    </lookupFilter>
+    <name>npsp__General_Accounting_Unit__c</name>
+    <relationshipLabel>Affectations UCG</relationshipLabel>
+</CustomFieldTranslation>

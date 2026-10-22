@@ -3,8 +3,20 @@
     <label><!-- Christmas Application Status --></label>
     <name>Christmas_Application_Status__c</name>
     <picklistValues>
+        <masterLabel>Assisted</masterLabel>
+        <translation><!-- Assisted --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Declined</masterLabel>
+        <translation><!-- Declined --></translation>
+    </picklistValues>
+    <picklistValues>
         <masterLabel>Emailed/Called</masterLabel>
         <translation><!-- Emailed/Called --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>HGH Action</masterLabel>
+        <translation><!-- HGH Action --></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Home Interview Completed</masterLabel>
@@ -29,6 +41,10 @@
     <picklistValues>
         <masterLabel>Schedule Home Interview</masterLabel>
         <translation><!-- Schedule Home Interview --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Wishlist Completed</masterLabel>
+        <translation><!-- Wishlist Completed --></translation>
     </picklistValues>
     <picklistValues>
         <masterLabel>Wishlist Incomplete</masterLabel>

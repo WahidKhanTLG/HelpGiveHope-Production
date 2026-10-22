@@ -11,4 +11,16 @@
     <gender>Feminine</gender>
     <nameFieldLabel>Cohorte de programmes</nameFieldLabel>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- End Date must be within the Program Start and End Dates --></errorMessage>
+        <name>pmdm__END_DATE_PROGRAM_DATES</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start Date must be before End Date --></errorMessage>
+        <name>pmdm__START_DATE_BEFORE_END_DATE</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start Date must be within the range of the related Program Start and End Dates. --></errorMessage>
+        <name>pmdm__START_DATE_PROGRAM_DATES</name>
+    </validationRules>
 </CustomObjectTranslation>

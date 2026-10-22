@@ -251,43 +251,90 @@ public with sharing class InterviewSelfServiceService {
         }
     }
 
-    private static Messaging.SingleEmailMessage buildDefaultEmail(Case application, GeneratedLink link, InterviewSelfServiceConfig cfg) {
-        String firstName = String.isBlank(application.Contact.FirstName) ? 'there' : application.Contact.FirstName;
-        String safeUrl = link.url.escapeHtml4();
+    private static Messaging.SingleEmailMessage buildDefaultEmail(
+    Case application,
+    GeneratedLink link,
+    InterviewSelfServiceConfig cfg
+) {
+    String firstName = String.isBlank(application.Contact.FirstName)
+        ? 'there'
+        : application.Contact.FirstName;
 
-        String bookingLine;
-        Interview_Day_Schedule__c slot = application.Account == null ? null : application.Account.Interview_Day_Schedule__r;
-        if (slot != null && slot.Interview_Date__c != null && slot.Start_Time__c != null) {
-            bookingLine = 'Your home interview is currently scheduled for <strong>'
-                + GoogleCalendarService.dateLabel(slot.Interview_Date__c) + ', '
-                + GoogleCalendarService.timeLabel(slot.Start_Time__c) + ' - '
-                + GoogleCalendarService.timeLabel(slot.End_Time__c) + '</strong>.';
-        } else {
-            bookingLine = 'Your home interview has not been scheduled yet.';
-        }
+    String safeUrl = link.url.escapeHtml4();
 
-        String cutoffLine = cfg.rescheduleCutoffHours > 0
-            ? 'Changes can be made online up to ' + cfg.rescheduleCutoffHours + ' hours before the interview.'
-            : '';
-        String phoneLine = String.isBlank(cfg.supportPhone)
-            ? 'If you need help, reply to this email.'
-            : 'If you need help, call us at ' + cfg.supportPhone.escapeHtml4() + '.';
+    String bookingLine;
+    String interviewWindowLine = '';
 
-        String html = '<p>Hi ' + firstName.escapeHtml4() + ',</p>'
-            + '<p>' + bookingLine + '</p>'
-            + '<p>You can view your interview time, choose a slot, or change it here:</p>'
-            + '<p><a href="' + safeUrl + '">' + safeUrl + '</a></p>'
-            + '<p>' + cutoffLine + ' This link is personal to your application and expires on '
-            + link.expiresOn.format('MMMM d, yyyy') + '. Please do not share it.</p>'
-            + '<p>' + phoneLine + '</p>'
-            + '<p>Help Give Hope</p>';
+    Interview_Day_Schedule__c slot =
+        application.Account == null
+            ? null
+            : application.Account.Interview_Day_Schedule__r;
 
-        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-        mail.setSubject('Your Help Give Hope home interview - view or change your time');
-        mail.setHtmlBody(html);
-        mail.setPlainTextBody(html.stripHtmlTags());
-        return mail;
+    if (
+        slot != null &&
+        slot.Interview_Date__c != null &&
+        slot.Start_Time__c != null
+    ) {
+        bookingLine =
+            'Your home interview is currently scheduled for <strong>'
+            + GoogleCalendarService.dateLabel(slot.Interview_Date__c)
+            + ', '
+            + GoogleCalendarService.timeLabel(slot.Start_Time__c)
+            + ' - '
+            + GoogleCalendarService.timeLabel(slot.End_Time__c)
+            + '</strong>.';
+
+        interviewWindowLine =
+            'Please note that your home interview may take place at any time '
+            + 'between 8:00 AM and 12:30 PM for the earlier time block, '
+            + 'or between 12:30 PM and 5:00 PM for the later time block.';
+    } else {
+        bookingLine =
+            'Your home interview has not been scheduled yet.';
     }
+
+    String cutoffLine = cfg.rescheduleCutoffHours > 0
+        ? 'Changes can be made online up to '
+            + cfg.rescheduleCutoffHours
+            + ' hours before the interview.'
+        : '';
+
+    String phoneLine = String.isBlank(cfg.supportPhone)
+        ? 'If you need help, reply to this email.'
+        : 'If you need help, call us at '
+            + cfg.supportPhone.escapeHtml4()
+            + '.';
+
+    String html =
+        '<p>Hi ' + firstName.escapeHtml4() + ',</p>'
+        + '<p>' + bookingLine + '</p>'
+        + (
+            String.isBlank(interviewWindowLine)
+                ? ''
+                : '<p>' + interviewWindowLine + '</p>'
+        )
+        + '<p>You can view your interview time, choose a slot, or change it here:</p>'
+        + '<p><a href="' + safeUrl + '">' + safeUrl + '</a></p>'
+        + '<p>'
+        + cutoffLine
+        + ' This link is personal to your application and expires on '
+        + link.expiresOn.format('MMMM d, yyyy')
+        + '. Please do not share it.</p>'
+        + '<p>' + phoneLine + '</p>'
+        + '<p>Help Give Hope</p>';
+
+    Messaging.SingleEmailMessage mail =
+        new Messaging.SingleEmailMessage();
+
+    mail.setSubject(
+        'Your Help Give Hope home interview - view or change your time'
+    );
+
+    mail.setHtmlBody(html);
+    mail.setPlainTextBody(html.stripHtmlTags());
+
+    return mail;
+}
 
     private static Id orgWideEmailId(String displayName) {
         if (String.isBlank(displayName)) {

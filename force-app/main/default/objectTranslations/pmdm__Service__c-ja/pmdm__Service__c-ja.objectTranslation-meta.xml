@@ -5,8 +5,4 @@
         <value>サービス</value>
     </caseValues>
     <nameFieldLabel>サービス名</nameFieldLabel>
-    <quickActions>
-        <label><!-- Update Service --></label>
-        <name>UpdateServices</name>
-    </quickActions>
 </CustomObjectTranslation>

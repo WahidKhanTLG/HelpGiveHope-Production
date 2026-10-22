@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>Este campo se utiliza para seguir qué contactos se omitieron del listado de Asistencia. Este es un campo del sistema y no debe alterarse manualmente.</help>
+    <label><!-- Omitted Contact Ids --></label>
+    <name>pmdm__OmittedContactIds__c</name>
+</CustomFieldTranslation>

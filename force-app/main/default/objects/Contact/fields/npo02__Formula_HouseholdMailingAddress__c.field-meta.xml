@@ -15,6 +15,7 @@ npo02__Household__r.npo02__Formula_MailingAddress__c)</formula>
     <inlineHelpText>Formula: Clone of the Household Mailing address (also a Formula)</inlineHelpText>
     <label>Household Mailing Address</label>
     <required>false</required>
+    <trackHistory>false</trackHistory>
     <type>Text</type>
     <unique>false</unique>
 </CustomField>

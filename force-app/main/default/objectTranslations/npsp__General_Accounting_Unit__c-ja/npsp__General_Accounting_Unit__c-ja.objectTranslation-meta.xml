@@ -5,4 +5,8 @@
         <value>一般会計単位</value>
     </caseValues>
     <nameFieldLabel>一般会計単位名</nameFieldLabel>
+    <webLinks>
+        <label><!-- Recalculate_Rollups --></label>
+        <name>npsp__Recalculate_Rollups</name>
+    </webLinks>
 </CustomObjectTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>Cuando se selecciona, se crearán registros de sesiones de servicio automáticamente.</help>
+    <label><!-- Create Service Sessions --></label>
+    <name>pmdm__CreateServiceSessionRecords__c</name>
+</CustomFieldTranslation>

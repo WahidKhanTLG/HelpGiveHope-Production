@@ -26,20 +26,12 @@ public without sharing class AssistanceSurveyController {
     try {
       SObjectType recordType = recordId.getSObjectType();
       if (recordType == Account.SObjectType) {
-        if (!Schema.sObjectType.Account.isAccessible()) {
-          throw new AuraHandledException('You do not have access to Accounts.');
-        }
         List<Account> accounts = [SELECT Id FROM Account WHERE Id = :recordId LIMIT 1];
         if (!accounts.isEmpty()) {
           response.put('isValidId', true);
           response.put('accountId', accounts[0].Id);
         }
       } else if (recordType == Case.SObjectType) {
-        if (!Schema.sObjectType.Case.isAccessible()) {
-          throw new AuraHandledException(
-            'You do not have access to Assistance Applications.'
-          );
-        }
         List<Case> cases = [
           SELECT Id, AccountId
           FROM Case
@@ -125,12 +117,6 @@ public without sharing class AssistanceSurveyController {
     }
 
     if (String.isBlank(accountId) && String.isNotBlank(caseId)) {
-      if (!Schema.sObjectType.Case.isAccessible()) {
-        throw new AuraHandledException(
-          'You do not have access to Assistance Applications.'
-        );
-      }
-
       Case assistanceCase = [
         SELECT AccountId
         FROM Case

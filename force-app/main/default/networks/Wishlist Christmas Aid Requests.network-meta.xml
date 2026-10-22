@@ -4,7 +4,9 @@
     <allowMembersToFlag>false</allowMembersToFlag>
     <changePasswordTemplate>unfiled$public/CommunityChangePasswordEmailTemplate</changePasswordTemplate>
     <communityRoles/>
+    <disablePvtPagesForPwdResetInLWR>false</disablePvtPagesForPwdResetInLWR>
     <disableReputationRecordConversations>true</disableReputationRecordConversations>
+    <emailDomainSubstitutionEnabled>false</emailDomainSubstitutionEnabled>
     <emailSenderAddress>zack+helpgivehope@thelodestonegroup.com</emailSenderAddress>
     <emailSenderName>Wishlist Christmas Aid Requests</emailSenderName>
     <embeddedLoginEnabled>false</embeddedLoginEnabled>
@@ -45,6 +47,7 @@
         <selfRegProfilePageOverrideSetting>Designer</selfRegProfilePageOverrideSetting>
     </networkPageOverrides>
     <picassoSite>Wishlist_Christmas_Aid_Requests1</picassoSite>
+    <secondaryEmailSenderEnabled>false</secondaryEmailSenderEnabled>
     <selfRegistration>false</selfRegistration>
     <sendWelcomeEmail>true</sendWelcomeEmail>
     <site>Wishlist_Christmas_Aid_Requests</site>

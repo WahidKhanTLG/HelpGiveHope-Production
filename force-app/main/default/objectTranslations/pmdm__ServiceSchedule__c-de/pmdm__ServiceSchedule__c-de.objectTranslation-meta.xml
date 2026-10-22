@@ -40,6 +40,10 @@
         <plural>true</plural>
         <value>Leistungszeitplänen</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Service Schedule Information --></label>
+        <name>pmdm__ServiceScheduleInformation</name>
+    </fieldSets>
     <gender>Masculine</gender>
     <nameFieldLabel>Name des Leistungszeitplans</nameFieldLabel>
 </CustomObjectTranslation>

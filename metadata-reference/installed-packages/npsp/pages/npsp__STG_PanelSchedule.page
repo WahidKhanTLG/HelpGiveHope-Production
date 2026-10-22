@@ -1,0 +1,231 @@
+<apex:page controller="npsp.STG_PanelSchedule_CTRL" docType="html-5.0" standardStylesheets="false">
+
+    <apex:outputPanel rendered="{!NOT(isRunningUserIsAdmin)}">
+        <c:InsufficientPermissions />
+    </apex:outputPanel>
+
+    <apex:form id="form" styleClass="slds-m-around_x-large" rendered="{!isRunningUserIsAdmin}">
+        <c:STG_PageHeader sectionLabel="{!$Label.npsp__stgNavBulkProcesses}" pageLabel="{!$Label.npsp__stgNavBatchProcessSettings}" />
+        <c:UTIL_PageMessages />
+
+        <div class="slds-grid slds-grid_align-center slds-grid_vertical-align-center slds-m-around_large">
+            <apex:commandButton id="editSchedule" value="{!$Label.npsp__stgBtnEdit}" status="statusLoad" action="{!editSettings}" immediate="true" rendered="{!isReadOnlyMode}" rerender="form" styleClass="slds-button slds-button_small slds-button_neutral" />
+        </div>
+
+        <div class="slds-section">
+            <div class="slds-section-title_divider" >{!$Label.stgLabelBatchJobSizes}</div>
+        </div>
+
+        <div class="slds-form_horizontal slds-m-around_large" role="list">
+
+            <div class="slds-grid slds-gutters_small"> 
+                <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                    <div class="slds-form-element">
+                        <apex:outputLabel value="{!$ObjectType.npsp__Customizable_Rollup_Settings__c.Fields.npsp__Rollups_Contact_Batch_Size__c.Label}" for="tbxConHard" styleClass="slds-form-element__label" />
+                        <div class="slds-form-element__control">
+                            <apex:outputField value="{!stgService.stgCRLP.npsp__Rollups_Contact_Batch_Size__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                            <apex:inputField value="{!stgService.stgCRLP.npsp__Rollups_Contact_Batch_Size__c}" rendered="{!isEditMode}" id="tbxConHard" styleClass="slds-input" />        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-gutters_small">
+                <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                    <div class="slds-form-element">
+                        <apex:outputLabel value="{!$ObjectType.npsp__Customizable_Rollup_Settings__c.Fields.npsp__Rollups_Account_Batch_Size__c.Label}" for="tbxAccHard" styleClass="slds-form-element__label" />
+                        <div class="slds-form-element__control">
+                            <apex:outputField value="{!stgService.stgCRLP.npsp__Rollups_Account_Batch_Size__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />                           
+                            <apex:inputField value="{!stgService.stgCRLP.npsp__Rollups_Account_Batch_Size__c}" rendered="{!isEditMode}" id="tbxAccHard" styleClass="slds-input" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-gutters_small">
+                <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                    <div class="slds-form-element">
+                        <apex:outputLabel value="{!$ObjectType.npsp__Customizable_Rollup_Settings__c.Fields.npsp__Rollups_Contact_Soft_Credit_Batch_Size__c.Label}" for="tbxConSoft" styleClass="slds-form-element__label" />
+                        <div class="slds-form-element__control">
+                            <apex:outputField value="{!stgService.stgCRLP.npsp__Rollups_Contact_Soft_Credit_Batch_Size__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                            <apex:inputField value="{!stgService.stgCRLP.npsp__Rollups_Contact_Soft_Credit_Batch_Size__c}" rendered="{!isEditMode}" id="tbxConSoft" styleClass="slds-input" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-gutters_small">
+                <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                    <div class="slds-form-element">
+                        <apex:outputLabel value="{!$ObjectType.npsp__Customizable_Rollup_Settings__c.Fields.npsp__Rollups_AcctContactSoftCredit_Batch_Size__c.Label}" for="tbxAccContactSoft" styleClass="slds-form-element__label" />
+                        <div class="slds-form-element__control">
+                            <apex:outputField value="{!stgService.stgCRLP.npsp__Rollups_AcctContactSoftCredit_Batch_Size__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                            <apex:inputField value="{!stgService.stgCRLP.npsp__Rollups_AcctContactSoftCredit_Batch_Size__c}" rendered="{!isEditMode}" id="tbxAccContactSoft" styleClass="slds-input" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-gutters_small">
+                <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                    <div class="slds-form-element">
+                        <apex:outputLabel value="{!$ObjectType.npsp__Customizable_Rollup_Settings__c.Fields.npsp__Rollups_Account_Soft_Credit_Batch_Size__c.Label}" for="tbxAccSoft" styleClass="slds-form-element__label" />
+                        <div class="slds-form-element__control">
+                            <apex:outputField value="{!stgService.stgCRLP.npsp__Rollups_Account_Soft_Credit_Batch_Size__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                            <apex:inputField value="{!stgService.stgCRLP.npsp__Rollups_Account_Soft_Credit_Batch_Size__c}" rendered="{!isEditMode}" id="tbxAccSoft" styleClass="slds-input" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-gutters_small">
+                <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                    <div class="slds-form-element">
+                        <apex:outputLabel value="{!$ObjectType.npsp__Customizable_Rollup_Settings__c.Fields.npsp__Rollups_GAU_Batch_Size__c.Label}" for="tbxGAU" styleClass="slds-form-element__label" />
+                        <div class="slds-form-element__control">
+                            <apex:outputField value="{!stgService.stgCRLP.npsp__Rollups_GAU_Batch_Size__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />                        
+                            <apex:inputField value="{!stgService.stgCRLP.npsp__Rollups_GAU_Batch_Size__c}" rendered="{!isEditMode}" id="tbxGAU" styleClass="slds-input" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-gutters_small">
+                <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                    <div class="slds-form-element">
+                        <apex:outputLabel value="{!$ObjectType.npe03__Recurring_Donations_Settings__c.Fields.npsp__Recurring_Donation_Batch_Size__c.Label}" for="tbxRD" styleClass="slds-form-element__label" />
+                        <div class="slds-form-element__control">
+                            <apex:outputField value="{!stgService.stgRD.npsp__Recurring_Donation_Batch_Size__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                            <apex:inputField value="{!stgService.stgRD.npsp__Recurring_Donation_Batch_Size__c}" rendered="{!isEditMode}" id="tbxRD" styleClass="slds-input" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-gutters_small">
+                <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                    <div class="slds-form-element">
+                        <apex:outputLabel value="{!$ObjectType.npsp__Levels_Settings__c.Fields.npsp__Level_Assignment_Batch_Size__c.Label}" for="levelAssignmentBatchSize" styleClass="slds-form-element__label" />
+                        <div class="slds-form-element__control">
+                            <apex:outputField value="{!stgService.stgLevels.npsp__Level_Assignment_Batch_Size__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                            <apex:inputField value="{!stgService.stgLevels.npsp__Level_Assignment_Batch_Size__c}" rendered="{!isEditMode}" id="levelAssignmentBatchSize" styleClass="slds-input" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-gutters_small">
+                <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                    <div class="slds-form-element">
+                        <apex:outputLabel value="{!$ObjectType.npo02__Households_Settings__c.Fields.npsp__Seasonal_Addresses_Batch_Size__c.Label}" for="seasonalAddressBatchSize" styleClass="slds-form-element__label" />
+                        <div class="slds-form-element__control">
+                            <apex:outputField value="{!stgService.stgHH.npsp__Seasonal_Addresses_Batch_Size__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                            <apex:inputField value="{!stgService.stgHH.npsp__Seasonal_Addresses_Batch_Size__c}" rendered="{!isEditMode}" id="seasonalAddressBatchSize" styleClass="slds-input" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div style="{!IF(stgService.stgCRLP.Customizable_Rollups_Enabled__c, 'display:block', 'display:none')}">
+
+            <div class="slds-section">
+                <div class="slds-section-title_divider" >{!$Label.stgLabelBatchJobRollupSkewSizes}</div>
+            </div>
+
+            <div class="slds-form_horizontal slds-m-around_large">
+
+                <div class="slds-grid slds-gutters_small">
+                    <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                        <div class="slds-form-element">
+                            <apex:outputLabel value="{!$ObjectType.npsp__Customizable_Rollup_Settings__c.Fields.npsp__Rollups_Limit_on_Attached_Opps_for_Skew__c.Label}" for="tbxSkewLimit" styleClass="slds-form-element__label" />
+                            <div class="slds-form-element__control">
+                                <apex:outputField value="{!stgService.stgCRLP.npsp__Rollups_Limit_on_Attached_Opps_for_Skew__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                                <apex:inputField value="{!stgService.stgCRLP.npsp__Rollups_Limit_on_Attached_Opps_for_Skew__c}" rendered="{!isEditMode}" id="tbxSkewLimit" html-aria-describedby="{!$Component.tbxSkewLimitHelp}" styleClass="slds-input" />
+                                <apex:outputPanel id="tbxSkewLimitHelp" layout="block">
+                                    <apex:outputText styleClass="slds-form-element__help" value="{!$Label.npsp__stgHelpRollupSkewLimit}"/>
+                                </apex:outputPanel>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-grid slds-gutters_small">
+                    <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                        <div class="slds-form-element">
+                            <apex:outputLabel value="{!$ObjectType.npsp__Customizable_Rollup_Settings__c.Fields.npsp__Rollups_Contact_SkewMode_Batch_Size__c.Label}" for="tbxConSkew" styleClass="slds-form-element__label" />
+                            <div class="slds-form-element__control">
+                                <apex:outputField value="{!stgService.stgCRLP.npsp__Rollups_Contact_SkewMode_Batch_Size__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                                <apex:inputField value="{!stgService.stgCRLP.npsp__Rollups_Contact_SkewMode_Batch_Size__c}" rendered="{!isEditMode}" id="tbxConSkew" html-aria-describedby="{!$Component.tbxConSkewHelp}" styleClass="slds-input" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-grid slds-gutters_small">
+                    <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                        <div class="slds-form-element">
+                            <apex:outputLabel value="{!$ObjectType.npsp__Customizable_Rollup_Settings__c.Fields.npsp__Rollups_Account_SkewMode_Batch_Size__c.Label}" for="tbxAccSkew" styleClass="slds-form-element__label" />
+                            <div class="slds-form-element__control">
+                                <apex:outputField value="{!stgService.stgCRLP.npsp__Rollups_Account_SkewMode_Batch_Size__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                                <apex:inputField value="{!stgService.stgCRLP.npsp__Rollups_Account_SkewMode_Batch_Size__c}" rendered="{!isEditMode}" id="tbxAccSkew" html-aria-describedby="{!$Component.tbxAccSkewHelp}" styleClass="slds-input" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-grid slds-gutters_small">
+                    <div class="slds-col slds-has-flexi-truncate slds-grid" role="listitem">
+                        <div class="slds-form-element">
+                            <apex:outputLabel value="{!$ObjectType.npsp__Customizable_Rollup_Settings__c.Fields.npsp__Rollups_Skew_Dispatcher_Batch_Size__c.Label}" for="tbxSkewDis" styleClass="slds-form-element__label" />
+                            <div class="slds-form-element__control">
+                                <apex:outputField value="{!stgService.stgCRLP.npsp__Rollups_Skew_Dispatcher_Batch_Size__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" /> 
+                                <apex:inputField value="{!stgService.stgCRLP.npsp__Rollups_Skew_Dispatcher_Batch_Size__c}" rendered="{!isEditMode}" id="tbxSkewDis" html-aria-describedby="{!$Component.tbxSkewDisHelp}" styleClass="slds-input" />
+                                <apex:outputPanel id="tbxSkewDisHelp" layout="block">
+                                    <apex:outputText styleClass="slds-form-element__help" value="{!$ObjectType.npsp__Customizable_Rollup_Settings__c.fields.npsp__Rollups_Skew_Dispatcher_Batch_Size__c.inlineHelpText}"/>
+                                </apex:outputPanel>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="slds-section">
+            <div class="slds-section-title_divider" >{!$Label.stgLabelBatchProcessingOptions}</div>
+        </div>
+
+        <div class="slds-form_horizontal slds-m-around_large">
+            <div class="slds-form-element" style="{!IF(isACMEnabled, 'display:block', 'display:none')}">
+                <apex:outputLabel value="{!$ObjectType.npo02__Households_Settings__c.Fields.npsp__Use_Dated_Conversion_Rates__c.Label}" for="cbxDatedConv" styleClass="slds-form-element__label" />
+                <div class="slds-form-element__control">
+                    <label class="slds-checkbox">
+                        <apex:inputCheckbox value="{!stgService.stgHH.npsp__Use_Dated_Conversion_Rates__c}" rendered="{!isEditMode}" id="cbxDatedConv" html-aria-describedby="{!$Component.cbxDatedConvHelp}" styleClass="slds-checkbox"/>
+                        <apex:inputCheckbox value="{!stgService.stgHH.npsp__Use_Dated_Conversion_Rates__c}" rendered="{!isReadOnlyMode}" disabled="true" id="cbxDatedConvOff" html-aria-describedby="{!$Component.cbxDatedConvHelp}" styleClass="slds-checkbox"/>
+                        <span class="slds-checkbox_faux"></span>
+                    </label>
+                    <apex:outputPanel id="cbxDatedConvHelp" layout="block">
+                        <apex:outputText styleClass="slds-form-element__help" value="{!$Label.npsp__stgHelpUseDatedConvRates}"/>
+                    </apex:outputPanel>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <apex:outputLabel value="{!$ObjectType.npsp__Error_Settings__c.Fields.npsp__Don_t_Auto_Schedule_Default_NPSP_Jobs__c.Label}" for="cbxDASDNJ" styleClass="slds-form-element__label" />
+                <div class="slds-form-element__control">
+                    <label class="slds-checkbox">
+                        <apex:inputCheckbox value="{!stgService.stgErr.npsp__Don_t_Auto_Schedule_Default_NPSP_Jobs__c}" rendered="{!isEditMode}" id="cbxDASDNJ" html-aria-describedby="{!$Component.cbxDASDNJHelp}" styleClass="slds-checkbox"/>
+                        <apex:inputCheckbox value="{!stgService.stgErr.npsp__Don_t_Auto_Schedule_Default_NPSP_Jobs__c}" rendered="{!isReadOnlyMode}" disabled="true" id="cbxDOCO" html-aria-describedby="{!$Component.cbxDASDNJHelp}" styleClass="slds-checkbox"/>
+                        <span class="slds-checkbox_faux"></span>
+                    </label>
+                    <apex:outputPanel id="cbxDASDNJHelp" layout="block">
+                        <c:UTIL_HtmlOutput html="{!$Label.npsp__stgDontAutoScheduleHelpText}" styleClass="slds-form-element__help" />
+                    </apex:outputPanel>
+                </div>
+            </div>
+        </div>
+
+        <div class="slds-grid slds-grid_align-center slds-grid_vertical-align-center slds-m-around_large">
+            <apex:commandButton value="{!$Label.npsp__stgBtnSave}" status="statusLoad" action="{!saveSettings}" immediate="false" rendered="{!isEditMode}" rerender="form" styleClass="slds-button slds-button_small slds-button_brand" />
+            <apex:commandButton value="{!$Label.npsp__stgBtnCancel}" status="statusLoad" action="{!cancelEdit}" immediate="true" rendered="{!isEditMode}" rerender="form" styleClass="slds-button slds-button_small slds-button_neutral" />
+        </div>
+    </apex:form>
+</apex:page>

@@ -1,5 +1,6 @@
 {
   "apiName" : "languages",
   "type" : "sfdc_cms__languageSettings",
-  "path" : "_settings"
+  "path" : "_settings",
+  "contentKey" : "MCTJJ2BIXS4JD2TCXJ5E3EDSJ5GA"
 }

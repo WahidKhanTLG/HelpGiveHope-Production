@@ -1,0 +1,2230 @@
+[
+  {
+    "query": {
+      "type": "InstalledPackage"
+    },
+    "success": true,
+    "componentCount": 50
+  },
+  {
+    "query": {
+      "type": "CustomLabels"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "StaticResource"
+    },
+    "success": true,
+    "componentCount": 224
+  },
+  {
+    "query": {
+      "type": "Scontrol"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "Certificate"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "LightningMessageChannel"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "LightningComponentBundle"
+    },
+    "success": true,
+    "componentCount": 607
+  },
+  {
+    "query": {
+      "type": "AuraDefinitionBundle"
+    },
+    "success": true,
+    "componentCount": 74
+  },
+  {
+    "query": {
+      "type": "ApexComponent"
+    },
+    "success": true,
+    "componentCount": 34
+  },
+  {
+    "query": {
+      "type": "ApexPage"
+    },
+    "success": true,
+    "componentCount": 163
+  },
+  {
+    "query": {
+      "type": "Queue"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CaseSubjectParticle"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "InboundNetworkConnection"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "OutboundNetworkConnection"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExternalAuthIdentityProvider"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "ExternalCredential"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "NamedCredential"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "ExternalDataSource"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CatalogedApiArtifactVersionInfo"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CatalogedApi"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CatalogedApiVersion"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExternalServiceRegistration"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "Role"
+    },
+    "success": true,
+    "componentCount": 2
+  },
+  {
+    "query": {
+      "type": "Group"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "GlobalValueSet"
+    },
+    "success": true,
+    "componentCount": 2
+  },
+  {
+    "query": {
+      "type": "CustomPermission"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CustomObject"
+    },
+    "success": true,
+    "componentCount": 415
+  },
+  {
+    "query": {
+      "type": "ReportType"
+    },
+    "success": true,
+    "componentCount": 29
+  },
+  {
+    "query": {
+      "type": "Report"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "Dashboard"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "AnalyticSnapshot"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CustomFeedFilter"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "TagSet"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "Layout"
+    },
+    "success": true,
+    "componentCount": 218
+  },
+  {
+    "query": {
+      "type": "Document"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CustomPageWebLink"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "Letterhead"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "EmailTemplate"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "QuickAction"
+    },
+    "success": true,
+    "componentCount": 87
+  },
+  {
+    "query": {
+      "type": "UiFormatSpecificationSet"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "FlexiPage"
+    },
+    "success": true,
+    "componentCount": 59
+  },
+  {
+    "query": {
+      "type": "UIBundle"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CustomTab"
+    },
+    "success": true,
+    "componentCount": 53
+  },
+  {
+    "query": {
+      "type": "CustomApplicationComponent"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CustomApplication"
+    },
+    "success": true,
+    "componentCount": 30
+  },
+  {
+    "query": {
+      "type": "CustomMetadata"
+    },
+    "success": true,
+    "componentCount": 219
+  },
+  {
+    "query": {
+      "type": "Flow"
+    },
+    "success": true,
+    "componentCount": 48
+  },
+  {
+    "query": {
+      "type": "FlowDefinition"
+    },
+    "success": true,
+    "componentCount": 48
+  },
+  {
+    "query": {
+      "type": "FlowTest"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "FlowValueMap"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ProcessFlowMigration"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ContentAsset"
+    },
+    "success": true,
+    "componentCount": 12
+  },
+  {
+    "query": {
+      "type": "ContentWorkspace"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "Workflow"
+    },
+    "success": true,
+    "componentCount": 4
+  },
+  {
+    "query": {
+      "type": "AssignmentRules"
+    },
+    "success": true,
+    "componentCount": 2
+  },
+  {
+    "query": {
+      "type": "AutoResponseRules"
+    },
+    "success": true,
+    "componentCount": 2
+  },
+  {
+    "query": {
+      "type": "EscalationRules"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "PostTemplate"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ApprovalProcess"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "HomePageComponent"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "HomePageLayout"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "CustomObjectTranslation"
+    },
+    "success": true,
+    "componentCount": 1233
+  },
+  {
+    "query": {
+      "type": "GlobalValueSetTranslation"
+    },
+    "success": true,
+    "componentCount": 7
+  },
+  {
+    "query": {
+      "type": "StandardValueSetTranslation"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "DataWeaveResource"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ApexClass"
+    },
+    "success": true,
+    "componentCount": 1625
+  },
+  {
+    "query": {
+      "type": "ApexTrigger"
+    },
+    "success": true,
+    "componentCount": 35
+  },
+  {
+    "query": {
+      "type": "ApexTestSuite"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "Profile"
+    },
+    "success": true,
+    "componentCount": 32
+  },
+  {
+    "query": {
+      "type": "PermissionSet"
+    },
+    "success": true,
+    "componentCount": 14
+  },
+  {
+    "query": {
+      "type": "MutingPermissionSet"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "PermissionSetGroup"
+    },
+    "success": true,
+    "componentCount": 11
+  },
+  {
+    "query": {
+      "type": "ProfilePasswordPolicy"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "ProfileSessionSetting"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "MyDomainDiscoverableLogin"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "BlacklistedConsumer"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "OauthCustomScope"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "OauthTokenExchangeHandler"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "UserProvisioningConfig"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CustomNotificationType"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "ExternalClientApplication"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExtlClntAppOauthSettings"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExtlClntAppGlobalOauthSettings"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExtlClntAppOauthSecuritySettings"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExtlClntAppOauthConfigurablePolicies"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExtlClntAppConfigurablePolicies"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExtlClntAppMobileSettings"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExtlClntAppMobileConfigurablePolicies"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExtlClntAppCanvasSettings"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExtlClntAppSamlConfigurablePolicies"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "MobileSecurityAssignment"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExtlClntAppPushSettings"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExtlClntAppPushConfigurablePolicies"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExtlClntAppNotificationSettings"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "DataCategoryGroup"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "RemoteSiteSetting"
+    },
+    "success": true,
+    "componentCount": 8
+  },
+  {
+    "query": {
+      "type": "CspTrustedSite"
+    },
+    "success": true,
+    "componentCount": 3
+  },
+  {
+    "query": {
+      "type": "RedirectWhitelistUrl"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "MatchingRules"
+    },
+    "success": true,
+    "componentCount": 9
+  },
+  {
+    "query": {
+      "type": "DuplicateRule"
+    },
+    "success": true,
+    "componentCount": 3
+  },
+  {
+    "query": {
+      "type": "CleanDataService"
+    },
+    "success": true,
+    "componentCount": 3
+  },
+  {
+    "query": {
+      "type": "CustomIndex"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "AuthProvider"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "EclairGeoData"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "WaveAnalyticAssetCollection"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "AnalyticsWorkspace"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "AnalyticsVisualization"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "AnalyticsDashboard"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "AppFrameworkApp"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "AppFrameworkTemplateBundle"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "RecordAlertCategory"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ApexEmailNotifications"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "ContentWorkspacePermission"
+    },
+    "success": true,
+    "componentCount": 3
+  },
+  {
+    "query": {
+      "type": "IPAddressRange"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "DgtAssetMgmtProvider"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "DgtAssetMgmtPrvdLghtCpnt"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ChannelLayout"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ForecastingType"
+    },
+    "success": true,
+    "componentCount": 9
+  },
+  {
+    "query": {
+      "type": "ForecastingSourceDefinition"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "ForecastingTypeSource"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "ForecastingFilter"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ForecastingFilterCondition"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ForecastingGroup"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CustomSite"
+    },
+    "success": true,
+    "componentCount": 7
+  },
+  {
+    "query": {
+      "type": "BriefcaseDefinition"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "AccountingModelConfig"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ApiNamedQuery"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "LightningOutApp"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "SharingRules"
+    },
+    "success": true,
+    "componentCount": 226
+  },
+  {
+    "query": {
+      "type": "SharingSet"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "IframeWhiteListUrlSettings"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "Community"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "ChatterExtension"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "DecisionTable"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "DecisionTableDatasetLink"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "AIApplication"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "AIApplicationConfig"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "MLPredictionDefinition"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "MLRecommendationDefinition"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "MLDataDefinition"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "BatchProcessJobDefinition"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "BatchCalcJobDefinition"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExpressionSetMessageToken"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExplainabilityMsgTemplate"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExpressionSetObjectAlias"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "DecisionMatrixDefinition"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "DecisionMatrixDefinitionVersion"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExpressionSetDefinition"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ExpressionSetDefinitionVersion"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "PlatformEventChannel"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "PlatformEventChannelMember"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "EventRelayConfig"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ManagedEventSubscription"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "IntegrationProviderDef"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CallCenter"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "MilestoneType"
+    },
+    "success": true,
+    "componentCount": 3
+  },
+  {
+    "query": {
+      "type": "EntitlementProcess"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "EntitlementTemplate"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "DocumentType"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CanvasMetadata"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "MobileApplicationDetail"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ConnectedApp"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "AppMenu"
+    },
+    "success": true,
+    "componentCount": 2
+  },
+  {
+    "query": {
+      "type": "NotificationTypeConfig"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "DelegateGroup"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "BrandingSet"
+    },
+    "success": true,
+    "componentCount": 2
+  },
+  {
+    "query": {
+      "type": "CommunityThemeDefinition"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CommunityTemplateDefinition"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ManagedContentType"
+    },
+    "success": true,
+    "componentCount": 3
+  },
+  {
+    "query": {
+      "type": "ExperiencePropertyTypeBundle"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "LightningTypeBundle"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ContentTypeBundle"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "DigitalExperienceBundle"
+    },
+    "success": true,
+    "componentCount": 6
+  },
+  {
+    "query": {
+      "type": "SiteDotCom"
+    },
+    "success": true,
+    "componentCount": 6
+  },
+  {
+    "query": {
+      "type": "DigitalExperienceConfig"
+    },
+    "success": true,
+    "componentCount": 5
+  },
+  {
+    "query": {
+      "type": "ExperienceBundle"
+    },
+    "success": true,
+    "componentCount": 6
+  },
+  {
+    "query": {
+      "type": "ExperienceContainer"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "Network"
+    },
+    "success": true,
+    "componentCount": 6
+  },
+  {
+    "query": {
+      "type": "NetworkBranding"
+    },
+    "success": true,
+    "componentCount": 6
+  },
+  {
+    "query": {
+      "type": "NavigationMenu"
+    },
+    "success": true,
+    "componentCount": 6
+  },
+  {
+    "query": {
+      "type": "Audience"
+    },
+    "success": true,
+    "componentCount": 6
+  },
+  {
+    "query": {
+      "type": "FlowCategory"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "LightningBolt"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "LightningExperienceTheme"
+    },
+    "success": true,
+    "componentCount": 2
+  },
+  {
+    "query": {
+      "type": "LightningOnboardingConfig"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CustomHelpMenuSection"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "Prompt"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ManagedTopics"
+    },
+    "success": true,
+    "componentCount": 6
+  },
+  {
+    "query": {
+      "type": "KeywordList"
+    },
+    "success": true,
+    "componentCount": 6
+  },
+  {
+    "query": {
+      "type": "UserCriteria"
+    },
+    "success": true,
+    "componentCount": 18
+  },
+  {
+    "query": {
+      "type": "ModerationRule"
+    },
+    "success": true,
+    "componentCount": 30
+  },
+  {
+    "query": {
+      "type": "CMSConnectSource"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CampaignInfluenceModel"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "SamlSsoConfig"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CorsWhitelistOrigin"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ActionLinkGroupTemplate"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "SynonymDictionary"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "PathAssistant"
+    },
+    "success": true,
+    "componentCount": 8
+  },
+  {
+    "query": {
+      "type": "AnimationRule"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "LeadConvertSettings"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "PlatformCachePartition"
+    },
+    "success": true,
+    "componentCount": 2
+  },
+  {
+    "query": {
+      "type": "TopicsForObjects"
+    },
+    "success": true,
+    "componentCount": 82
+  },
+  {
+    "query": {
+      "type": "RestrictionRule"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "FieldRestrictionRule"
+    },
+    "success": true,
+    "componentCount": 2
+  },
+  {
+    "query": {
+      "type": "RecommendationStrategy"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "EmailServicesFunction"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "ActionLauncherItemDef"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "RecordActionDeployment"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "BusinessProcessTypeDefinition"
+    },
+    "success": true,
+    "componentCount": 2
+  },
+  {
+    "query": {
+      "type": "ApplicationSubtypeDefinition"
+    },
+    "success": true,
+    "componentCount": 2
+  },
+  {
+    "query": {
+      "type": "ExplainabilityActionDefinition"
+    },
+    "success": true,
+    "componentCount": 2
+  },
+  {
+    "query": {
+      "type": "ExplainabilityActionVersion"
+    },
+    "success": true,
+    "componentCount": 2
+  },
+  {
+    "query": {
+      "type": "OmniInteractionConfig"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "OmniInteractionAccessConfig"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "OmniScript"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "OmniIntegrationProcedure"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "OmniUiCard"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "OmniDataTransform"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "OmniExtTrackingDef"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "OmniExtTrackingEventDef"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "OmniTrackingGroup"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "OmniTrackingComponentDef"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "Icon"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "EmbeddedServiceConfig"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "EmbeddedServiceBranding"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "EmbeddedServiceFlowConfig"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "EmbeddedServiceMenuSettings"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CallCoachingMediaProvider"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ActionPlanTemplate"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ParticipantRole"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "TimelineObjectDefinition"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "PermissionSetLicenseDefinition"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "RelationshipGraphDefinition"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "SearchCustomization"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "SearchOrgWideObjectConfig"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "RecordAggregationDefinition"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "RetrievalSummaryDefinition"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "InvocableActionExtension"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "PlatformEventSubscriberConfig"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "PipelineInspMetricConfig"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "MobileSecurityPolicy"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "RecordAlertDataSource"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "DocumentCategory"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "RecAlrtDataSrcExpSetDef"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "AccountingFieldMapping"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "RecordAlertTemplate"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "MobSecurityCertPinConfig"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "DocumentCategoryDocumentType"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "StaticDynamicValMapping"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "RecLifecyclCompanDef"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "McpServerDefinition"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "DebugLevel"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "RecLifecyclCompanCpblDef"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "SecurityCustomBaseline"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ReplyEmailConfig"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "PlatformEventMigration"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "EngmtChannelTypeConfig"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "MailAppOwaWhitelist"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "Settings"
+    },
+    "success": true,
+    "componentCount": 187
+  },
+  {
+    "query": {
+      "type": "CustomLabel"
+    },
+    "success": true,
+    "componentCount": 6483
+  },
+  {
+    "query": {
+      "type": "ExternalDataSrcDescriptor"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "CustomField"
+    },
+    "success": true,
+    "componentCount": 1905
+  },
+  {
+    "query": {
+      "type": "Index"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "BusinessProcess"
+    },
+    "success": true,
+    "componentCount": 4
+  },
+  {
+    "query": {
+      "type": "RecordType"
+    },
+    "success": true,
+    "componentCount": 7
+  },
+  {
+    "query": {
+      "type": "CompactLayout"
+    },
+    "success": true,
+    "componentCount": 21
+  },
+  {
+    "query": {
+      "type": "WebLink"
+    },
+    "success": true,
+    "componentCount": 60
+  },
+  {
+    "query": {
+      "type": "ValidationRule"
+    },
+    "success": true,
+    "componentCount": 22
+  },
+  {
+    "query": {
+      "type": "SharingReason"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "ListView"
+    },
+    "success": true,
+    "componentCount": 238
+  },
+  {
+    "query": {
+      "type": "FieldSet"
+    },
+    "success": true,
+    "componentCount": 27
+  },
+  {
+    "query": {
+      "type": "Tag"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "WorkflowFieldUpdate"
+    },
+    "success": true,
+    "componentCount": 18
+  },
+  {
+    "query": {
+      "type": "WorkflowTask"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "WorkflowAlert"
+    },
+    "success": true,
+    "componentCount": 3
+  },
+  {
+    "query": {
+      "type": "WorkflowSend"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "WorkflowOutboundMessage"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "WorkflowFlowAutomation"
+    },
+    "success": true,
+    "componentCount": 48
+  },
+  {
+    "query": {
+      "type": "WorkflowRule"
+    },
+    "success": true,
+    "componentCount": 14
+  },
+  {
+    "query": {
+      "type": "AssignmentRule"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "AutoResponseRule"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "EscalationRule"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "MatchingRule"
+    },
+    "success": true,
+    "componentCount": 4
+  },
+  {
+    "query": {
+      "type": "SharingOwnerRule"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "SharingCriteriaRule"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "SharingGuestRule"
+    },
+    "success": true,
+    "componentCount": 7
+  },
+  {
+    "query": {
+      "type": "DigitalExperience"
+    },
+    "success": true,
+    "componentCount": 134
+  },
+  {
+    "query": {
+      "type": "ManagedTopic"
+    },
+    "success": true,
+    "componentCount": 0
+  },
+  {
+    "query": {
+      "type": "DashboardFolder"
+    },
+    "success": true,
+    "componentCount": 3
+  },
+  {
+    "query": {
+      "type": "DocumentFolder"
+    },
+    "success": true,
+    "componentCount": 5
+  },
+  {
+    "query": {
+      "type": "EmailFolder"
+    },
+    "success": true,
+    "componentCount": 2
+  },
+  {
+    "query": {
+      "type": "EmailTemplateFolder"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "ReportFolder"
+    },
+    "success": true,
+    "componentCount": 10
+  },
+  {
+    "query": {
+      "type": "Dashboard",
+      "folder": "CompanyDashboards"
+    },
+    "success": true,
+    "componentCount": 3
+  },
+  {
+    "query": {
+      "type": "Dashboard",
+      "folder": "pmdm__ProgramManagementDashboards"
+    },
+    "success": true,
+    "componentCount": 2
+  },
+  {
+    "query": {
+      "type": "Dashboard",
+      "folder": "Activities"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "Document",
+      "folder": "npsp__NPSP_Documents"
+    },
+    "success": true,
+    "componentCount": 2
+  },
+  {
+    "query": {
+      "type": "Document",
+      "folder": "SharedDocuments"
+    },
+    "success": true,
+    "componentCount": 3
+  },
+  {
+    "query": {
+      "type": "Document",
+      "folder": "PSSOutboundReferralTemplates"
+    },
+    "success": true,
+    "componentCount": 3
+  },
+  {
+    "query": {
+      "type": "Document",
+      "folder": "omnistudio__VlocityDocumentUploads"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "Document",
+      "folder": "omnistudio__VlocityResources"
+    },
+    "success": true,
+    "componentCount": 85
+  },
+  {
+    "query": {
+      "type": "EmailTemplate",
+      "folder": "npsp__NPSP_Email_Templates"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "EmailTemplate",
+      "folder": "unfiled$public"
+    },
+    "success": true,
+    "componentCount": 31
+  },
+  {
+    "query": {
+      "type": "EmailTemplate",
+      "folder": "unfiled$public"
+    },
+    "success": true,
+    "componentCount": 31
+  },
+  {
+    "query": {
+      "type": "Report",
+      "folder": "pmdm__ProgramManagementReports"
+    },
+    "success": true,
+    "componentCount": 9
+  },
+  {
+    "query": {
+      "type": "Report",
+      "folder": "npo02__Household_Reports"
+    },
+    "success": true,
+    "componentCount": 1
+  },
+  {
+    "query": {
+      "type": "Report",
+      "folder": "HelpGiveHopeReports"
+    },
+    "success": true,
+    "componentCount": 16
+  },
+  {
+    "query": {
+      "type": "Report",
+      "folder": "PMM"
+    },
+    "success": true,
+    "componentCount": 11
+  },
+  {
+    "query": {
+      "type": "Report",
+      "folder": "unfiled$public"
+    },
+    "success": true,
+    "componentCount": 37
+  },
+  {
+    "query": {
+      "type": "Report",
+      "folder": "ActivityReports"
+    },
+    "success": true,
+    "componentCount": 4
+  },
+  {
+    "query": {
+      "type": "Report",
+      "folder": "MLBTestReports"
+    },
+    "success": true,
+    "componentCount": 4
+  },
+  {
+    "query": {
+      "type": "Report",
+      "folder": "npe01__Nonprofit_Edition_Reports"
+    },
+    "success": true,
+    "componentCount": 3
+  },
+  {
+    "query": {
+      "type": "Report",
+      "folder": "npsp__NPSP_Health_Check"
+    },
+    "success": true,
+    "componentCount": 7
+  },
+  {
+    "query": {
+      "type": "Report",
+      "folder": "NewReports"
+    },
+    "success": true,
+    "componentCount": 8
+  },
+  {
+    "query": {
+      "type": "StandardValueSet",
+      "method": "Tooling query"
+    },
+    "success": false,
+    "componentCount": 0,
+    "error": "sObject type 'StandardValueSet' is not supported."
+  }
+]

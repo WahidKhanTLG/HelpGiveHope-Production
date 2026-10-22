@@ -1,5 +1,6 @@
 {
   "apiName" : "login",
   "type" : "sfdc_cms__view",
-  "path" : "views"
+  "path" : "views",
+  "contentKey" : "MC2NHQEXZPXNANJM55DPDUI7SKPY"
 }

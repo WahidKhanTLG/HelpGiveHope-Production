@@ -221,11 +221,20 @@
 /* Apply custom styles to lightning-button using SLDS hooks */
 .submit-button {
     /* Apply your gradient background */
-    --slds-c-button-color-background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    --sds-c-button-neutral-color-background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+    /* --slds-c-button-color-background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); */
+    /* --slds-c-button-neutral-color-background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important; */
+    --slds-c-button-color-background: var(--primary-color) !important;
+    --slds-c-button-neutral-color-background: var(--primary-color) !important;
+
+    /* NEW */
+    --slds-c-button-neutral-color-background-hover: #007a74;
+    --slds-c-button-neutral-color-background-active: #007a74;
+    --slds-c-button-neutral-color-border-hover: #007a74;
+    --slds-c-button-text-color-active: #fff;
+
     /* Remove border */
     --slds-c-button-color-border: transparent;
-    --sds-c-button-neutral-color-border: transparent !important;
+    --slds-c-button-neutral-color-border: transparent !important;
 
     --slds-c-button-sizing-border: 0;
     --slds-c-button-sizing-border: 0 !important;
@@ -304,6 +313,18 @@
     color: var(--accent-color);
     font-size: 0.9rem;
     margin-top: 0.5rem;
+}
+
+/* Banner shown above the Submit button when sending the survey fails */
+.submit-error {
+    color: var(--accent-color);
+    background: #fdecea;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
 }
 
 .char-count {

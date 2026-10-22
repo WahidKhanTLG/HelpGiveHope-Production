@@ -10,4 +10,8 @@
     </caseValues>
     <gender>Neuter</gender>
     <nameFieldLabel>Programmanaam</nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- Start Date must be before End Date --></errorMessage>
+        <name>pmdm__START_DATE_BEFORE_END_DATE</name>
+    </validationRules>
 </CustomObjectTranslation>

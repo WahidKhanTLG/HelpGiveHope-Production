@@ -4,5 +4,9 @@
         <plural>false</plural>
         <value>サービススケジュール</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Service Schedule Information --></label>
+        <name>pmdm__ServiceScheduleInformation</name>
+    </fieldSets>
     <nameFieldLabel>サービススケジュール名</nameFieldLabel>
 </CustomObjectTranslation>

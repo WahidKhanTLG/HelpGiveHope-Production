@@ -8,6 +8,14 @@
         <plural>true</plural>
         <value>NPSP-Gegevensimportbatches</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Batch Gift Entry Tab Columns --></label>
+        <name>npsp__BatchGiftEntryTabColumns</name>
+    </fieldSets>
     <gender>Feminine</gender>
     <nameFieldLabel>Batchnaam</nameFieldLabel>
+    <webLinks>
+        <label><!-- Process_Batch --></label>
+        <name>npsp__Process_Batch</name>
+    </webLinks>
 </CustomObjectTranslation>

@@ -3,5 +3,6 @@
     <fullName>OwnerId</fullName>
     <securityClassification>Confidential</securityClassification>
     <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
     <type>Lookup</type>
 </CustomField>

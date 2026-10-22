@@ -5,11 +5,14 @@
     <enableApexApprovalLockUnlock>false</enableApexApprovalLockUnlock>
     <enableApexCtrlImplicitWithSharingPref>false</enableApexCtrlImplicitWithSharingPref>
     <enableApexPropertyGetterPref>false</enableApexPropertyGetterPref>
+    <enableAsyncApexElasticExecutions>false</enableAsyncApexElasticExecutions>
     <enableAuraApexCtrlAuthUserAccessCheckPref>false</enableAuraApexCtrlAuthUserAccessCheckPref>
     <enableAuraApexCtrlGuestUserAccessCheckPref>false</enableAuraApexCtrlGuestUserAccessCheckPref>
+    <enableBlockPackagedApexExecAnon>false</enableBlockPackagedApexExecAnon>
     <enableCompileOnDeploy>false</enableCompileOnDeploy>
     <enableDebugLogsDuringDeployment>false</enableDebugLogsDuringDeployment>
     <enableDisableParallelApexTesting>false</enableDisableParallelApexTesting>
+    <enableEnforceSummer26ApexHeapLimit>false</enableEnforceSummer26ApexHeapLimit>
     <enableGaplessTestAutoNum>true</enableGaplessTestAutoNum>
     <enableMngdCtrlActionAccessPref>false</enableMngdCtrlActionAccessPref>
     <enableNonCertifiedApexMdCrud>false</enableNonCertifiedApexMdCrud>

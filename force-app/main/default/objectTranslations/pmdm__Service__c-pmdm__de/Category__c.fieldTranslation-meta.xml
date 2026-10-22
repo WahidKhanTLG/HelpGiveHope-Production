@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Category --></label>
+    <name>Category__c</name>
+    <picklistValues>
+        <masterLabel>Bed Frame Only</masterLabel>
+        <translation><!-- Bed Frame Only --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bedding</masterLabel>
+        <translation><!-- Bedding --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Beds</masterLabel>
+        <translation><!-- Beds --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Furniture</masterLabel>
+        <translation><!-- Furniture --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mattress Only</masterLabel>
+        <translation><!-- Mattress Only --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pillows</masterLabel>
+        <translation><!-- Pillows --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Small Appliance</masterLabel>
+        <translation><!-- Small Appliance --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Towels</masterLabel>
+        <translation><!-- Towels --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Washcloths</masterLabel>
+        <translation><!-- Washcloths --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

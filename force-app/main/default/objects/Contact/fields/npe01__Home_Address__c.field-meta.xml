@@ -25,6 +25,7 @@ IF(ISPICKVAL(npe01__Secondary_Address_Type__c,&quot;Home&quot;),
     <inlineHelpText>Formula: Uses primary address type field to determine Home Address from Mailing or Other address.</inlineHelpText>
     <label>Home Address</label>
     <required>false</required>
+    <trackHistory>false</trackHistory>
     <type>Text</type>
     <unique>false</unique>
 </CustomField>

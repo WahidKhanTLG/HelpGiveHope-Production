@@ -126,12 +126,12 @@ public with sharing class SelectInterviewSlotControllerTest {
         // Before booking
         SelectInterviewSlotController.getCurrentBooking(acc.Id); 
 
-        // Apply booking onto Account directly for testing read
-        acc.Interview_Day_Schedule__c = sched.Id;
-        update acc;
+        Case caseRec = new Case(Subject = 'Current Booking Case', Status = 'New', Origin = 'Phone', AccountId = acc.Id, Interview_Day_Schedule__c = sched.Id);
+        insert caseRec;
+        update new Interview_Day_Schedule__c(Id = sched.Id, Booked__c = true, Case__c = caseRec.Id);
         
-        // After booking - hits the inner query and properties of BookingInfo wrapper
-        SelectInterviewSlotController.BookingInfo info = SelectInterviewSlotController.getCurrentBooking(acc.Id);
+        // After booking - Case lookup is the source of truth.
+        SelectInterviewSlotController.BookingInfo info = SelectInterviewSlotController.getCurrentBooking(caseRec.Id);
         if (info != null) {
             Id sId = info.scheduleId;
             Id cId = info.caseId;
@@ -149,9 +149,9 @@ public with sharing class SelectInterviewSlotControllerTest {
         Zone__c zoneRecord = createZoneWithCode('Vol Zone', '77.07');
         Interview_Day_Schedule__c sched = createSchedule(zoneRecord, Date.today().addDays(5), 'Planned', true, 'Morning', 77.07);
         
-        Account acc = new Account(Name = 'Vol Test Account', Census_Tract__c = '77.07', Interview_Day_Schedule__c = sched.Id);
+        Account acc = new Account(Name = 'Vol Test Account', Census_Tract__c = '77.07');
         insert acc;
-        Case caseRec = new Case(Subject = 'Test Case', AccountId = acc.Id);
+        Case caseRec = new Case(Subject = 'Test Case', Status = 'New', Origin = 'Phone', AccountId = acc.Id, Interview_Day_Schedule__c = sched.Id);
         insert caseRec;
 
         sched.Case__c = caseRec.Id;
@@ -174,12 +174,14 @@ public with sharing class SelectInterviewSlotControllerTest {
     static void testUnscheduleInterview_WithExistingSchedule() {
         Zone__c zoneRecord = createZoneWithCode('Controller Unschedule Zone', '77.03');
         Interview_Day_Schedule__c sched = createSchedule(zoneRecord, Date.today().addDays(6), 'Planned', false, 'Morning', 77.03);
-        Account acc = new Account(Name = 'Controller Unschedule Account', Census_Tract__c = '77.03', Interview_Day_Schedule__c = sched.Id);
+        Account acc = new Account(Name = 'Controller Unschedule Account', Census_Tract__c = '77.03');
         insert acc;
-        update new Interview_Day_Schedule__c(Id = sched.Id, Booked__c = true);
+        Case caseRec = new Case(Subject = 'Unschedule Case', Status = 'New', Origin = 'Phone', AccountId = acc.Id, Interview_Day_Schedule__c = sched.Id);
+        insert caseRec;
+        update new Interview_Day_Schedule__c(Id = sched.Id, Booked__c = true, Case__c = caseRec.Id);
 
         Test.startTest();
-        SelectInterviewSlotController.unscheduleInterview(acc.Id);
+        SelectInterviewSlotController.unscheduleInterview(caseRec.Id);
         Test.stopTest();
     }
 
@@ -220,7 +222,7 @@ public with sharing class SelectInterviewSlotControllerTest {
 
         SelectInterviewSlotController.updateInterviewSchedule(futureMorningSchedule.Id, caseRecord.Id);
         SelectInterviewSlotController.getInterviewDays(accountRecord.Id);
-        SelectInterviewSlotController.unscheduleInterview(accountRecord.Id);
+        SelectInterviewSlotController.unscheduleInterview(caseRecord.Id);
     }
 
     @IsTest

@@ -4,5 +4,13 @@
         <plural>false</plural>
         <value>エンゲージメント計画テンプレート</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Manage EP Template FS --></label>
+        <name>npsp__ManageEPTemplateFS</name>
+    </fieldSets>
     <nameFieldLabel>エンゲージメント計画テンプレート名</nameFieldLabel>
+    <webLinks>
+        <label><!-- Manage_Template --></label>
+        <name>npsp__Manage_Template</name>
+    </webLinks>
 </CustomObjectTranslation>

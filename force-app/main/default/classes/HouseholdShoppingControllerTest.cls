@@ -104,7 +104,8 @@ public class HouseholdShoppingControllerTest {
             Quantity = 2,
             TotalPrice = 200,
             Contact__c = con.Id,
-            Name__c = 'Child Clothes'
+            Name__c = 'Child Clothes',
+            Shoe_Size__c = '5'
         );
         insert new List<OpportunityLineItem>{ oli1, oli2 };
 
@@ -120,5 +121,10 @@ public class HouseholdShoppingControllerTest {
         System.assert(ctrl.serviceList.size() > 0, 'Service list should not be empty');
         System.assert(ctrl.oppList.size() > 0, 'Opportunity list should not be empty');
         System.assert(ctrl.oppContactMap.size() > 0, 'OppContactMap should not be empty');
+
+        // Shoe size must be loaded so the PDF can print it with the other child sizes
+        HouseholdShoppingController.CategoryWrapper wrap = ctrl.oppContactMap.get(opp.Id).get(con.Id);
+        System.assertEquals(1, wrap.clothList.size(), 'Child Clothes line should be in the clothes list');
+        System.assertEquals('5', wrap.clothList[0].Shoe_Size__c, 'Shoe size should be loaded for the PDF');
     }
 }

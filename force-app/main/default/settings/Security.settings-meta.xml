@@ -7,6 +7,7 @@
     <enableCoepHeader>false</enableCoepHeader>
     <enableCoopHeader>false</enableCoopHeader>
     <enableCrossOrgRedirects>false</enableCrossOrgRedirects>
+    <enableGraphQLApiForGuestUsers>false</enableGraphQLApiForGuestUsers>
     <enablePermissionsPolicy>false</enablePermissionsPolicy>
     <enableRequireHttpsConnection>true</enableRequireHttpsConnection>
     <networkAccess>
@@ -127,9 +128,11 @@
         <sidToken3rdPartyAuraApp>false</sidToken3rdPartyAuraApp>
         <skipSFAWhenMFADirectUILogin>true</skipSFAWhenMFADirectUILogin>
         <terminateUserSessionsWhenAdminResetsPassword>false</terminateUserSessionsWhenAdminResetsPassword>
+        <unescapedHtmlSanitization>false</unescapedHtmlSanitization>
         <untrustedRedirect>AlwaysAllowed</untrustedRedirect>
         <useEAPIRateLimitForConnectAPI>false</useEAPIRateLimitForConnectAPI>
         <useLocalStorageForLogoutUrl>true</useLocalStorageForLogoutUrl>
+        <vfInlineScriptInjection>Allow</vfInlineScriptInjection>
     </sessionSettings>
     <singleSignOnSettings>
         <enableCaseInsensitiveFederationID>false</enableCaseInsensitiveFederationID>

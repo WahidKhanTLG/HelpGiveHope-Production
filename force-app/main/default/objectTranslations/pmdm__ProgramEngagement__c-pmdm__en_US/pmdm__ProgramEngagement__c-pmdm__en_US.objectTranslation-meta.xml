@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Program Engagement</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Program Engagements</value>
+    </caseValues>
+    <fieldSets>
+        <label><!-- CreateProgramEngagement --></label>
+        <name>pmdm__CreateProgramEngagement</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- SessionParticipantView --></label>
+        <name>pmdm__SessionParticipantView</name>
+    </fieldSets>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Select an Account that matches the related Contact. --></errorMessage>
+        <name>pmdm__ACCOUNT_MATCHES_CONTACT_ACCOUNT</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- End Date must be after the Application Date --></errorMessage>
+        <name>pmdm__APPLICATION_DATE_BEFORE_END_DATE</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start Date must be after the Application Date --></errorMessage>
+        <name>pmdm__APPLICATION_DATE_BEFORE_START_DATE</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select an end date that&apos;s on or after the program start date and on or before the program end date. --></errorMessage>
+        <name>pmdm__END_DATE_WITHIN_PROGRAM_DATES</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select a Program Cohort that matches the Program. --></errorMessage>
+        <name>pmdm__PROGRAM_MATCHES_COHORT_PROGRAM</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start Date must be before End Date --></errorMessage>
+        <name>pmdm__START_DATE_BEFORE_END_DATE</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select a start date that&apos;s on or after the program start date and on or before the program end date. --></errorMessage>
+        <name>pmdm__START_DATE_WITHIN_PROGRAM_DATES</name>
+    </validationRules>
+</CustomObjectTranslation>

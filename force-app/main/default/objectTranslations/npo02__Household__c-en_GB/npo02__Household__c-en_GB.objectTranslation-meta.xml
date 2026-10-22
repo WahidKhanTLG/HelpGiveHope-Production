@@ -8,6 +8,14 @@
         <plural>true</plural>
         <value>Households</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Manage_Household_Custom --></label>
+        <name>npo02__Manage_Household_Custom</name>
+    </fieldSets>
     <nameFieldLabel>Household Name</nameFieldLabel>
     <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Copy_Household_Address_to_Contacts --></label>
+        <name>npo02__Copy_Household_Address_to_Contacts</name>
+    </webLinks>
 </CustomObjectTranslation>

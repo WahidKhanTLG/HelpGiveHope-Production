@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Type of Assistance (Deprecated) --></label>
+    <name>Type_of_Assistance__c</name>
+    <picklistValues>
+        <masterLabel>Educational</masterLabel>
+        <translation><!-- Educational --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other</masterLabel>
+        <translation><!-- Other --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Rent</masterLabel>
+        <translation><!-- Rent --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Utility</masterLabel>
+        <translation><!-- Utility --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

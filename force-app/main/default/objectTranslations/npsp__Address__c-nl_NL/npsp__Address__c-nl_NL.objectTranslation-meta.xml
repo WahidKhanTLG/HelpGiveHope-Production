@@ -10,4 +10,8 @@
     </caseValues>
     <gender>Neuter</gender>
     <nameFieldLabel>Adres-ID</nameFieldLabel>
+    <webLinks>
+        <label><!-- Verify_Address --></label>
+        <name>npsp__Verify_Address</name>
+    </webLinks>
 </CustomObjectTranslation>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Distribution (Deprecated) --></label>
+    <name>Distribution__c</name>
+    <picklistValues>
+        <masterLabel>Santa Delivery</masterLabel>
+        <translation><!-- Santa Delivery --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Warehouse 12/16/25</masterLabel>
+        <translation><!-- Warehouse 12/16/25 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Warehouse 12/16/25 &amp; Santa</masterLabel>
+        <translation><!-- Warehouse 12/16/25 &amp; Santa --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Warehouse 12/17/25</masterLabel>
+        <translation><!-- Warehouse 12/17/25 --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Warehouse 12/17/25 &amp; Santa</masterLabel>
+        <translation><!-- Warehouse 12/17/25 &amp; Santa --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

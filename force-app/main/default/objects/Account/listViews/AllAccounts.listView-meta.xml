@@ -9,6 +9,8 @@
     <columns>ACCOUNT.RECORDTYPE</columns>
     <columns>ACCOUNT.CREATED_DATE</columns>
     <columns>Value_Of_Assistance__c</columns>
+    <columns>Landlord_Street__c</columns>
+    <columns>ACCOUNT.ADDRESS1_STREET</columns>
     <filterScope>Everything</filterScope>
     <label>All Accounts</label>
 </ListView>

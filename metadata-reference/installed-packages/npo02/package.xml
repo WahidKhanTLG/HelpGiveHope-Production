@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>npo02__BATCH_HouseholdNaming_TEST</members>
+        <members>npo02__BATCH_OppRollup_TEST</members>
+        <members>npo02__HouseholdNaming_TEST</members>
+        <members>npo02__Households</members>
+        <members>npo02__Households_TEST</members>
+        <members>npo02__ManageHousehold_EXT_TEST</members>
+        <members>npo02__RecordTypes_TEST</members>
+        <members>npo02__SCHED_OppRollup_TEST</members>
+        <members>npo02__UTIL_CustomLabel_TEST</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>npo02__batchjobs</members>
+        <name>ApexComponent</name>
+    </types>
+    <types>
+        <members>npo02__BTNCampaignHHDedupe</members>
+        <members>npo02__BTNContactAddressCopy</members>
+        <members>npo02__BTNHouseholdAddressCopy</members>
+        <members>npo02__HouseholdTransactionHistory</members>
+        <members>npo02__householdsSettings</members>
+        <members>npo02__manageHousehold</members>
+        <members>npo02__opportunityRollup</members>
+        <members>npo02__userRollupSettings</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>npo02__ManageHouseholdcss</members>
+        <members>npo02__ManageHouseholdjs</members>
+        <name>StaticResource</name>
+    </types>
+    <version>68.0</version>
+</Package>

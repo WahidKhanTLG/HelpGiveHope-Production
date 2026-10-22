@@ -114,7 +114,15 @@
     <picklistValues>
         <picklist>Christmas_Application_Status__c</picklist>
         <values>
-            <fullName>Emailed%2FCalled</fullName>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Escalated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HGH Action</fullName>
             <default>false</default>
         </values>
         <values>
@@ -138,7 +146,15 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>On Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Schedule Home Interview</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wishlist Completed</fullName>
             <default>false</default>
         </values>
         <values>

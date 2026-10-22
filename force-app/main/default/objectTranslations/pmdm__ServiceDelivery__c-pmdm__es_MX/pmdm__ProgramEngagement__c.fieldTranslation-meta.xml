@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Participación en programa</label>
+    <lookupFilter>
+        <errorMessage><!-- Contact must match the Contact in the Program Engagement. --></errorMessage>
+    </lookupFilter>
+    <name>pmdm__ProgramEngagement__c</name>
+    <relationshipLabel>Entregas de servicio</relationshipLabel>
+</CustomFieldTranslation>

@@ -10,8 +10,4 @@
     </caseValues>
     <gender>Masculine</gender>
     <nameFieldLabel>Nome do serviço</nameFieldLabel>
-    <quickActions>
-        <label><!-- Update Service --></label>
-        <name>UpdateServices</name>
-    </quickActions>
 </CustomObjectTranslation>

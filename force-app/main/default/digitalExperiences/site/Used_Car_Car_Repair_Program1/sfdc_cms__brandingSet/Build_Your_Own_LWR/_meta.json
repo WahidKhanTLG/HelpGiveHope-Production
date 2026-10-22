@@ -1,5 +1,6 @@
 {
   "apiName" : "Build_Your_Own_LWR",
   "type" : "sfdc_cms__brandingSet",
-  "path" : "brandingSets"
+  "path" : "brandingSets",
+  "contentKey" : "MCQQKE2BDIN5FIVEXKVRXT44KTBY"
 }

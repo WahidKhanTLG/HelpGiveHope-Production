@@ -25,6 +25,7 @@ IF(ISPICKVAL(npe01__Secondary_Address_Type__c,&quot;Other&quot;),
     <inlineHelpText>Formula: If the Primary Address Type is Other, the Mailing Address.  If the Secondary Address Type is Other, the Other Address.</inlineHelpText>
     <label>Other Address</label>
     <required>false</required>
+    <trackHistory>false</trackHistory>
     <type>Text</type>
     <unique>false</unique>
 </CustomField>

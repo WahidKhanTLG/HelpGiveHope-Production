@@ -42,4 +42,8 @@
     </caseValues>
     <gender>Feminine</gender>
     <nameFieldLabel>Adressen-ID</nameFieldLabel>
+    <webLinks>
+        <label><!-- Verify_Address --></label>
+        <name>npsp__Verify_Address</name>
+    </webLinks>
 </CustomObjectTranslation>

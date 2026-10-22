@@ -137,6 +137,7 @@
 
                                         <!-- Submit Section -->
                                         <div class="submit-section">
+                                            <div class="submit-error" role="alert" if:true={submitError}>{submitError}</div>
                                             <lightning-button
                                                 label="Submit Survey"
                                                 icon-name="utility:check"

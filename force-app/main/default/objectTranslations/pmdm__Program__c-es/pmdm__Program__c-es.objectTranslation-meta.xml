@@ -10,4 +10,8 @@
     </caseValues>
     <gender>Masculine</gender>
     <nameFieldLabel>Nombre de Programa</nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- Start Date must be before End Date --></errorMessage>
+        <name>pmdm__START_DATE_BEFORE_END_DATE</name>
+    </validationRules>
 </CustomObjectTranslation>

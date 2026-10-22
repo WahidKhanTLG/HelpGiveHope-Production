@@ -3,13 +3,13 @@
     <fullName>Cases_New</fullName>
     <columns>CASES.CASE_NUMBER</columns>
     <columns>NAME</columns>
-    <columns>CASES.SUBJECT</columns>
+    <columns>CASES.STATUS</columns>
+    <columns>Primary_Contact_Phone__c</columns>
+    <columns>Primary_Contact_Email__c</columns>
     <columns>CASES.CREATED_DATE</columns>
     <columns>Assistance_Requested__c</columns>
-    <columns>Total_Score__c</columns>
     <columns>TLG_Total_Household_Income__c</columns>
     <columns>Total_Household_Expense__c</columns>
-    <columns>Primary_Contact_Phone__c</columns>
     <columns>CASES.PRIORITY</columns>
     <columns>TLG_Number_of_Individuals_in_household__c</columns>
     <columns>TLG_Wages__c</columns>

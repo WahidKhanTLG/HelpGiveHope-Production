@@ -204,4 +204,8 @@
         <name>Salesforce_Chatterbox</name>
         <type>ConnectedApp</type>
     </appMenuItems>
+    <appMenuItems>
+        <name>standard__AlmDevops</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
 </AppMenu>

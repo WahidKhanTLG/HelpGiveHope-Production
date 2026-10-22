@@ -20,6 +20,14 @@
         <plural>true</plural>
         <value><!-- הEngagement Plan Template --></value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Manage EP Template FS --></label>
+        <name>npsp__ManageEPTemplateFS</name>
+    </fieldSets>
     <gender><!-- Masculine --></gender>
     <nameFieldLabel><!-- Engagement Plan Template Name --></nameFieldLabel>
+    <webLinks>
+        <label><!-- Manage_Template --></label>
+        <name>npsp__Manage_Template</name>
+    </webLinks>
 </CustomObjectTranslation>

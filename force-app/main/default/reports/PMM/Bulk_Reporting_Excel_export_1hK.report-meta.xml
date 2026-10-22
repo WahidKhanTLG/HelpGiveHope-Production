@@ -57,7 +57,7 @@
             <column>pmdm__ServiceDelivery__c.Program__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
+            <operator>contains</operator>
             <value>Christmas Assistance Program</value>
         </criteriaItems>
         <criteriaItems>

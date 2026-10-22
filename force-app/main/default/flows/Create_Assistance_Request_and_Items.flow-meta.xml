@@ -66,6 +66,13 @@
             </value>
         </assignmentItems>
         <assignmentItems>
+            <assignToReference>varServiceDelivery.pmdm__DeliveryDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
             <assignToReference>ServiceDeliveryCollection</assignToReference>
             <operator>Add</operator>
             <value>
@@ -752,6 +759,21 @@
         <picklistField>Gender__c</picklistField>
         <picklistObject>pmdm__ServiceDelivery__c</picklistObject>
     </dynamicChoiceSets>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_6</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
     <environments>Default</environments>
     <formulas>
         <name>for_ProgramCurrentYear</name>
@@ -980,6 +1002,12 @@ IF(INCLUDES( {!varService.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quo
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Case__c</field>
+            <value>
+                <elementReference>Get_Christmas_Case.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Primary_Contact__c</field>
             <value>
                 <elementReference>Get_Primary_Contact.Id</elementReference>
@@ -989,6 +1017,12 @@ IF(INCLUDES( {!varService.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quo
             <field>Program__c</field>
             <value>
                 <elementReference>Get_Program.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Request_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1189,6 +1223,9 @@ IF(INCLUDES( {!varService.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quo
         <label>Create Service Delivery</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_4</targetReference>
+        </connector>
         <inputReference>ServiceDeliveryCollection</inputReference>
     </recordCreates>
     <recordCreates>
@@ -1231,6 +1268,9 @@ IF(INCLUDES( {!varService.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quo
         <label>Create Service</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </connector>
         <inputAssignments>
             <field>Category__c</field>
             <value>
@@ -1271,7 +1311,7 @@ IF(INCLUDES( {!varService.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quo
         <locationY>0</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_Primary_Contact</targetReference>
+            <targetReference>Get_Christmas_Case</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -1283,6 +1323,36 @@ IF(INCLUDES( {!varService.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quo
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Christmas_Case</name>
+        <label>Get Christmas Case</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Primary_Contact</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Account.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Record_Type_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Christmas Application</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
@@ -1324,7 +1394,7 @@ IF(INCLUDES( {!varService.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quo
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>Name__c</field>
+            <field>Name</field>
             <operator>Contains</operator>
             <value>
                 <elementReference>for_ProgramCurrentYear</elementReference>
@@ -1332,6 +1402,8 @@ IF(INCLUDES( {!varService.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quo
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>pmdm__Program__c</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
@@ -2818,6 +2890,9 @@ IF(INCLUDES( {!varService.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quo
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
+        <connector>
+            <targetReference>END_ELEMENT_6</targetReference>
+        </connector>
         <fields>
             <name>DisplayError</name>
             <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(255, 52, 52);&quot;&gt;A program for the current year must exist before creating a service. Please create the current year&apos;s program first.&lt;/strong&gt;&lt;/p&gt;</fieldText>

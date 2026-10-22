@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The General Accounting Unit this Allocation is attributed to. Only General Accounting Units marked as active are available for new Allocations. --></help>
+    <label>GAU</label>
+    <lookupFilter>
+        <errorMessage>Toewijzingen kunnen alleen worden toegewezen aan actieve Bestemmingen. Toewijzingen toegewezen aan inactieve Bestemmingen kunnen niet worden aangepast.</errorMessage>
+        <informationalMessage>Alleen actieve Bestemmingen kunnen worden geselecteerd.</informationalMessage>
+    </lookupFilter>
+    <name>npsp__General_Accounting_Unit__c</name>
+    <relationshipLabel>GAU-Toewijzingen</relationshipLabel>
+</CustomFieldTranslation>

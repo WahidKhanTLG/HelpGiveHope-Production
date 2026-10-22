@@ -223,7 +223,7 @@
     </div>
 
     <!-- Children continue below -->
-          <template for:each={children} for:item="child">
+          <template for:each={childRows} for:item="child">
             <div key={child.key} class="slds-grid slds-grid_align-center">
               <div
                 class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-large-size_6-of-12"
@@ -282,7 +282,7 @@
                       </div>
                     </template>
                   </template>
-                  <template lwc:else>
+                  <template lwc:elseif={child.showRemove}>
                     <div slot="actions" class="hgh-member-status-panel">
                       <lightning-button
                         variant="neutral"

@@ -1,5 +1,6 @@
 {
   "apiName" : "Home",
   "type" : "sfdc_cms__route",
-  "path" : "routes"
+  "path" : "routes",
+  "contentKey" : "MC6V3NX4RRUZDQTHFRSCKCM6MA2A"
 }

@@ -209,6 +209,13 @@
                                                 Pant Size - {!item.Pant_Size__c} 
                                             </div>
                                         </apex:outputPanel>
+
+                                        <apex:outputPanel rendered="{!NOT(ISNULL(item.Shoe_Size__c))}">
+                                            <div class="item">  
+                                                <span style="display:inline-block; width:12px; height:11px; border:1px solid #000; margin-top: 5px;margin-left:60px"></span>
+                                                Shoe Size - {!item.Shoe_Size__c} 
+                                            </div>
+                                        </apex:outputPanel>
                     			</apex:outputPanel>
                                 
                                 <apex:outputPanel rendered="{!item.PricebookEntry.Product2.Name = 'Clothing Item'}">

@@ -9,9 +9,5 @@
         <value>Services</value>
     </caseValues>
     <nameFieldLabel>Service Name</nameFieldLabel>
-    <quickActions>
-        <label><!-- Update Service --></label>
-        <name>UpdateServices</name>
-    </quickActions>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

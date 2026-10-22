@@ -10,4 +10,8 @@
     </caseValues>
     <gender>Masculine</gender>
     <nameFieldLabel>Número do relacionamento</nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- Rather than change the contacts in an existing relationship, delete this relationship and create a new on between the new contacts --></errorMessage>
+        <name>npe4__Related_Contact_Do_Not_Change</name>
+    </validationRules>
 </CustomObjectTranslation>

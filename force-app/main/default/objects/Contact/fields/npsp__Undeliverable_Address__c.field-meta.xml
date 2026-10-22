@@ -6,5 +6,6 @@
     <description>Indicates the address is undeliverable.</description>
     <label>Undeliverable Mailing Address</label>
     <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
     <type>Checkbox</type>
 </CustomField>

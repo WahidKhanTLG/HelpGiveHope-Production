@@ -96,6 +96,12 @@
                 <identifier>RecordNotes_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Case__c</fieldItem>
+                <identifier>RecordCase__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-47c1574b-72e5-479d-a3a6-fe640bbe0028</name>
         <type>Facet</type>
     </flexiPageRegions>

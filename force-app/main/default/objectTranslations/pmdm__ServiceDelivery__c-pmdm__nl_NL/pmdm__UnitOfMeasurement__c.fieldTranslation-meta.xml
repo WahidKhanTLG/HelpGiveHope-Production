@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The Unit of Measurement from the related Service. --></help>
+    <label>Meeteenheid</label>
+    <name>pmdm__UnitOfMeasurement__c</name>
+</CustomFieldTranslation>

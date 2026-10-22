@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The General Accounting Unit this Allocation is attributed to. Only General Accounting Units marked as active are available for new Allocations. --></help>
+    <label>Cuenta Contable General</label>
+    <lookupFilter>
+        <errorMessage>Asignaciones solo pueden ser asignadas a cuentas contables generales activadas. Asignaciones asignadas a cuentas contables inactivas no pueden ser modificadas.</errorMessage>
+        <informationalMessage>Solo cuentas contables activadas pueden ser seleccionadas.</informationalMessage>
+    </lookupFilter>
+    <name>npsp__General_Accounting_Unit__c</name>
+    <relationshipLabel>Asignaciones de CCG</relationshipLabel>
+</CustomFieldTranslation>

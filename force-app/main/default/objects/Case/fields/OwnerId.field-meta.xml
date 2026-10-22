@@ -3,7 +3,7 @@
     <fullName>OwnerId</fullName>
     <securityClassification>Internal</securityClassification>
     <trackFeedHistory>true</trackFeedHistory>
-    <trackHistory>true</trackHistory>
+    <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>
 </CustomField>

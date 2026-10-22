@@ -8,6 +8,6 @@
   "name": "HelpGiveHope-Production",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "66.0",
+  "sourceApiVersion": "68.0",
   "defaultLwcLanguage": "javascript"
 }

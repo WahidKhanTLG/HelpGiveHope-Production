@@ -8,6 +8,10 @@
         <plural>true</plural>
         <value>Servicesessies</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- RecentSessionsView --></label>
+        <name>pmdm__RecentSessionsView</name>
+    </fieldSets>
     <gender>Feminine</gender>
     <nameFieldLabel>Naam servicesessie</nameFieldLabel>
 </CustomObjectTranslation>

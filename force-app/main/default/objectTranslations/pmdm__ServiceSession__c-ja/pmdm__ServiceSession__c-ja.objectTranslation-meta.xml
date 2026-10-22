@@ -4,5 +4,9 @@
         <plural>false</plural>
         <value>サービスセッション</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- RecentSessionsView --></label>
+        <name>pmdm__RecentSessionsView</name>
+    </fieldSets>
     <nameFieldLabel>サービスセッション名</nameFieldLabel>
 </CustomObjectTranslation>

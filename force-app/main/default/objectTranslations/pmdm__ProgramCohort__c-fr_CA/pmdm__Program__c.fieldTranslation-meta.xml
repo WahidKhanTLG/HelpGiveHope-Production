@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>Le programme auquel cette cohorte de programmes appartient.</help>
+    <label><!-- Program --></label>
+    <name>pmdm__Program__c</name>
+    <relationshipLabel><!-- Program Cohorts --></relationshipLabel>
+</CustomFieldTranslation>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Type of Assistance Car Program --></label>
+    <name>TLG_Type_of_Assistance_Car_Program__c</name>
+    <picklistValues>
+        <masterLabel>Car Repair</masterLabel>
+        <translation><!-- Car Repair --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Used Car</masterLabel>
+        <translation><!-- Used Car --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

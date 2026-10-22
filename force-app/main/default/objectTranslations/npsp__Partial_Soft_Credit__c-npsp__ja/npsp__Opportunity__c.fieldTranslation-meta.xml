@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The Opportunity this soft credit applies to. --></help>
+    <label>商談</label>
+    <name>npsp__Opportunity__c</name>
+    <relationshipLabel>部分的ソフトクレジット</relationshipLabel>
+</CustomFieldTranslation>

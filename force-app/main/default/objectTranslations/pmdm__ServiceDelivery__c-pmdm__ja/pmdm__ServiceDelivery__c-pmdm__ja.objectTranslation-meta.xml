@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>サービス提供</value>
+    </caseValues>
+    <fieldSets>
+        <label>出席サービス提供</label>
+        <name>pmdm__Attendance_Service_Deliveries</name>
+    </fieldSets>
+    <fieldSets>
+        <label>一括サービス提供</label>
+        <name>pmdm__Bulk_Service_Deliveries</name>
+    </fieldSets>
+    <nameFieldLabel>サービス提供名</nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- Kitchen Chair quantity must be between 2 and 10 --></errorMessage>
+        <name>Kitchen_Chair_Quantity_Limit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot select an inactive Service --></errorMessage>
+        <name>Prevent_Inactive_Service</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select Gender for Bedding items --></errorMessage>
+        <name>Require_Gender_When_Bedding</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quantity must be between allowed minimum and maximum limits for this item --></errorMessage>
+        <name>Validate_Quantity_Min_Max</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>関連する取引先責任者に一致する取引先を選択してください。</errorMessage>
+        <name>pmdm__ACCOUNT_MATCHES_CONTACT_ACCOUNT</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>関連するサービスのプログラムに一致するプログラムエンゲージメントを選択してください。</errorMessage>
+        <name>pmdm__PROGRAM_MATCH</name>
+    </validationRules>
+</CustomObjectTranslation>

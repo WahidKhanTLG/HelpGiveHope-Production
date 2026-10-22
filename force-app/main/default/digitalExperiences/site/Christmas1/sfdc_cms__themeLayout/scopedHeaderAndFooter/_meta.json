@@ -1,5 +1,6 @@
 {
   "apiName" : "scopedHeaderAndFooter",
   "type" : "sfdc_cms__themeLayout",
-  "path" : "themeLayouts"
+  "path" : "themeLayouts",
+  "contentKey" : "MCJO3SXG6JDZCGRFSRMGXP2HNJHQ"
 }

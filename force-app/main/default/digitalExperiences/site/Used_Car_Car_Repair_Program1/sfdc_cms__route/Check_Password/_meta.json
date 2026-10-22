@@ -1,5 +1,6 @@
 {
   "apiName" : "Check_Password",
   "type" : "sfdc_cms__route",
-  "path" : "routes"
+  "path" : "routes",
+  "contentKey" : "MCLPRMWTENHZFV3HN4WERXB5L5RE"
 }

@@ -1,0 +1,214 @@
+<template>
+    <div class="page-shell">
+
+        <section class={cardClass}>
+
+            <div class="accent-bar"></div>
+
+            <header class="header">
+
+                <div class="icon-wrap">
+                    <lightning-icon
+                        icon-name={iconName}
+                        size="small"
+                        variant="inverse">
+                    </lightning-icon>
+                </div>
+
+                <div class="header-text">
+
+                    <div class="eyebrow">
+                        HELP GIVE HOPE
+                    </div>
+
+                    <h1>
+                        {title}
+                    </h1>
+
+                    <p>
+                        {description}
+                    </p>
+
+                </div>
+
+            </header>
+
+            <main class="content">
+
+                <template if:true={isConfirm}>
+
+                    <div class="notice">
+
+                        <div class="notice-title">
+                            Christmas Wishlist Email
+                        </div>
+
+                        <div class="notice-text">
+                            Only selected Christmas Application
+                            Cases will be processed.
+                        </div>
+
+                    </div>
+
+                    <div class="detail-grid">
+
+                        <article class="detail-card">
+
+                            <span class="detail-label">
+                                RECIPIENT
+                            </span>
+
+                            <strong>
+                                Case Contact Email
+                            </strong>
+
+                            <p>
+                                The email address displayed on the
+                                selected Case is used.
+                            </p>
+
+                        </article>
+
+                        <article class="detail-card">
+
+                            <span class="detail-label">
+                                WISHLIST LINK
+                            </span>
+
+                            <strong>
+                                Household Specific
+                            </strong>
+
+                            <p>
+                                Each email receives the Wishlist link
+                                for its related Account.
+                            </p>
+
+                        </article>
+
+                    </div>
+
+                    <div class="process-item">
+
+                        <span class="step-number">
+                            1
+                        </span>
+
+                        <div>
+                            <strong>
+                                Send Wishlist email
+                            </strong>
+
+                            <p>
+                                Each selected Christmas Case is
+                                processed separately.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="process-item">
+
+                        <span class="step-number">
+                            2
+                        </span>
+
+                        <div>
+                            <strong>
+                                Update sent count
+                            </strong>
+
+                            <p>
+                                Christmas Form Sent Count increases
+                                after a successful send.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="process-item">
+
+                        <span class="step-number">
+                            3
+                        </span>
+
+                        <div>
+                            <strong>
+                                Enable reminder emails
+                            </strong>
+
+                            <p>
+                                Wishlist Reminder Emails Enabled is
+                                turned on after a successful send.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </template>
+
+                <template if:true={isSuccess}>
+
+                    <div class="status-box success-box">
+
+                        <div class="status-title">
+                            Wishlist processing completed
+                        </div>
+
+                        <div class="status-message">
+                            {displayMessage}
+                        </div>
+
+                    </div>
+
+                </template>
+
+                <template if:true={isError}>
+
+                    <div class="status-box error-box">
+
+                        <div class="status-title">
+                            Wishlist email error
+                        </div>
+
+                        <div class="status-message">
+                            {displayMessage}
+                        </div>
+
+                    </div>
+
+                </template>
+
+            </main>
+
+            <footer class="footer">
+
+                <div class="footer-note">
+
+                    <template if:true={isConfirm}>
+                        Review the selected Cases before sending.
+                    </template>
+
+                    <template if:true={isSuccess}>
+                        Email processing is complete.
+                    </template>
+
+                    <template if:true={isError}>
+                        Review the error before trying again.
+                    </template>
+
+                </div>
+
+                <lightning-button
+                    variant="brand"
+                    label={primaryLabel}
+                    onclick={handlePrimaryAction}
+                    disabled={primaryDisabled}>
+                </lightning-button>
+
+            </footer>
+
+        </section>
+
+    </div>
+</template>

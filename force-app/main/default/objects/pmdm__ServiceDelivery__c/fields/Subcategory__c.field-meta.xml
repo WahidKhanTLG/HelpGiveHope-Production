@@ -2,48 +2,32 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Subcategory__c</fullName>
     <externalId>false</externalId>
-    <formula>RIGHT(
-(
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Twin&quot;), &quot;, Twin&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Full&quot;), &quot;, Full&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Queen&quot;), &quot;, Queen&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;King&quot;), &quot;, King&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Pots/Pans&quot;), &quot;, Pots/Pans&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Dishes&quot;), &quot;, Dishes&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Glassware&quot;), &quot;, Glassware&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Microwave&quot;), &quot;, Microwave&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Toaster&quot;), &quot;, Toaster&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Vacuum&quot;), &quot;, Vacuum&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Flatware&quot;), &quot;, Flatware&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Couch&quot;), &quot;, Couch&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Kitchen table&quot;), &quot;, Kitchen table&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Kitchen chairs&quot;), &quot;, Kitchen chairs&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Washer&quot;), &quot;, Washer&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Dryer&quot;), &quot;, Dryer&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Refrigerator&quot;), &quot;, Refrigerator&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Other&quot;), &quot;, Other&quot;, &quot;&quot;)
-),
-LEN(
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Twin&quot;), &quot;, Twin&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Full&quot;), &quot;, Full&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Queen&quot;), &quot;, Queen&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;King&quot;), &quot;, King&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Pots/Pans&quot;), &quot;, Pots/Pans&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Dishes&quot;), &quot;, Dishes&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Glassware&quot;), &quot;, Glassware&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Microwave&quot;), &quot;, Microwave&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Toaster&quot;), &quot;, Toaster&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Vacuum&quot;), &quot;, Vacuum&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Flatware&quot;), &quot;, Flatware&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Couch&quot;), &quot;, Couch&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Kitchen table&quot;), &quot;, Kitchen table&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Kitchen chairs&quot;), &quot;, Kitchen chairs&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Washer&quot;), &quot;, Washer&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Dryer&quot;), &quot;, Dryer&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Refrigerator&quot;), &quot;, Refrigerator&quot;, &quot;&quot;) &amp;
-IF(INCLUDES( pmdm__Service__r.Subcategory__c, &quot;Other&quot;), &quot;, Other&quot;, &quot;&quot;)
-) - 1
-)</formula>
+    <formula>IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Twin&quot;), &quot;Twin, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Full&quot;), &quot;Full, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Queen&quot;), &quot;Queen, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;King&quot;), &quot;King, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Bunkbed&quot;), &quot;Bunkbed, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Crib&quot;), &quot;Crib, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Pots/Pans&quot;), &quot;Pots/Pans, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Dishes&quot;), &quot;Dishes, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Glassware&quot;), &quot;Glassware, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Microwave&quot;), &quot;Microwave, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Toaster&quot;), &quot;Toaster, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Vacuum&quot;), &quot;Vacuum, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Flatware&quot;), &quot;Flatware, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Couch&quot;), &quot;Couch, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Kitchen table&quot;), &quot;Kitchen table, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Kitchen chairs&quot;), &quot;Kitchen chairs, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Washer&quot;), &quot;Washer, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Dryer&quot;), &quot;Dryer, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Refridgerator&quot;), &quot;Refridgerator, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Other&quot;), &quot;Other, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Crockpot&quot;), &quot;Crockpot, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Air Fryer&quot;), &quot;Air Fryer, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Dishes - Melamine&quot;), &quot;Dishes - Melamine, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Cooking Utensils&quot;), &quot;Cooking Utensils, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Electric Can Opener&quot;), &quot;Electric Can Opener, &quot;, &quot;&quot;) &amp;
+IF(INCLUDES(pmdm__Service__r.Subcategory__c, &quot;Dresser&quot;), &quot;Dresser, &quot;, &quot;&quot;)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Subcategory</label>
     <required>false</required>

@@ -430,19 +430,22 @@ export default class YearRoundAssistanceFormHgh extends LightningElement {
       this.reuseRecordVersions = result.recordVersions;
       this.applicantInitialData = this.buildExistingApplicantInitialData(result.applicant);
 
-      this.children = renumberMembers(
-        (result.children || [])
-          .filter((member) => (member?.memberStatus || "Active") !== "Inactive")
-          .map((member) => ({
-            key: `child-${member.recordId}`,
-            initialData: member,
-            isExisting: true,
-            isActive: true,
-            isInactive: false,
-            statusReason: "",
-            statusReasonError: ""
-          })),
-        "Child"
+      // Households saved without a child (or with only inactive ones) must add one.
+      this.children = this.ensureActiveChild(
+        renumberMembers(
+          (result.children || [])
+            .filter((member) => (member?.memberStatus || "Active") !== "Inactive")
+            .map((member) => ({
+              key: `child-${member.recordId}`,
+              initialData: member,
+              isExisting: true,
+              isActive: true,
+              isInactive: false,
+              statusReason: "",
+              statusReasonError: ""
+            })),
+          "Child"
+        )
       );
 
       this.adults = renumberMembers(
@@ -866,29 +869,47 @@ export default class YearRoundAssistanceFormHgh extends LightningElement {
     return `${prefix}${Date.now().toString(36)}${Math.random().toString(36).substring(2)}`.toUpperCase();
   }
 
-  addChildHandler() {
-    const key = this.generateUniqueId("child");
-    const title = `Child ${this.children.length + 1}`;
+  get activeChildCount() {
+    return this.children.filter((child) => !child.isInactive).length;
+  }
 
-    this.children = [
-      ...this.children,
-      {
-        key,
-        title,
-        initialData: null,
-        isExisting: false,
-        isActive: true,
-        isInactive: false,
-        statusReason: "",
-        statusReasonError: ""
-      }
-    ];
+  // "Remove Member" is only offered for a new child while another active child remains.
+  get childRows() {
+    const canRemove = this.activeChildCount > 1;
+    return this.children.map((child) => ({
+      ...child,
+      showRemove: canRemove && !child.isExisting
+    }));
+  }
+
+  newChildMember(position) {
+    return {
+      key: this.generateUniqueId("child"),
+      title: `Child ${position}`,
+      initialData: null,
+      isExisting: false,
+      isActive: true,
+      isInactive: false,
+      statusReason: "",
+      statusReasonError: ""
+    };
+  }
+
+  // A household always needs at least one active child: add a blank one when none is left.
+  ensureActiveChild(children) {
+    return children.some((child) => !child.isInactive)
+      ? children
+      : [...children, this.newChildMember(children.length + 1)];
+  }
+
+  addChildHandler() {
+    this.children = [...this.children, this.newChildMember(this.children.length + 1)];
   }
 
 
   removeChildHandler(event) {
     const key = event.target?.dataset?.key;
-    if (!key) return;
+    if (!key || this.activeChildCount <= 1) return;
     this.children = renumberMembers(
       this.children.filter((child) => child.key !== key || child.isExisting),
       "Child"
@@ -902,16 +923,18 @@ export default class YearRoundAssistanceFormHgh extends LightningElement {
     if (!key) return;
 
     const isActive = event.target.checked === true;
-    this.children = this.children.map((child) =>
-      child.key === key
-        ? {
-            ...child,
-            isActive,
-            isInactive: !isActive,
-            statusReason: isActive ? "" : child.statusReason,
-            statusReasonError: ""
-          }
-        : child
+    this.children = this.ensureActiveChild(
+      this.children.map((child) =>
+        child.key === key
+          ? {
+              ...child,
+              isActive,
+              isInactive: !isActive,
+              statusReason: isActive ? "" : child.statusReason,
+              statusReasonError: ""
+            }
+          : child
+      )
     );
 
     this.submissionError = "";
@@ -1097,13 +1120,37 @@ export default class YearRoundAssistanceFormHgh extends LightningElement {
       Phone: applicant.fieldsMap.Phone?.value || null,
       Email: applicant.fieldsMap.EmailAddress?.value || null,
       TLG_Employed_or_unemployed__c:
-        applicant.fieldsMap.EmploymentStatus?.value || null,
+      applicant.fieldsMap.EmploymentStatus?.value || null,
+
+      TLG_Employer_Name__c:
+          this.getTrimmedFieldValue(applicant, "EmployerName"),
+
+      TLG_Previous_Employer__c:
+          this.getTrimmedFieldValue(applicant, "PreviousEmployer"),
+
+      how_long_were_you_employed_there__c:
+          this.getNumberFieldValue(applicant, "HowLongEmployedThere"),
+
       Employment_Unemployment_duration_months__c:
-        applicant.fieldsMap.MonthsOfEmploymentOrUnemployment?.value || null,
+          this.getNumberFieldValue(
+              applicant,
+              "MonthsOfEmploymentOrUnemployment"
+          ),
+
       TLG_Hours_worked_per_week__c:
-        applicant.fieldsMap.HoursWorkedPerWeek?.value || null,
-      TLG_Rate_of_Pay__c: applicant.fieldsMap.PayPerHour?.value || null,
-      TLG_Wages_per_month__c: applicant.fieldsMap.Wages?.value || null,
+          this.getNumberFieldValue(applicant, "HoursWorkedPerWeek"),
+
+      TLG_Rate_of_Pay__c:
+          this.getNumberFieldValue(applicant, "PayPerHour"),
+
+      Number_of_Jobs_in_Past_36_Months__c:
+          this.getNumberFieldValue(applicant, "JobsPast36Months"),
+
+      TLG_Total_Time_Employed_Months__c:
+          this.getNumberFieldValue(applicant, "TotalTimeEmployed"),
+
+      TLG_Wages_per_month__c:
+          this.getNumberFieldValue(applicant, "Wages"),
       TLG_SSI_Disability__c: applicant.fieldsMap.Disability?.value || null,
       TLG_TANIF__c: applicant.fieldsMap.TANIF?.value || null,
       TLG_SS__c: applicant.fieldsMap.SS?.value || null,
@@ -1140,7 +1187,9 @@ export default class YearRoundAssistanceFormHgh extends LightningElement {
         GenderIdentity: child.fieldsMap.Gender?.value || null,
         TLG_Are_you_their_legal_guardian__c:
           child.fieldsMap.LegalGuardian?.value || null,
-        School_Attending__c: this.getSchoolAttendingValue(child)
+        School_Attending__c: this.getSchoolAttendingValue(child),
+        TLG_Relationship_with_Applicant__c:
+          child.fieldsMap.RelationShip?.value || null
       },
       relationshipWithApplicant: child.fieldsMap.RelationShip?.value || null
     }));
@@ -1159,13 +1208,43 @@ export default class YearRoundAssistanceFormHgh extends LightningElement {
 
         Phone: adult.fieldsMap.Phone?.value || null,
         TLG_Employed_or_unemployed__c:
-          adult.fieldsMap.EmploymentStatus?.value || null,
+            adult.fieldsMap.EmploymentStatus?.value || null,
+
+        TLG_Employer_Name__c:
+            this.getTrimmedFieldValue(adult, "EmployerName"),
+
+        TLG_Previous_Employer__c:
+            this.getTrimmedFieldValue(adult, "PreviousEmployer"),
+
+        how_long_were_you_employed_there__c:
+            this.getNumberFieldValue(adult, "HowLongEmployedThere"),
+
         Employment_Unemployment_duration_months__c:
-          adult.fieldsMap.MonthsOfEmploymentOrUnemployment?.value || null,
+            this.getNumberFieldValue(
+                adult,
+                "MonthsOfEmploymentOrUnemployment"
+            ),
+
         TLG_Hours_worked_per_week__c:
-          adult.fieldsMap.HoursWorkedPerWeek?.value || null,
-        TLG_Rate_of_Pay__c: adult.fieldsMap.PayPerHour?.value || null,
-        TLG_Wages_per_month__c: adult.fieldsMap.Wages?.value || null,
+            this.getNumberFieldValue(adult, "HoursWorkedPerWeek"),
+
+        TLG_Rate_of_Pay__c:
+            this.getNumberFieldValue(adult, "PayPerHour"),
+
+        Number_of_Jobs_in_Past_36_Months__c:
+            this.getNumberFieldValue(adult, "JobsPast36Months"),
+
+        TLG_Total_Time_Employed_Months__c:
+            this.getNumberFieldValue(adult, "TotalTimeEmployed"),
+
+        TLG_Wages_per_month__c:
+            this.getNumberFieldValue(adult, "Wages"),
+
+        TLG_Relationship_with_Applicant__c:
+            adult.fieldsMap.RelationShip?.value === "Other"
+              ? this.getTrimmedFieldValue(adult, "RelationShipCustom")
+              : adult.fieldsMap.RelationShip?.value || null,
+
         TLG_SSI_Disability__c: adult.fieldsMap.Disability?.value || null,
         TLG_TANIF__c: adult.fieldsMap.TANIF?.value || null,
         TLG_SS__c: adult.fieldsMap.SS?.value || null,
@@ -1411,6 +1490,11 @@ TLG_Used_Car_Assistance__c: this.isUsedCarFlow,
 
     try {
       if (this.reuseAccountId && !this.validateMemberStatusReasons()) return;
+
+      if (this.activeChildCount === 0 || this.activeChildrenEl.length === 0) {
+        this.submissionError = "Please add at least one child to the household before continuing.";
+        return;
+      }
 
       const sections = [
         this.applicantEl,

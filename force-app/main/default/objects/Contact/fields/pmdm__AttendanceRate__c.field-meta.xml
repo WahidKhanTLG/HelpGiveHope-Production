@@ -10,5 +10,6 @@ null)</formula>
     <precision>18</precision>
     <required>false</required>
     <scale>0</scale>
+    <trackHistory>false</trackHistory>
     <type>Percent</type>
 </CustomField>

@@ -10,4 +10,8 @@
     </caseValues>
     <nameFieldLabel>General Accounting Unit Name</nameFieldLabel>
     <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Recalculate_Rollups --></label>
+        <name>npsp__Recalculate_Rollups</name>
+    </webLinks>
 </CustomObjectTranslation>

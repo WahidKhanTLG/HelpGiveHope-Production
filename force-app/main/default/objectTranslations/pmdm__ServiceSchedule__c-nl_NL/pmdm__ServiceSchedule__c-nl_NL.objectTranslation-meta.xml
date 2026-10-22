@@ -8,6 +8,10 @@
         <plural>true</plural>
         <value>Serviceplanningen</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Service Schedule Information --></label>
+        <name>pmdm__ServiceScheduleInformation</name>
+    </fieldSets>
     <gender>Feminine</gender>
     <nameFieldLabel>Naam serviceplanning</nameFieldLabel>
 </CustomObjectTranslation>

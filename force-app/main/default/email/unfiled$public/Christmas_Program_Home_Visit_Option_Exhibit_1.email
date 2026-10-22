@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Help Give Hope - Christmas Program</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333333; max-width: 600px; margin: 0 auto; padding: 20px;">
+
+    <p>Dear Christmas Applicant,</p>
+
+    <p>Thank you for applying for Christmas assistance through <strong>Help Give Hope</strong>.</p>
+
+    <p>As we prepare for this year’s Christmas program, we are giving families the option of requesting a brief in-home visit to discuss essential household needs.</p>
+
+    <p>You may choose one of the following options:</p>
+
+    <div style="background-color: #f7f9fa; border-left: 4px solid #006d69; padding: 15px; margin-bottom: 15px; border-radius: 4px;">
+        <h4 style="margin: 0 0 8px 0; color: #006d69;">Christmas Gifts Only</h4>
+        <p style="margin: 0; font-size: 14px;">If your household does not have additional essential needs, no home visit is necessary. We will use the information and children’s wish lists provided in your application as we continue through the Christmas assistance process.</p>
+    </div>
+
+    <div style="background-color: #f7f9fa; border-left: 4px solid #006d69; padding: 15px; margin-bottom: 15px; border-radius: 4px;">
+        <h4 style="margin: 0 0 8px 0; color: #006d69;">Christmas Gifts + Household Needs Visit</h4>
+        <p style="margin: 0; font-size: 14px;">If your family has essential household needs beyond Christmas gifts, you may request a brief home visit with a Help Give Hope volunteer. During the visit, we will ask about basic needs such as whether everyone in the household has an appropriate bed and whether there are other essential household items your family currently needs.</p>
+    </div>
+
+    <p style="font-size: 14px; color: #555555;">Please only request a home visit if your household has a genuine need for essential items. Our goal is to identify needs that affect the safety, stability, or everyday functioning of the household.</p>
+
+    <p style="font-size: 14px; color: #555555;">Choosing not to request a home visit will not negatively affect your Christmas application. Many families simply need a little help providing Christmas for their children while keeping up with rent, utilities, and other household expenses. If that describes your family, selecting “Christmas Gifts Only” is completely appropriate.</p>
+
+    <p><strong>Please click either the “Home Visit” or “No Visit” button below:</strong></p>
+
+    <!-- BUTTONS SECTION -->
+    <table border="0" cellpadding="0" cellspacing="0" style="margin: 25px 0;">
+        <tr>
+            <!-- HOME VISIT BUTTON -->
+            <td align="center" style="border-radius: 6px; padding-right: 15px;">
+                <a href="https://helpgivehope.my.salesforce-sites.com/public?action=choice&choice=home_visit&id={!Case.Id}" 
+                   style="display: inline-block; padding: 12px 24px; font-size: 15px; font-weight: bold; color: #ffffff; text-decoration: none; border-radius: 6px; background-color: #006d69; font-family: Arial, sans-serif;">
+                   Home Visit
+                </a>
+            </td>
+            <!-- NO VISIT BUTTON -->
+            <td align="center" style="border-radius: 6px;">
+                <a href="https://helpgivehope.my.salesforce-sites.com/public?action=choice&choice=kids_only&id={!Case.Id}" 
+                   style="display: inline-block; padding: 12px 24px; font-size: 15px; font-weight: bold; color: #ffffff; text-decoration: none; border-radius: 6px; background-color: #54698d; font-family: Arial, sans-serif;">
+                   No Visit
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <p style="font-size: 13px; color: #666666;">If you request a visit, we will send you a suggested date and time frame for a visit. If that date does not work, you can change it with the link provided.</p>
+
+    <p style="font-size: 13px; color: #666666;">Thank you for helping us make the best use of our volunteers and resources so we can serve as many families as possible this Christmas.</p>
+
+    <p style="margin-top: 25px;">Warm regards,<br>
+    <strong>Help Give Hope Team</strong></p>
+
+</body>
+</html>

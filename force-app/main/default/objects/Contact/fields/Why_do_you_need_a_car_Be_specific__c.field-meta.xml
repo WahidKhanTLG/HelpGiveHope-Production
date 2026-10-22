@@ -4,6 +4,7 @@
     <label>Why do you need a car? Be specific?</label>
     <length>131072</length>
     <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
     <type>LongTextArea</type>
     <visibleLines>3</visibleLines>
 </CustomField>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Subcategory --></label>
+    <name>Subcategory__c</name>
+    <picklistValues>
+        <masterLabel>Air Fryer</masterLabel>
+        <translation><!-- Air Fryer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bunkbed</masterLabel>
+        <translation><!-- Bunkbed --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cooking Utensils</masterLabel>
+        <translation><!-- Cooking Utensils --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Couch</masterLabel>
+        <translation><!-- Couch --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Crib</masterLabel>
+        <translation><!-- Crib --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Crockpot</masterLabel>
+        <translation><!-- Crockpot --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Dishes</masterLabel>
+        <translation><!-- Dishes --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Dishes - Melamine</masterLabel>
+        <translation><!-- Dishes - Melamine --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Dresser</masterLabel>
+        <translation><!-- Dresser --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Dryer</masterLabel>
+        <translation><!-- Dryer --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Electric Can Opener</masterLabel>
+        <translation><!-- Electric Can Opener --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Flatware</masterLabel>
+        <translation><!-- Flatware --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Full</masterLabel>
+        <translation><!-- Full --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Glassware</masterLabel>
+        <translation><!-- Glassware --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>King</masterLabel>
+        <translation><!-- King --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Kitchen chairs</masterLabel>
+        <translation><!-- Kitchen chairs --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Kitchen table</masterLabel>
+        <translation><!-- Kitchen table --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Microwave</masterLabel>
+        <translation><!-- Microwave --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Other</masterLabel>
+        <translation><!-- Other --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pots/Pans</masterLabel>
+        <translation><!-- Pots/Pans --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Queen</masterLabel>
+        <translation><!-- Queen --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Refridgerator</masterLabel>
+        <translation><!-- Refridgerator --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Toaster</masterLabel>
+        <translation><!-- Toaster --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Twin</masterLabel>
+        <translation><!-- Twin --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Vacuum</masterLabel>
+        <translation><!-- Vacuum --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Washer</masterLabel>
+        <translation><!-- Washer --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>Selecione a Conta de família se a Prestação de serviços beneficia os membros da Conta de família do Contato. Por exemplo, refeições de um banco de alimentos. Se beneficia apenas um Contato, deixe em branco.</help>
+    <label><!-- Household Account --></label>
+    <name>pmdm__Account__c</name>
+    <relationshipLabel><!-- Service Deliveries --></relationshipLabel>
+</CustomFieldTranslation>

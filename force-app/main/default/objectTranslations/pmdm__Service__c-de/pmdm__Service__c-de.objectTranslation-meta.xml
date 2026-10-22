@@ -42,8 +42,4 @@
     </caseValues>
     <gender>Feminine</gender>
     <nameFieldLabel>Name der Leistung</nameFieldLabel>
-    <quickActions>
-        <label><!-- Update Service --></label>
-        <name>UpdateServices</name>
-    </quickActions>
 </CustomObjectTranslation>

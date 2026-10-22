@@ -10,4 +10,8 @@
     </caseValues>
     <gender>Feminine</gender>
     <nameFieldLabel>Naam GAU</nameFieldLabel>
+    <webLinks>
+        <label><!-- Recalculate_Rollups --></label>
+        <name>npsp__Recalculate_Rollups</name>
+    </webLinks>
 </CustomObjectTranslation>

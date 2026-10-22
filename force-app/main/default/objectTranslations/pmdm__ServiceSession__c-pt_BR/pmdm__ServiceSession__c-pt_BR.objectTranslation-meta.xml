@@ -8,6 +8,10 @@
         <plural>true</plural>
         <value>Sessões de serviço</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- RecentSessionsView --></label>
+        <name>pmdm__RecentSessionsView</name>
+    </fieldSets>
     <gender>Feminine</gender>
     <nameFieldLabel>Nome da sessão de serviço</nameFieldLabel>
 </CustomObjectTranslation>

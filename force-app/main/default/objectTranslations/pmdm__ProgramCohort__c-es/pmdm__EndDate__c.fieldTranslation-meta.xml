@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>La fecha en la que la Cohorte de programa tiene programada su finalización.</help>
+    <label><!-- End Date --></label>
+    <name>pmdm__EndDate__c</name>
+</CustomFieldTranslation>

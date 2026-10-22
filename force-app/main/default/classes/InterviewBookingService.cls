@@ -8,7 +8,7 @@
  * Invariants enforced here (not in the UI):
  *  - a slot is locked (FOR UPDATE) and re-checked before it is booked, so two users cannot double book
  *  - applicants may only book Published days in their own zone and outside the reschedule cutoff
- *  - a household holds at most one booking (Account.Interview_Day_Schedule__c)
+ *  - each Case holds at most one booking (Case.Interview_Day_Schedule__c); Account context remains legacy-compatible
  *  - rescheduling releases the old slot first and books the new one second, in two DML statements,
  *    so the HGH_Interview_Volunteer_Assignment flow restores and re-assigns Case ownership correctly
  *  - Google synchronisation is signalled only by setting Google_Sync_Status__c; nothing is enqueued here
@@ -212,9 +212,24 @@ public inherited sharing class InterviewBookingService {
             validateActiveVolunteer(volunteerId);
         }
 
-        Account household = loadAccount(accountId);
-        if (household.Interview_Day_Schedule__c != null && household.Interview_Day_Schedule__c != scheduleId) {
-            throw new BookingException('This household already has a booked interview. Unschedule it or use reschedule.');
+        Case application = caseId == null ? null : loadCaseForUpdate(caseId);
+        if (application != null) {
+            if (application.AccountId == null || application.AccountId != accountId) {
+                throw new BookingException('The application is not linked to the selected household.');
+            }
+            Id existingCaseScheduleId = application.Interview_Day_Schedule__c;
+            if (existingCaseScheduleId == null) {
+                existingCaseScheduleId = findBookedScheduleForCase(caseId);
+            }
+            if (existingCaseScheduleId != null && existingCaseScheduleId != scheduleId) {
+                throw new BookingException('This case already has a booked interview. Unschedule it or use reschedule.');
+            }
+        } else {
+            // Legacy Account-context booking remains supported for the Account action.
+            Account household = loadAccount(accountId);
+            if (household.Interview_Day_Schedule__c != null && household.Interview_Day_Schedule__c != scheduleId) {
+                throw new BookingException('This household already has a booked interview. Unschedule it or use reschedule.');
+            }
         }
 
         ZoneResolution zone = resolveZoneForAccount(accountId);
@@ -237,7 +252,12 @@ public inherited sharing class InterviewBookingService {
             Database.update(slotUpdate, AccessLevel.SYSTEM_MODE);
 
             Id zoneId = effectiveZoneId(slot, zone);
-            updateAccountPointer(accountId, slot.Id, zoneId);
+            if (caseId != null) {
+                updateCasePointer(caseId, slot.Id);
+                updateAccountZone(accountId, zoneId);
+            } else {
+                updateAccountPointer(accountId, slot.Id, zoneId);
+            }
 
             BookingResult result = new BookingResult();
             result.accountId = accountId;
@@ -263,13 +283,20 @@ public inherited sharing class InterviewBookingService {
         if (caseId == null || newScheduleId == null) {
             throw new BookingException('Application and interview schedule are required.');
         }
-        List<Case> cases = [SELECT Id, AccountId FROM Case WHERE Id = :caseId LIMIT 1];
-        if (cases.isEmpty() || cases[0].AccountId == null) {
+        Case application = loadCaseForUpdate(caseId);
+        if (application.AccountId == null) {
             throw new BookingException('The application is not linked to a household.');
         }
-        Id accountId = cases[0].AccountId;
-        Account household = loadAccount(accountId);
-        Id oldScheduleId = household.Interview_Day_Schedule__c;
+        Id accountId = application.AccountId;
+        Id oldScheduleId = application.Interview_Day_Schedule__c;
+
+        // Backfill older bookings that pre-date the Case lookup being the source of truth.
+        if (oldScheduleId == null) {
+            oldScheduleId = findBookedScheduleForCase(caseId);
+            if (oldScheduleId != null) {
+                updateCasePointer(caseId, oldScheduleId);
+            }
+        }
 
         if (oldScheduleId == null) {
             return book(newScheduleId, caseId, null, bookingActor);
@@ -325,7 +352,8 @@ public inherited sharing class InterviewBookingService {
             Database.update(newUpdate, AccessLevel.SYSTEM_MODE);
 
             Id zoneId = effectiveZoneId(newSlot, zone);
-            updateAccountPointer(accountId, newSlot.Id, zoneId);
+            updateCasePointer(caseId, newSlot.Id);
+            updateAccountZone(accountId, zoneId);
 
             BookingResult result = new BookingResult();
             result.accountId = accountId;
@@ -349,18 +377,47 @@ public inherited sharing class InterviewBookingService {
      * converted back to a placeholder or deleted, depending on configuration).
      */
     public static BookingResult release(Id recordId) {
-        Id accountId = resolveAccountId(recordId);
-        if (accountId == null) {
-            throw new BookingException('Unable to resolve a household for the selected booking.');
+        if (recordId == null) {
+            throw new BookingException('A Case or Account is required to unschedule an interview.');
         }
-        Account household = loadAccount(accountId);
-        if (household.Interview_Day_Schedule__c == null) {
+
+        Boolean caseContext = recordId.getSObjectType() == Case.SObjectType;
+        Id accountId;
+        Id caseId;
+        Id scheduleId;
+
+        if (caseContext) {
+            Case application = loadCaseForUpdate(recordId);
+            caseId = application.Id;
+            accountId = application.AccountId;
+            scheduleId = application.Interview_Day_Schedule__c;
+            if (scheduleId == null) {
+                scheduleId = findBookedScheduleForCase(caseId);
+            }
+        } else {
+            accountId = resolveAccountId(recordId);
+            if (accountId == null) {
+                throw new BookingException('Unable to resolve a household for the selected booking.');
+            }
+            Account household = loadAccount(accountId);
+            scheduleId = household.Interview_Day_Schedule__c;
+        }
+
+        if (scheduleId == null) {
             throw new BookingException('No existing booking found to unschedule.');
         }
-        Id scheduleId = household.Interview_Day_Schedule__c;
 
         Savepoint sp = Database.setSavepoint();
         try {
+            Map<Id, Interview_Day_Schedule__c> locked = lockSlots(new Set<Id>{ scheduleId });
+            Interview_Day_Schedule__c current = locked.get(scheduleId);
+            if (current == null) {
+                throw new BookingException('The current interview slot could not be found.');
+            }
+            if (caseContext && current.Case__c != null && current.Case__c != caseId) {
+                throw new BookingException('This booked schedule belongs to a different Case.');
+            }
+
             Database.update(new Interview_Day_Schedule__c(
                 Id = scheduleId,
                 Case__c = null,
@@ -370,12 +427,21 @@ public inherited sharing class InterviewBookingService {
                 Google_Sync_Status__c = GoogleCalendarService.STATUS_PENDING
             ), AccessLevel.SYSTEM_MODE);
 
-            Database.update(new Account(Id = accountId, Interview_Day_Schedule__c = null), AccessLevel.SYSTEM_MODE);
+            if (caseContext) {
+                updateCasePointer(caseId, null);
+                clearLegacyAccountPointer(accountId, scheduleId);
+            } else {
+                Database.update(new Account(Id = accountId, Interview_Day_Schedule__c = null), AccessLevel.SYSTEM_MODE);
+            }
 
             BookingResult result = new BookingResult();
             result.accountId = accountId;
+            result.caseId = caseId;
             result.previousScheduleId = scheduleId;
             return result;
+        } catch (BookingException ex) {
+            Database.rollback(sp);
+            throw ex;
         } catch (Exception ex) {
             Database.rollback(sp);
             throw new BookingException('Error unscheduling interview: ' + ex.getMessage());
@@ -510,6 +576,34 @@ public inherited sharing class InterviewBookingService {
         return accounts[0];
     }
 
+    private static Case loadCaseForUpdate(Id caseId) {
+        List<Case> cases = [
+            SELECT Id, AccountId, Interview_Day_Schedule__c
+            FROM Case
+            WHERE Id = :caseId
+            LIMIT 1
+            FOR UPDATE
+        ];
+        if (cases.isEmpty()) {
+            throw new BookingException('Application not found for the selected booking.');
+        }
+        return cases[0];
+    }
+
+    private static Id findBookedScheduleForCase(Id caseId) {
+        if (caseId == null) {
+            return null;
+        }
+        List<Interview_Day_Schedule__c> schedules = [
+            SELECT Id
+            FROM Interview_Day_Schedule__c
+            WHERE Case__c = :caseId AND Booked__c = true
+            ORDER BY CreatedDate DESC
+            LIMIT 1
+        ];
+        return schedules.isEmpty() ? null : schedules[0].Id;
+    }
+
     private static Map<Id, Interview_Day_Schedule__c> lockSlots(Set<Id> scheduleIds) {
         return new Map<Id, Interview_Day_Schedule__c>([
             SELECT Id, Name, Booked__c, Case__c, Assigned_Volunteer__c, Start_Time__c, End_Time__c,
@@ -527,6 +621,41 @@ public inherited sharing class InterviewBookingService {
             return slot.Interview_Day__r.Zone__c;
         }
         return zone == null ? null : zone.zoneId;
+    }
+
+    private static void updateCasePointer(Id caseId, Id scheduleId) {
+        if (caseId == null) {
+            return;
+        }
+        Database.update(new Case(Id = caseId, Interview_Day_Schedule__c = scheduleId), AccessLevel.SYSTEM_MODE);
+    }
+
+    private static void updateAccountZone(Id accountId, Id zoneId) {
+        if (accountId == null) {
+            return;
+        }
+        // Case bookings are authoritative now. Clear the legacy Account pointer so it cannot
+        // incorrectly block another Case on the same household.
+        Account accountUpdate = new Account(Id = accountId, Interview_Day_Schedule__c = null);
+        if (zoneId != null) {
+            accountUpdate.Zones__c = zoneId;
+        }
+        Database.update(accountUpdate, AccessLevel.SYSTEM_MODE);
+    }
+
+    private static void clearLegacyAccountPointer(Id accountId, Id releasedScheduleId) {
+        if (accountId == null || releasedScheduleId == null) {
+            return;
+        }
+        List<Account> accounts = [
+            SELECT Id, Interview_Day_Schedule__c
+            FROM Account
+            WHERE Id = :accountId
+            LIMIT 1
+        ];
+        if (!accounts.isEmpty() && accounts[0].Interview_Day_Schedule__c == releasedScheduleId) {
+            Database.update(new Account(Id = accountId, Interview_Day_Schedule__c = null), AccessLevel.SYSTEM_MODE);
+        }
     }
 
     private static void updateAccountPointer(Id accountId, Id scheduleId, Id zoneId) {

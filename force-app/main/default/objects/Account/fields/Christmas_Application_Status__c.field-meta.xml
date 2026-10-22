@@ -4,7 +4,7 @@
     <label>Christmas Application Status</label>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>false</trackHistory>
+    <trackHistory>true</trackHistory>
     <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
@@ -16,7 +16,7 @@
                 <label>New</label>
             </value>
             <value>
-                <fullName>Emailed/Called</fullName>
+                <fullName>Escalated</fullName>
                 <default>false</default>
                 <label>Emailed/Called</label>
             </value>
@@ -54,6 +54,26 @@
                 <fullName>Maybe</fullName>
                 <default>false</default>
                 <label>Maybe</label>
+            </value>
+            <value>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+                <label>Assisted</label>
+            </value>
+            <value>
+                <fullName>Closed</fullName>
+                <default>false</default>
+                <label>Declined</label>
+            </value>
+            <value>
+                <fullName>HGH Action</fullName>
+                <default>false</default>
+                <label>HGH Action</label>
+            </value>
+            <value>
+                <fullName>Wishlist Completed</fullName>
+                <default>false</default>
+                <label>Wishlist Completed</label>
             </value>
         </valueSetDefinition>
     </valueSet>

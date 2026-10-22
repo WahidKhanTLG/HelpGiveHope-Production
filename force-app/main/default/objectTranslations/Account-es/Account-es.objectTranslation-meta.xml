@@ -12,22 +12,6 @@
         <label><!-- Manage Household Custom --></label>
         <name>npsp__Manage_Household_Custom</name>
     </fieldSets>
-    <quickActions>
-        <label><!-- Add Bulk Needs --></label>
-        <name>Add_Bulk_Need</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- Schedule Interview --></label>
-        <name>Schedule_Interview</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- Send Christmas Form --></label>
-        <name>Send_Christmas_Form</name>
-    </quickActions>
-    <quickActions>
-        <label><!-- Send Email --></label>
-        <name>Send_Email</name>
-    </quickActions>
     <recordTypes>
         <label><!-- Christmas Household Account --></label>
         <name>Christmas_Household_Account</name>

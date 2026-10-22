@@ -10,4 +10,8 @@
     </caseValues>
     <nameFieldLabel>Address ID</nameFieldLabel>
     <startsWith>Vowel</startsWith>
+    <webLinks>
+        <label><!-- Verify_Address --></label>
+        <name>npsp__Verify_Address</name>
+    </webLinks>
 </CustomObjectTranslation>

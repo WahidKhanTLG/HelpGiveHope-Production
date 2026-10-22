@@ -12,6 +12,9 @@ import bookAndAssignInterview
 import unscheduleInterview
     from '@salesforce/apex/SelectInterviewSlotController.unscheduleInterview';
 
+import getCurrentBooking
+    from '@salesforce/apex/SelectInterviewSlotController.getCurrentBooking';
+
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { refreshApex } from '@salesforce/apex';
 
@@ -27,6 +30,9 @@ import ACCOUNT_SCHEDULE_FIELD
 
 import CASE_ACCOUNT_FIELD
     from '@salesforce/schema/Case.AccountId';
+
+import CASE_SCHEDULE_FIELD
+    from '@salesforce/schema/Case.Interview_Day_Schedule__c';
 
 
 export default class SelectInterviewSlot extends LightningElement {
@@ -51,6 +57,7 @@ export default class SelectInterviewSlot extends LightningElement {
 
     _recordId;
     wiredAccountResult;
+    wiredCaseResult;
 
 
     // =========================================================
@@ -149,10 +156,13 @@ export default class SelectInterviewSlot extends LightningElement {
         getRecord,
         {
             recordId: '$_caseIdForLookup',
-            fields: [CASE_ACCOUNT_FIELD]
+            fields: [CASE_ACCOUNT_FIELD, CASE_SCHEDULE_FIELD]
         }
     )
-    wiredCaseRecord({ data, error }) {
+    wiredCaseRecord(result) {
+
+        const { data, error } = result || {};
+        this.wiredCaseResult = result;
 
         if (data) {
 
@@ -161,6 +171,20 @@ export default class SelectInterviewSlot extends LightningElement {
                     data,
                     CASE_ACCOUNT_FIELD
                 );
+
+            const bookedScheduleId =
+                getFieldValue(
+                    data,
+                    CASE_SCHEDULE_FIELD
+                );
+
+            this.hasExistingBooking =
+                !!bookedScheduleId;
+
+            if (!this.hasExistingBooking) {
+                this.selectedVolunteerId = '';
+                this.loadLegacyCaseBookingState();
+            }
 
             if (
                 accountId &&
@@ -174,11 +198,37 @@ export default class SelectInterviewSlot extends LightningElement {
 
         } else if (error) {
 
+            this.hasExistingBooking = false;
+
             this.showToast(
                 'Error',
                 'Unable to resolve the Account for this Case.',
                 'error'
             );
+        }
+    }
+
+
+
+
+    get _accountIdForBookingLookup() {
+        return this.contextCaseId
+            ? null
+            : (this.contextAccountId || null);
+    }
+
+    async loadLegacyCaseBookingState() {
+        if (!this.contextCaseId) {
+            return;
+        }
+        try {
+            const booking = await getCurrentBooking({
+                accountId: this.contextCaseId
+            });
+            this.hasExistingBooking = !!booking?.scheduleId;
+        } catch (error) {
+            // The Case field remains authoritative; legacy fallback failure must not block the action.
+            this.hasExistingBooking = false;
         }
     }
 
@@ -190,7 +240,7 @@ export default class SelectInterviewSlot extends LightningElement {
     @wire(
         getRecord,
         {
-            recordId: '$contextAccountId',
+            recordId: '$_accountIdForBookingLookup',
             fields: [ACCOUNT_SCHEDULE_FIELD]
         }
     )
@@ -700,9 +750,13 @@ export default class SelectInterviewSlot extends LightningElement {
 
 
             /*
-             * Refresh Account booking field.
+             * Refresh the booking pointer for the current context.
              */
-            if (this.wiredAccountResult) {
+            if (this.isCaseContext && this.wiredCaseResult) {
+                await refreshApex(
+                    this.wiredCaseResult
+                );
+            } else if (this.wiredAccountResult) {
                 await refreshApex(
                     this.wiredAccountResult
                 );
@@ -737,7 +791,11 @@ export default class SelectInterviewSlot extends LightningElement {
 
     async handleUnschedule() {
 
-        if (!this.contextAccountId) {
+        const bookingContextId =
+            this.contextCaseId ||
+            this.contextAccountId;
+
+        if (!bookingContextId) {
             return;
         }
 
@@ -748,7 +806,7 @@ export default class SelectInterviewSlot extends LightningElement {
 
             await unscheduleInterview({
                 accountId:
-                    this.contextAccountId
+                    bookingContextId
             });
 
 
@@ -772,7 +830,11 @@ export default class SelectInterviewSlot extends LightningElement {
                 [];
 
 
-            if (this.wiredAccountResult) {
+            if (this.isCaseContext && this.wiredCaseResult) {
+                await refreshApex(
+                    this.wiredCaseResult
+                );
+            } else if (this.wiredAccountResult) {
                 await refreshApex(
                     this.wiredAccountResult
                 );

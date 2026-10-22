@@ -8,6 +8,10 @@
         <plural>true</plural>
         <value>Lots</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- BatchDetailView --></label>
+        <name>npsp__BatchDetailView</name>
+    </fieldSets>
     <gender>Masculine</gender>
     <nameFieldLabel>Nom du lot</nameFieldLabel>
     <startsWith>Consonant</startsWith>

@@ -1,5 +1,6 @@
 {
   "apiName" : "mobilePublisherConfig",
   "type" : "sfdc_cms__mobilePublisherConfig",
-  "path" : "_settings"
+  "path" : "_settings",
+  "contentKey" : "MCYBJX42EQ3ZCL7GVQZNFLZ457EI"
 }

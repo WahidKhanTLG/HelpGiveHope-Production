@@ -8,6 +8,10 @@
         <plural>true</plural>
         <value>Programações de serviço</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Service Schedule Information --></label>
+        <name>pmdm__ServiceScheduleInformation</name>
+    </fieldSets>
     <gender>Feminine</gender>
     <nameFieldLabel>Nome do cronograma de serviços</nameFieldLabel>
 </CustomObjectTranslation>

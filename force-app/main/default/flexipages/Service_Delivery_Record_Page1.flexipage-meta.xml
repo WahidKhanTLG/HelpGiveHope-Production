@@ -100,34 +100,6 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Subcategory__c</fieldItem>
-                <identifier>RecordSubcategory_cField</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2 AND 3</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.pmdm__Service__r.Category__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Pillows</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.pmdm__Service__r.Category__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Towels</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.pmdm__Service__r.Category__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Washcloths</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Genderpick__c</fieldItem>
@@ -145,6 +117,16 @@
                         <rightValue>Bedding</rightValue>
                     </criteria>
                 </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Subcategory__c</fieldItem>
+                <identifier>RecordSubcategory_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -337,6 +319,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Case__c</fieldItem>
                 <identifier>RecordCase__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Other_Bed_Needs__c</fieldItem>
+                <identifier>RecordOther_Bed_Needs__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-1905cd15-596b-46ec-b1a8-6fa611d9d9ab</name>

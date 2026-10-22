@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Sent to High Priority verified applicants to choose between Home Visit and No Visit (Kids Only).</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Christmas Program - Home Visit Option (Exhibit 1)</name>
+    <style>none</style>
+    <subject>Help Give Hope Christmas Program – Important Household Visit Option {!Case.CaseNumber}</subject>
+    <textOnly>Dear Christmas Applicant,
+
+Thank you for applying for Christmas assistance through Help Give Hope.
+
+As we prepare for this year’s Christmas program, we are giving families the option of requesting a brief in-home visit to discuss essential household needs.
+
+Option 1: Christmas Gifts Only (No Visit Needed)
+To select No Visit, click this link:
+https://helpgivehope.my.salesforce-sites.com/public?action=choice&amp;choice=kids_only&amp;id={!Case.Id}
+
+Option 2: Christmas Gifts + Household Needs Visit
+To request a Home Visit, click this link:
+https://helpgivehope.my.salesforce-sites.com/public?action=choice&amp;choice=home_visit&amp;id={!Case.Id}
+
+Thank you for helping us make the best use of our volunteers and resources so we can serve as many families as possible this Christmas.
+
+Warm regards,
+Help Give Hope Team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

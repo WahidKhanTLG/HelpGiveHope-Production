@@ -1,5 +1,6 @@
 {
   "apiName" : "newsDetail",
   "type" : "sfdc_cms__view",
-  "path" : "views"
+  "path" : "views",
+  "contentKey" : "MC6R6QR3KBXZCYLFVR527EHL4IPY"
 }

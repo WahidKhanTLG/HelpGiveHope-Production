@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Account_Zone__c</fullName>
     <externalId>false</externalId>
-    <formula>Account.Zone__c</formula>
+    <formula>Account.Zones__r.Name</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Interview Zone</label>
     <required>false</required>

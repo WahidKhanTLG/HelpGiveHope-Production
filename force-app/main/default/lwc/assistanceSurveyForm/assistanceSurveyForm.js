@@ -7,6 +7,12 @@ import newSurvey from '@salesforce/apex/AssistanceSurveyController.newSurvey';
 import getFormStatus from '@salesforce/apex/FormVisibilityController.getFormStatus';
 import LOGO from '@salesforce/resourceUrl/LogoFull';
 
+const MSG_NO_ID = 'This survey link is missing its reference. Please open the survey from the link we sent you, or contact Help Give Hope.';
+const MSG_INVALID_ID = 'This survey link is not valid. Please open the survey from the link we sent you, or contact Help Give Hope.';
+const MSG_OFFLINE = 'We could not reach the server. Please check your internet connection and try again.';
+const MSG_STILL_CHECKING = 'We are still checking your survey link. Please try again in a moment.';
+const MSG_GENERIC = 'Something went wrong. Please try again, or contact Help Give Hope if the problem continues.';
+
 export default class AssistanceSurveyForm extends LightningElement {
     // ------- internal state -------
     _recordId = null;
@@ -14,19 +20,22 @@ export default class AssistanceSurveyForm extends LightningElement {
     resolvedCaseId = null;
     utmContent = '';
     isValidId = false;
+    lookupResolved = false;              // getDetailById has answered for the current Id
+    lookupConnectionError = false;       // getDetailById failed without a server response
     isCheckingFormStatus = true;
     logoUrl = LOGO;
 
     // form values
     satisfactionValue = undefined;       // string label like "Very Satisfied"
-    recommendValue = null;               // boolean
+    recommendValue = false;              // boolean (toggle shows "No" until switched on, so untouched = No)
     resourcesValue = '';                 // string (min 100 chars)
-    financialImprovementValue = null;    // boolean
+    financialImprovementValue = false;   // boolean (untouched = No, same as above)
     suggestionsValue = '';               // string (min 100 chars)
 
     // ui state
     isSubmitted = false;
     isSubmitting = false;
+    submitError = '';
 
     // validation messages
     satisfactionError = '';
@@ -96,8 +105,20 @@ export default class AssistanceSurveyForm extends LightningElement {
         return this._recordId;
     }
     set recordId(value) {
-        const cleaned = (value || '').toString().trim();
-        this._recordId = cleaned || null;
+        const cleaned = (value || '').toString().trim() || null;
+        if (cleaned !== this._recordId) {
+            this._recordId = cleaned;
+            this.lookupResolved = false;
+            this.lookupConnectionError = false;
+            this.isValidId = false;
+            this.resolvedAccountId = null;
+            this.resolvedCaseId = null;
+        }
+    }
+
+    // undefined (not null) keeps the wire from calling Apex when the URL has no Id
+    get wireRecordId() {
+        return this._recordId || undefined;
     }
 
     @wire(CurrentPageReference)
@@ -111,18 +132,22 @@ export default class AssistanceSurveyForm extends LightningElement {
     }
 
     // ------- detail validation wire -------
-    @wire(getDetailById, { recordId: '$recordId' })
+    @wire(getDetailById, { recordId: '$wireRecordId' })
     getDetailByIdHandler({ data, error }) {
-        if (data?.statusCode === 200) {
-            this.isValidId = !!data.isValidId;
-            this.resolvedAccountId = data.accountId || null;
-            this.resolvedCaseId = data.caseId || null;
+        if (data) {
+            const ok = data.statusCode === 200 && !!data.isValidId;
+            this.isValidId = ok;
+            this.resolvedAccountId = ok ? data.accountId || null : null;
+            this.resolvedCaseId = ok ? data.caseId || null : null;
+            this.lookupConnectionError = false;
+            this.lookupResolved = true;
         } else if (error) {
-            // optional: surface/log error
-            // this.showToast('Error', error.body?.message || 'Failed to validate record id', 'error');
             this.isValidId = false;
             this.resolvedAccountId = null;
             this.resolvedCaseId = null;
+            // no body means the request never got a server answer (offline, dropped connection)
+            this.lookupConnectionError = !error.body;
+            this.lookupResolved = true;
         }
     }
 
@@ -226,7 +251,36 @@ export default class AssistanceSurveyForm extends LightningElement {
     }
 
     // ------- submit -------
+    // Problems we can detect before calling Apex; returns '' when the form can be sent.
+    getPreSubmitError() {
+        if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+            return MSG_OFFLINE;
+        }
+        if (!this._recordId) {
+            return MSG_NO_ID;
+        }
+        if (!this.lookupResolved) {
+            return MSG_STILL_CHECKING;
+        }
+        if (this.lookupConnectionError) {
+            return MSG_OFFLINE;
+        }
+        if (!this.isValidId) {
+            return MSG_INVALID_ID;
+        }
+        return '';
+    }
+
     async handleSubmit() {
+        this.submitError = '';
+
+        const preSubmitError = this.getPreSubmitError();
+        if (preSubmitError) {
+            this.submitError = preSubmitError;
+            this.showToast('Error', preSubmitError, 'error');
+            return;
+        }
+
         if (!this.validateForm()) {
             this.showToast('Error', 'Please complete all required fields.', 'error');
             return;
@@ -250,8 +304,9 @@ export default class AssistanceSurveyForm extends LightningElement {
             this.isSubmitted = true;
             this.showToast('Success', 'Survey submitted successfully!', 'success');
         } catch (error) {
-            const msg = error?.body?.message || error?.message || 'Unknown error occurred';
-            this.showToast('Error', msg, 'error');
+            // an error without a body never reached Apex (offline, dropped connection)
+            this.submitError = error?.body ? MSG_GENERIC : MSG_OFFLINE;
+            this.showToast('Error', this.submitError, 'error');
         } finally {
             this.isSubmitting = false;
         }

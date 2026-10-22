@@ -21,6 +21,29 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Home_Interview_Recommendation__c</picklist>
+        <values>
+            <fullName>Concerns</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Do Not Recommend</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Neutral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recommend</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Strongly Recommend</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Interview_Slot__c</picklist>
         <values>
             <fullName>AM</fullName>
@@ -124,15 +147,15 @@
     <picklistValues>
         <picklist>Type</picklist>
         <values>
-            <fullName>Feature Request</fullName>
+            <fullName>Home Visit</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Problem</fullName>
+            <fullName>Kids Only</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Question</fullName>
+            <fullName>No Selection</fullName>
             <default>false</default>
         </values>
     </picklistValues>

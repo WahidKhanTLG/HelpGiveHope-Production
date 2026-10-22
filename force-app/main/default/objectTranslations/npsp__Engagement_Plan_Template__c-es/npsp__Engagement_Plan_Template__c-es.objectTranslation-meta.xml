@@ -8,6 +8,14 @@
         <plural>true</plural>
         <value>Plantillas de planes de acción</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Manage EP Template FS --></label>
+        <name>npsp__ManageEPTemplateFS</name>
+    </fieldSets>
     <gender>Feminine</gender>
     <nameFieldLabel>Nombre de plantilla del plan de acción</nameFieldLabel>
+    <webLinks>
+        <label><!-- Manage_Template --></label>
+        <name>npsp__Manage_Template</name>
+    </webLinks>
 </CustomObjectTranslation>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Livraison de services</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Livraisons de services</value>
+    </caseValues>
+    <fieldSets>
+        <label>Livraisons de services de présence</label>
+        <name>pmdm__Attendance_Service_Deliveries</name>
+    </fieldSets>
+    <fieldSets>
+        <label>Livraisons de services en masse</label>
+        <name>pmdm__Bulk_Service_Deliveries</name>
+    </fieldSets>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Nom de la livraison de services</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Kitchen Chair quantity must be between 2 and 10 --></errorMessage>
+        <name>Kitchen_Chair_Quantity_Limit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot select an inactive Service --></errorMessage>
+        <name>Prevent_Inactive_Service</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select Gender for Bedding items --></errorMessage>
+        <name>Require_Gender_When_Bedding</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quantity must be between allowed minimum and maximum limits for this item --></errorMessage>
+        <name>Validate_Quantity_Min_Max</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Sélectionnez un compte qui correspond au contact associé.</errorMessage>
+        <name>pmdm__ACCOUNT_MATCHES_CONTACT_ACCOUNT</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Sélectionnez un engagement dans le programme qui correspond au programme du service associé.</errorMessage>
+        <name>pmdm__PROGRAM_MATCH</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -10,7 +10,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>New,Emailed/Called</value>
+            <value>New</value>
         </criteriaItems>
     </filter>
     <format>Summary</format>

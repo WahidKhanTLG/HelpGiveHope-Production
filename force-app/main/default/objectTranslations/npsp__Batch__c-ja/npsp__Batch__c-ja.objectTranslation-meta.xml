@@ -4,5 +4,9 @@
         <plural>false</plural>
         <value>バッチ</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- BatchDetailView --></label>
+        <name>npsp__BatchDetailView</name>
+    </fieldSets>
     <nameFieldLabel>バッチ名</nameFieldLabel>
 </CustomObjectTranslation>

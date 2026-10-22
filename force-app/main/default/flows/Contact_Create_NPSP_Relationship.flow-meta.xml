@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>68.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Checks if an NPSP relationship already exists between the Reports To contact and this Contact.</description>
+        <name>Does_Relationship_Exist</name>
+        <label>Does Relationship Exist?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Already Exists</defaultConnectorLabel>
+        <rules>
+            <name>No_Relationship_Exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Existing_Relationship.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_NPSP_Relationship</targetReference>
+            </connector>
+            <label>No Relationship Exists</label>
+        </rules>
+    </decisions>
+    <description>When a Contact is created or updated with Reports To and Relationship Type populated, this flow creates an NPSP Relationship record linking the Reports To contact to this contact.</description>
+    <environments>Default</environments>
+    <interviewLabel>Contact: Create NPSP Relationship {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact: Create NPSP Relationship</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Creates the primary NPSP relationship between the Reports To contact and this Contact.</description>
+        <name>Create_NPSP_Relationship</name>
+        <label>Create NPSP Relationship</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>npe4__Contact__c</field>
+            <value>
+                <elementReference>$Record.ReportsToId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>npe4__RelatedContact__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>npe4__Status__c</field>
+            <value>
+                <stringValue>Current</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>npe4__Type__c</field>
+            <value>
+                <elementReference>$Record.Relationship_Type__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>npe4__Relationship__c</object>
+    </recordCreates>
+    <recordLookups>
+        <description>Looks for any existing relationship between the Reports To contact and this Contact.</description>
+        <name>Get_Existing_Relationship</name>
+        <label>Get Existing Relationship</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Does_Relationship_Exist</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>npe4__Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ReportsToId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>npe4__RelatedContact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>npe4__Relationship__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Existing_Relationship</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ReportsToId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Relationship_Type__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Contact</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -4,5 +4,13 @@
         <plural>false</plural>
         <value>一般会計単位の割り当て</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Manage Allocations Additional Fields --></label>
+        <name>npsp__ManageAllocationsAdditionalFields</name>
+    </fieldSets>
     <nameFieldLabel>一般会計単位の割り当て名</nameFieldLabel>
+    <webLinks>
+        <label><!-- Manage_Allocations --></label>
+        <name>npsp__Manage_Allocations</name>
+    </webLinks>
 </CustomObjectTranslation>

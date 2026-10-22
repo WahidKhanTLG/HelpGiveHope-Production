@@ -1,0 +1,172 @@
+<apex:page controller="npsp.STG_PanelRD_CTRL" action="{!init}" docType="html-5.0" standardStylesheets="false">
+
+    <apex:outputPanel rendered="{!NOT(isRunningUserIsAdmin)}">
+        <c:InsufficientPermissions />
+    </apex:outputPanel>
+
+    <apex:form id="form" styleClass="slds-m-around_x-large" rendered="{!isRunningUserIsAdmin}">
+        <c:STG_PageHeader sectionLabel="{!$Label.npsp__stgNavRecurringDonations}" pageLabel="{!$Label.npsp__stgNavRecurringDonations}" />
+        <p class="slds-text-body_small slds-m-top_x-small">
+            <c:UTIL_HtmlOutput html="{!$Label.npe03__RecurringDonationSettingsDescription}" hasLink="true" />
+        </p>
+        <c:UTIL_PageMessages />
+        <div class="slds-grid slds-grid_align-center slds-grid_vertical-align-center slds-p-around_large">
+            <apex:commandButton id="editRD" value="{!$Label.npsp__stgBtnEdit}" status="statusLoad" action="{!editSettings}" rendered="{!isReadOnlyMode}" immediate="true" rerender="form" styleClass="slds-button slds-button_small slds-button_neutral" />
+        </div>
+        <div class="slds-form_horizontal slds-m-around_large">
+            <div class="slds-form-element" style="{!IF(!isRD2Enabled, 'display:block', 'display:none')}">
+                <apex:outputLabel value="{!$ObjectType.npe03__Recurring_Donations_Settings__c.Fields.npe03__Opportunity_Forecast_Months__c.Label}" for="tbxOFM" styleClass="slds-form-element__label" />
+                <div class="slds-form-element__control">
+                    <apex:outputField value="{!stgService.stgRD.npe03__Opportunity_Forecast_Months__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                    <apex:inputField value="{!stgService.stgRD.npe03__Opportunity_Forecast_Months__c}" type="number" rendered="{!isEditMode}" id="tbxOFM" html-aria-describedby="{!$Component.tbxOFMHelp}" styleClass="slds-input" />
+                    <apex:outputPanel id="tbxOFMHelp" layout="block">
+                        <apex:outputText styleClass="slds-form-element__help" value="{!$Label.npsp__stgHelpRDOppForecastMonths}"/>
+                    </apex:outputPanel>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <apex:outputLabel value="{!$ObjectType.npe03__Recurring_Donations_Settings__c.Fields.npsp__Recurring_Donation_Batch_Size__c.Label}" for="tbxRDBS" styleClass="slds-form-element__label" />
+                <div class="slds-form-element__control">
+                    <apex:outputField value="{!stgService.stgRD.npsp__Recurring_Donation_Batch_Size__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                    <apex:inputField value="{!stgService.stgRD.npsp__Recurring_Donation_Batch_Size__c}" type="number" rendered="{!isEditMode}" id="tbxRDBS" html-aria-describedby="{!$Component.tbxRDBSHelp}" styleClass="slds-input" />
+                    <apex:outputPanel id="tbxRDBSHelp" layout="block">
+                        <apex:outputText styleClass="slds-form-element__help" value="{!$Label.npsp__stgHelpRDBatchSize}"/>
+                    </apex:outputPanel>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <apex:outputLabel value="{!$ObjectType.npe03__Recurring_Donations_Settings__c.Fields.npe03__Open_Opportunity_Behavior__c.Label}" for="slOOB" styleClass="slds-form-element__label" />
+                <div class="slds-form-element__control">
+                    <apex:outputField value="{!stgService.stgRD.npe03__Open_Opportunity_Behavior__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                    <apex:selectList value="{!stgService.stgRD.npe03__Open_Opportunity_Behavior__c}" size="1" multiselect="false" rendered="{!isEditMode}" id="slOOB" html-aria-describedby="{!$Component.slOOBHelp}" styleClass="slds-select" >
+                        <apex:selectOptions value="{!listSORDCloseOptions}" />
+                    </apex:selectList>
+                    <apex:outputPanel id="slOOBHelp" layout="block">
+                        <apex:outputText styleClass="slds-form-element__help" value="{!$Label.npsp__stgHelpRDOpenOppBehavior}" />
+                    </apex:outputPanel>
+                </div>
+            </div>
+            <div class="slds-form-element" style="{!IF(!isRD2Enabled, 'display:block', 'display:none')}">
+                <apex:outputLabel value="{!$ObjectType.npe03__Recurring_Donations_Settings__c.Fields.npe03__Maximum_Donations__c.Label}" for="tbxMD" styleClass="slds-form-element__label" />
+                <div class="slds-form-element__control">
+                    <apex:outputField value="{!stgService.stgRD.npe03__Maximum_Donations__c}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                    <apex:inputField value="{!stgService.stgRD.npe03__Maximum_Donations__c}" type="number" rendered="{!isEditMode}" id="tbxMD" html-aria-describedby="{!$Component.tbxMDHelp}" styleClass="slds-input" />
+                    <apex:outputPanel id="tbxMDHelp" layout="block">
+                        <apex:outputText styleClass="slds-form-element__help" value="{!$Label.npsp__stgHelpRDMaxDonations}" />
+                    </apex:outputPanel>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <apex:outputLabel value="{!$ObjectType.npe03__Recurring_Donations_Settings__c.Fields.npe03__Add_Campaign_to_All_Opportunites__c.Label}" for="cbxACAO" styleClass="slds-form-element__label" />
+                <div class="slds-form-element__control">
+                    <label class="slds-checkbox">
+                        <apex:inputCheckbox value="{!stgService.stgRD.npe03__Add_Campaign_to_All_Opportunites__c}"  rendered="{!isEditMode}" id="cbxACAO" html-aria-describedby="{!$Component.cbxACAOHelp}" styleClass="slds-checkbox"/>
+                        <apex:inputCheckbox value="{!stgService.stgRD.npe03__Add_Campaign_to_All_Opportunites__c}" rendered="{!isReadOnlyMode}" disabled="true" id="cbxACAOO" html-aria-describedby="{!$Component.cbxACAOHelp}" styleClass="slds-checkbox"/>
+                        <span class="slds-checkbox_faux"></span>
+                    </label>
+                    <apex:outputPanel id="cbxACAOHelp" layout="block">
+                        <apex:outputText styleClass="slds-form-element__help" value="{!$Label.npsp__stgHelpRDAddCampaign}" />
+                    </apex:outputPanel>
+                </div>
+            </div>
+            <div class="slds-form-element" style="{!IF(isRD2Enabled, 'display:block', 'display:none')}">
+                <apex:outputLabel value="{!$ObjectType.npe03__Recurring_Donations_Settings__c.Fields.npsp__InstallmentOppAutoCreateOption__c.Label}" for="installmentCreateOption" styleClass="slds-form-element__label" />
+                <div class="slds-form-element__control">
+                    <div class="slds-form-element__control">
+                        <apex:outputText value="{!selectedInstallmentCreateOption}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                        <apex:selectList value="{!stgService.stgRD.npsp__InstallmentOppAutoCreateOption__c}" size="1" multiselect="false" rendered="{!isEditMode}" id="installmentCreateOption" html-aria-describedby="{!$Component.installmentCreateOptionHelp}" styleClass="slds-select" >
+                            <apex:selectOptions value="{!installmentCreateOptions}" />
+                        </apex:selectList>
+                        <apex:outputPanel id="installmentCreateOptionHelp" layout="block">
+                            <apex:outputText styleClass="slds-form-element__help" value="{!$Label.npsp__stgHelpRDInstallmentCreateOptionMessage}" />
+                        </apex:outputPanel>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form-element" style="{!IF(isRD2Enabled, 'display:block', 'display:none')}">
+                <apex:outputLabel value="{!$ObjectType.npe03__Recurring_Donations_Settings__c.Fields.npsp__EnableChangeLog__c.Label}" for="enableChangeLog" styleClass="slds-form-element__label" />
+                <div class="slds-form-element__control">
+                    <div class="slds-form-element__control">
+                        <label class="slds-checkbox">
+                            <apex:inputCheckbox value="{!stgService.stgRD.npsp__EnableChangeLog__c}" rendered="{!isEditMode}" id="enableChangeLog"
+                                html-aria-describedby="{!$Component.enableChangeLogHelp}" styleClass="slds-checkbox" />
+                            <apex:inputCheckbox value="{!stgService.stgRD.npsp__EnableChangeLog__c}" rendered="{!isReadOnlyMode}" disabled="true"
+                                id="enableChangeLogReadOnly" html-aria-describedby="{!$Component.enableChangeLogHelp}" styleClass="slds-checkbox" />
+                            <span class="slds-checkbox_faux"></span>
+                        </label>
+                        <apex:outputPanel id="enableChangeLogHelp" layout="block">
+                            <apex:outputText styleClass="slds-form-element__help" 
+                                value="{!$ObjectType.npe03__Recurring_Donations_Settings__c.Fields.npsp__EnableChangeLog__c.InlineHelpText}" />
+                        </apex:outputPanel>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <apex:outputLabel value="{!$ObjectType.npe03__Recurring_Donations_Settings__c.Fields.npe03__Record_Type__c.Label}" for="slRT" styleClass="slds-form-element__label" />
+                <div class="slds-form-element__control">
+                    <apex:outputText value="{!strRDOppRecordTypeLabel}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                    <apex:selectList value="{!stgService.stgRD.npe03__Record_Type__c}" size="1" multiselect="false" rendered="{!isEditMode}" id="slRT" html-aria-describedby="{!$Component.slRTHelp}" styleClass="slds-select" >
+                        <apex:selectOptions value="{!listSOOppRecTypesIds}" />
+                    </apex:selectList>
+                    <apex:outputPanel id="slRTHelp" layout="block">
+                        <apex:outputText styleClass="slds-form-element__help" value="{!$Label.npsp__stgHelpRDOppRT}" />
+                    </apex:outputPanel>
+                </div>
+            </div>
+            <div class="slds-form-element" style="{!IF(isRD2Enabled, 'display:block', 'display:none')}">
+                <apex:outputLabel value="{!$ObjectType.npe03__Recurring_Donations_Settings__c.Fields.npsp__NextDonationDateMatchRangeDays__c.Label}"
+                    for="nddMatchRangeDays" styleClass="slds-form-element__label" />
+
+                <div class="slds-form-element__control">
+                    <apex:inputField value="{!stgService.stgRD.npsp__NextDonationDateMatchRangeDays__c}" type="number" rendered="{!isEditMode}" id="nddMatchRangeDays"
+                        html-aria-describedby="{!$Component.nddMatchRangeDaysHelp}" styleClass="slds-input" />
+
+                    <apex:outputField value="{!stgService.stgRD.npsp__NextDonationDateMatchRangeDays__c}" rendered="{!isReadOnlyMode}" 
+                        id="nddMatchRangeDaysReadOnly" html-aria-describedby="{!$Component.nddMatchRangeDaysHelp}" styleClass="slds-form-element__static" />
+                        
+                    <apex:outputPanel id="nddMatchRangeDaysHelp" layout="block">
+                        <apex:outputText styleClass="slds-form-element__help" 
+                            value="{!$ObjectType.npe03__Recurring_Donations_Settings__c.Fields.npsp__NextDonationDateMatchRangeDays__c.InlineHelpText}" />
+                    </apex:outputPanel>
+                </div>
+            </div>
+            <div class="slds-form-element" style="{!IF(and(isRD2Enabled, not(isCustomFiscalYearEnabled)), 'display:block', 'display:none')}">
+                <apex:outputLabel value="{!$ObjectType.npe03__Recurring_Donations_Settings__c.Fields.npsp__UseFiscalYearForRecurringDonationValue__c.Label}"
+                    for="useFiscalYear" styleClass="slds-form-element__label" />
+
+                <div class="slds-form-element__control">
+                    <label class="slds-checkbox">
+                        <apex:inputCheckbox value="{!stgService.stgRD.npsp__UseFiscalYearForRecurringDonationValue__c}" rendered="{!isEditMode}" id="useFiscalYear"
+                            html-aria-describedby="{!$Component.useFiscalYearHelp}" styleClass="slds-checkbox" />
+                        <apex:inputCheckbox value="{!stgService.stgRD.npsp__UseFiscalYearForRecurringDonationValue__c}" rendered="{!isReadOnlyMode}" disabled="true"
+                            id="useFiscalYearReadOnly" html-aria-describedby="{!$Component.useFiscalYearHelp}" styleClass="slds-checkbox" />
+                        <span class="slds-checkbox_faux"></span>
+                    </label>
+
+                    <apex:outputPanel id="useFiscalYearHelp" layout="block">
+                        <apex:outputText styleClass="slds-form-element__help" 
+                            value="{!$ObjectType.npe03__Recurring_Donations_Settings__c.Fields.npsp__UseFiscalYearForRecurringDonationValue__c.InlineHelpText}" />
+                    </apex:outputPanel>
+                </div>
+            </div>
+
+            <div class="slds-form-element">
+                <apex:outputLabel value="{!$ObjectType.npe03__Recurring_Donations_Settings__c.Fields.npsp__RecurringDonationNameFormat__c.Label}" for="rdNaming" styleClass="slds-form-element__label" />
+                <div class="slds-form-element__control">
+                    <apex:outputText value="{!displayedRDNamingFormat}" rendered="{!isReadOnlyMode}" styleClass="slds-form-element__static" />
+                    <apex:selectList value="{!selectedRDNamingFormat}" size="1" multiselect="false" rendered="{!isEditMode}" id="rdNaming" html-aria-describedby="{!$Component.rdNamingHelp}" styleClass="slds-select" >
+                        <apex:selectOptions value="{!rdNamingOptions}" />
+                    </apex:selectList>
+                    <apex:outputPanel id="rdNamingHelp" layout="block">
+                        <apex:outputText styleClass="slds-form-element__help" value="{!$Label.npsp__stgRDNamingDescription}" />
+                    </apex:outputPanel>
+                </div>
+            </div>
+
+        </div>
+        <div class="slds-grid slds-grid_align-center slds-grid_vertical-align-center slds-p-around_large">
+            <apex:commandButton id="saveRD" value="{!$Label.npsp__stgBtnSave}" status="statusLoad" action="{!saveSettings}" rendered="{!isEditMode}" immediate="false" rerender="form" styleClass="slds-button slds-button_small slds-button_brand" />
+            <apex:commandButton id="cancelRD" value="{!$Label.npsp__stgBtnCancel}" status="statusLoad" action="{!cancelEdit}" rendered="{!isEditMode}" immediate="true" rerender="form" styleClass="slds-button slds-button_small slds-button_neutral" />
+        </div>
+    </apex:form>
+</apex:page>

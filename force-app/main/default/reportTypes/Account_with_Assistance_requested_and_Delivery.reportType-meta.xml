@@ -1152,6 +1152,11 @@
             <field>Program__c</field>
             <table>Account.Assistance_Requested__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Case__c</field>
+            <table>Account.Assistance_Requested__r</table>
+        </columns>
         <masterLabel>Assistance Requested</masterLabel>
     </sections>
     <sections>
@@ -1343,6 +1348,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Case__c</field>
+            <table>Account.Assistance_Requested__r.Service_Deliveries__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Other_Bed_Needs__c</field>
             <table>Account.Assistance_Requested__r.Service_Deliveries__r</table>
         </columns>
         <masterLabel>Service Deliveries</masterLabel>

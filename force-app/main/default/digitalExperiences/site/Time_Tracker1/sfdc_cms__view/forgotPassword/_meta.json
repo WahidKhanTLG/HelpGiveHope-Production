@@ -1,5 +1,6 @@
 {
   "apiName" : "forgotPassword",
   "type" : "sfdc_cms__view",
-  "path" : "views"
+  "path" : "views",
+  "contentKey" : "MCN2ZJ54H42VDVTBHHKJW7NDLOEM"
 }

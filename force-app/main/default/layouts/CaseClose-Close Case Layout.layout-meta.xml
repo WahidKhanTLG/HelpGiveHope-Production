@@ -402,6 +402,10 @@
                 <behavior>Readonly</behavior>
                 <field>Account_Primary_Contact__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Home_Interview_Recommendation__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>

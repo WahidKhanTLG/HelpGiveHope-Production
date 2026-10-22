@@ -5,4 +5,8 @@
         <value>部分的ソフトクレジット</value>
     </caseValues>
     <nameFieldLabel>部分的ソフトクレジット名</nameFieldLabel>
+    <webLinks>
+        <label><!-- Manage_Soft_Credits --></label>
+        <name>npsp__Manage_Soft_Credits</name>
+    </webLinks>
 </CustomObjectTranslation>

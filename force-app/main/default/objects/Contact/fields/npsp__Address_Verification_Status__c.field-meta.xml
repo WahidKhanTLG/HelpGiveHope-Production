@@ -9,6 +9,7 @@
     <inlineHelpText>The verification status of the current Address. If this Address requires verification, navigate to the current Address record and select Verify Address. Consult NPSP documentation for more information on Address Verification.</inlineHelpText>
     <label>Address Verification Status</label>
     <required>false</required>
+    <trackHistory>false</trackHistory>
     <type>Text</type>
     <unique>false</unique>
 </CustomField>

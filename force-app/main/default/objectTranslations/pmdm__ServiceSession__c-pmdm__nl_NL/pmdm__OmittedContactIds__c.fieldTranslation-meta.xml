@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- This field is used to track which contacts were omitted from the Attendance roster. This is a system field and shouldn&apos;t be manually altered. --></help>
+    <label>Weggelaten contactpersoon-ID&apos;s</label>
+    <name>pmdm__OmittedContactIds__c</name>
+</CustomFieldTranslation>

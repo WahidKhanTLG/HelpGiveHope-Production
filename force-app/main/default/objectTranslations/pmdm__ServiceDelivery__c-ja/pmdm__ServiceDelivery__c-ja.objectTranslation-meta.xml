@@ -4,6 +4,14 @@
         <plural>false</plural>
         <value>サービス提供</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Attendance Service Deliveries --></label>
+        <name>pmdm__Attendance_Service_Deliveries</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Bulk Service Deliveries --></label>
+        <name>pmdm__Bulk_Service_Deliveries</name>
+    </fieldSets>
     <nameFieldLabel>サービス提供名</nameFieldLabel>
     <validationRules>
         <errorMessage><!-- Kitchen Chair quantity must be between 2 and 10 --></errorMessage>
@@ -20,5 +28,13 @@
     <validationRules>
         <errorMessage><!-- Quantity must be between allowed minimum and maximum limits for this item --></errorMessage>
         <name>Validate_Quantity_Min_Max</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select an Account that matches the related Contact. --></errorMessage>
+        <name>pmdm__ACCOUNT_MATCHES_CONTACT_ACCOUNT</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select a Program Engagement that matches the Program of the related Service. --></errorMessage>
+        <name>pmdm__PROGRAM_MATCH</name>
     </validationRules>
 </CustomObjectTranslation>

@@ -22,4 +22,8 @@
     </caseValues>
     <gender><!-- Masculine --></gender>
     <nameFieldLabel><!-- General Accounting Unit Name --></nameFieldLabel>
+    <webLinks>
+        <label><!-- Recalculate_Rollups --></label>
+        <name>npsp__Recalculate_Rollups</name>
+    </webLinks>
 </CustomObjectTranslation>

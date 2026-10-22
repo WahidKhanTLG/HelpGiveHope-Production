@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>Dieses Feld wird verwendet, um nachzuverfolgen, welche Kontakte im Anwesenheitsplan ausgelassen wurden. Dies ist ein Systemfeld, das nicht manuell geändert werden sollte.</help>
+    <label><!-- Omitted Contact Ids --></label>
+    <name>pmdm__OmittedContactIds__c</name>
+</CustomFieldTranslation>

@@ -8,16 +8,5 @@
         <plural>true</plural>
         <value>Gift Items</value>
     </caseValues>
-    <layouts>
-        <layout>Opportunity Product Layout</layout>
-        <sections>
-            <label><!-- Christmas Form Information --></label>
-            <section>Christmas Form Information</section>
-        </sections>
-        <sections>
-            <label><!-- Custom Links --></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
     <startsWith>Vowel</startsWith>
 </CustomObjectTranslation>

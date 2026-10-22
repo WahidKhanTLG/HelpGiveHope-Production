@@ -55,7 +55,7 @@ private class InHomeInterviewMobileControllerTest {
         update accountRecord;
 
         pmdm__Program__c programRecord = new pmdm__Program__c(
-            Name = 'HGH Mobile Test Program',
+            Name = 'HGH Mobile Test Program ' + String.valueOf(Date.today().year()),
             pmdm__status__c = 'Active'
         );
         insert programRecord;
@@ -475,7 +475,7 @@ private class InHomeInterviewMobileControllerTest {
 
     private static Case getCase() {
         return [
-            SELECT Id
+            SELECT Id, AccountId, ContactId
             FROM Case
             WHERE Subject = 'HGH Mobile Interview Controller Test'
             LIMIT 1
@@ -531,4 +531,172 @@ private class InHomeInterviewMobileControllerTest {
         }
         return null;
     }
+
+    @IsTest
+    static void test2026FormUsesExistingServiceDeliveryFields() {
+        Case caseRecord = getCase();
+        Interview_Day_Schedule__c schedule = getSchedule(caseRecord.Id);
+        pmdm__Service__c serviceRecord = getService('HGH Mobile Test Bed Service');
+
+        List<Object> items = new List<Object>{
+            new Map<String, Object>{
+                'id' => null,
+                'clientKey' => 'test-2026-bed',
+                'serviceId' => serviceRecord.Id,
+                'section' => 'newBeds',
+                'quantity' => 1,
+                'recommendation' => 'Neutral'
+            }
+        };
+        Map<String, Object> notes = new Map<String, Object>{
+            'newBeds' => 'New bed section note.',
+            '__form2026' => new Map<String, Object>{
+                'version' => 1,
+                'otherBedNeeds' => 'Needs an additional bed rail.',
+                'householdRecommendation' => 'Recommend',
+                'removedItems' => new List<Object>()
+            }
+        };
+
+        Test.startTest();
+        Map<String, Object> saved = InHomeInterviewMobileController.saveInterview(
+            schedule.Id,
+            JSON.serialize(items),
+            JSON.serialize(notes),
+            'Family is working toward stability.',
+            'No disqualifying concern.',
+            null,
+            false
+        );
+        Map<String, Object> loaded = InHomeInterviewMobileController.loadInterview(schedule.Id);
+        Test.stopTest();
+
+        pmdm__ServiceDelivery__c delivery = [
+            SELECT Id, Volunteer_Recommendation__c, Notes__c, Other_Bed_Needs__c
+            FROM pmdm__ServiceDelivery__c
+            WHERE Case__c = :caseRecord.Id
+            LIMIT 1
+        ];
+
+        System.debug(LoggingLevel.ERROR, '2026 SAVE RESULT => ' + saved);
+        System.debug(LoggingLevel.ERROR, '2026 LOAD RESULT => ' + loaded);
+        System.debug(LoggingLevel.ERROR, '2026 SERVICE DELIVERY => ' + delivery);
+    }
+
+    @IsTest
+    static void testFlowStyleRequestCreatesServiceAndDelivery() {
+        Case caseRecord = getCase();
+        Interview_Day_Schedule__c schedule = getSchedule(caseRecord.Id);
+
+        List<Object> items = new List<Object>{
+            new Map<String, Object>{
+                'id' => null,
+                'clientKey' => 'flow-new-pillows',
+                'serviceId' => '',
+                'section' => 'linens',
+                'category' => 'Pillows',
+                'subcategory' => '',
+                'gender' => '',
+                'customEntry' => '',
+                'quantity' => 2,
+                'recommendation' => 'Neutral'
+            }
+        };
+        Map<String, Object> notes = new Map<String, Object>{
+            'linens' => 'Flow style linen request.',
+            '__form2026' => new Map<String, Object>{
+                'version' => 2,
+                'otherBedNeeds' => '',
+                'householdRecommendation' => 'Recommend',
+                'removedItems' => new List<Object>()
+            }
+        };
+
+        Test.startTest();
+        Map<String, Object> saved = InHomeInterviewMobileController.saveInterview(
+            schedule.Id,
+            JSON.serialize(items),
+            JSON.serialize(notes),
+            'Family is working toward stability.',
+            'No disqualifying concern.',
+            null,
+            false
+        );
+        Test.stopTest();
+
+        List<pmdm__ServiceDelivery__c> deliveries = [
+            SELECT Id, pmdm__Service__c, Quantity__c, Volunteer_Recommendation__c, Notes__c
+            FROM pmdm__ServiceDelivery__c
+            WHERE Case__c = :caseRecord.Id
+            ORDER BY CreatedDate DESC
+        ];
+        System.debug(LoggingLevel.ERROR, 'FLOW STYLE SAVE => ' + saved);
+        System.debug(LoggingLevel.ERROR, 'FLOW STYLE DELIVERIES => ' + deliveries);
+    }
+
+    @IsTest
+    static void testAutoCreatesCurrentYearProgramWhenMissing() {
+        Case caseRecord = getCase();
+        Interview_Day_Schedule__c schedule = getSchedule(caseRecord.Id);
+
+        // Delete any existing service deliveries, engagements, services, and programs to trigger auto-creation
+        delete [SELECT Id FROM pmdm__ServiceDelivery__c];
+        delete [SELECT Id FROM pmdm__ProgramEngagement__c];
+        delete [SELECT Id FROM pmdm__Service__c];
+        delete [SELECT Id FROM pmdm__Program__c];
+
+        List<Object> items = new List<Object>{
+            new Map<String, Object>{
+                'id' => null,
+                'clientKey' => 'auto-prog-pillows',
+                'serviceId' => '',
+                'section' => 'linens',
+                'category' => 'Pillows',
+                'subcategory' => '',
+                'gender' => '',
+                'customEntry' => '',
+                'quantity' => 1,
+                'recommendation' => 'Neutral'
+            }
+        };
+        Map<String, Object> notes = new Map<String, Object>{
+            'linens' => 'Linen note',
+            '__form2026' => new Map<String, Object>{
+                'version' => 2,
+                'otherBedNeeds' => '',
+                'householdRecommendation' => 'Recommend',
+                'removedItems' => new List<Object>()
+            }
+        };
+
+        Test.startTest();
+        Map<String, Object> saved = InHomeInterviewMobileController.saveInterview(
+            schedule.Id,
+            JSON.serialize(items),
+            JSON.serialize(notes),
+            'Notes why help',
+            'Notes why not',
+            null,
+            false
+        );
+        Test.stopTest();
+
+        String expectedYear = String.valueOf(Date.today().year());
+        List<pmdm__Program__c> createdPrograms = [
+            SELECT Id, Name FROM pmdm__Program__c WHERE Name LIKE :('%' + expectedYear + '%')
+        ];
+        System.assertEquals(1, createdPrograms.size(), 'Current year program should be auto-created');
+        System.assert(createdPrograms[0].Name.contains(expectedYear), 'Program name should contain current year');
+
+        List<pmdm__ServiceDelivery__c> savedDeliveries = [
+            SELECT Id, pmdm__Account__c, pmdm__Contact__c, pmdm__ProgramEngagement__c
+            FROM pmdm__ServiceDelivery__c
+            WHERE Case__c = :caseRecord.Id
+        ];
+        System.assert(!savedDeliveries.isEmpty(), 'Deliveries should be saved');
+        System.assertEquals(caseRecord.AccountId, savedDeliveries[0].pmdm__Account__c, 'Household Account should be populated');
+        System.assertEquals(caseRecord.ContactId, savedDeliveries[0].pmdm__Contact__c, 'Client Contact should be populated');
+        System.assertNotEquals(null, savedDeliveries[0].pmdm__ProgramEngagement__c, 'Program Engagement should be populated');
+    }
+
 }

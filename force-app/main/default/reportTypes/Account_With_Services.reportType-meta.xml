@@ -1273,6 +1273,11 @@
             <field>Case__c</field>
             <table>Account.pmdm__ServiceDeliveries__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Other_Bed_Needs__c</field>
+            <table>Account.pmdm__ServiceDeliveries__r</table>
+        </columns>
         <masterLabel>Service Deliveries</masterLabel>
     </sections>
 </ReportType>

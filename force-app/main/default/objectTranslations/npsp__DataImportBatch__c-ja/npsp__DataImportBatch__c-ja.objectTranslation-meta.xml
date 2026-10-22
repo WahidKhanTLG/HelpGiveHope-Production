@@ -4,5 +4,13 @@
         <plural>false</plural>
         <value>NPSP データインポートバッチ</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Batch Gift Entry Tab Columns --></label>
+        <name>npsp__BatchGiftEntryTabColumns</name>
+    </fieldSets>
     <nameFieldLabel>バッチ名</nameFieldLabel>
+    <webLinks>
+        <label><!-- Process_Batch --></label>
+        <name>npsp__Process_Batch</name>
+    </webLinks>
 </CustomObjectTranslation>

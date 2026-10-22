@@ -50,6 +50,20 @@
             </value>
         </assignmentItems>
         <assignmentItems>
+            <assignToReference>varServiceDelivery.pmdm__Contact__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Primary_Contact.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varServiceDelivery.pmdm__DeliveryDate__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
             <assignToReference>ServiceDeliveryCollection</assignToReference>
             <operator>Add</operator>
             <value>
@@ -1025,6 +1039,21 @@
         <picklistField>Gender__c</picklistField>
         <picklistObject>pmdm__ServiceDelivery__c</picklistObject>
     </dynamicChoiceSets>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_6</name>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+    </ends>
     <environments>Default</environments>
     <formulas>
         <name>for_Bed_Bedding_BedFrame_Mattress_Crib</name>
@@ -1600,6 +1629,12 @@ IF(INCLUDES( {!varService.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quo
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Case__c</field>
+            <value>
+                <elementReference>Get_Case_Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Primary_Contact__c</field>
             <value>
                 <elementReference>Get_Primary_Contact.Id</elementReference>
@@ -1609,6 +1644,12 @@ IF(INCLUDES( {!varService.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quo
             <field>Program__c</field>
             <value>
                 <elementReference>Get_Program.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Request_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1625,6 +1666,9 @@ IF(INCLUDES( {!varService.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quo
         <label>Create Delivery</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_4</targetReference>
+        </connector>
         <inputReference>ServiceDeliveryCollection</inputReference>
     </recordCreates>
     <recordCreates>
@@ -1839,7 +1883,7 @@ IF(INCLUDES( {!varService.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quo
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>Name__c</field>
+            <field>Name</field>
             <operator>Contains</operator>
             <value>
                 <elementReference>for_ProgramCurrentYear</elementReference>
@@ -1847,6 +1891,8 @@ IF(INCLUDES( {!varService.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quo
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>pmdm__Program__c</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <screens>
@@ -3618,6 +3664,9 @@ IF(INCLUDES( {!varService.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quo
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
+        <connector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </connector>
         <fields>
             <name>DisplayError</name>
             <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(255, 52, 52);&quot;&gt;A program for the current year must exist before creating a service. Please create the current year&apos;s program first.&lt;/strong&gt;&lt;/p&gt;</fieldText>
@@ -3642,6 +3691,9 @@ IF(INCLUDES( {!varService.Subcategory__c}, &quot;Other&quot;), &quot;, Other&quo
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
+        <connector>
+            <targetReference>END_ELEMENT_6</targetReference>
+        </connector>
         <fields>
             <name>DisplayNoAccountError</name>
             <fieldText>&lt;p style=&quot;text-align:center;&quot;&gt;&lt;strong style=&quot;color:rgb(255,52,52);&quot;&gt;This Case does not have a related Account. Please relate an Account first, then run BULK Needs again.&lt;/strong&gt;&lt;/p&gt;</fieldText>

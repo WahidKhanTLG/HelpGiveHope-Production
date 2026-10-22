@@ -450,6 +450,10 @@
                     <value>Facet-2be2e919-0229-4d1e-b655-7f03e6a3772f</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>allowMultipleSectionsOpen</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>defaultSectionName</name>
                     <value>accordionSection1</value>
                 </componentInstanceProperties>

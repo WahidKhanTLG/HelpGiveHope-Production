@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The General Accounting Unit this Allocation is attributed to. Only General Accounting Units marked as active are available for new Allocations. --></help>
+    <label>一般会計単位</label>
+    <lookupFilter>
+        <errorMessage>割り当ては、有効な一般会計単位にのみ行うことができます。無効な一般会計単位への割り当ては変更できません。</errorMessage>
+        <informationalMessage>選択できるのは有効な一般会計単位のみです。</informationalMessage>
+    </lookupFilter>
+    <name>npsp__General_Accounting_Unit__c</name>
+    <relationshipLabel>一般会計単位の割り当て</relationshipLabel>
+</CustomFieldTranslation>

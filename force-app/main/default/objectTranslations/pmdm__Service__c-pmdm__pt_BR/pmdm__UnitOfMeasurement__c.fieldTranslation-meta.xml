@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The unit used to track the service. For example: hours, meals, sessions, deliveries, kits, etc. Defining a Unit of Measurement standardizes how you measure the delivery of the service. --></help>
+    <label>Unidade de medida</label>
+    <name>pmdm__UnitOfMeasurement__c</name>
+</CustomFieldTranslation>

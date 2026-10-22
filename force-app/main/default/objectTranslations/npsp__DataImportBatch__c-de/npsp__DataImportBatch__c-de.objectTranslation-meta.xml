@@ -40,6 +40,14 @@
         <plural>true</plural>
         <value>NPSP-Datenimport-Batches</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Batch Gift Entry Tab Columns --></label>
+        <name>npsp__BatchGiftEntryTabColumns</name>
+    </fieldSets>
     <gender>Masculine</gender>
     <nameFieldLabel>Batch-Name</nameFieldLabel>
+    <webLinks>
+        <label><!-- Process_Batch --></label>
+        <name>npsp__Process_Batch</name>
+    </webLinks>
 </CustomObjectTranslation>

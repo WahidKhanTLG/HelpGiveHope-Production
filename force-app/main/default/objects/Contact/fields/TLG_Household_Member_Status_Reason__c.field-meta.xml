@@ -4,6 +4,7 @@
     <label>Household Member Status Reason</label>
     <length>1000</length>
     <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
     <type>LongTextArea</type>
     <visibleLines>2</visibleLines>
 </CustomField>

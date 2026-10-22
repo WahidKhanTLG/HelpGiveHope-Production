@@ -1,0 +1,136 @@
+{
+  "date": "2026-10-22",
+  "org": {
+    "alias": "HelpGiveHope-Production",
+    "username": "hghtlg@thelodestonegroup.com",
+    "id": "00DHp000009vCJ4MAM",
+    "name": "Help Give Hope",
+    "isSandbox": false,
+    "instance": "USA376"
+  },
+  "apiVersion": "68.0",
+  "describedMetadataTypes": 260,
+  "inventoryRequests": 315,
+  "freshSourceFiles": 41465,
+  "freshReferenceFiles": 6782,
+  "verifiedRetrievedFiles": 48247,
+  "unchangedExistingFilesRetrieved": 9693,
+  "changedExistingFiles": 837,
+  "newSourceFiles": 30935,
+  "removedObsoleteStaticResourceFiles": 192,
+  "retainedUnrefreshedLocalFiles": 158,
+  "protectedReferencePlaceholders": 4277,
+  "xmlAndMetadataJsonParseFailures": 0,
+  "credentialScanFindings": 0,
+  "copyHashMismatches": 0,
+  "jobs": [
+    {
+      "batch": "bundles-local",
+      "id": "09SQQ00000nFCPf2AO",
+      "status": "Succeeded",
+      "success": true,
+      "filePropertyEntries": 84,
+      "warningCount": 0
+    },
+    {
+      "batch": "bundles-npsp",
+      "id": "09SQQ00000nFFH32AO",
+      "status": "Succeeded",
+      "success": true,
+      "filePropertyEntries": 434,
+      "warningCount": 0
+    },
+    {
+      "batch": "bundles-omnistudio",
+      "id": "09SQQ00000nFFIf2AO",
+      "status": "Succeeded",
+      "success": true,
+      "filePropertyEntries": 1695,
+      "warningCount": 0
+    },
+    {
+      "batch": "bundles-pmdm",
+      "id": "09SQQ00000nFFKH2A4",
+      "status": "Succeeded",
+      "success": true,
+      "filePropertyEntries": 95,
+      "warningCount": 0
+    },
+    {
+      "batch": "core",
+      "id": "09SQQ00000nFDn72AG",
+      "status": "Succeeded",
+      "success": true,
+      "filePropertyEntries": 6860,
+      "warningCount": 240
+    },
+    {
+      "batch": "local-coverage",
+      "id": "09SQQ00000nF5rC2AS",
+      "status": "Succeeded",
+      "success": true,
+      "filePropertyEntries": 9,
+      "warningCount": 146
+    },
+    {
+      "batch": "local-object-coverage",
+      "id": "09SQQ00000nFFfF2AW",
+      "status": "Succeeded",
+      "success": true,
+      "filePropertyEntries": 1,
+      "warningCount": 3
+    },
+    {
+      "batch": "managed-global-actions",
+      "id": "09SQQ00000nFFNV2A4",
+      "status": "Succeeded",
+      "success": true,
+      "filePropertyEntries": 19,
+      "warningCount": 0
+    },
+    {
+      "batch": "managed-layouts",
+      "id": "09SQQ00000nFFLt2AO",
+      "status": "Succeeded",
+      "success": true,
+      "filePropertyEntries": 74,
+      "warningCount": 0
+    },
+    {
+      "batch": "missing-parent-children",
+      "id": "09SQQ00000nFE4r2AG",
+      "status": "Succeeded",
+      "success": true,
+      "filePropertyEntries": 1,
+      "warningCount": 30
+    },
+    {
+      "batch": "translations-with-objects",
+      "id": "09SQQ00000nFEJN2A4",
+      "status": "Succeeded",
+      "success": true,
+      "filePropertyEntries": 1649,
+      "warningCount": 0
+    },
+    {
+      "batch": "translations",
+      "id": "09SQQ00000nFDqL2AW",
+      "status": "Succeeded",
+      "success": true,
+      "filePropertyEntries": 1234,
+      "warningCount": 0
+    },
+    {
+      "batch": "extra-types",
+      "id": "09SQQ00000nFCz72AG",
+      "status": "Succeeded",
+      "success": true,
+      "filePropertyEntries": 6,
+      "warningCount": 0
+    }
+  ],
+  "gitStagedEntries": 38756,
+  "gitWhitespaceCheckExit": 2,
+  "gitWhitespaceDiagnosticLines": 18768,
+  "retrievedFilesPresentInGitIndex": 48247
+}

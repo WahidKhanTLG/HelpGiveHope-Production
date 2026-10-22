@@ -11,4 +11,20 @@
     <gender>Feminine</gender>
     <nameFieldLabel>ID d’importation de données</nameFieldLabel>
     <startsWith>Vowel</startsWith>
+    <webLinks>
+        <label><!-- Delete_All_Data_Import_Records --></label>
+        <name>npsp__Delete_All_Data_Import_Records</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Delete_Imported_Data_Import_Records --></label>
+        <name>npsp__Delete_Imported_Data_Import_Records</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Import_Selected_Data_Import_Records --></label>
+        <name>npsp__Import_Selected_Data_Import_Records</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Process_Data_Import --></label>
+        <name>npsp__Process_Data_Import</name>
+    </webLinks>
 </CustomObjectTranslation>

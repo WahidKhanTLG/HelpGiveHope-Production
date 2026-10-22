@@ -145,7 +145,18 @@ public class YearRoundAssistanceFormControllerTest {
                 'Birthdate' => String.valueOf(Date.today().addYears(-35)),
                 'TLG_Social_Security_Number__c' => 444556666
             },
-            'children' => new List<Object>(),
+            'children' => new List<Object>{
+                new Map<String, Object>{
+                    'child' => new Map<String, Object>{
+                        'attributes' => new Map<String, Object>{ 'type' => 'Contact' },
+                        'FirstName' => 'Ava',
+                        'LastName' => 'Noel',
+                        'Birthdate' => String.valueOf(Date.today().addYears(-6)),
+                        'TLG_Social_Security_Number__c' => 444556667
+                    },
+                    'relationshipWithApplicant' => 'Daughter'
+                }
+            },
             'adults' => new List<Object>(),
             'landlord' => null
         };
@@ -164,5 +175,148 @@ public class YearRoundAssistanceFormControllerTest {
             LIMIT 1
         ];
         System.assertEquals('Assistance_Application', savedCase.RecordType.DeveloperName, 'Expected the Case record type to be resolved from DeveloperName');
+    }
+
+    private static YearRoundAssistanceFormController.Payload buildPayload(
+        String lastName, Decimal applicantSsn, Decimal childSsn, Decimal adultSsn, String street
+    ) {
+        YearRoundAssistanceFormController.Payload payload = new YearRoundAssistanceFormController.Payload();
+        payload.account = new Account(Name = lastName + ' Household', BillingStreet = street, BillingState = 'Missouri');
+        payload.applicant = new Contact(
+            FirstName = 'Pat', LastName = lastName, Email = lastName.toLowerCase() + '.pat@example.com',
+            Birthdate = Date.today().addYears(-33), TLG_Social_Security_Number__c = applicantSsn
+        );
+        payload.assistanceCase = new Case(Status = 'New', Origin = 'Web', Subject = lastName + ' Application', Assistance_Type__c = 'General Assistance');
+        payload.children = new List<YearRoundAssistanceFormController.ChildPayload>();
+        payload.adults = new List<YearRoundAssistanceFormController.AdultPayload>();
+        if (childSsn != null) {
+            YearRoundAssistanceFormController.ChildPayload cp = new YearRoundAssistanceFormController.ChildPayload();
+            cp.child = new Contact(FirstName = 'Kid', LastName = lastName, Birthdate = Date.today().addYears(-7), TLG_Social_Security_Number__c = childSsn);
+            cp.relationshipWithApplicant = 'Son';
+            payload.children.add(cp);
+        }
+        if (adultSsn != null) {
+            YearRoundAssistanceFormController.AdultPayload ap = new YearRoundAssistanceFormController.AdultPayload();
+            ap.adult = new Contact(FirstName = 'Sam', LastName = lastName, Birthdate = Date.today().addYears(-36), TLG_Social_Security_Number__c = adultSsn);
+            ap.relationshipWithApplicant = 'Spouse';
+            payload.adults.add(ap);
+        }
+        return payload;
+    }
+
+    @IsTest
+    static void testSave_existingHouseholdIsUpdatedWhenSsnsMatch() {
+        String first = YearRoundAssistanceFormController.save(JSON.serialize(buildPayload('Reuse', 120130140, 120130141, 120130142, '1 First St')));
+        System.assertEquals('OK', first, 'First submission should create the household');
+
+        Test.startTest();
+        String second = YearRoundAssistanceFormController.save(JSON.serialize(buildPayload('Reuse', 120130140, 120130141, 120130142, '2 Second St')));
+        Test.stopTest();
+
+        System.assertEquals('OK', second, 'Second submission with the same SSNs should update the existing household');
+        System.assertEquals(1, [SELECT COUNT() FROM Contact WHERE TLG_Social_Security_Number__c = 120130140], 'Applicant should not be duplicated');
+        System.assertEquals(1, [SELECT COUNT() FROM Contact WHERE TLG_Social_Security_Number__c = 120130141], 'Child should not be duplicated');
+        System.assertEquals(1, [SELECT COUNT() FROM Contact WHERE TLG_Social_Security_Number__c = 120130142], 'Adult should not be duplicated');
+        Contact applicant = [SELECT AccountId FROM Contact WHERE TLG_Social_Security_Number__c = 120130140 LIMIT 1];
+        System.assertEquals('2 Second St', [SELECT BillingStreet FROM Account WHERE Id = :applicant.AccountId].BillingStreet, 'Household address should be updated');
+        System.assertEquals(2, [SELECT COUNT() FROM Case WHERE AccountId = :applicant.AccountId], 'Each submission should create a Case');
+    }
+
+    @IsTest
+    static void testSave_requestValidationMessages() {
+        Account acc = new Account(Name = 'Existing Household');
+        insert acc;
+        Contact existing = new Contact(FirstName = 'Old', LastName = 'Record', AccountId = acc.Id, Birthdate = Date.today().addYears(-40));
+        insert existing;
+
+        System.assertNotEquals('OK', YearRoundAssistanceFormController.save(''), 'Blank payload is rejected');
+        System.assertNotEquals('OK', YearRoundAssistanceFormController.save('x'.repeat(200001)), 'Oversized payload is rejected');
+        System.assertNotEquals('OK', YearRoundAssistanceFormController.save('{}'), 'Payload without account/applicant is rejected');
+        System.assertNotEquals('OK', YearRoundAssistanceFormController.save('not json'), 'Malformed JSON is rejected');
+
+        YearRoundAssistanceFormController.Payload reuse = buildPayload('Guard', 120130150, 120130153, null, '3 Third St');
+        reuse.reuseAccountId = acc.Id;
+        System.assertNotEquals('OK', YearRoundAssistanceFormController.save(JSON.serialize(reuse)), 'Reuse without record versions is rejected');
+
+        YearRoundAssistanceFormController.Payload withApplicantId = buildPayload('Guard', 120130150, 120130154, null, '3 Third St');
+        withApplicantId.applicant.Id = existing.Id;
+        System.assertNotEquals('OK', YearRoundAssistanceFormController.save(JSON.serialize(withApplicantId)), 'Existing applicant Id must use the reuse path');
+
+        YearRoundAssistanceFormController.Payload withChildId = buildPayload('Guard', 120130150, 120130151, null, '3 Third St');
+        withChildId.children[0].child.Id = existing.Id;
+        System.assertNotEquals('OK', YearRoundAssistanceFormController.save(JSON.serialize(withChildId)), 'Child Id must use the reuse path');
+
+        YearRoundAssistanceFormController.Payload withAdultId = buildPayload('Guard', 120130150, 120130155, 120130152, '3 Third St');
+        withAdultId.adults[0].adult.Id = existing.Id;
+        System.assertNotEquals('OK', YearRoundAssistanceFormController.save(JSON.serialize(withAdultId)), 'Adult Id must use the reuse path');
+
+        YearRoundAssistanceFormController.Payload tooMany = buildPayload('Many', 120130160, null, null, '4 Fourth St');
+        for (Integer i = 0; i < 51; i++) {
+            YearRoundAssistanceFormController.ChildPayload cp = new YearRoundAssistanceFormController.ChildPayload();
+            cp.child = new Contact(FirstName = 'Kid' + i, LastName = 'Many', Birthdate = Date.today().addYears(-5));
+            tooMany.children.add(cp);
+        }
+        System.assertNotEquals('OK', YearRoundAssistanceFormController.save(JSON.serialize(tooMany)), 'Households over the member limit need assisted processing');
+        System.assertEquals(0, [SELECT COUNT() FROM Contact WHERE LastName = 'Guard' OR LastName = 'Many'], 'No records should be saved by rejected requests');
+    }
+
+    @IsTest
+    static void testSave_requiresAtLeastOneChild() {
+        String expected = 'Please add at least one child to the household before submitting.';
+
+        YearRoundAssistanceFormController.Payload noChildren = buildPayload('Nokids', 120130200, null, 120130201, '10 Tenth St');
+        System.assertEquals(expected, YearRoundAssistanceFormController.save(JSON.serialize(noChildren)), 'A new application without a child is rejected');
+
+        noChildren.children = null;
+        System.assertEquals(expected, YearRoundAssistanceFormController.save(JSON.serialize(noChildren)), 'A missing children list is rejected');
+
+        Account acc = new Account(Name = 'Childless Household');
+        insert acc;
+        YearRoundAssistanceFormController.Payload reuse = buildPayload('Nokids', 120130200, null, null, '10 Tenth St');
+        reuse.reuseAccountId = acc.Id;
+        System.assertEquals(expected, YearRoundAssistanceFormController.save(JSON.serialize(reuse)), 'A household reuse without a child is rejected');
+
+        System.assertEquals(0, [SELECT COUNT() FROM Contact WHERE LastName = 'Nokids'], 'No records should be saved when the child requirement fails');
+    }
+
+    @IsTest
+    static void testSave_ssnValidationMessages() {
+        System.assertNotEquals('OK', YearRoundAssistanceFormController.save(JSON.serialize(buildPayload('Nossn', null, 120130171, null, '5 Fifth St'))), 'Applicant SSN is required');
+        System.assertNotEquals('OK', YearRoundAssistanceFormController.save(JSON.serialize(buildPayload('Dupe', 120130170, 120130170, null, '6 Sixth St'))), 'Duplicate SSNs in one household are rejected');
+        System.assertNotEquals('OK', YearRoundAssistanceFormController.save(JSON.serialize(buildPayload('Long', 1234567890, 120130172, null, '7 Seventh St'))), 'SSNs longer than 9 digits are rejected');
+        System.assertEquals(0, [SELECT COUNT() FROM Contact WHERE LastName IN ('Nossn', 'Dupe', 'Long')], 'No records should be saved when SSN validation fails');
+    }
+
+    @IsTest
+    static void testSave_ssnBelongingToAnotherHouseholdOrManyContacts() {
+        Account other = new Account(Name = 'Other Household');
+        insert other;
+        insert new List<Contact>{
+            new Contact(FirstName = 'Kid', LastName = 'Other', AccountId = other.Id, Birthdate = Date.today().addYears(-6), TLG_Social_Security_Number__c = 120130181),
+            new Contact(FirstName = 'Sam', LastName = 'Other', AccountId = other.Id, Birthdate = Date.today().addYears(-38), TLG_Social_Security_Number__c = 120130182),
+            new Contact(FirstName = 'Twin', LastName = 'One', AccountId = other.Id, Birthdate = Date.today().addYears(-30), TLG_Social_Security_Number__c = 120130183),
+            new Contact(FirstName = 'Twin', LastName = 'Two', AccountId = other.Id, Birthdate = Date.today().addYears(-31), TLG_Social_Security_Number__c = 120130183)
+        };
+
+        String childResult = YearRoundAssistanceFormController.save(JSON.serialize(buildPayload('Mover', 120130180, 120130181, null, '8 Eighth St')));
+        String adultResult = YearRoundAssistanceFormController.save(JSON.serialize(buildPayload('Mover', 120130180, 120130184, 120130182, '8 Eighth St')));
+        String manyResult = YearRoundAssistanceFormController.save(JSON.serialize(buildPayload('Mover', 120130183, 120130185, null, '8 Eighth St')));
+
+        System.assertNotEquals('OK', childResult, 'A child SSN that belongs to another household is rejected');
+        System.assertNotEquals('OK', adultResult, 'An adult SSN that belongs to another household is rejected');
+        System.assertNotEquals('OK', manyResult, 'An applicant SSN matching several Contacts needs staff review');
+        System.assertEquals(0, [SELECT COUNT() FROM Contact WHERE LastName = 'Mover'], 'No records should be saved by rejected requests');
+    }
+
+    @IsTest
+    static void testSave_databaseErrorsRollBackEverything() {
+        YearRoundAssistanceFormController.Payload payload = buildPayload('Broken', 120130190, 120130191, null, '9 Ninth St');
+        payload.applicant.Email = 'not-an-email';
+
+        String result = YearRoundAssistanceFormController.save(JSON.serialize(payload));
+
+        System.assertNotEquals('OK', result, 'A DML failure should be reported to the caller');
+        System.assertEquals(0, [SELECT COUNT() FROM Account WHERE Name = 'Broken Household'], 'The household insert should be rolled back');
+        System.assertEquals(0, [SELECT COUNT() FROM Contact WHERE LastName = 'Broken'], 'The contact inserts should be rolled back');
     }
 }

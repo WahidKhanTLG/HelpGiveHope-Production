@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>De exacte waarde die in een bucket moet worden geplaatst. Als het veld een keuzelijst is, moet dit de API-waarde van de keuzelijstwaarde zijn.</help>
+    <label><!-- Value --></label>
+    <name>pmdm__Value__c</name>
+</CustomFieldTranslation>

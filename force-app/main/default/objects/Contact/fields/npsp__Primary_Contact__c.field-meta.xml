@@ -6,5 +6,6 @@
     <formula>Account.npe01__One2OneContact__c = Id</formula>
     <inlineHelpText>Indicates if this Contact is designated as the Primary Contact on their Account (read only).</inlineHelpText>
     <label>Primary Contact</label>
+    <trackHistory>false</trackHistory>
     <type>Checkbox</type>
 </CustomField>

@@ -4,6 +4,6 @@
     <defaultValue>false</defaultValue>
     <label>Other Assistance (Deprecated)</label>
     <trackFeedHistory>false</trackFeedHistory>
-    <trackHistory>true</trackHistory>
+    <trackHistory>false</trackHistory>
     <type>Checkbox</type>
 </CustomField>

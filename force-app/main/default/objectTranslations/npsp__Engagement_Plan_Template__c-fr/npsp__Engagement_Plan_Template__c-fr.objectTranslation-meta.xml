@@ -8,7 +8,15 @@
         <plural>true</plural>
         <value>Modèles de plan d&apos;engagement</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Manage EP Template FS --></label>
+        <name>npsp__ManageEPTemplateFS</name>
+    </fieldSets>
     <gender>Masculine</gender>
     <nameFieldLabel>Nom du modèle de plan d’engagement</nameFieldLabel>
     <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Manage_Template --></label>
+        <name>npsp__Manage_Template</name>
+    </webLinks>
 </CustomObjectTranslation>

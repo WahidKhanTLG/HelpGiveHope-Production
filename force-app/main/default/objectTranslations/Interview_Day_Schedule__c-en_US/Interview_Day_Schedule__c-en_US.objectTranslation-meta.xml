@@ -8,16 +8,5 @@
         <plural>true</plural>
         <value>Interview Day Schedules</value>
     </caseValues>
-    <layouts>
-        <layout>Interview Day Schedule Layout</layout>
-        <sections>
-            <label><!-- Calender Information --></label>
-            <section>Calender Information</section>
-        </sections>
-        <sections>
-            <label><!-- Custom Links --></label>
-            <section>Custom Links</section>
-        </sections>
-    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

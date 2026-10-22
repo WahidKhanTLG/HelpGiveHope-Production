@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates if Recurring Donations are available in Gift Entry. --></help>
+    <label>Terugk. donaties in Opg. van gift insch.</label>
+    <name>npsp__Enable_Recurring_Donations_in_Gift_Entry__c</name>
+</CustomFieldTranslation>

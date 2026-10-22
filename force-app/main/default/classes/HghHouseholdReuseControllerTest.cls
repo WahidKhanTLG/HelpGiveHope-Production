@@ -185,9 +185,85 @@ public class HghHouseholdReuseControllerTest {
         try { HghHouseholdReuseController.saveReuse(badPayload); } catch (Exception e) {}
 
         // Test mismatched Account ID
-        p.reuseAccountId = null; 
+        p.reuseAccountId = null;
         try { HghHouseholdReuseController.saveReuse(p); } catch (Exception e) {}
 
+        Test.stopTest();
+    }
+
+    @IsTest
+    static void testSaveReuseByNonPrimaryAdultMakesThemPrimaryContact() {
+        Account acc = [SELECT Id FROM Account LIMIT 1];
+        Contact primary = [SELECT Id, FirstName, LastName, Birthdate FROM Contact WHERE FirstName = 'John' LIMIT 1];
+        Contact existingChild = [SELECT Id, FirstName, LastName, Birthdate FROM Contact WHERE FirstName = 'Jimmy' LIMIT 1];
+
+        // A second adult who is neither the primary contact nor the contact on any Case.
+        Contact spouse = new Contact(
+            FirstName = 'Jane',
+            LastName = 'Doe',
+            AccountId = acc.Id,
+            Birthdate = Date.today().addYears(-33),
+            Email = 'janedoe@example.com',
+            TLG_Social_Security_Number__c = 987654321,
+            TLG_Household_Member_Status__c = 'Active'
+        );
+        insert spouse;
+
+        Map<String, Object> lookupResponse = HghHouseholdReuseController.lookupApplicant('987-65-4321', 'Christmas Assistance');
+        Map<String, Object> rawVersions = (Map<String, Object>) lookupResponse.get('recordVersions');
+        Map<String, String> versions = new Map<String, String>();
+        if (rawVersions != null) {
+            for (String key : rawVersions.keySet()) {
+                versions.put(key, String.valueOf(rawVersions.get(key)));
+            }
+        }
+
+        YearRoundAssistanceFormController.Payload p = new YearRoundAssistanceFormController.Payload();
+        p.reuseAccountId = acc.Id;
+        p.reuseRecordVersions = versions;
+        p.account = new Account(Id = acc.Id, BillingStreet = '789 New St');
+
+        // The stored SSN is not sent for a loaded member, exactly like the LWC.
+        p.applicant = new Contact(
+            Id = spouse.Id,
+            AccountId = acc.Id,
+            FirstName = 'Jane',
+            LastName = 'Doe',
+            Email = 'janedoe@example.com',
+            Birthdate = spouse.Birthdate
+        );
+
+        Case newCase = new Case();
+        newCase.putSObject('RecordType', new RecordType(DeveloperName = 'Christmas_Application'));
+        p.assistanceCase = newCase;
+
+        YearRoundAssistanceFormController.AdultPayload ap = new YearRoundAssistanceFormController.AdultPayload();
+        ap.adult = new Contact(Id = primary.Id, FirstName = primary.FirstName, LastName = primary.LastName, Birthdate = primary.Birthdate);
+        ap.relationshipWithApplicant = 'Spouse';
+        p.adults = new List<YearRoundAssistanceFormController.AdultPayload>{ ap };
+
+        YearRoundAssistanceFormController.ChildPayload cp = new YearRoundAssistanceFormController.ChildPayload();
+        cp.child = new Contact(
+            Id = existingChild.Id,
+            FirstName = existingChild.FirstName,
+            LastName = existingChild.LastName,
+            Birthdate = existingChild.Birthdate,
+            TLG_Social_Security_Number__c = 222334444
+        );
+        cp.relationshipWithApplicant = 'Son';
+        p.children = new List<YearRoundAssistanceFormController.ChildPayload>{ cp };
+
+        List<YearRoundAssistanceFormController.MemberStatusPayload> statuses = new List<YearRoundAssistanceFormController.MemberStatusPayload>();
+        for (Id memberId : new List<Id>{ primary.Id, existingChild.Id }) {
+            YearRoundAssistanceFormController.MemberStatusPayload s = new YearRoundAssistanceFormController.MemberStatusPayload();
+            s.contactId = memberId;
+            s.status = 'Active';
+            statuses.add(s);
+        }
+        p.memberStatusUpdates = statuses;
+
+        Test.startTest();
+        HghHouseholdReuseController.saveReuse(p);
         Test.stopTest();
     }
 }

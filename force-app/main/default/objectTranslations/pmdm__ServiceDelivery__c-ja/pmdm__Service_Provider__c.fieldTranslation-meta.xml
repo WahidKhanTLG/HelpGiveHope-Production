@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>データベースに取引先責任者として追加されている内部のサービスプロバイダまたはパートナー組織のサービスプロバイダ。</help>
+    <label><!-- Service Provider --></label>
+    <name>pmdm__Service_Provider__c</name>
+    <relationshipLabel><!-- Service Deliveries (Service Provider) --></relationshipLabel>
+</CustomFieldTranslation>

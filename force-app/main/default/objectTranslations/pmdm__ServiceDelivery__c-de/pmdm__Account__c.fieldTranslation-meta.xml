@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>Wählen Sie den Haushalt-Account aus, wenn Mitglieder des Haushalt-Accounts des Kontakts von der erbrachten Leistung profitieren. Beispielsweise bei Mahlzeiten von einer Tafel. Lassen Sie das Feld leer, wenn nur der Kontakt profitiert.</help>
+    <label><!-- Household Account --></label>
+    <name>pmdm__Account__c</name>
+    <relationshipLabel><!-- Service Deliveries --></relationshipLabel>
+</CustomFieldTranslation>

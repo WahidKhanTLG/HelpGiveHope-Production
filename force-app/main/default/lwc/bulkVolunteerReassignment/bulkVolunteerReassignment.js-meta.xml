@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>HGH Bulk Volunteer Reassignment</masterLabel>
+    <description>Case List View bulk volunteer reassignment page for scheduled Home Interviews.</description>
+    <targets>
+        <target>lightning__UrlAddressable</target>
+    </targets>
+</LightningComponentBundle>

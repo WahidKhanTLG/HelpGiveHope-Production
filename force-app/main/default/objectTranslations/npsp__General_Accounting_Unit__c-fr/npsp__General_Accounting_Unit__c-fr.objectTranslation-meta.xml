@@ -11,4 +11,8 @@
     <gender>Feminine</gender>
     <nameFieldLabel>Nom de l’unité comptable générale</nameFieldLabel>
     <startsWith>Vowel</startsWith>
+    <webLinks>
+        <label><!-- Recalculate_Rollups --></label>
+        <name>npsp__Recalculate_Rollups</name>
+    </webLinks>
 </CustomObjectTranslation>

@@ -76,7 +76,7 @@ public without sharing class InterviewSelfServiceController {
         }
 
         Case application = ctx.application;
-        Boolean hasBooking = application.Account != null && application.Account.Interview_Day_Schedule__c != null;
+        Boolean hasBooking = currentSchedule(application) != null;
 
         if (hasBooking && ctx.cfg.maxReschedules > 0) {
             Integer used = application.Reschedule_Count__c == null ? 0 : application.Reschedule_Count__c.intValue();
@@ -146,18 +146,18 @@ public without sharing class InterviewSelfServiceController {
             SELECT Id, CaseNumber, AccountId, Reschedule_Count__c, Self_Service_Token_Expires__c,
                    Contact.FirstName, Contact.Email,
                    Account.npe01__One2OneContact__r.FirstName, Account.npe01__One2OneContact__r.Email,
-                   Account.Interview_Day_Schedule__c,
-                   Account.Interview_Day_Schedule__r.Id,
-                   Account.Interview_Day_Schedule__r.Name,
-                   Account.Interview_Day_Schedule__r.Interview_Date__c,
-                   Account.Interview_Day_Schedule__r.Start_Time__c,
-                   Account.Interview_Day_Schedule__r.End_Time__c,
-                   Account.Interview_Day_Schedule__r.Booked__c,
-                   Account.Interview_Day_Schedule__r.Assigned_Volunteer__r.Name,
-                   Account.Interview_Day_Schedule__r.Assigned_Volunteer__r.FirstName,
-                   Account.Interview_Day_Schedule__r.Assigned_Volunteer__r.LastName,
-                   Account.Interview_Day_Schedule__r.Interview_Day__r.Interview_Date__c,
-                   Account.Interview_Day_Schedule__r.Interview_Day__r.Zone__r.Name
+                   Interview_Day_Schedule__c,
+                   Interview_Day_Schedule__r.Id,
+                   Interview_Day_Schedule__r.Name,
+                   Interview_Day_Schedule__r.Interview_Date__c,
+                   Interview_Day_Schedule__r.Start_Time__c,
+                   Interview_Day_Schedule__r.End_Time__c,
+                   Interview_Day_Schedule__r.Booked__c,
+                   Interview_Day_Schedule__r.Assigned_Volunteer__r.Name,
+                   Interview_Day_Schedule__r.Assigned_Volunteer__r.FirstName,
+                   Interview_Day_Schedule__r.Assigned_Volunteer__r.LastName,
+                   Interview_Day_Schedule__r.Interview_Day__r.Interview_Date__c,
+                   Interview_Day_Schedule__r.Interview_Day__r.Zone__r.Name
             FROM Case
             WHERE Self_Service_Token_Hash__c = :hash
             LIMIT 1
@@ -192,8 +192,8 @@ public without sharing class InterviewSelfServiceController {
         Integer used = application.Reschedule_Count__c == null ? 0 : application.Reschedule_Count__c.intValue();
         dto.reschedulesRemaining = cfg.maxReschedules > 0 ? Math.max(cfg.maxReschedules - used, 0) : null;
 
-        Interview_Day_Schedule__c current = application.Account == null ? null : application.Account.Interview_Day_Schedule__r;
-        if (current != null && application.Account.Interview_Day_Schedule__c != null) {
+        Interview_Day_Schedule__c current = currentSchedule(application);
+        if (current != null) {
             dto.hasBooking = true;
             dto.currentScheduleId = current.Id;
             Date interviewDate = current.Interview_Date__c != null
@@ -261,6 +261,28 @@ public without sharing class InterviewSelfServiceController {
             }
         }
         return dto;
+    }
+
+    private static Interview_Day_Schedule__c currentSchedule(Case application) {
+        if (application == null) {
+            return null;
+        }
+        if (application.Interview_Day_Schedule__c != null
+            && application.Interview_Day_Schedule__r != null
+            && application.Interview_Day_Schedule__r.Booked__c == true) {
+            return application.Interview_Day_Schedule__r;
+        }
+
+        List<Interview_Day_Schedule__c> legacy = [
+            SELECT Id, Name, Interview_Date__c, Start_Time__c, End_Time__c, Booked__c,
+                   Assigned_Volunteer__r.Name, Assigned_Volunteer__r.FirstName, Assigned_Volunteer__r.LastName,
+                   Interview_Day__r.Interview_Date__c, Interview_Day__r.Zone__r.Name
+            FROM Interview_Day_Schedule__c
+            WHERE Case__c = :application.Id AND Booked__c = true
+            ORDER BY CreatedDate DESC
+            LIMIT 1
+        ];
+        return legacy.isEmpty() ? null : legacy[0];
     }
 
     /** First + last name of the volunteer; null when unassigned or when the name looks auto-generated. */

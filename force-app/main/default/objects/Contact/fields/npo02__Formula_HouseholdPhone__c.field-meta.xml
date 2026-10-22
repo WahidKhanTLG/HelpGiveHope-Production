@@ -11,6 +11,7 @@ npo02__Household__r.npo02__HouseholdPhone__c)</formula>
     <inlineHelpText>Formula: Simple formula of Household Phone field.</inlineHelpText>
     <label>Household Phone</label>
     <required>false</required>
+    <trackHistory>false</trackHistory>
     <type>Text</type>
     <unique>false</unique>
 </CustomField>

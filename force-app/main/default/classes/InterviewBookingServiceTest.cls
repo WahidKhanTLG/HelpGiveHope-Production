@@ -68,8 +68,9 @@ private class InterviewBookingServiceTest {
         System.assertEquals('Pending', booked.Google_Sync_Status__c, 'Booking must queue Google sync');
         System.assertEquals('Assigned', booked.Assignment_Status__c, 'Assignment flow must run');
 
-        Account household = [SELECT Interview_Day_Schedule__c, Zones__c FROM Account WHERE Id = :app.AccountId];
-        System.assertEquals(slot.Id, household.Interview_Day_Schedule__c);
+        Case bookedCase = [SELECT Interview_Day_Schedule__c FROM Case WHERE Id = :app.Id];
+        System.assertEquals(slot.Id, bookedCase.Interview_Day_Schedule__c);
+        Account household = [SELECT Zones__c FROM Account WHERE Id = :app.AccountId];
         System.assertNotEquals(null, household.Zones__c, 'Zone lookup must be populated from the slot');
 
         Case owned = [SELECT OwnerId FROM Case WHERE Id = :app.Id];
@@ -113,6 +114,35 @@ private class InterviewBookingServiceTest {
             message = ex.getMessage();
         }
         System.assert(message != null && message.contains('already has a booked interview'), '' + message);
+    }
+
+    @IsTest
+    static void sameHouseholdCasesCanBookDifferentSlots() {
+        config();
+        Case firstCase = application();
+        Case secondCase = new Case(
+            Subject = 'Second Application Same Household',
+            Status = 'New',
+            Origin = 'Phone',
+            AccountId = firstCase.AccountId
+        );
+        insert secondCase;
+        List<Interview_Day_Schedule__c> slots = InterviewSchedulingTestData.slotsFor(
+            day('Published', 7, 'Booking Zone').Id
+        );
+
+        InterviewBookingService.book(slots[0].Id, firstCase.Id, null, InterviewBookingService.Actor.STAFF);
+        InterviewBookingService.book(slots[1].Id, secondCase.Id, null, InterviewBookingService.Actor.STAFF);
+
+        Map<Id, Case> casesById = new Map<Id, Case>([
+            SELECT Id, Interview_Day_Schedule__c
+            FROM Case
+            WHERE Id IN :new Set<Id>{ firstCase.Id, secondCase.Id }
+        ]);
+        System.assertEquals(slots[0].Id, casesById.get(firstCase.Id).Interview_Day_Schedule__c);
+        System.assertEquals(slots[1].Id, casesById.get(secondCase.Id).Interview_Day_Schedule__c);
+        System.assertEquals(firstCase.Id, InterviewSchedulingTestData.slot(slots[0].Id).Case__c);
+        System.assertEquals(secondCase.Id, InterviewSchedulingTestData.slot(slots[1].Id).Case__c);
     }
 
     @IsTest
@@ -200,7 +230,7 @@ private class InterviewBookingServiceTest {
         System.assertEquals('Pending', newSlot.Google_Sync_Status__c);
         System.assertEquals(String.valueOf(originalOwner), newSlot.Original_Case_Owner_Id__c, 'New slot captures the true original owner');
 
-        System.assertEquals(slots[2].Id, [SELECT Interview_Day_Schedule__c FROM Account WHERE Id = :app.AccountId].Interview_Day_Schedule__c);
+        System.assertEquals(slots[2].Id, [SELECT Interview_Day_Schedule__c FROM Case WHERE Id = :app.Id].Interview_Day_Schedule__c);
         System.assertEquals(volunteer.Id, [SELECT OwnerId FROM Case WHERE Id = :app.Id].OwnerId, 'Volunteer keeps Case ownership after the move');
     }
 
@@ -247,7 +277,7 @@ private class InterviewBookingServiceTest {
         System.assertEquals(false, released.Booked__c);
         System.assertEquals('Available', released.Status__c);
         System.assertEquals('Pending', released.Google_Sync_Status__c);
-        System.assertEquals(null, [SELECT Interview_Day_Schedule__c FROM Account WHERE Id = :app.AccountId].Interview_Day_Schedule__c);
+        System.assertEquals(null, [SELECT Interview_Day_Schedule__c FROM Case WHERE Id = :app.Id].Interview_Day_Schedule__c);
 
         String message;
         try {
@@ -329,7 +359,7 @@ private class InterviewBookingServiceTest {
         System.assertNotEquals(null, sent.Self_Service_Link_Sent_On__c, 'The link email is sent with the booking');
 
         // Account context has no Case: nothing is sent. Disabled flag: nothing is sent either.
-        SelectInterviewSlotController.unscheduleInterview(app.AccountId);
+        SelectInterviewSlotController.unscheduleInterview(app.Id);
         update new Case(Id = app.Id, Self_Service_Link_Sent_On__c = null);
         InterviewSelfServiceConfig.instanceOverride.autoSendLinkOnBooking = false;
         SelectInterviewSlotController.updateInterviewSchedule(slots[1].Id, app.Id);

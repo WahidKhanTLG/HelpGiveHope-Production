@@ -12,5 +12,6 @@ npo02__Household__r.npo02__OppAmountLastYear__c)</formula>
     <precision>18</precision>
     <required>false</required>
     <scale>2</scale>
+    <trackHistory>false</trackHistory>
     <type>Currency</type>
 </CustomField>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>たとえば、フードバンクからの食事など、サービス提供により取引先責任者の世帯取引先のメンバーに便益が及ぶ場合、世帯取引先を選択します。便益が 1 人の取引先責任者にのみ及ぶ場合は、空白のままにします。</help>
+    <label><!-- Household Account --></label>
+    <name>pmdm__Account__c</name>
+    <relationshipLabel><!-- Service Deliveries --></relationshipLabel>
+</CustomFieldTranslation>

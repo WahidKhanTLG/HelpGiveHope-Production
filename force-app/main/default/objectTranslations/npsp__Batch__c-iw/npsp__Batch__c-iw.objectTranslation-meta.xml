@@ -20,6 +20,10 @@
         <plural>true</plural>
         <value><!-- הBatch --></value>
     </caseValues>
+    <fieldSets>
+        <label><!-- BatchDetailView --></label>
+        <name>npsp__BatchDetailView</name>
+    </fieldSets>
     <gender><!-- Masculine --></gender>
     <nameFieldLabel><!-- Batch Name --></nameFieldLabel>
 </CustomObjectTranslation>

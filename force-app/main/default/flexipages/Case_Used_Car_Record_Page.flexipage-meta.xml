@@ -143,12 +143,8 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Zone__c</fieldItem>
-                <identifier>RecordZone_cField</identifier>
+                <fieldItem>Record.Account.Zones__c</fieldItem>
+                <identifier>RecordAccountZones_cField2</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -197,6 +193,16 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>readonly</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.RecordTypeId</fieldItem>
+                <identifier>RecordRecordTypeIdField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
@@ -1504,7 +1510,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
-                    <value>Employer Information</value>
+                    <value>Employment Information</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection7</identifier>
@@ -2093,6 +2099,12 @@
                             <value>FULL_NAME</value>
                         </valueListItems>
                         <valueListItems>
+                            <value>TLG_Household_Member_Status__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>TLG_Household_Member_Status_Reason__c</value>
+                        </valueListItems>
+                        <valueListItems>
                             <value>CONTACT.TITLE</value>
                         </valueListItems>
                         <valueListItems>
@@ -2100,6 +2112,9 @@
                         </valueListItems>
                         <valueListItems>
                             <value>CONTACT.PHONE1</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>CONTACT.LAST_UPDATE</value>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>

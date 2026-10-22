@@ -8,6 +8,7 @@
     <inlineHelpText>Holds the Id of the Household record (either Household Account, or Household object) this Contact is currently associated with (read only).</inlineHelpText>
     <label>HHId</label>
     <required>false</required>
+    <trackHistory>false</trackHistory>
     <type>Text</type>
     <unique>false</unique>
 </CustomField>

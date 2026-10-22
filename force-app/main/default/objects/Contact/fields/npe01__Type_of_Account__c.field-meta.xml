@@ -9,6 +9,7 @@
     <inlineHelpText>Formula: &quot;Individual&quot; or &quot;Organization&quot; depending on Account setting.</inlineHelpText>
     <label>Type of Account</label>
     <required>false</required>
+    <trackHistory>false</trackHistory>
     <type>Text</type>
     <unique>false</unique>
 </CustomField>

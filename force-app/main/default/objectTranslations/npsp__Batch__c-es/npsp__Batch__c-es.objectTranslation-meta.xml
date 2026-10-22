@@ -8,6 +8,10 @@
         <plural>true</plural>
         <value>Lotes</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- BatchDetailView --></label>
+        <name>npsp__BatchDetailView</name>
+    </fieldSets>
     <gender>Masculine</gender>
     <nameFieldLabel>Nombre de lote</nameFieldLabel>
 </CustomObjectTranslation>

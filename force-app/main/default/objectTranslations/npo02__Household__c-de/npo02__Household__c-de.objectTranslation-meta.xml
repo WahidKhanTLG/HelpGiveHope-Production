@@ -40,6 +40,14 @@
         <plural>true</plural>
         <value>Haushalten</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Manage_Household_Custom --></label>
+        <name>npo02__Manage_Household_Custom</name>
+    </fieldSets>
     <gender>Masculine</gender>
     <nameFieldLabel>Haushalt-Name</nameFieldLabel>
+    <webLinks>
+        <label><!-- Copy_Household_Address_to_Contacts --></label>
+        <name>npo02__Copy_Household_Address_to_Contacts</name>
+    </webLinks>
 </CustomObjectTranslation>

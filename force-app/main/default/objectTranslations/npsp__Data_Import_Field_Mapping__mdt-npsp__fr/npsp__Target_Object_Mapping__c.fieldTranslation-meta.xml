@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The target Data Import Object Group for this field mapping. --></help>
+    <label>Mappage des objets cibles</label>
+    <name>npsp__Target_Object_Mapping__c</name>
+    <relationshipLabel>Mappages de champs d&apos;importation de données</relationshipLabel>
+</CustomFieldTranslation>

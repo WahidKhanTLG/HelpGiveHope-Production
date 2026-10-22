@@ -4,5 +4,13 @@
         <plural>false</plural>
         <value>レベル</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- LevelEdit --></label>
+        <name>npsp__LevelEdit</name>
+    </fieldSets>
     <nameFieldLabel>レベル名</nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- Target is a required field on Level.  Please specify the Target object for this Level. --></errorMessage>
+        <name>npsp__Target_Required</name>
+    </validationRules>
 </CustomObjectTranslation>

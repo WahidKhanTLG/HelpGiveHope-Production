@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Year started with HGH --></label>
+    <name>Year_started_with_HGH__c</name>
+</CustomFieldTranslation>

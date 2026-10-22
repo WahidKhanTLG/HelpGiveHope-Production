@@ -66,7 +66,7 @@ public with sharing class SelectInterviewSlotController {
         }
     }
 
-    /** Removes the Account's current interview booking; the slot becomes available again. */
+    /** Removes the current Case/Account interview booking; the slot becomes available again. */
     @AuraEnabled
     public static void unscheduleInterview(Id accountId) {
         try {
@@ -79,31 +79,71 @@ public with sharing class SelectInterviewSlotController {
     /** Current booking and volunteer assignment for the quick action. */
     @AuraEnabled(cacheable=true)
     public static BookingInfo getCurrentBooking(Id accountId) {
-        Id resolvedAccountId = InterviewBookingService.resolveAccountId(accountId);
-        if (resolvedAccountId == null) {
+        if (accountId == null) {
             return null;
         }
-        List<Account> accounts = [
-            SELECT Id, Interview_Day_Schedule__c
-            FROM Account
-            WHERE Id = :resolvedAccountId
-            WITH USER_MODE
-            LIMIT 1
-        ];
-        if (accounts.isEmpty() || accounts[0].Interview_Day_Schedule__c == null) {
+
+        Id scheduleId;
+        Id contextCaseId;
+
+        if (accountId.getSObjectType() == Case.SObjectType) {
+            contextCaseId = accountId;
+            List<Case> cases = [
+                SELECT Id, Interview_Day_Schedule__c
+                FROM Case
+                WHERE Id = :contextCaseId
+                WITH USER_MODE
+                LIMIT 1
+            ];
+            if (cases.isEmpty()) {
+                return null;
+            }
+            scheduleId = cases[0].Interview_Day_Schedule__c;
+            if (scheduleId == null) {
+                List<Interview_Day_Schedule__c> legacy = [
+                    SELECT Id
+                    FROM Interview_Day_Schedule__c
+                    WHERE Case__c = :contextCaseId AND Booked__c = true
+                    WITH USER_MODE
+                    ORDER BY CreatedDate DESC
+                    LIMIT 1
+                ];
+                scheduleId = legacy.isEmpty() ? null : legacy[0].Id;
+            }
+        } else {
+            Id resolvedAccountId = InterviewBookingService.resolveAccountId(accountId);
+            if (resolvedAccountId == null) {
+                return null;
+            }
+            List<Account> accounts = [
+                SELECT Id, Interview_Day_Schedule__c
+                FROM Account
+                WHERE Id = :resolvedAccountId
+                WITH USER_MODE
+                LIMIT 1
+            ];
+            scheduleId = accounts.isEmpty() ? null : accounts[0].Interview_Day_Schedule__c;
+        }
+
+        if (scheduleId == null) {
             return null;
         }
+
         List<Interview_Day_Schedule__c> schedules = [
-            SELECT Id, Case__c, Assigned_Volunteer__c, Assigned_Volunteer__r.Name, Assignment_Status__c
+            SELECT Id, Booked__c, Case__c, Assigned_Volunteer__c, Assigned_Volunteer__r.Name, Assignment_Status__c
             FROM Interview_Day_Schedule__c
-            WHERE Id = :accounts[0].Interview_Day_Schedule__c
+            WHERE Id = :scheduleId
             WITH USER_MODE
             LIMIT 1
         ];
-        if (schedules.isEmpty()) {
+        if (schedules.isEmpty() || schedules[0].Booked__c != true) {
             return null;
         }
         Interview_Day_Schedule__c schedule = schedules[0];
+        if (contextCaseId != null && schedule.Case__c != contextCaseId) {
+            return null;
+        }
+
         BookingInfo info = new BookingInfo();
         info.scheduleId = schedule.Id;
         info.caseId = schedule.Case__c;
@@ -122,26 +162,54 @@ public with sharing class SelectInterviewSlotController {
         if ([SELECT COUNT() FROM User WHERE Id = :volunteerId AND IsActive = true] == 0) {
             throw new AuraHandledException('The selected volunteer is not an active Salesforce User.');
         }
-        Id resolvedAccountId = InterviewBookingService.resolveAccountId(accountId);
-        if (resolvedAccountId == null) {
-            throw new AuraHandledException('Unable to resolve an Account for the selected booking.');
+        Id contextCaseId = accountId != null && accountId.getSObjectType() == Case.SObjectType ? accountId : null;
+        Id scheduleId;
+
+        if (contextCaseId != null) {
+            List<Case> cases = [
+                SELECT Id, Interview_Day_Schedule__c
+                FROM Case
+                WHERE Id = :contextCaseId
+                WITH USER_MODE
+                LIMIT 1
+            ];
+            if (!cases.isEmpty()) {
+                scheduleId = cases[0].Interview_Day_Schedule__c;
+            }
+            if (scheduleId == null) {
+                List<Interview_Day_Schedule__c> legacy = [
+                    SELECT Id
+                    FROM Interview_Day_Schedule__c
+                    WHERE Case__c = :contextCaseId AND Booked__c = true
+                    WITH USER_MODE
+                    ORDER BY CreatedDate DESC
+                    LIMIT 1
+                ];
+                scheduleId = legacy.isEmpty() ? null : legacy[0].Id;
+            }
+        } else {
+            Id resolvedAccountId = InterviewBookingService.resolveAccountId(accountId);
+            if (resolvedAccountId == null) {
+                throw new AuraHandledException('Unable to resolve an Account for the selected booking.');
+            }
+            List<Account> accounts = [
+                SELECT Id, Interview_Day_Schedule__c
+                FROM Account
+                WHERE Id = :resolvedAccountId
+                WITH USER_MODE
+                LIMIT 1
+            ];
+            scheduleId = accounts.isEmpty() ? null : accounts[0].Interview_Day_Schedule__c;
         }
-        List<Account> accounts = [
-            SELECT Id, Interview_Day_Schedule__c
-            FROM Account
-            WHERE Id = :resolvedAccountId
-            WITH USER_MODE
-            LIMIT 1
-        ];
-        if (accounts.isEmpty() || accounts[0].Interview_Day_Schedule__c == null) {
+
+        if (scheduleId == null) {
             throw new AuraHandledException('No booked interview was found to assign.');
         }
-        Id contextCaseId = accountId != null && accountId.getSObjectType() == Case.SObjectType ? accountId : null;
 
         List<Interview_Day_Schedule__c> schedules = [
             SELECT Id, Booked__c, Case__c, Assigned_Volunteer__c
             FROM Interview_Day_Schedule__c
-            WHERE Id = :accounts[0].Interview_Day_Schedule__c
+            WHERE Id = :scheduleId
             WITH USER_MODE
             LIMIT 1
         ];

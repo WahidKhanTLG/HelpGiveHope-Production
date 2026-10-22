@@ -48,7 +48,7 @@ public class HouseholdShoppingController {
         oppList = [
             SELECT Id, Name, StageName, Amount,
             (SELECT Id, Name__c, Description, Shirt_Size__c, Bike_Size__c, Coat_Hoodie_Size__c, PricebookEntry.Product2.Name,
-             		 Pant_Size__c, Contact__r.Name, Contact__c, Contact__r.TLG_Age__c, Contact__r.GenderIdentity
+             		 Pant_Size__c, Shoe_Size__c, Contact__r.Name, Contact__c, Contact__r.TLG_Age__c, Contact__r.GenderIdentity
          	FROM OpportunityLineItems)
             FROM Opportunity
             WHERE AccountId = :acct.Id  AND CreatedDate = THIS_YEAR ORDER BY CreatedDate DESC LIMIT 1

@@ -20,6 +20,14 @@
         <plural>true</plural>
         <value><!-- הGAU Allocation --></value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Manage Allocations Additional Fields --></label>
+        <name>npsp__ManageAllocationsAdditionalFields</name>
+    </fieldSets>
     <gender><!-- Masculine --></gender>
     <nameFieldLabel><!-- GAU Allocation Name --></nameFieldLabel>
+    <webLinks>
+        <label><!-- Manage_Allocations --></label>
+        <name>npsp__Manage_Allocations</name>
+    </webLinks>
 </CustomObjectTranslation>
